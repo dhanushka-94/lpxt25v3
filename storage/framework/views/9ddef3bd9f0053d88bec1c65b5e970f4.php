@@ -1,10 +1,10 @@
-@extends('layouts.app')
 
-@section('title', 'Bank Details - Payment Information | MSK COMPUTERS')
-@section('description', 'Complete payment instructions and secure banking options for your computer purchases at MSK Computers. Multiple bank accounts available for easy payments.')
-@section('keywords', 'bank details, payment, MSK Computers, bank transfer, payment methods, Sri Lanka banking, computer purchase payment')
 
-@section('content')
+<?php $__env->startSection('title', 'Bank Details - Payment Information | MSK COMPUTERS'); ?>
+<?php $__env->startSection('description', 'Complete payment instructions and secure banking options for your computer purchases at MSK Computers. Multiple bank accounts available for easy payments.'); ?>
+<?php $__env->startSection('keywords', 'bank details, payment, MSK Computers, bank transfer, payment methods, Sri Lanka banking, computer purchase payment'); ?>
+
+<?php $__env->startSection('content'); ?>
 <!-- Hero Section -->
 <section class="py-16 bg-gradient-to-b from-black to-[#0f0f0f]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -190,7 +190,7 @@
             <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8 hover:border-[#f59e0b]/30 transition-all duration-300">
                 <div class="text-center mb-6">
                     <div class="w-20 h-20 bg-white/5 rounded-lg flex items-center justify-center mx-auto mb-4 p-2">
-                        <img src="{{ asset('images/people_bank.png') }}" 
+                        <img src="<?php echo e(asset('images/people_bank.png')); ?>" 
                              alt="People's Bank Logo" 
                              class="w-full h-full object-contain">
                     </div>
@@ -219,7 +219,7 @@
                 
                 <div class="text-center mb-6">
                     <div class="w-20 h-20 bg-white/5 rounded-lg flex items-center justify-center mx-auto mb-4 p-2">
-                        <img src="{{ asset('images/commercial_bank.png') }}" 
+                        <img src="<?php echo e(asset('images/commercial_bank.png')); ?>" 
                              alt="Commercial Bank Logo" 
                              class="w-full h-full object-contain">
                     </div>
@@ -244,7 +244,7 @@
             <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8 hover:border-[#f59e0b]/30 transition-all duration-300">
                 <div class="text-center mb-6">
                     <div class="w-20 h-20 bg-white/5 rounded-lg flex items-center justify-center mx-auto mb-4 p-2">
-                        <img src="{{ asset('images/seylan_bank.png') }}" 
+                        <img src="<?php echo e(asset('images/seylan_bank.png')); ?>" 
                              alt="Seylan Bank Logo" 
                              class="w-full h-full object-contain">
                     </div>
@@ -369,4 +369,6 @@
         </div>
     </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Dhanushka\Desktop\MSK\MSKMSV3\resources\views/bank-details.blade.php ENDPATH**/ ?>

@@ -22758,3 +22758,54 @@ Stack trace:
 [2025-09-28 18:56:38] local.INFO: Product found: {"product":1316} 
 [2025-09-28 18:56:39] local.INFO: Cart add request: {"product_id":2646,"quantity":1} 
 [2025-09-28 18:56:39] local.INFO: Product found: {"product":2646} 
+[2025-09-28 19:03:28] local.INFO: Category route binding - Value: memory-ram, Field: null  
+[2025-09-28 19:03:28] local.INFO: Category slug lookup (stored) result: MEMORY (RAM)  
+[2025-09-28 19:03:28] local.INFO: Product route binding - Value: kingston-8gb-value-2666mhz, Field: null  
+[2025-09-28 19:03:28] local.INFO: Product found via database slug: KINGSTON 8GB VALUE 2666MHZ  
+[2025-09-28 19:03:28] local.INFO: ProductController@show - Category: MEMORY (RAM) (ID: 384), Product: KINGSTON 8GB VALUE 2666MHZ (ID: 815, Category: 384)  
+[2025-09-28 19:03:46] local.INFO: Category route binding - Value: combo-kit, Field: null  
+[2025-09-28 19:03:46] local.INFO: Category slug lookup (stored) result: COMBO KIT  
+[2025-09-28 19:03:56] local.INFO: Category route binding - Value: combo-kit, Field: null  
+[2025-09-28 19:03:56] local.INFO: Category slug lookup (stored) result: COMBO KIT  
+[2025-09-28 19:03:56] local.INFO: Product route binding - Value: ryzen-9-9950x-x870-msi-mb-rtx-5080-16gb-mai-1000w-gold-, Field: null  
+[2025-09-28 19:03:56] local.INFO: Product found via database slug: RYZEN 9 9950X | X870 MSI MB | RTX 5080 16GB | MAI 1000W GOLD PSU  
+[2025-09-28 19:03:56] local.INFO: ProductController@show - Category: COMBO KIT (ID: 499), Product: RYZEN 9 9950X | X870 MSI MB | RTX 5080 16GB | MAI 1000W GOLD PSU (ID: 3219, Category: 380)  
+[2025-09-28 19:03:56] local.INFO: Category route binding - Value: combo-kit, Field: null  
+[2025-09-28 19:03:56] local.INFO: Category slug lookup (stored) result: COMBO KIT  
+[2025-09-28 19:03:56] local.INFO: Product route binding - Value: ryzen-7-5700g-b550-mb-32gb-ram-550w-80-antec-psu, Field: null  
+[2025-09-28 19:03:56] local.INFO: Product found via database slug: RYZEN 7 5700G  | B550 MB | 32GB RAM | 550W 80+ ANTEC PSU  
+[2025-09-28 19:03:56] local.INFO: ProductController@show - Category: COMBO KIT (ID: 499), Product: RYZEN 7 5700G  | B550 MB | 32GB RAM | 550W 80+ ANTEC PSU (ID: 3218, Category: 380)  
+[2025-09-28 19:03:57] local.INFO: Category route binding - Value: combo-kit, Field: null  
+[2025-09-28 19:03:57] local.INFO: Category slug lookup (stored) result: COMBO KIT  
+[2025-09-28 19:03:57] local.INFO: Product route binding - Value: ryzen-5-5500-a520-mb-550w-80-psu-rtx-3050-6gb, Field: null  
+[2025-09-28 19:03:57] local.INFO: Product found via database slug: RYZEN 5 5500 | A520 MB | 550W 80+ PSU | RTX 3050 6GB  
+[2025-09-28 19:03:57] local.INFO: ProductController@show - Category: COMBO KIT (ID: 499), Product: RYZEN 5 5500 | A520 MB | 550W 80+ PSU | RTX 3050 6GB (ID: 3208, Category: 380)  
+[2025-09-28 19:07:17] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-09-28 19:07:17] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-09-28 19:07:19] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-09-28 19:07:19] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-09-28 19:07:19] local.INFO: Product route binding - Value: amd-ryzen-5-5500-processor-for-pc-bulid-only, Field: null  
+[2025-09-28 19:07:19] local.INFO: Product found via database slug: AMD RYZEN 5 5500 PROCESSOR ( Not Sold Separately )  
+[2025-09-28 19:07:19] local.INFO: ProductController@show - Category: BRAND NEW PROCESSOR (ID: 412), Product: AMD RYZEN 5 5500 PROCESSOR ( Not Sold Separately ) (ID: 426, Category: 382)  
+[2025-09-28 19:07:43] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-09-28 19:07:43] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-09-28 19:07:43] local.INFO: Product route binding - Value: amd-ryzen-5-5500-processor-for-pc-bulid-only, Field: null  
+[2025-09-28 19:07:43] local.INFO: Product found via database slug: AMD RYZEN 5 5500 PROCESSOR ( Not Sold Separately )  
+[2025-09-28 19:07:43] local.INFO: ProductController@show - Category: BRAND NEW PROCESSOR (ID: 412), Product: AMD RYZEN 5 5500 PROCESSOR ( Not Sold Separately ) (ID: 426, Category: 382)  
+[2025-09-28 19:08:10] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-09-28 19:08:10] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-09-28 19:08:10] local.INFO: Product route binding - Value: amd-ryzen-5-5500-processor-for-pc-bulid-only, Field: null  
+[2025-09-28 19:08:10] local.INFO: Product found via database slug: AMD RYZEN 5 5500 PROCESSOR ( Not Sold Separately )  
+[2025-09-28 19:08:10] local.INFO: ProductController@show - Category: BRAND NEW PROCESSOR (ID: 412), Product: AMD RYZEN 5 5500 PROCESSOR ( Not Sold Separately ) (ID: 426, Category: 382)  
+[2025-09-28 19:08:21] local.INFO: Category route binding - Value: used-graphic-card-vga, Field: null  
+[2025-09-28 19:08:21] local.INFO: Category slug lookup (stored) result: USED GRAPHIC CARD (VGA)  
+[2025-09-28 19:08:23] local.INFO: Category route binding - Value: used-graphic-card-vga, Field: null  
+[2025-09-28 19:08:23] local.INFO: Category slug lookup (stored) result: USED GRAPHIC CARD (VGA)  
+[2025-09-28 19:08:23] local.INFO: Product route binding - Value: used-asus-gtx960-2gb-vga, Field: null  
+[2025-09-28 19:08:23] local.INFO: Product found via database slug: USED ASUS GTX960 2GB VGA  
+[2025-09-28 19:08:23] local.INFO: ProductController@show - Category: USED GRAPHIC CARD (VGA) (ID: 441), Product: USED ASUS GTX960 2GB VGA (ID: 3161, Category: 385)  
+[2025-09-28 19:08:40] local.INFO: Category route binding - Value: used-graphic-card-vga, Field: null  
+[2025-09-28 19:08:40] local.INFO: Category slug lookup (stored) result: USED GRAPHIC CARD (VGA)  
+[2025-09-28 19:08:40] local.INFO: Product route binding - Value: used-asus-gtx960-2gb-vga, Field: null  
+[2025-09-28 19:08:40] local.INFO: Product found via database slug: USED ASUS GTX960 2GB VGA  
+[2025-09-28 19:08:40] local.INFO: ProductController@show - Category: USED GRAPHIC CARD (VGA) (ID: 441), Product: USED ASUS GTX960 2GB VGA (ID: 3161, Category: 385)  
