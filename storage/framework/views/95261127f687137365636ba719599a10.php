@@ -1,17 +1,17 @@
-@extends('layouts.invoice')
 
-@section('title', 'Invoice #' . $order->order_number . ' - MSK COMPUTERS')
 
-@section('content')
+<?php $__env->startSection('title', 'Invoice #' . $order->order_number . ' - MSK COMPUTERS'); ?>
+
+<?php $__env->startSection('content'); ?>
 <!-- Invoice Document -->
 <div class="bg-white rounded-xl shadow-lg overflow-hidden print-break-inside-avoid">
             <!-- Header Section -->
             <div class="bg-gradient-to-r from-[#f59e0b] to-[#d97706] p-8">
                 <div class="flex justify-between items-start">
                     <div>
-                        <img src="{{ asset('msk-computers-logo-color.png') }}" alt="MSK Computers" class="h-12 mb-4">
+                        <img src="<?php echo e(asset('msk-computers-logo-color.png')); ?>" alt="MSK Computers" class="h-12 mb-4">
                         <h1 class="text-3xl font-bold text-white">INVOICE</h1>
-                        <p class="text-orange-100">Invoice #{{ $order->order_number }}</p>
+                        <p class="text-orange-100">Invoice #<?php echo e($order->order_number); ?></p>
                     </div>
                     <div class="text-right text-white">
                         <h2 class="text-xl font-semibold mb-2">MSK COMPUTERS</h2>
@@ -28,21 +28,22 @@
                     <div>
                         <h3 class="text-lg font-semibold text-gray-800 mb-4">Bill To:</h3>
                         <div class="text-gray-800">
-                            <p class="font-semibold text-gray-900">{{ $order->customer_name }}</p>
-                            <p class="text-gray-800">{{ $order->customer_email }}</p>
-                            @if($order->customer_phone)
-                                <p class="text-gray-800">{{ $order->customer_phone }}</p>
-                            @endif
-                            @if($order->billing_address_line_1)
+                            <p class="font-semibold text-gray-900"><?php echo e($order->customer_name); ?></p>
+                            <p class="text-gray-800"><?php echo e($order->customer_email); ?></p>
+                            <?php if($order->customer_phone): ?>
+                                <p class="text-gray-800"><?php echo e($order->customer_phone); ?></p>
+                            <?php endif; ?>
+                            <?php if($order->billing_address_line_1): ?>
                                 <p class="mt-2 text-gray-800">
-                                    {{ $order->billing_address_line_1 }}<br>
-                                    @if($order->billing_address_line_2)
-                                        {{ $order->billing_address_line_2 }}<br>
-                                    @endif
-                                    {{ $order->billing_city }}, {{ $order->billing_state }}<br>
-                                    {{ $order->billing_postal_code }}, {{ $order->billing_country }}
+                                    <?php echo e($order->billing_address_line_1); ?><br>
+                                    <?php if($order->billing_address_line_2): ?>
+                                        <?php echo e($order->billing_address_line_2); ?><br>
+                                    <?php endif; ?>
+                                    <?php echo e($order->billing_city); ?>, <?php echo e($order->billing_state); ?><br>
+                                    <?php echo e($order->billing_postal_code); ?>, <?php echo e($order->billing_country); ?>
+
                                 </p>
-                            @endif
+                            <?php endif; ?>
                         </div>
                     </div>
 
@@ -52,30 +53,32 @@
                         <div class="text-gray-800 space-y-2">
                             <div class="flex justify-between">
                                 <span class="text-gray-800">Invoice Date:</span>
-                                <span class="font-medium text-gray-900">{{ $order->created_at->format('M d, Y') }}</span>
+                                <span class="font-medium text-gray-900"><?php echo e($order->created_at->format('M d, Y')); ?></span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-800">Order Status:</span>
                                 <span class="font-medium capitalize 
-                                    {{ $order->status === 'delivered' ? 'text-green-600' : 
-                                       ($order->status === 'cancelled' ? 'text-red-600' : 'text-blue-600') }}">
-                                    {{ ucfirst($order->status) }}
+                                    <?php echo e($order->status === 'delivered' ? 'text-green-600' : 
+                                       ($order->status === 'cancelled' ? 'text-red-600' : 'text-blue-600')); ?>">
+                                    <?php echo e(ucfirst($order->status)); ?>
+
                                 </span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-800">Payment Status:</span>
                                 <span class="font-medium capitalize
-                                    {{ $order->payment_status === 'paid' ? 'text-green-600' : 
-                                       ($order->payment_status === 'failed' ? 'text-red-600' : 'text-yellow-600') }}">
-                                    {{ ucfirst(str_replace('_', ' ', $order->payment_status)) }}
+                                    <?php echo e($order->payment_status === 'paid' ? 'text-green-600' : 
+                                       ($order->payment_status === 'failed' ? 'text-red-600' : 'text-yellow-600')); ?>">
+                                    <?php echo e(ucfirst(str_replace('_', ' ', $order->payment_status))); ?>
+
                                 </span>
                             </div>
-                            @if($order->payment_method)
+                            <?php if($order->payment_method): ?>
                                 <div class="flex justify-between">
                                     <span class="text-gray-800">Payment Method:</span>
-                                    <span class="font-medium text-gray-900">{{ ucfirst($order->payment_method) }}</span>
+                                    <span class="font-medium text-gray-900"><?php echo e(ucfirst($order->payment_method)); ?></span>
                                 </div>
-                            @endif
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -94,21 +97,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($order->orderItems as $item)
+                                <?php $__currentLoopData = $order->orderItems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr class="hover:bg-gray-50">
                                         <td class="border border-gray-300 px-4 py-3">
-                                            <div class="font-medium text-gray-900">{{ $item->product_name }}</div>
-                                            @if($item->product_code)
-                                                <div class="text-sm text-gray-600">Code: {{ $item->product_code }}</div>
-                                            @elseif($item->product_sku)
-                                                <div class="text-sm text-gray-600">SKU: {{ $item->product_sku }}</div>
-                                            @endif
+                                            <div class="font-medium text-gray-900"><?php echo e($item->product_name); ?></div>
+                                            <?php if($item->product_code): ?>
+                                                <div class="text-sm text-gray-600">Code: <?php echo e($item->product_code); ?></div>
+                                            <?php elseif($item->product_sku): ?>
+                                                <div class="text-sm text-gray-600">SKU: <?php echo e($item->product_sku); ?></div>
+                                            <?php endif; ?>
                                         </td>
-                                        <td class="border border-gray-300 px-4 py-3 text-center text-gray-900 font-medium">{{ $item->quantity }}</td>
-                                        <td class="border border-gray-300 px-4 py-3 text-right text-gray-900 font-medium">LKR {{ number_format($item->unit_price, 2) }}</td>
-                                        <td class="border border-gray-300 px-4 py-3 text-right font-bold text-gray-900">LKR {{ number_format($item->total_price, 2) }}</td>
+                                        <td class="border border-gray-300 px-4 py-3 text-center text-gray-900 font-medium"><?php echo e($item->quantity); ?></td>
+                                        <td class="border border-gray-300 px-4 py-3 text-right text-gray-900 font-medium">LKR <?php echo e(number_format($item->unit_price, 2)); ?></td>
+                                        <td class="border border-gray-300 px-4 py-3 text-right font-bold text-gray-900">LKR <?php echo e(number_format($item->total_price, 2)); ?></td>
                                     </tr>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
                     </div>
@@ -122,62 +125,63 @@
                             <div class="space-y-2 text-sm">
                                 <div class="flex justify-between text-gray-800">
                                     <span>Subtotal:</span>
-                                    <span class="font-medium">LKR {{ number_format($order->subtotal, 2) }}</span>
+                                    <span class="font-medium">LKR <?php echo e(number_format($order->subtotal, 2)); ?></span>
                                 </div>
-                                @if($order->tax_amount > 0)
+                                <?php if($order->tax_amount > 0): ?>
                                     <div class="flex justify-between text-gray-800">
                                         <span>Tax:</span>
-                                        <span class="font-medium">LKR {{ number_format($order->tax_amount, 2) }}</span>
+                                        <span class="font-medium">LKR <?php echo e(number_format($order->tax_amount, 2)); ?></span>
                                     </div>
-                                @endif
-                                @if($order->shipping_cost > 0)
+                                <?php endif; ?>
+                                <?php if($order->shipping_cost > 0): ?>
                                     <div class="flex justify-between text-gray-800">
                                         <span>Shipping:</span>
-                                        <span class="font-medium">LKR {{ number_format($order->shipping_cost, 2) }}</span>
+                                        <span class="font-medium">LKR <?php echo e(number_format($order->shipping_cost, 2)); ?></span>
                                     </div>
-                                @endif
-                                @if($order->discount_amount > 0)
+                                <?php endif; ?>
+                                <?php if($order->discount_amount > 0): ?>
                                     <div class="flex justify-between text-green-700">
                                         <span>Discount:</span>
-                                        <span class="font-medium">-LKR {{ number_format($order->discount_amount, 2) }}</span>
+                                        <span class="font-medium">-LKR <?php echo e(number_format($order->discount_amount, 2)); ?></span>
                                     </div>
-                                @endif
+                                <?php endif; ?>
                                 <hr class="my-2 border-gray-300">
                                 <div class="flex justify-between text-lg font-bold text-gray-900">
                                     <span>Total Amount:</span>
-                                    <span>LKR {{ number_format($order->total_amount, 2) }}</span>
+                                    <span>LKR <?php echo e(number_format($order->total_amount, 2)); ?></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                @if($order->notes)
+                <?php if($order->notes): ?>
                     <!-- Order Notes -->
                     <div class="mt-8">
                         <h3 class="text-lg font-semibold text-gray-800 mb-4">Order Notes:</h3>
                         <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                            <p class="text-gray-700">{{ $order->notes }}</p>
+                            <p class="text-gray-700"><?php echo e($order->notes); ?></p>
                         </div>
                     </div>
-                @endif
+                <?php endif; ?>
 
                 <!-- Shipping Information -->
-                @if($order->shipping_address_line_1)
+                <?php if($order->shipping_address_line_1): ?>
                     <div class="mt-8">
                         <h3 class="text-lg font-semibold text-gray-800 mb-4">Shipping Address:</h3>
                         <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
                             <p class="text-gray-700">
-                                {{ $order->shipping_address_line_1 }}<br>
-                                @if($order->shipping_address_line_2)
-                                    {{ $order->shipping_address_line_2 }}<br>
-                                @endif
-                                {{ $order->shipping_city }}, {{ $order->shipping_state }}<br>
-                                {{ $order->shipping_postal_code }}, {{ $order->shipping_country }}
+                                <?php echo e($order->shipping_address_line_1); ?><br>
+                                <?php if($order->shipping_address_line_2): ?>
+                                    <?php echo e($order->shipping_address_line_2); ?><br>
+                                <?php endif; ?>
+                                <?php echo e($order->shipping_city); ?>, <?php echo e($order->shipping_state); ?><br>
+                                <?php echo e($order->shipping_postal_code); ?>, <?php echo e($order->shipping_country); ?>
+
                             </p>
                         </div>
                     </div>
-                @endif
+                <?php endif; ?>
 
                 <!-- Company Information -->
                 <div class="mt-8 pt-8 border-t border-gray-200">
@@ -259,7 +263,7 @@
         🖨️ Print/Save as PDF
     </button>
     
-    <a href="{{ route('orders.track') }}" 
+    <a href="<?php echo e(route('orders.track')); ?>" 
        class="inline-flex items-center px-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium shadow-lg">
         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -267,7 +271,7 @@
         Track Order
     </a>
     
-    <a href="{{ route('home') }}" 
+    <a href="<?php echo e(route('home')); ?>" 
        class="inline-flex items-center px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors font-medium shadow-lg">
         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
@@ -275,4 +279,6 @@
         Back to Home
     </a>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.invoice', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Dhanushka\Desktop\MSK\MSKMSV3\resources\views/orders/invoice.blade.php ENDPATH**/ ?>
