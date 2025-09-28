@@ -1168,8 +1168,7 @@
             initSearchSuggestions('mobile-search-input', 'mobile-search-suggestions', true);
         });
 
-        // Initialize cart count on page load
-        updateCartCount();
+        // Cart count feature removed - no initialization needed
         
         // Categories Dropdown Functionality
         const categoriesDropdownTrigger = document.getElementById('categories-dropdown-trigger');
