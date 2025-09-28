@@ -283,7 +283,48 @@
                     </div>
                     <div>
                         <span class="text-gray-400">Payment Method:</span>
-                        <span class="text-white ml-2">{{ ucfirst(str_replace('_', ' ', $order->payment_method)) }}</span>
+                        <span class="text-white ml-2">{{ $order->payment_method_display ?? ucfirst(str_replace('_', ' ', $order->payment_method)) }}</span>
+                    </div>
+                    @if($order->payment_reference)
+                        <div>
+                            <span class="text-gray-400">Transaction ID:</span>
+                            <span class="text-white ml-2 font-mono text-sm">{{ $order->payment_reference }}</span>
+                        </div>
+                    @endif
+                </div>
+            </div>
+
+            <!-- Payment Information -->
+            <div class="bg-gradient-to-br from-[#1a1a1c] to-[#2a2a2c] rounded-xl border border-gray-800 p-6">
+                <h3 class="text-lg font-medium text-white mb-4">Payment Information</h3>
+                
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400">Payment Method</span>
+                        <span class="inline-flex items-center px-3 py-1 rounded-lg text-sm font-medium {{ $order->payment_method_badge }}">
+                            {{ $order->payment_method_display ?? ucfirst(str_replace('_', ' ', $order->payment_method)) }}
+                        </span>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400">Payment Status</span>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $order->payment_status_badge }}">
+                            {{ ucfirst(str_replace('_', ' ', $order->payment_status)) }}
+                        </span>
+                    </div>
+                    
+                    @if($order->payment_reference)
+                        <div>
+                            <div class="text-gray-400 text-sm mb-1">Transaction ID</div>
+                            <div class="bg-gray-800 p-2 rounded text-white font-mono text-sm break-all">
+                                {{ $order->payment_reference }}
+                            </div>
+                        </div>
+                    @endif
+                    
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400">Amount</span>
+                        <span class="text-[#f59e0b] font-bold">LKR {{ number_format($order->total_amount, 2) }}</span>
                     </div>
                 </div>
             </div>
