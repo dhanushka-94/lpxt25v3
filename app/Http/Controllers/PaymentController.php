@@ -703,7 +703,7 @@ class PaymentController extends Controller
                 'amount' => $order->total_amount,
                 'currency' => 'LKR',
                 'gateway_transaction_id' => $transactionId,
-                'gateway_reference' => $request->get('key', ''),
+                'gateway_reference' => $request->get('orderId', ''), // Store Koko Pay order ID
                 'gateway_response' => $request->all(),
                 'customer_name' => $order->customer_name,
                 'customer_email' => $order->customer_email,
@@ -712,9 +712,12 @@ class PaymentController extends Controller
                 'initiated_at' => $order->created_at,
                 'completed_at' => now(),
                 'metadata' => [
+                    'koko_pay_order_id' => $request->get('orderId', ''), // Store Koko Pay order ID
+                    'koko_pay_transaction_id' => $transactionId,
                     'frontend' => $request->get('frontend', false),
                     'wc_api' => $request->get('wc-api', ''),
                     'desc' => $description,
+                    'key' => $request->get('key', ''),
                 ],
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->header('User-Agent'),
@@ -744,7 +747,7 @@ class PaymentController extends Controller
                 'amount' => $order->total_amount,
                 'currency' => 'LKR',
                 'gateway_transaction_id' => $transactionId,
-                'gateway_reference' => $request->get('key', ''),
+                'gateway_reference' => $request->get('orderId', ''), // Store Koko Pay order ID
                 'gateway_response' => $request->all(),
                 'customer_name' => $order->customer_name,
                 'customer_email' => $order->customer_email,
@@ -754,10 +757,13 @@ class PaymentController extends Controller
                 'initiated_at' => $order->created_at,
                 'failed_at' => now(),
                 'metadata' => [
+                    'koko_pay_order_id' => $request->get('orderId', ''), // Store Koko Pay order ID
+                    'koko_pay_transaction_id' => $transactionId,
                     'frontend' => $request->get('frontend', false),
                     'wc_api' => $request->get('wc-api', ''),
                     'desc' => $description,
                     'original_status' => $request->get('status'),
+                    'key' => $request->get('key', ''),
                 ],
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->header('User-Agent'),

@@ -243,6 +243,9 @@
                                 @if($transaction->order)
                                     <div class="text-sm text-gray-400">Order: {{ $transaction->order->order_number }}</div>
                                 @endif
+                                @if($transaction->payment_method === 'kokopay' && $transaction->gateway_reference)
+                                    <div class="text-xs text-purple-400 font-mono">⏰ Koko ID: {{ $transaction->gateway_reference }}</div>
+                                @endif
                                 @if($transaction->gateway_transaction_id)
                                     <div class="text-xs text-gray-500">Gateway: {{ $transaction->gateway_transaction_id }}</div>
                                 @endif
