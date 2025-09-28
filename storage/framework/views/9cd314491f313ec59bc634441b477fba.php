@@ -361,31 +361,65 @@
                 </h3>
 
                 <div class="space-y-3">
-                    <?php if(isset($transaction->metadata['koko_pay_order_id'])): ?>
+                    <!-- CORE KOKO PAY PARAMETERS -->
+                    <?php if(isset($transaction->metadata['orderId'])): ?>
                     <div class="flex justify-between items-center p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
-                        <span class="text-purple-300 font-medium">Koko Pay Order ID</span>
-                        <span class="text-white font-mono"><?php echo e($transaction->metadata['koko_pay_order_id']); ?></span>
+                        <span class="text-purple-300 font-medium">orderId</span>
+                        <span class="text-white font-mono font-bold"><?php echo e($transaction->metadata['orderId']); ?></span>
                     </div>
                     <?php endif; ?>
 
-                    <?php if(isset($transaction->metadata['koko_pay_transaction_id'])): ?>
+                    <?php if(isset($transaction->metadata['trnId'])): ?>
                     <div class="flex justify-between items-center p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
-                        <span class="text-purple-300 font-medium">Koko Pay Transaction ID</span>
-                        <span class="text-white font-mono"><?php echo e($transaction->metadata['koko_pay_transaction_id']); ?></span>
+                        <span class="text-purple-300 font-medium">trnId</span>
+                        <span class="text-white font-mono font-bold"><?php echo e($transaction->metadata['trnId']); ?></span>
                     </div>
                     <?php endif; ?>
 
-                    <?php if(isset($transaction->metadata['desc']) && $transaction->metadata['desc']): ?>
+                    <?php if(isset($transaction->metadata['status'])): ?>
                     <div class="flex justify-between items-center p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
-                        <span class="text-purple-300 font-medium">Description</span>
-                        <span class="text-white"><?php echo e($transaction->metadata['desc']); ?></span>
+                        <span class="text-purple-300 font-medium">status</span>
+                        <span class="text-white font-bold <?php echo e($transaction->metadata['status'] === 'SUCCESS' ? 'text-green-400' : 'text-red-400'); ?>"><?php echo e($transaction->metadata['status']); ?></span>
                     </div>
                     <?php endif; ?>
 
-                    <?php if(isset($transaction->metadata['frontend'])): ?>
+                    <?php if(isset($transaction->metadata['desc'])): ?>
                     <div class="flex justify-between items-center p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
-                        <span class="text-purple-300 font-medium">Frontend Payment</span>
-                        <span class="text-white"><?php echo e($transaction->metadata['frontend'] ? 'Yes' : 'No'); ?></span>
+                        <span class="text-purple-300 font-medium">desc</span>
+                        <span class="text-white"><?php echo e($transaction->metadata['desc'] ?: '(empty)'); ?></span>
+                    </div>
+                    <?php endif; ?>
+
+                    <!-- ADDITIONAL KOKO PAY PARAMETERS -->
+                    <?php if(isset($transaction->metadata['key'])): ?>
+                    <div class="flex justify-between items-center p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
+                        <span class="text-purple-300 font-medium">key</span>
+                        <span class="text-white font-mono"><?php echo e($transaction->metadata['key'] ?: '(empty)'); ?></span>
+                    </div>
+                    <?php endif; ?>
+
+                    <?php if(isset($transaction->metadata['signature'])): ?>
+                    <div class="p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
+                        <div class="text-purple-300 font-medium mb-2">signature</div>
+                        <div class="text-white font-mono text-xs break-all bg-purple-800/30 p-2 rounded">
+                            <?php echo e($transaction->metadata['signature'] ?: '(not provided)'); ?>
+
+                        </div>
+                    </div>
+                    <?php endif; ?>
+
+                    <!-- PAYMENT FLOW INFO -->
+                    <?php if(isset($transaction->metadata['source'])): ?>
+                    <div class="flex justify-between items-center p-3 bg-gray-900/20 rounded-lg border border-gray-500/30">
+                        <span class="text-gray-300 font-medium">Source</span>
+                        <span class="text-white capitalize"><?php echo e(str_replace('_', ' ', $transaction->metadata['source'])); ?></span>
+                    </div>
+                    <?php endif; ?>
+
+                    <?php if(isset($transaction->metadata['payment_flow'])): ?>
+                    <div class="flex justify-between items-center p-3 bg-gray-900/20 rounded-lg border border-gray-500/30">
+                        <span class="text-gray-300 font-medium">Payment Flow</span>
+                        <span class="text-white capitalize <?php echo e($transaction->metadata['payment_flow'] === 'successful' ? 'text-green-400' : 'text-red-400'); ?>"><?php echo e($transaction->metadata['payment_flow']); ?></span>
                     </div>
                     <?php endif; ?>
                 </div>

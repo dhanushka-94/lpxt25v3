@@ -359,31 +359,64 @@
                 </h3>
 
                 <div class="space-y-3">
-                    @if(isset($transaction->metadata['koko_pay_order_id']))
+                    <!-- CORE KOKO PAY PARAMETERS -->
+                    @if(isset($transaction->metadata['orderId']))
                     <div class="flex justify-between items-center p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
-                        <span class="text-purple-300 font-medium">Koko Pay Order ID</span>
-                        <span class="text-white font-mono">{{ $transaction->metadata['koko_pay_order_id'] }}</span>
+                        <span class="text-purple-300 font-medium">orderId</span>
+                        <span class="text-white font-mono font-bold">{{ $transaction->metadata['orderId'] }}</span>
                     </div>
                     @endif
 
-                    @if(isset($transaction->metadata['koko_pay_transaction_id']))
+                    @if(isset($transaction->metadata['trnId']))
                     <div class="flex justify-between items-center p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
-                        <span class="text-purple-300 font-medium">Koko Pay Transaction ID</span>
-                        <span class="text-white font-mono">{{ $transaction->metadata['koko_pay_transaction_id'] }}</span>
+                        <span class="text-purple-300 font-medium">trnId</span>
+                        <span class="text-white font-mono font-bold">{{ $transaction->metadata['trnId'] }}</span>
                     </div>
                     @endif
 
-                    @if(isset($transaction->metadata['desc']) && $transaction->metadata['desc'])
+                    @if(isset($transaction->metadata['status']))
                     <div class="flex justify-between items-center p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
-                        <span class="text-purple-300 font-medium">Description</span>
-                        <span class="text-white">{{ $transaction->metadata['desc'] }}</span>
+                        <span class="text-purple-300 font-medium">status</span>
+                        <span class="text-white font-bold {{ $transaction->metadata['status'] === 'SUCCESS' ? 'text-green-400' : 'text-red-400' }}">{{ $transaction->metadata['status'] }}</span>
                     </div>
                     @endif
 
-                    @if(isset($transaction->metadata['frontend']))
+                    @if(isset($transaction->metadata['desc']))
                     <div class="flex justify-between items-center p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
-                        <span class="text-purple-300 font-medium">Frontend Payment</span>
-                        <span class="text-white">{{ $transaction->metadata['frontend'] ? 'Yes' : 'No' }}</span>
+                        <span class="text-purple-300 font-medium">desc</span>
+                        <span class="text-white">{{ $transaction->metadata['desc'] ?: '(empty)' }}</span>
+                    </div>
+                    @endif
+
+                    <!-- ADDITIONAL KOKO PAY PARAMETERS -->
+                    @if(isset($transaction->metadata['key']))
+                    <div class="flex justify-between items-center p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
+                        <span class="text-purple-300 font-medium">key</span>
+                        <span class="text-white font-mono">{{ $transaction->metadata['key'] ?: '(empty)' }}</span>
+                    </div>
+                    @endif
+
+                    @if(isset($transaction->metadata['signature']))
+                    <div class="p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
+                        <div class="text-purple-300 font-medium mb-2">signature</div>
+                        <div class="text-white font-mono text-xs break-all bg-purple-800/30 p-2 rounded">
+                            {{ $transaction->metadata['signature'] ?: '(not provided)' }}
+                        </div>
+                    </div>
+                    @endif
+
+                    <!-- PAYMENT FLOW INFO -->
+                    @if(isset($transaction->metadata['source']))
+                    <div class="flex justify-between items-center p-3 bg-gray-900/20 rounded-lg border border-gray-500/30">
+                        <span class="text-gray-300 font-medium">Source</span>
+                        <span class="text-white capitalize">{{ str_replace('_', ' ', $transaction->metadata['source']) }}</span>
+                    </div>
+                    @endif
+
+                    @if(isset($transaction->metadata['payment_flow']))
+                    <div class="flex justify-between items-center p-3 bg-gray-900/20 rounded-lg border border-gray-500/30">
+                        <span class="text-gray-300 font-medium">Payment Flow</span>
+                        <span class="text-white capitalize {{ $transaction->metadata['payment_flow'] === 'successful' ? 'text-green-400' : 'text-red-400' }}">{{ $transaction->metadata['payment_flow'] }}</span>
                     </div>
                     @endif
                 </div>

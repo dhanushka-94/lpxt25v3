@@ -709,22 +709,32 @@ class PaymentController extends Controller
                 'status' => 'completed',
                 'amount' => $order->total_amount,
                 'currency' => 'LKR',
-                'gateway_transaction_id' => $transactionId,
-                'gateway_reference' => $request->get('orderId', ''), // Store Koko Pay order ID
-                'gateway_response' => $request->all(),
+                'gateway_transaction_id' => $transactionId, // trnId
+                'gateway_reference' => $request->get('orderId', ''), // orderId
+                'gateway_response' => $request->all(), // Complete raw response
                 'customer_name' => $order->customer_name,
                 'customer_email' => $order->customer_email,
                 'customer_phone' => $order->customer_phone,
-                'description' => "Koko Pay payment for order {$order->order_number}",
+                'description' => $description ?: "Koko Pay payment for order {$order->order_number}", // desc field
                 'initiated_at' => $order->created_at,
                 'completed_at' => now(),
                 'metadata' => [
-                    'koko_pay_order_id' => $request->get('orderId', ''), // Store Koko Pay order ID
-                    'koko_pay_transaction_id' => $transactionId,
+                    // KOKO PAY CORE PARAMETERS
+                    'orderId' => $request->get('orderId', ''),
+                    'trnId' => $transactionId,
+                    'status' => $request->get('status', ''),
+                    'desc' => $description,
+                    
+                    // KOKO PAY ADDITIONAL PARAMETERS  
+                    'key' => $request->get('key', ''),
                     'frontend' => $request->get('frontend', false),
                     'wc_api' => $request->get('wc-api', ''),
-                    'desc' => $description,
-                    'key' => $request->get('key', ''),
+                    
+                    // INTERNAL TRACKING
+                    'source' => 'return_url',
+                    'payment_flow' => 'successful',
+                    'koko_pay_order_id' => $request->get('orderId', ''), // Legacy compatibility
+                    'koko_pay_transaction_id' => $transactionId, // Legacy compatibility
                 ],
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->header('User-Agent'),
@@ -753,24 +763,34 @@ class PaymentController extends Controller
                 'status' => 'failed',
                 'amount' => $order->total_amount,
                 'currency' => 'LKR',
-                'gateway_transaction_id' => $transactionId,
-                'gateway_reference' => $request->get('orderId', ''), // Store Koko Pay order ID
-                'gateway_response' => $request->all(),
+                'gateway_transaction_id' => $transactionId, // trnId
+                'gateway_reference' => $request->get('orderId', ''), // orderId
+                'gateway_response' => $request->all(), // Complete raw response
                 'customer_name' => $order->customer_name,
                 'customer_email' => $order->customer_email,
                 'customer_phone' => $order->customer_phone,
-                'description' => "Failed Koko Pay payment for order {$order->order_number}",
+                'description' => $description ?: "Failed Koko Pay payment for order {$order->order_number}", // desc field
                 'failure_reason' => "Payment status: {$paymentStatus}. " . ($description ? "Description: {$description}" : ''),
                 'initiated_at' => $order->created_at,
                 'failed_at' => now(),
                 'metadata' => [
-                    'koko_pay_order_id' => $request->get('orderId', ''), // Store Koko Pay order ID
-                    'koko_pay_transaction_id' => $transactionId,
+                    // KOKO PAY CORE PARAMETERS
+                    'orderId' => $request->get('orderId', ''),
+                    'trnId' => $transactionId,
+                    'status' => $request->get('status', ''),
+                    'desc' => $description,
+                    
+                    // KOKO PAY ADDITIONAL PARAMETERS
+                    'key' => $request->get('key', ''),
                     'frontend' => $request->get('frontend', false),
                     'wc_api' => $request->get('wc-api', ''),
-                    'desc' => $description,
+                    
+                    // INTERNAL TRACKING
+                    'source' => 'return_url',
+                    'payment_flow' => 'failed',
                     'original_status' => $request->get('status'),
-                    'key' => $request->get('key', ''),
+                    'koko_pay_order_id' => $request->get('orderId', ''), // Legacy compatibility
+                    'koko_pay_transaction_id' => $transactionId, // Legacy compatibility
                 ],
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->header('User-Agent'),
@@ -825,21 +845,35 @@ class PaymentController extends Controller
                     'status' => 'cancelled',
                     'amount' => $order->total_amount,
                     'currency' => 'LKR',
-                    'gateway_transaction_id' => $transactionId,
-                    'gateway_reference' => $orderId,
-                    'gateway_response' => $request->all(),
+                    'gateway_transaction_id' => $transactionId, // trnId
+                    'gateway_reference' => $orderId, // orderId
+                    'gateway_response' => $request->all(), // Complete raw response
                     'customer_name' => $order->customer_name,
                     'customer_email' => $order->customer_email,
                     'customer_phone' => $order->customer_phone,
-                    'description' => "Cancelled Koko Pay payment for order {$order->order_number}",
+                    'description' => $request->get('desc', '') ?: "Cancelled Koko Pay payment for order {$order->order_number}", // desc field
                     'failure_reason' => "Payment cancelled by user. Status: {$paymentStatus}",
                     'initiated_at' => $order->created_at,
                     'failed_at' => now(),
                     'metadata' => [
-                        'koko_pay_order_id' => $orderId,
-                        'koko_pay_transaction_id' => $transactionId,
+                        // KOKO PAY CORE PARAMETERS
+                        'orderId' => $orderId,
+                        'trnId' => $transactionId,
+                        'status' => $request->get('status', ''),
+                        'desc' => $request->get('desc', ''),
+                        
+                        // KOKO PAY ADDITIONAL PARAMETERS
+                        'key' => $request->get('key', ''),
+                        'frontend' => $request->get('frontend', false),
+                        'wc_api' => $request->get('wc-api', ''),
+                        
+                        // INTERNAL TRACKING
+                        'source' => 'cancel_url',
+                        'payment_flow' => 'cancelled',
                         'cancellation_reason' => 'User cancelled payment',
                         'original_status' => $request->get('status'),
+                        'koko_pay_order_id' => $orderId, // Legacy compatibility
+                        'koko_pay_transaction_id' => $transactionId, // Legacy compatibility
                     ],
                     'ip_address' => $request->ip(),
                     'user_agent' => $request->header('User-Agent'),
@@ -973,13 +1007,23 @@ class PaymentController extends Controller
                         'initiated_at' => $order->created_at,
                         'completed_at' => now(),
                         'metadata' => [
-                            'koko_pay_order_id' => $orderId,
-                            'koko_pay_transaction_id' => $transactionId,
+                            // KOKO PAY CORE PARAMETERS
+                            'orderId' => $orderId,
+                            'trnId' => $transactionId,
+                            'status' => $status,
+                            'desc' => $description,
+                            
+                            // KOKO PAY WEBHOOK SPECIFIC
+                            'signature' => $signature,
+                            'signature_provided' => !empty($signature),
+                            
+                            // INTERNAL TRACKING
+                            'source' => 'webhook',
+                            'payment_flow' => 'successful',
                             'webhook_confirmed' => true,
                             'webhook_timestamp' => now()->toISOString(),
-                            'desc' => $description,
-                            'signature_provided' => !empty($signature),
-                            'source' => 'webhook'
+                            'koko_pay_order_id' => $orderId, // Legacy compatibility
+                            'koko_pay_transaction_id' => $transactionId, // Legacy compatibility
                         ],
                         'ip_address' => $request->ip(),
                         'user_agent' => $request->header('User-Agent'),
@@ -1032,12 +1076,24 @@ class PaymentController extends Controller
                         'initiated_at' => $order->created_at,
                         'failed_at' => now(),
                         'metadata' => [
-                            'koko_pay_order_id' => $orderId,
-                            'koko_pay_transaction_id' => $transactionId,
-                            'webhook_confirmed' => true,
+                            // KOKO PAY CORE PARAMETERS
+                            'orderId' => $orderId,
+                            'trnId' => $transactionId,
+                            'status' => $status,
                             'desc' => $description,
+                            
+                            // KOKO PAY WEBHOOK SPECIFIC
+                            'signature' => $signature,
+                            'signature_provided' => !empty($signature),
+                            
+                            // INTERNAL TRACKING
+                            'source' => 'webhook',
+                            'payment_flow' => 'failed',
+                            'webhook_confirmed' => true,
+                            'webhook_timestamp' => now()->toISOString(),
                             'original_status' => $status,
-                            'source' => 'webhook'
+                            'koko_pay_order_id' => $orderId, // Legacy compatibility
+                            'koko_pay_transaction_id' => $transactionId, // Legacy compatibility
                         ],
                         'ip_address' => $request->ip(),
                         'user_agent' => $request->header('User-Agent'),
