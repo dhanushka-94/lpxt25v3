@@ -309,6 +309,40 @@
                         </span>
                     </div>
                     
+                    <!-- Koko Pay Order ID Display -->
+                    <?php if($order->payment_method === 'kokopay'): ?>
+                        <?php
+                            // Get the related transaction to find Koko Pay order ID
+                            $kokoPayTransaction = $order->transactions()->where('payment_method', 'kokopay')->first();
+                            $kokoPayOrderId = null;
+                            
+                            if ($kokoPayTransaction) {
+                                // Try to get from gateway_reference first, then from metadata
+                                $kokoPayOrderId = $kokoPayTransaction->gateway_reference ?? 
+                                                ($kokoPayTransaction->metadata['orderId'] ?? 
+                                                $kokoPayTransaction->metadata['koko_pay_order_id'] ?? null);
+                            }
+                        ?>
+                        
+                        <?php if($kokoPayOrderId): ?>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-400">⏰ Koko Pay Order ID</span>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-purple-900/30 px-3 py-1 rounded-lg text-purple-300 font-mono text-sm font-bold border border-purple-500/30">
+                                    <?php echo e($kokoPayOrderId); ?>
+
+                                </span>
+                                <?php if($kokoPayTransaction): ?>
+                                <a href="<?php echo e(route('admin.transactions.show', $kokoPayTransaction)); ?>" 
+                                   class="text-purple-400 hover:text-purple-300 text-xs">
+                                    View Transaction →
+                                </a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    
                     <div class="flex items-center justify-between">
                         <span class="text-gray-400">Payment Status</span>
                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium <?php echo e($order->payment_status_badge); ?>">

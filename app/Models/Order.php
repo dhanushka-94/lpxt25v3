@@ -90,6 +90,14 @@ class Order extends Model
         return $this->hasMany(OrderItem::class);
     }
 
+    /**
+     * Get the transactions for this order.
+     */
+    public function transactions()
+    {
+        return $this->hasMany(\App\Models\Transaction::class);
+    }
+
     public function viewedByAdmin()
     {
         return $this->belongsTo(User::class, 'viewed_by_admin_id');
