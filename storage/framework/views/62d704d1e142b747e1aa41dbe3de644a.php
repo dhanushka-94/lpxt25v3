@@ -243,6 +243,9 @@
                                 <?php if($transaction->order): ?>
                                     <div class="text-sm text-gray-400">Order: <?php echo e($transaction->order->order_number); ?></div>
                                 <?php endif; ?>
+                                <?php if($transaction->payment_method === 'kokopay' && $transaction->gateway_reference): ?>
+                                    <div class="text-xs text-purple-400 font-mono">⏰ Koko ID: <?php echo e($transaction->gateway_reference); ?></div>
+                                <?php endif; ?>
                                 <?php if($transaction->gateway_transaction_id): ?>
                                     <div class="text-xs text-gray-500">Gateway: <?php echo e($transaction->gateway_transaction_id); ?></div>
                                 <?php endif; ?>

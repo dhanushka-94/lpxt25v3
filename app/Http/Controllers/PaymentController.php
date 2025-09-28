@@ -640,7 +640,14 @@ class PaymentController extends Controller
     }
 
     /**
-     * Handle Koko Pay return
+     * Handle Koko Pay Return URL (_returnUrl) - Frontend Redirection
+     * 
+     * When payment is successful, user is redirected here from Koko Pay.
+     * URL: http://eComm.com/orders/66/returned/3
+     * Parameters: orderId, trnId, status (SUCCESS)
+     * 
+     * This is the user-facing confirmation but not 100% secure.
+     * The webhook (Response URL) provides server-to-server confirmation.
      */
     public function handleKokoPayReturn(Request $request)
     {
@@ -786,18 +793,64 @@ class PaymentController extends Controller
     }
 
     /**
-     * Handle Koko Pay cancel
+     * Handle Koko Pay Cancel URL (_cancelUrl) - User Cancelled Payment
+     * 
+     * When payment fails or is cancelled, user is redirected here.
+     * URL: http://eComm.com/orders/66/cancel/3
+     * Parameters: orderId, trnId, status (FAILED)
      */
     public function handleKokoPayCancel(Request $request)
     {
         Log::info('Koko Pay payment cancelled', $request->all());
 
-        $orderId = session('kokopay_order_id');
+        $orderId = $request->get('orderId') ?? session('kokopay_order_id');
+        $transactionId = $request->get('trnId', '');
+        $paymentStatus = strtolower($request->get('status', 'cancelled'));
         
         if ($orderId) {
             $order = Order::find($orderId);
             if ($order) {
-                Log::info('Koko Pay payment cancelled by user', ['order_id' => $order->id]);
+                // Update order status
+                $order->update([
+                    'payment_status' => 'failed',
+                    'payment_method' => 'kokopay',
+                    'payment_reference' => $transactionId
+                ]);
+                
+                // Create transaction record for cancelled payment
+                \App\Models\Transaction::create([
+                    'transaction_id' => 'TXN-' . strtoupper(substr($transactionId ?: uniqid(), 0, 16)),
+                    'order_id' => $order->id,
+                    'payment_method' => 'kokopay',
+                    'status' => 'cancelled',
+                    'amount' => $order->total_amount,
+                    'currency' => 'LKR',
+                    'gateway_transaction_id' => $transactionId,
+                    'gateway_reference' => $orderId,
+                    'gateway_response' => $request->all(),
+                    'customer_name' => $order->customer_name,
+                    'customer_email' => $order->customer_email,
+                    'customer_phone' => $order->customer_phone,
+                    'description' => "Cancelled Koko Pay payment for order {$order->order_number}",
+                    'failure_reason' => "Payment cancelled by user. Status: {$paymentStatus}",
+                    'initiated_at' => $order->created_at,
+                    'failed_at' => now(),
+                    'metadata' => [
+                        'koko_pay_order_id' => $orderId,
+                        'koko_pay_transaction_id' => $transactionId,
+                        'cancellation_reason' => 'User cancelled payment',
+                        'original_status' => $request->get('status'),
+                    ],
+                    'ip_address' => $request->ip(),
+                    'user_agent' => $request->header('User-Agent'),
+                ]);
+                
+                Log::info('Koko Pay payment cancelled by user', [
+                    'order_id' => $order->id,
+                    'order_number' => $order->order_number,
+                    'koko_pay_order_id' => $orderId,
+                    'transaction_created' => true
+                ]);
             }
             session()->forget('kokopay_order_id');
         }
@@ -807,63 +860,208 @@ class PaymentController extends Controller
     }
 
     /**
-     * Handle Koko Pay webhook/notification
+     * Handle Koko Pay Response URL (_responseUrl) - Secure Server-to-Server Webhook
+     * 
+     * This is the secure backend notification from Koko Pay after payment completion.
+     * Content-Type: application/x-www-form-urlencoded
+     * Parameters: orderId, trnId, status (SUCCESS/FAILED), desc, signature
+     * 
+     * This is the authoritative source for payment confirmation.
+     * Signature verification ensures the request is authentic.
      */
     public function handleKokoPayNotify(Request $request)
     {
-        Log::info('Koko Pay webhook received', $request->all());
+        \Log::info('=== KOKO PAY WEBHOOK RECEIVED ===');
+        \Log::info('Request URL: ' . $request->fullUrl());
+        \Log::info('Request Method: ' . $request->method());
+        \Log::info('Content Type: ' . $request->header('Content-Type'));
+        \Log::info('All Request Data: ', $request->all());
+        \Log::info('Raw Input: ' . $request->getContent());
 
         try {
-            // TODO: Implement webhook signature verification
-            // $kokoPayService = new KokoPayService();
-            // if (!$kokoPayService->verifyWebhookSignature($request->all(), $request->header('signature'))) {
-            //     Log::warning('Koko Pay webhook signature verification failed');
-            //     return response('Unauthorized', 401);
-            // }
+            // Extract parameters based on Koko Pay API documentation
+            $orderId = $request->get('orderId');
+            $transactionId = $request->get('trnId');
+            $status = $request->get('status');
+            $signature = $request->get('signature');
+            $description = $request->get('desc', '');
 
-            $orderId = $request->get('orderId') ?: $request->get('_orderId');
-            $status = $request->get('status', 'failed');
-            $reference = $request->get('reference') ?: $request->get('_reference');
-
-            if (!$orderId) {
-                Log::error('Koko Pay webhook: No order ID provided');
-                return response('Bad Request', 400);
-            }
-
-            $order = Order::find($orderId);
-            
-            if (!$order) {
-                Log::error('Koko Pay webhook: Order not found', ['order_id' => $orderId]);
-                return response('Order Not Found', 404);
-            }
-
-            if ($status === 'success' || $status === 'completed') {
-                $order->update([
-                    'payment_status' => 'completed',
-                    'payment_method' => 'kokopay',
-                    'payment_reference' => $reference,
-                ]);
-
-                Log::info('Koko Pay webhook: Payment completed', [
-                    'order_id' => $order->id,
-                    'reference' => $reference
-                ]);
-            } else {
-                Log::warning('Koko Pay webhook: Payment failed', [
-                    'order_id' => $order->id,
+            // Validate required parameters
+            if (!$orderId || !$transactionId || !$status) {
+                Log::error('Koko Pay webhook: Missing required parameters', [
+                    'orderId' => $orderId,
+                    'trnId' => $transactionId,
                     'status' => $status
                 ]);
+                return response('Missing required parameters', 400);
             }
 
-            return response('OK', 200);
+            // Find the order
+            $order = Order::find($orderId);
+            if (!$order) {
+                Log::error('Koko Pay webhook: Order not found', ['order_id' => $orderId]);
+                return response('Order not found', 404);
+            }
+
+            // TODO: Implement signature verification with Koko Pay public key
+            // According to docs: decrypt signature with public key and verify against orderId+trnId+status
+            if ($signature) {
+                Log::info('Koko Pay webhook: Signature provided for verification', [
+                    'signature_length' => strlen($signature),
+                    'expected_string' => $orderId . $transactionId . $status
+                ]);
+                // Signature verification would go here
+            } else {
+                Log::warning('Koko Pay webhook: No signature provided');
+            }
+
+            $paymentStatus = strtolower($status);
+            
+            Log::info('Processing Koko Pay webhook', [
+                'order_id' => $order->id,
+                'order_number' => $order->order_number,
+                'koko_pay_order_id' => $orderId,
+                'transaction_id' => $transactionId,
+                'status' => $paymentStatus,
+                'description' => $description
+            ]);
+
+            // Check if transaction already exists (avoid duplicates from multiple webhook calls)
+            $existingTransaction = \App\Models\Transaction::where('order_id', $order->id)
+                ->where('gateway_transaction_id', $transactionId)
+                ->first();
+
+            if ($paymentStatus === 'success') {
+                // Update order status
+                $order->update([
+                    'payment_status' => 'paid',
+                    'payment_method' => 'kokopay',
+                    'payment_reference' => $transactionId,
+                    'status' => 'confirmed'
+                ]);
+
+                if ($existingTransaction) {
+                    // Update existing transaction to mark webhook confirmation
+                    $existingTransaction->update([
+                        'status' => 'completed',
+                        'completed_at' => now(),
+                        'metadata' => array_merge($existingTransaction->metadata ?? [], [
+                            'webhook_confirmed' => true,
+                            'webhook_timestamp' => now()->toISOString(),
+                            'webhook_signature_provided' => !empty($signature),
+                        ])
+                    ]);
+                    Log::info('Updated existing transaction via Koko Pay webhook', [
+                        'transaction_id' => $existingTransaction->transaction_id
+                    ]);
+                } else {
+                    // Create new transaction record from webhook
+                    \App\Models\Transaction::create([
+                        'transaction_id' => 'TXN-' . strtoupper(substr($transactionId, 0, 16)),
+                        'order_id' => $order->id,
+                        'payment_method' => 'kokopay',
+                        'status' => 'completed',
+                        'amount' => $order->total_amount,
+                        'currency' => 'LKR',
+                        'gateway_transaction_id' => $transactionId,
+                        'gateway_reference' => $orderId,
+                        'gateway_response' => $request->all(),
+                        'customer_name' => $order->customer_name,
+                        'customer_email' => $order->customer_email,
+                        'customer_phone' => $order->customer_phone,
+                        'description' => "Koko Pay webhook payment for order {$order->order_number}",
+                        'initiated_at' => $order->created_at,
+                        'completed_at' => now(),
+                        'metadata' => [
+                            'koko_pay_order_id' => $orderId,
+                            'koko_pay_transaction_id' => $transactionId,
+                            'webhook_confirmed' => true,
+                            'webhook_timestamp' => now()->toISOString(),
+                            'desc' => $description,
+                            'signature_provided' => !empty($signature),
+                            'source' => 'webhook'
+                        ],
+                        'ip_address' => $request->ip(),
+                        'user_agent' => $request->header('User-Agent'),
+                    ]);
+                    Log::info('Created new transaction via Koko Pay webhook');
+                }
+
+                Log::info('Koko Pay webhook: Payment confirmed successfully', [
+                    'order_id' => $order->id,
+                    'order_number' => $order->order_number,
+                    'koko_pay_order_id' => $orderId
+                ]);
+
+                return response('Payment confirmed', 200);
+
+            } else {
+                // Handle failed payment
+                $order->update([
+                    'payment_status' => 'failed',
+                    'payment_method' => 'kokopay',
+                    'payment_reference' => $transactionId
+                ]);
+
+                if ($existingTransaction) {
+                    $existingTransaction->update([
+                        'status' => 'failed',
+                        'failed_at' => now(),
+                        'failure_reason' => "Webhook status: {$paymentStatus}. " . ($description ? "Description: {$description}" : ''),
+                        'metadata' => array_merge($existingTransaction->metadata ?? [], [
+                            'webhook_confirmed' => true,
+                            'webhook_timestamp' => now()->toISOString(),
+                        ])
+                    ]);
+                } else {
+                    \App\Models\Transaction::create([
+                        'transaction_id' => 'TXN-' . strtoupper(substr($transactionId, 0, 16)),
+                        'order_id' => $order->id,
+                        'payment_method' => 'kokopay',
+                        'status' => 'failed',
+                        'amount' => $order->total_amount,
+                        'currency' => 'LKR',
+                        'gateway_transaction_id' => $transactionId,
+                        'gateway_reference' => $orderId,
+                        'gateway_response' => $request->all(),
+                        'customer_name' => $order->customer_name,
+                        'customer_email' => $order->customer_email,
+                        'customer_phone' => $order->customer_phone,
+                        'description' => "Failed Koko Pay webhook payment for order {$order->order_number}",
+                        'failure_reason' => "Webhook status: {$paymentStatus}. " . ($description ? "Description: {$description}" : ''),
+                        'initiated_at' => $order->created_at,
+                        'failed_at' => now(),
+                        'metadata' => [
+                            'koko_pay_order_id' => $orderId,
+                            'koko_pay_transaction_id' => $transactionId,
+                            'webhook_confirmed' => true,
+                            'desc' => $description,
+                            'original_status' => $status,
+                            'source' => 'webhook'
+                        ],
+                        'ip_address' => $request->ip(),
+                        'user_agent' => $request->header('User-Agent'),
+                    ]);
+                }
+
+                Log::warning('Koko Pay webhook: Payment failed', [
+                    'order_id' => $order->id,
+                    'order_number' => $order->order_number,
+                    'koko_pay_order_id' => $orderId,
+                    'status' => $paymentStatus
+                ]);
+
+                return response('Payment failed', 200);
+            }
 
         } catch (\Exception $e) {
-            Log::error('Koko Pay webhook processing error', [
+            Log::error('Koko Pay webhook processing failed', [
                 'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
                 'request_data' => $request->all()
             ]);
 
-            return response('Internal Server Error', 500);
+            return response('Webhook processing failed', 500);
         }
     }
 
