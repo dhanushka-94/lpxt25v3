@@ -646,10 +646,14 @@ class PaymentController extends Controller
     {
         Log::info('Koko Pay return received', $request->all());
 
-        $orderId = session('kokopay_order_id');
+        // Get order ID from URL parameter or session
+        $orderId = $request->get('orderId') ?? session('kokopay_order_id');
         
         if (!$orderId) {
-            Log::warning('No Koko Pay order ID in session');
+            Log::warning('No Koko Pay order ID in request or session', [
+                'request_params' => $request->all(),
+                'session_id' => session('kokopay_order_id')
+            ]);
             return redirect()->route('checkout.index')->with('error', 'Session expired. Please try again.');
         }
 
@@ -660,15 +664,26 @@ class PaymentController extends Controller
             return redirect()->route('checkout.index')->with('error', 'Order not found.');
         }
 
-        // Check payment status from the return parameters
-        $paymentStatus = $request->get('status', 'failed');
+        // Check payment status from the return parameters (case-insensitive)
+        $paymentStatus = strtolower($request->get('status', 'failed'));
+        $transactionId = $request->get('trnId', '');
+        $description = $request->get('desc', '');
         
-        if ($paymentStatus === 'success' || $paymentStatus === 'completed') {
+        Log::info('Processing Koko Pay payment status', [
+            'order_id' => $order->id,
+            'order_number' => $order->order_number,
+            'status' => $paymentStatus,
+            'original_status' => $request->get('status'),
+            'transaction_id' => $transactionId
+        ]);
+        
+        if ($paymentStatus === 'success' || $paymentStatus === 'completed' || $paymentStatus === 'paid') {
             // Update order status
             $order->update([
-                'payment_status' => 'completed',
+                'payment_status' => 'paid',
                 'payment_method' => 'kokopay',
-                'payment_reference' => $request->get('reference', ''),
+                'payment_reference' => $transactionId,
+                'status' => 'confirmed' // Update order status as well
             ]);
 
             // Clear session
@@ -676,15 +691,22 @@ class PaymentController extends Controller
 
             Log::info('Koko Pay payment completed successfully', [
                 'order_id' => $order->id,
-                'payment_reference' => $request->get('reference', '')
+                'order_number' => $order->order_number,
+                'payment_reference' => $transactionId,
+                'description' => $description
             ]);
 
-            return redirect()->route('checkout.success', $order->id)
+            // Use order_number (not id) for success route
+            return redirect()->route('checkout.success', $order->order_number)
                            ->with('success', 'Payment completed successfully with Koko Pay!');
         } else {
             Log::warning('Koko Pay payment failed or cancelled', [
                 'order_id' => $order->id,
+                'order_number' => $order->order_number,
                 'status' => $paymentStatus,
+                'original_status' => $request->get('status'),
+                'transaction_id' => $transactionId,
+                'description' => $description,
                 'request_data' => $request->all()
             ]);
 
