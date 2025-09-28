@@ -22377,3 +22377,20 @@ Stack trace:
 [2025-09-28 16:32:54] local.INFO: Koko Pay payment data prepared {"order_id":339,"amount":"165.00","reference":"7d3f30056c643b23b9fef10aac9d6425176-339"} 
 [2025-09-28 16:32:54] local.INFO: Koko Pay payment initialized successfully {"order_id":339,"reference":"7d3f30056c643b23b9fef10aac9d6425176-339"} 
 [2025-09-28 16:45:45] local.INFO: FallbackController - Unknown URL: .well-known/appspecific/com.chrome.devtools.json  
+[2025-09-28 16:51:30] local.INFO: FallbackController - Unknown URL: .well-known/appspecific/com.chrome.devtools.json  
+[2025-09-28 16:53:40] local.INFO: Category route binding - Value: other, Field: null  
+[2025-09-28 16:53:40] local.INFO: Category slug lookup (stored) result: OTHER  
+[2025-09-28 16:53:40] local.INFO: Product route binding - Value: small-thermal-paste, Field: null  
+[2025-09-28 16:53:40] local.INFO: Product found via database slug: SMALL THERMAL PASTE  
+[2025-09-28 16:53:40] local.INFO: ProductController@show - Category: OTHER (ID: 407), Product: SMALL THERMAL PASTE (ID: 621, Category: 407)  
+[2025-09-28 16:53:44] local.INFO: Cart add request: {"product_id":621,"quantity":1} 
+[2025-09-28 16:53:44] local.INFO: Product found: {"product":621} 
+[2025-09-28 16:54:20] local.INFO: Checkout process started {"payment_method":"kokopay","customer_name":"Dhanushka Bandara","request_data":{"payment_method":"kokopay","customer_name":"Dhanushka Bandara","customer_phone":"0714245192","customer_email":"olexto@gmail.com"}} 
+[2025-09-28 16:54:20] local.INFO: Checkout validation passed, proceeding with order creation  
+[2025-09-28 16:54:21] local.INFO: Redirecting to Koko Pay payment {"order_id":340,"order_number":"MSK-2025-NIAT6D2M","payment_method":"kokopay","redirect_url":"http://127.0.0.1:8000/payment/kokopay/340"} 
+[2025-09-28 16:54:21] local.INFO: Generated Koko Pay redirect URL {"url":"http://127.0.0.1:8000/payment/kokopay/340"} 
+[2025-09-28 16:54:21] local.INFO: Initiating Koko Pay payment {"order_id":340,"order_number":"MSK-2025-NIAT6D2M","auth_check":true,"order_user_id":96} 
+[2025-09-28 16:54:21] local.INFO: Koko Pay customer data prepared {"order_id":340,"amount":165.0,"firstName":"Dhanushka","lastName":"Bandara","email":"olexto@gmail.com","contactNumber":"0714245192","description":"MSK Computers Order #340"} 
+[2025-09-28 16:54:21] local.INFO: Koko Pay payment data prepared {"order_id":340,"amount":"165.00","reference":"7d3f30056c643b23b9fef10aac9d6425806-340"} 
+[2025-09-28 16:54:21] local.INFO: Koko Pay payment initialized successfully {"order_id":340,"reference":"7d3f30056c643b23b9fef10aac9d6425806-340"} 
+[2025-09-28 17:00:48] local.INFO: FallbackController - Unknown URL: .well-known/appspecific/com.chrome.devtools.json  

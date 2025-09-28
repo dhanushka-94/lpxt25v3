@@ -644,6 +644,14 @@ class PaymentController extends Controller
      */
     public function handleKokoPayReturn(Request $request)
     {
+        // Add debugging to ensure this method is being called
+        \Log::error('=== KOKO PAY RETURN DEBUG START ===');
+        \Log::error('Request URL: ' . $request->fullUrl());
+        \Log::error('Request Method: ' . $request->method());
+        \Log::error('All Request Data: ', $request->all());
+        \Log::error('Route Name: ' . $request->route()->getName());
+        \Log::error('=== KOKO PAY RETURN DEBUG END ===');
+        
         Log::info('Koko Pay return received', $request->all());
 
         // Get order ID from URL parameter or session

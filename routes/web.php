@@ -337,15 +337,15 @@ Route::get('/payment/webxpay/cancel', [App\Http\Controllers\PaymentController::c
 Route::post('/payment/webxpay/notify', [App\Http\Controllers\PaymentController::class, 'handleWebXPayNotify'])->name('payment.webxpay.notify');
 Route::get('/payment/webxpay/status/{order}', [App\Http\Controllers\PaymentController::class, 'checkWebXPayPaymentStatus'])->name('payment.webxpay.status');
 
-// Koko Pay Payment Routes
+// Koko Pay Payment Routes (specific routes first, then parameterized routes)
 Route::get('/payment/kokopay/test', [App\Http\Controllers\PaymentController::class, 'testKokoPay'])->name('payment.kokopay.test');
-Route::get('/payment/kokopay/{order}', [App\Http\Controllers\PaymentController::class, 'initiateKokoPayPayment'])->name('payment.kokopay');
-Route::post('/payment/kokopay/{order}', [App\Http\Controllers\PaymentController::class, 'initiateKokoPayPayment'])->name('payment.kokopay.post');
 Route::get('/payment/kokopay/return', [App\Http\Controllers\PaymentController::class, 'handleKokoPayReturn'])->name('payment.kokopay.return');
 Route::post('/payment/kokopay/return', [App\Http\Controllers\PaymentController::class, 'handleKokoPayReturn'])->name('payment.kokopay.return.post');
 Route::get('/payment/kokopay/cancel', [App\Http\Controllers\PaymentController::class, 'handleKokoPayCancel'])->name('payment.kokopay.cancel');
 Route::post('/payment/kokopay/notify', [App\Http\Controllers\PaymentController::class, 'handleKokoPayNotify'])->name('payment.kokopay.notify');
 Route::get('/payment/kokopay/status/{order}', [App\Http\Controllers\PaymentController::class, 'checkKokoPayPaymentStatus'])->name('payment.kokopay.status');
+Route::get('/payment/kokopay/{order}', [App\Http\Controllers\PaymentController::class, 'initiateKokoPayPayment'])->name('payment.kokopay');
+Route::post('/payment/kokopay/{order}', [App\Http\Controllers\PaymentController::class, 'initiateKokoPayPayment'])->name('payment.kokopay.post');
 
 // Legal Pages
 Route::get('/terms-of-service', [App\Http\Controllers\LegalController::class, 'termsOfService'])->name('terms-of-service');
@@ -369,7 +369,7 @@ Route::post('/track-order', [App\Http\Controllers\OrderController::class, 'track
 Route::get('/orders/{orderNumber}', [App\Http\Controllers\OrderController::class, 'show'])->name('orders.show');
 Route::get('/orders/{orderNumber}/invoice', [App\Http\Controllers\OrderController::class, 'invoice'])->name('orders.invoice');
 
-// Fallback route for unknown category/product combinations (excluding admin routes)
+// Fallback route for unknown category/product combinations (excluding admin and payment routes)
 Route::get('{any}/{any2}', [App\Http\Controllers\FallbackController::class, 'handleUnknownUrl'])
-    ->where('any', '^(?!admin).*')
+    ->where('any', '^(?!admin|payment).*')
     ->where('any2', '.*');
