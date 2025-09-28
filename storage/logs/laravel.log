@@ -22354,3 +22354,10 @@ Stack trace:
 [2025-09-28 15:26:14] local.INFO: Product found: {"product":3165} 
 [2025-09-28 15:26:15] local.INFO: Cart add request: {"product_id":608,"quantity":1} 
 [2025-09-28 15:26:15] local.INFO: Product found: {"product":608} 
+[2025-09-28 15:50:13] local.INFO: FallbackController - Unknown URL: .well-known/appspecific/com.chrome.devtools.json  
+[2025-09-28 15:53:56] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-09-28 15:53:56] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-09-28 15:54:06] local.INFO: Cart add request: {"product_id":3197,"quantity":1} 
+[2025-09-28 15:54:06] local.INFO: Product found: {"product":3197} 
+[2025-09-28 15:54:07] local.INFO: Cart add request: {"product_id":3196,"quantity":1} 
+[2025-09-28 15:54:07] local.INFO: Product found: {"product":3196} 

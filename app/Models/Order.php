@@ -151,6 +151,39 @@ class Order extends Model
         return $badges[$this->payment_status] ?? 'bg-gray-100 text-gray-800';
     }
 
+    public function getPaymentMethodBadgeAttribute()
+    {
+        $badges = [
+            'webxpay' => 'bg-blue-900/50 text-blue-200 border border-blue-700',
+            'kokopay' => 'bg-purple-900/50 text-purple-200 border border-purple-700',
+            'bank_transfer' => 'bg-green-900/50 text-green-200 border border-green-700',
+        ];
+
+        return $badges[$this->payment_method] ?? 'bg-gray-900/50 text-gray-200 border border-gray-700';
+    }
+
+    public function getPaymentMethodDisplayAttribute()
+    {
+        $displays = [
+            'webxpay' => '💳 WebXPay',
+            'kokopay' => '⏰ Koko Pay (BNPL)',
+            'bank_transfer' => '🏦 Bank Transfer',
+        ];
+
+        return $displays[$this->payment_method] ?? '❓ ' . ucfirst(str_replace('_', ' ', $this->payment_method ?? 'Unknown'));
+    }
+
+    public function getPaymentMethodIconAttribute()
+    {
+        $icons = [
+            'webxpay' => '💳',
+            'kokopay' => '⏰',
+            'bank_transfer' => '🏦',
+        ];
+
+        return $icons[$this->payment_method] ?? '❓';
+    }
+
     public function getFormattedTotalAttribute()
     {
         return 'LKR ' . number_format($this->total_amount, 2);

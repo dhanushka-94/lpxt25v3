@@ -32,6 +32,11 @@ class AdminOrderController extends Controller
             $query->where('payment_status', $request->payment_status);
         }
 
+        // Filter by payment method
+        if ($request->filled('payment_method')) {
+            $query->where('payment_method', $request->payment_method);
+        }
+
         // Search by order number, customer name, email, or phone
         if ($request->filled('search')) {
             $search = $request->search;

@@ -27,7 +27,7 @@
     <div class="bg-gradient-to-r from-[#1a1a1c] to-[#2a2a2c] rounded-xl border border-gray-800 p-6">
         <form method="GET" action="{{ route('admin.orders.index') }}">
             <div class="space-y-4">
-                <!-- First Row: Search, Status, Payment, View Status -->
+                <!-- First Row: Search, Status, Payment Status, Payment Method -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <!-- Search -->
                     <div>
@@ -56,9 +56,9 @@
 
                     <!-- Payment Status -->
                     <div>
-                        <label for="payment_status" class="block text-sm font-medium text-gray-300 mb-2">Payment</label>
+                        <label for="payment_status" class="block text-sm font-medium text-gray-300 mb-2">Payment Status</label>
                         <select id="payment_status" name="payment_status" class="w-full px-3 py-2 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#f59e0b]">
-                            <option value="">All Payments</option>
+                            <option value="">All Status</option>
                             <option value="pending" {{ request('payment_status') === 'pending' ? 'selected' : '' }}>Pending</option>
                             <option value="paid" {{ request('payment_status') === 'paid' ? 'selected' : '' }}>Paid</option>
                             <option value="failed" {{ request('payment_status') === 'failed' ? 'selected' : '' }}>Failed</option>
@@ -66,18 +66,19 @@
                         </select>
                     </div>
 
-                    <!-- View Status -->
+                    <!-- Payment Method -->
                     <div>
-                        <label for="view_status" class="block text-sm font-medium text-gray-300 mb-2">View Status</label>
-                        <select id="view_status" name="view_status" class="w-full px-3 py-2 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#f59e0b]">
-                            <option value="">All Orders</option>
-                            <option value="unviewed" {{ request('view_status') === 'unviewed' ? 'selected' : '' }}>🔵 Unviewed Only</option>
-                            <option value="viewed" {{ request('view_status') === 'viewed' ? 'selected' : '' }}>👁️ Viewed Only</option>
+                        <label for="payment_method" class="block text-sm font-medium text-gray-300 mb-2">Payment Method</label>
+                        <select id="payment_method" name="payment_method" class="w-full px-3 py-2 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#f59e0b]">
+                            <option value="">All Methods</option>
+                            <option value="webxpay" {{ request('payment_method') === 'webxpay' ? 'selected' : '' }}>💳 WebXPay</option>
+                            <option value="kokopay" {{ request('payment_method') === 'kokopay' ? 'selected' : '' }}>⏰ Koko Pay (BNPL)</option>
+                            <option value="bank_transfer" {{ request('payment_method') === 'bank_transfer' ? 'selected' : '' }}>🏦 Bank Transfer</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- Second Row: Date Range and Quick Filters -->
+                <!-- Second Row: Date Range, View Status, and Quick Filters -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <!-- Date From -->
                     <div>
@@ -99,6 +100,16 @@
                                value="{{ request('date_to') }}"
                                max="{{ now()->format('Y-m-d') }}"
                                class="w-full px-3 py-2 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#f59e0b]">
+                    </div>
+
+                    <!-- View Status -->
+                    <div>
+                        <label for="view_status" class="block text-sm font-medium text-gray-300 mb-2">View Status</label>
+                        <select id="view_status" name="view_status" class="w-full px-3 py-2 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#f59e0b]">
+                            <option value="">All Orders</option>
+                            <option value="unviewed" {{ request('view_status') === 'unviewed' ? 'selected' : '' }}>🔵 Unviewed Only</option>
+                            <option value="viewed" {{ request('view_status') === 'viewed' ? 'selected' : '' }}>👁️ Viewed Only</option>
+                        </select>
                     </div>
 
                     <!-- Quick Date Presets -->
@@ -125,7 +136,7 @@
                             </svg>
                             Filter
                         </button>
-                        @if(request()->hasAny(['search', 'status', 'payment_status', 'view_status', 'date_from', 'date_to']))
+                        @if(request()->hasAny(['search', 'status', 'payment_status', 'payment_method', 'view_status', 'date_from', 'date_to']))
                             <a href="{{ route('admin.orders.index') }}" class="px-4 py-2 border border-gray-700 text-gray-300 rounded-lg hover:bg-gray-800 transition-colors text-sm flex items-center">
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -137,7 +148,7 @@
                 </div>
 
                 <!-- Active Filters Display -->
-                @if(request()->hasAny(['search', 'status', 'payment_status', 'view_status', 'date_from', 'date_to']))
+                @if(request()->hasAny(['search', 'status', 'payment_status', 'payment_method', 'view_status', 'date_from', 'date_to']))
                     <div class="flex flex-wrap gap-2 pt-2 border-t border-gray-700">
                         <span class="text-sm text-gray-400 mr-2">Active Filters:</span>
                         
@@ -157,8 +168,24 @@
                         
                         @if(request('payment_status'))
                             <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-900/50 text-green-200 border border-green-700">
-                                Payment: {{ ucfirst(request('payment_status')) }}
+                                Payment Status: {{ ucfirst(request('payment_status')) }}
                                 <a href="{{ route('admin.orders.index', request()->except('payment_status')) }}" class="ml-1 text-green-300 hover:text-green-100">×</a>
+                            </span>
+                        @endif
+
+                        @if(request('payment_method'))
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-indigo-900/50 text-indigo-200 border border-indigo-700">
+                                Method: 
+                                @if(request('payment_method') === 'webxpay')
+                                    💳 WebXPay
+                                @elseif(request('payment_method') === 'kokopay')
+                                    ⏰ Koko Pay
+                                @elseif(request('payment_method') === 'bank_transfer')
+                                    🏦 Bank Transfer
+                                @else
+                                    {{ ucfirst(str_replace('_', ' ', request('payment_method'))) }}
+                                @endif
+                                <a href="{{ route('admin.orders.index', request()->except('payment_method')) }}" class="ml-1 text-indigo-300 hover:text-indigo-100">×</a>
                             </span>
                         @endif
 
@@ -240,7 +267,8 @@
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Order</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Customer</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Status</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Payment</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Payment Method</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Payment Status</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Total</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Date</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Actions</th>
@@ -288,6 +316,20 @@
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $order->status_badge }}">
                                         {{ ucfirst($order->status) }}
                                     </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium {{ $order->payment_method_badge }}">
+                                            {{ $order->payment_method_display }}
+                                        </span>
+                                        @if($order->payment_method === 'kokopay')
+                                            <span class="text-xs text-purple-400 font-medium">BNPL</span>
+                                        @elseif($order->payment_method === 'webxpay')
+                                            <span class="text-xs text-blue-400 font-medium">Gateway</span>
+                                        @elseif($order->payment_method === 'bank_transfer')
+                                            <span class="text-xs text-green-400 font-medium">Manual</span>
+                                        @endif
+                                    </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $order->payment_status_badge }}">

@@ -147,7 +147,7 @@
                             <div class="border-t border-gray-700 pt-4">
                                 <div class="flex justify-between items-center text-white font-bold text-xl mb-2">
                                     <span>Grand Total</span>
-                                    <span class="cart-total text-[#f59e0b]">LKR {{ number_format($cartTotal, 2) }}</span>
+                                    <span class="cart-total cart-page-total text-[#f59e0b]">LKR {{ number_format($cartTotal, 2) }}</span>
                                 </div>
                                 <div class="flex justify-between text-gray-400 text-sm">
                                     <span>Final amount to pay</span>
@@ -431,8 +431,17 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Update the main cart total (CRITICAL)
         console.log('=== UPDATING CART TOTAL ===');
-        const cartTotalElement = document.querySelector('.cart-total');
-        console.log('Cart total element found:', cartTotalElement);
+        
+        // Debug: Check all .cart-total elements
+        const allCartTotalElements = document.querySelectorAll('.cart-total');
+        console.log('All .cart-total elements found:', allCartTotalElements.length);
+        allCartTotalElements.forEach((el, i) => {
+            console.log(`Element ${i}:`, el, 'Text:', el.textContent, 'Parent:', el.parentElement);
+        });
+        
+        // Find the specific cart total element in the Order Summary (use more specific selector)
+        const cartTotalElement = document.querySelector('.cart-page-total') || document.querySelector('.cart-total');
+        console.log('Cart page total element found:', cartTotalElement);
         
         if (cartTotalElement) {
             const currentText = cartTotalElement.textContent;
@@ -545,23 +554,46 @@ document.addEventListener('DOMContentLoaded', function() {
     // Global DOM inspection function
     window.inspectCartElements = function() {
         console.log('=== CART ELEMENT INSPECTION ===');
-        const cartTotal = document.querySelector('.cart-total');
+        const allCartTotals = document.querySelectorAll('.cart-total');
+        const cartPageTotal = document.querySelector('.cart-page-total');
         const cartSubtotal = document.querySelector('.cart-original-subtotal');
         const cartDiscount = document.querySelector('.cart-discount');
         
-        console.log('Cart Total Element:', cartTotal);
-        console.log('Cart Total Text:', cartTotal ? cartTotal.textContent : 'NOT FOUND');
+        console.log('All Cart Total Elements:', allCartTotals.length);
+        allCartTotals.forEach((el, i) => {
+            console.log(`  Element ${i}:`, el.textContent, '(in:', el.closest('.container, header, nav, main')?.tagName || 'unknown', ')');
+        });
+        
+        console.log('Cart Page Total Element:', cartPageTotal);
+        console.log('Cart Page Total Text:', cartPageTotal ? cartPageTotal.textContent : 'NOT FOUND');
         console.log('Cart Subtotal Element:', cartSubtotal);
         console.log('Cart Subtotal Text:', cartSubtotal ? cartSubtotal.textContent : 'NOT FOUND');
         console.log('Cart Discount Element:', cartDiscount);
         console.log('Cart Discount Text:', cartDiscount ? cartDiscount.textContent : 'NOT FOUND');
         
         return {
-            cartTotal,
+            allCartTotals,
+            cartPageTotal,
             cartSubtotal, 
             cartDiscount
         };
     };
+    
+    // Helper function to update header cart total (since global function excludes cart page)
+    function updateHeaderCartTotal(cartTotal) {
+        try {
+            // Update all cart total elements in header (not in cart page content)
+            const headerCartElements = document.querySelectorAll('header .cart-total, nav .cart-total, .header .cart-total');
+            headerCartElements.forEach(element => {
+                if (element && !element.closest('.cart-item')) {
+                    element.textContent = `LKR ${cartTotal}`;
+                }
+            });
+            console.log('Header cart total updated to:', cartTotal);
+        } catch (error) {
+            console.error('Error updating header cart total:', error);
+        }
+    }
     
     console.log('🔧 Debug functions available:');
     console.log('- window.testCartUpdate() - Test manual cart update');
