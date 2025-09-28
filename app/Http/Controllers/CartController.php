@@ -124,12 +124,17 @@ class CartController extends Controller
         ]);
 
         $itemTotal = $cart->total_price;
-        $cartTotal = $this->getCartTotal();
+        
+        // Calculate comprehensive cart totals
+        $cartTotals = $this->getComprehensiveCartTotals();
 
         return response()->json([
             'success' => true,
             'item_total' => number_format($itemTotal, 2),
-            'cart_total' => number_format($cartTotal, 2)
+            'cart_total' => number_format($cartTotals['cart_total'], 2),
+            'original_subtotal' => number_format($cartTotals['original_subtotal'], 2),
+            'total_discount' => number_format($cartTotals['total_discount'], 2),
+            'has_discount' => $cartTotals['total_discount'] > 0
         ]);
     }
 
@@ -137,12 +142,16 @@ class CartController extends Controller
     {
         $cart->delete();
 
-        $cartTotal = $this->getCartTotal();
+        // Calculate comprehensive cart totals
+        $cartTotals = $this->getComprehensiveCartTotals();
 
         return response()->json([
             'success' => true,
             'message' => 'Item removed from cart',
-            'cart_total' => number_format($cartTotal, 2)
+            'cart_total' => number_format($cartTotals['cart_total'], 2),
+            'original_subtotal' => number_format($cartTotals['original_subtotal'], 2),
+            'total_discount' => number_format($cartTotals['total_discount'], 2),
+            'has_discount' => $cartTotals['total_discount'] > 0
         ]);
     }
 
@@ -174,5 +183,30 @@ class CartController extends Controller
         return $cartItems->sum(function($item) {
             return $item->product->final_price * $item->quantity;
         });
+    }
+
+    private function getComprehensiveCartTotals()
+    {
+        $cartItems = $this->getCartItems();
+        
+        $cartTotal = 0;
+        $originalSubtotal = 0;
+        $totalDiscount = 0;
+        
+        foreach ($cartItems as $item) {
+            $product = $item->product;
+            $quantity = $item->quantity;
+            
+            // Calculate totals
+            $cartTotal += $product->final_price * $quantity;
+            $originalSubtotal += $product->price * $quantity;
+            $totalDiscount += ($product->price - $product->final_price) * $quantity;
+        }
+        
+        return [
+            'cart_total' => $cartTotal,
+            'original_subtotal' => $originalSubtotal,
+            'total_discount' => $totalDiscount
+        ];
     }
 }

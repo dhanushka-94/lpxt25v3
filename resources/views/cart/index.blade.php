@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 // Update cart totals
-                updateCartTotals(data.cart_total);
+                updateCartTotals(data);
                 
                 // Update cart total using global function
                 if (window.updateCartTotal) {
@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 // Update cart totals
-                updateCartTotals(data.cart_total);
+                updateCartTotals(data);
                 
                 // Update cart total using global function
                 if (window.updateCartTotal) {
@@ -386,71 +386,81 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    function updateCartTotals(cartTotal) {
-        const subtotalAfterDiscount = parseFloat(cartTotal);
+    function updateCartTotals(data) {
+        console.log('updateCartTotals called with:', data);
         
-        // Calculate original subtotal and discount for all items in cart
-        let originalSubtotal = 0;
-        let totalDiscount = 0;
+        // Handle both new object format and old string format for backward compatibility
+        let cartTotal, originalSubtotal, totalDiscount, hasDiscount;
         
-        document.querySelectorAll('.cart-item').forEach(item => {
-            const itemId = item.dataset.itemId;
-            const quantityInput = item.querySelector('.quantity-input');
-            if (quantityInput) {
-                const quantity = parseInt(quantityInput.value);
-                
-                // Get price elements (we need to extract original and final price)
-                const priceElements = item.querySelectorAll('.text-gray-500.line-through');
-                if (priceElements.length > 0) {
-                    // Item is on sale
-                    const originalPriceText = priceElements[0].textContent;
-                    const originalPrice = parseFloat(originalPriceText.replace(/[^\d.,]/g, '').replace(',', ''));
-                    
-                    const finalPriceElements = item.querySelectorAll('.text-\\[\\#f59e0b\\]');
-                    if (finalPriceElements.length > 0) {
-                        const finalPriceText = finalPriceElements[0].textContent;
-                        const finalPrice = parseFloat(finalPriceText.replace(/[^\d.,]/g, '').replace(',', ''));
-                        
-                        originalSubtotal += originalPrice * quantity;
-                        totalDiscount += (originalPrice - finalPrice) * quantity;
-                    }
-                } else {
-                    // Item not on sale, add to original subtotal
-                    const priceText = item.querySelector('.text-\\[\\#f59e0b\\]')?.textContent || '';
-                    const price = parseFloat(priceText.replace(/[^\d.,]/g, '').replace(',', ''));
-                    if (!isNaN(price)) {
-                        originalSubtotal += price * quantity;
-                    }
-                }
-            }
-        });
-        
-        // Format numbers with commas for thousands
-        function formatCurrency(amount) {
-            return parseFloat(amount).toLocaleString('en-US', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            });
+        if (typeof data === 'string') {
+            // Old format - just a cart total string
+            cartTotal = data;
+            console.log('Using old string format:', cartTotal);
+        } else if (typeof data === 'object' && data !== null) {
+            // New format - object with multiple values
+            cartTotal = data.cart_total;
+            originalSubtotal = data.original_subtotal;
+            totalDiscount = data.total_discount;
+            hasDiscount = data.has_discount;
+            console.log('Using new object format');
+        } else {
+            console.error('Invalid data format passed to updateCartTotals:', data);
+            return;
         }
         
-        // Update all totals
-        document.querySelector('.cart-original-subtotal').textContent = `LKR ${formatCurrency(originalSubtotal)}`;
-        document.querySelector('.cart-total').textContent = `LKR ${formatCurrency(subtotalAfterDiscount)}`;
+        console.log('Parsed values:', {
+            cartTotal,
+            originalSubtotal,
+            totalDiscount,
+            hasDiscount
+        });
+        
+        // Update the main cart total (most important)
+        const cartTotalElement = document.querySelector('.cart-total');
+        if (cartTotalElement) {
+            // Server already provides formatted string, just use it directly
+            const newTotal = `LKR ${cartTotal}`;
+            cartTotalElement.textContent = newTotal;
+            console.log('Updated cart total element to:', newTotal);
+            console.log('Element after update:', cartTotalElement.textContent);
+        } else {
+            console.error('Cart total element not found with selector .cart-total');
+            // Try alternative selectors
+            const altElement = document.querySelector('[class*="cart-total"]');
+            if (altElement) {
+                console.log('Found alternative cart total element:', altElement);
+                altElement.textContent = `LKR ${cartTotal}`;
+            }
+        }
+        
+        // Update original subtotal if provided by server
+        const originalSubtotalElement = document.querySelector('.cart-original-subtotal');
+        if (originalSubtotalElement && originalSubtotal !== undefined) {
+            originalSubtotalElement.textContent = `LKR ${originalSubtotal}`;
+            console.log('Updated original subtotal to:', `LKR ${originalSubtotal}`);
+        }
         
         // Update discount row
         const discountRow = document.querySelector('.discount-row');
-        if (totalDiscount > 0) {
-            document.querySelector('.cart-discount').textContent = `-LKR ${formatCurrency(totalDiscount)}`;
-            discountRow.style.display = 'flex';
+        const discountElement = document.querySelector('.cart-discount');
+        
+        if (hasDiscount && totalDiscount !== undefined && parseFloat(totalDiscount.toString().replace(/[^\d.,]/g, '').replace(',', '')) > 0) {
+            if (discountElement) {
+                discountElement.textContent = `-LKR ${totalDiscount}`;
+                console.log('Updated discount to:', `-LKR ${totalDiscount}`);
+            }
+            if (discountRow) {
+                discountRow.style.display = 'flex';
+                console.log('Showing discount row');
+            }
         } else {
-            discountRow.style.display = 'none';
+            if (discountRow) {
+                discountRow.style.display = 'none';
+                console.log('Hiding discount row');
+            }
         }
         
-        console.log('Cart totals updated:', {
-            originalSubtotal: originalSubtotal,
-            totalDiscount: totalDiscount,
-            subtotalAfterDiscount: subtotalAfterDiscount
-        });
+        console.log('Cart totals update completed');
     }
 });
 </script>
