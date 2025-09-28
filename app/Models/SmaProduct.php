@@ -37,7 +37,8 @@ class SmaProduct extends Model
         'cf5',
         'cf6',
         'product_details',
-        'product_status'
+        'product_status',
+        'slug'
     ];
 
     protected $casts = [
@@ -334,11 +335,12 @@ class SmaProduct extends Model
     }
 
     /**
-     * Generate SEO-friendly slug from product name
+     * Get the SEO-friendly slug from database, fallback to generated slug
      */
-    public function getSlugAttribute()
+    public function getSlugAttribute($value)
     {
-        return \Str::slug($this->name);
+        // Return the stored slug from database, or generate one if not available
+        return $value ?: \Str::slug($this->name);
     }
 
     /**
@@ -360,6 +362,14 @@ class SmaProduct extends Model
         if (is_numeric($value)) {
             $result = $this->where('id', $value)->first();
             \Log::info("Product ID lookup result: " . ($result ? $result->name : 'not found'));
+            return $result;
+        }
+        
+        // First, try to find by the stored slug in database (most efficient)
+        $result = $this->where('slug', $value)->first();
+        
+        if ($result) {
+            \Log::info("Product found via database slug: " . $result->name);
             return $result;
         }
         

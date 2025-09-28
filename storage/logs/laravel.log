@@ -22043,3 +22043,292 @@ Stack trace:
 [2025-09-27 21:51:06] local.INFO: Category slug lookup (stored) result: BRAND NEW LAPTOP  
 [2025-09-27 21:51:06] local.INFO: Category route binding - Value: keyboard-and-mouse, Field: null  
 [2025-09-27 21:51:06] local.INFO: Category slug lookup (stored) result: KEYBOARD & MOUSE  
+[2025-09-28 12:24:15] local.INFO: Category route binding - Value: used-graphic-card-vga, Field: null  
+[2025-09-28 12:24:15] local.INFO: Category slug lookup (stored) result: USED GRAPHIC CARD (VGA)  
+[2025-09-28 12:24:27] local.INFO: Category route binding - Value: used-graphic-card-vga, Field: null  
+[2025-09-28 12:24:27] local.INFO: Category slug lookup (stored) result: USED GRAPHIC CARD (VGA)  
+[2025-09-28 12:24:35] local.INFO: Category route binding - Value: used-graphic-card-vga, Field: null  
+[2025-09-28 12:24:35] local.INFO: Category slug lookup (stored) result: USED GRAPHIC CARD (VGA)  
+[2025-09-28 12:27:40] local.INFO: Category route binding - Value: used-graphic-card-vga, Field: null  
+[2025-09-28 12:27:40] local.INFO: Category slug lookup (stored) result: USED GRAPHIC CARD (VGA)  
+[2025-09-28 12:27:59] local.INFO: Category route binding - Value: graphic-card-vga, Field: null  
+[2025-09-28 12:27:59] local.INFO: Category slug lookup (stored) result: GRAPHIC CARD (VGA)  
+[2025-09-28 12:27:59] local.INFO: Product route binding - Value: 969, Field: null  
+[2025-09-28 12:27:59] local.INFO: Product ID lookup result: USED STCOM/FORSA/MANLI/AXLE GTX960 2GB VGA CARD  
+[2025-09-28 12:27:59] local.INFO: ProductController@show - Category: GRAPHIC CARD (VGA) (ID: 385), Product: USED STCOM/FORSA/MANLI/AXLE GTX960 2GB VGA CARD (ID: 969, Category: 385)  
+[2025-09-28 12:41:40] local.ERROR: PHP Parse error: Syntax error, unexpected '=' on line 1 {"exception":"[object] (Psy\\Exception\\ParseErrorException(code: 0): PHP Parse error: Syntax error, unexpected '=' on line 1 at C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\Exception\\ParseErrorException.php:44)
+[stacktrace]
+#0 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\CodeCleaner.php(306): Psy\\Exception\\ParseErrorException::fromParseError(Object(PhpParser\\Error))
+#1 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\CodeCleaner.php(240): Psy\\CodeCleaner->parse('<?php  = App\\\\Mo...', false)
+#2 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\Shell.php(852): Psy\\CodeCleaner->clean(Array, false)
+#3 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\Shell.php(881): Psy\\Shell->addCode(' = App\\\\Models\\\\S...', true)
+#4 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\Shell.php(1390): Psy\\Shell->setCode(' = App\\\\Models\\\\S...', true)
+#5 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\tinker\\src\\Console\\TinkerCommand.php(76): Psy\\Shell->execute(' = App\\\\Models\\\\S...')
+#6 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Laravel\\Tinker\\Console\\TinkerCommand->handle()
+#7 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#8 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#10 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#11 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(211): Illuminate\\Container\\Container->call(Array)
+#12 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\symfony\\console\\Command\\Command.php(318): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#13 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#14 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\symfony\\console\\Application.php(1110): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\symfony\\console\\Application.php(359): Symfony\\Component\\Console\\Application->doRunCommand(Object(Laravel\\Tinker\\Console\\TinkerCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\symfony\\console\\Application.php(194): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1235): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#19 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\artisan(16): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#20 {main}
+"} 
+[2025-09-28 12:41:45] local.ERROR: PHP Parse error: Syntax error, unexpected '=' on line 1 {"exception":"[object] (Psy\\Exception\\ParseErrorException(code: 0): PHP Parse error: Syntax error, unexpected '=' on line 1 at C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\Exception\\ParseErrorException.php:44)
+[stacktrace]
+#0 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\CodeCleaner.php(306): Psy\\Exception\\ParseErrorException::fromParseError(Object(PhpParser\\Error))
+#1 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\CodeCleaner.php(240): Psy\\CodeCleaner->parse('<?php  = App\\\\\\\\M...', false)
+#2 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\Shell.php(852): Psy\\CodeCleaner->clean(Array, false)
+#3 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\Shell.php(881): Psy\\Shell->addCode(' = App\\\\\\\\Models\\\\...', true)
+#4 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\Shell.php(1390): Psy\\Shell->setCode(' = App\\\\\\\\Models\\\\...', true)
+#5 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\tinker\\src\\Console\\TinkerCommand.php(76): Psy\\Shell->execute(' = App\\\\\\\\Models\\\\...')
+#6 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Laravel\\Tinker\\Console\\TinkerCommand->handle()
+#7 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#8 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#10 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#11 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(211): Illuminate\\Container\\Container->call(Array)
+#12 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\symfony\\console\\Command\\Command.php(318): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#13 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#14 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\symfony\\console\\Application.php(1110): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\symfony\\console\\Application.php(359): Symfony\\Component\\Console\\Application->doRunCommand(Object(Laravel\\Tinker\\Console\\TinkerCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\symfony\\console\\Application.php(194): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1235): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#19 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\artisan(16): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#20 {main}
+"} 
+[2025-09-28 12:44:16] local.INFO: Category route binding - Value: graphic-card-vga, Field: null  
+[2025-09-28 12:44:16] local.INFO: Category slug lookup (stored) result: GRAPHIC CARD (VGA)  
+[2025-09-28 12:44:16] local.INFO: Product route binding - Value: 969, Field: null  
+[2025-09-28 12:44:16] local.INFO: Product ID lookup result: USED STCOM/FORSA/MANLI/AXLE GTX960 2GB VGA CARD  
+[2025-09-28 12:44:16] local.INFO: ProductController@show - Category: GRAPHIC CARD (VGA) (ID: 385), Product: USED STCOM/FORSA/MANLI/AXLE GTX960 2GB VGA CARD (ID: 969, Category: 385)  
+[2025-09-28 12:44:25] local.INFO: Category route binding - Value: used-graphic-card-vga, Field: null  
+[2025-09-28 12:44:25] local.INFO: Category slug lookup (stored) result: USED GRAPHIC CARD (VGA)  
+[2025-09-28 12:44:28] local.INFO: Category route binding - Value: used-graphic-card-vga, Field: null  
+[2025-09-28 12:44:28] local.INFO: Category slug lookup (stored) result: USED GRAPHIC CARD (VGA)  
+[2025-09-28 12:44:30] local.INFO: Category route binding - Value: graphic-card-vga, Field: null  
+[2025-09-28 12:44:30] local.INFO: Category slug lookup (stored) result: GRAPHIC CARD (VGA)  
+[2025-09-28 12:44:30] local.INFO: Product route binding - Value: used-stcomforsamanliaxle-gtx960-2gb-vga-card, Field: null  
+[2025-09-28 12:44:30] local.INFO: Product slug lookup - searching for: used stcomforsamanliaxle gtx960 2gb vga card  
+[2025-09-28 12:44:30] local.INFO: Product slug lookup result: not found  
+[2025-09-28 12:44:56] local.INFO: Category route binding - Value: graphic-card-vga, Field: null  
+[2025-09-28 12:44:56] local.INFO: Category slug lookup (stored) result: GRAPHIC CARD (VGA)  
+[2025-09-28 12:44:56] local.INFO: Product route binding - Value: used-stcomforsamanliaxle-gtx960-2gb-vga-card, Field: null  
+[2025-09-28 12:44:56] local.INFO: Product slug lookup - searching for: used stcomforsamanliaxle gtx960 2gb vga card  
+[2025-09-28 12:44:56] local.INFO: Product slug lookup result: not found  
+[2025-09-28 12:45:44] local.ERROR: PHP Parse error: Syntax error, unexpected '=' on line 1 {"exception":"[object] (Psy\\Exception\\ParseErrorException(code: 0): PHP Parse error: Syntax error, unexpected '=' on line 1 at C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\Exception\\ParseErrorException.php:44)
+[stacktrace]
+#0 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\CodeCleaner.php(306): Psy\\Exception\\ParseErrorException::fromParseError(Object(PhpParser\\Error))
+#1 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\CodeCleaner.php(240): Psy\\CodeCleaner->parse('<?php  = App\\\\\\\\M...', false)
+#2 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\Shell.php(852): Psy\\CodeCleaner->clean(Array, false)
+#3 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\Shell.php(881): Psy\\Shell->addCode(' = App\\\\\\\\Models\\\\...', true)
+#4 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\psy\\psysh\\src\\Shell.php(1390): Psy\\Shell->setCode(' = App\\\\\\\\Models\\\\...', true)
+#5 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\tinker\\src\\Console\\TinkerCommand.php(76): Psy\\Shell->execute(' = App\\\\\\\\Models\\\\...')
+#6 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Laravel\\Tinker\\Console\\TinkerCommand->handle()
+#7 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#8 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#9 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#10 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#11 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(211): Illuminate\\Container\\Container->call(Array)
+#12 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\symfony\\console\\Command\\Command.php(318): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#13 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#14 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\symfony\\console\\Application.php(1110): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\symfony\\console\\Application.php(359): Symfony\\Component\\Console\\Application->doRunCommand(Object(Laravel\\Tinker\\Console\\TinkerCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\symfony\\console\\Application.php(194): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1235): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#19 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\artisan(16): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#20 {main}
+"} 
+[2025-09-28 12:46:11] local.INFO: Product route binding - Value: used-stcomforsamanliaxle-gtx960-2gb-vga-card, Field: null  
+[2025-09-28 12:46:11] local.INFO: Product slug lookup - searching for: used stcomforsamanliaxle gtx960 2gb vga card  
+[2025-09-28 12:46:11] local.INFO: Product slug lookup result: not found  
+[2025-09-28 12:46:47] local.INFO: Product route binding - Value: used-stcomforsamanliaxle-gtx960-2gb-vga-card, Field: null  
+[2025-09-28 12:46:47] local.INFO: Product found via direct slug comparison: USED STCOM/FORSA/MANLI/AXLE GTX960 2GB VGA CARD  
+[2025-09-28 12:48:07] local.INFO: Category route binding - Value: graphic-card-vga, Field: null  
+[2025-09-28 12:48:07] local.INFO: Category slug lookup (stored) result: GRAPHIC CARD (VGA)  
+[2025-09-28 12:48:07] local.INFO: Product route binding - Value: used-stcomforsamanliaxle-gtx960-2gb-vga-card, Field: null  
+[2025-09-28 12:48:07] local.INFO: Product found via direct slug comparison: USED STCOM/FORSA/MANLI/AXLE GTX960 2GB VGA CARD  
+[2025-09-28 12:48:07] local.INFO: ProductController@show - Category: GRAPHIC CARD (VGA) (ID: 385), Product: USED STCOM/FORSA/MANLI/AXLE GTX960 2GB VGA CARD (ID: 969, Category: 385)  
+[2025-09-28 12:48:42] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 12:48:42] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 12:48:42] local.INFO: Product route binding - Value: used-asus-vs278-27inch-led-monitor-porthdmivgadisplay, Field: null  
+[2025-09-28 12:48:42] local.INFO: Product slug lookup - searching for: used asus vs278 27inch led monitor porthdmivgadisplay  
+[2025-09-28 12:48:42] local.INFO: Product slug lookup result: not found  
+[2025-09-28 12:50:14] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 12:50:14] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 12:50:25] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 12:50:25] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 12:50:33] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 12:50:33] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 12:50:39] local.INFO: Category route binding - Value: monitors-and-accessories, Field: null  
+[2025-09-28 12:50:39] local.INFO: Category slug lookup (stored) result: MONITORS & ACCESSORIES  
+[2025-09-28 12:50:39] local.INFO: Product route binding - Value: used-asus-vs278-27inch-led-monitor-porthdmivgadisplay, Field: null  
+[2025-09-28 12:50:39] local.INFO: Product slug lookup - searching for: used asus vs278 27inch led monitor porthdmivgadisplay  
+[2025-09-28 12:50:39] local.INFO: Product slug lookup result: not found  
+[2025-09-28 12:50:39] local.INFO: Category route binding - Value: monitors-and-accessories, Field: null  
+[2025-09-28 12:50:39] local.INFO: Category slug lookup (stored) result: MONITORS & ACCESSORIES  
+[2025-09-28 12:50:39] local.INFO: Product route binding - Value: used-asus-tuf-vg9qr-27inch-165hz-monitor, Field: null  
+[2025-09-28 12:50:39] local.INFO: Product found via direct slug comparison: USED ASUS TUF VG9QR 27INCH 165HZ MONITOR  
+[2025-09-28 12:50:39] local.INFO: ProductController@show - Category: MONITORS & ACCESSORIES (ID: 391), Product: USED ASUS TUF VG9QR 27INCH 165HZ MONITOR (ID: 2535, Category: 391)  
+[2025-09-28 12:51:16] local.INFO: Category route binding - Value: monitors-and-accessories, Field: null  
+[2025-09-28 12:51:16] local.INFO: Category slug lookup (stored) result: MONITORS & ACCESSORIES  
+[2025-09-28 12:51:16] local.INFO: Product route binding - Value: used-asus-vs278-27inch-led-monitor-porthdmivgadisplay, Field: null  
+[2025-09-28 12:51:16] local.INFO: Product slug lookup - searching for: used asus vs278 27inch led monitor porthdmivgadisplay  
+[2025-09-28 12:51:16] local.INFO: Product slug lookup result: not found  
+[2025-09-28 12:51:17] local.INFO: Category route binding - Value: monitors-and-accessories, Field: null  
+[2025-09-28 12:51:17] local.INFO: Category slug lookup (stored) result: MONITORS & ACCESSORIES  
+[2025-09-28 12:51:17] local.INFO: Product route binding - Value: used-asus-tuf-vg9qr-27inch-165hz-monitor, Field: null  
+[2025-09-28 12:51:17] local.INFO: Product found via direct slug comparison: USED ASUS TUF VG9QR 27INCH 165HZ MONITOR  
+[2025-09-28 12:51:17] local.INFO: ProductController@show - Category: MONITORS & ACCESSORIES (ID: 391), Product: USED ASUS TUF VG9QR 27INCH 165HZ MONITOR (ID: 2535, Category: 391)  
+[2025-09-28 12:52:44] local.INFO: Product route binding - Value: used-asus-vs278-27inch-led-monitor-porthdmivgadisplay, Field: null  
+[2025-09-28 12:52:44] local.INFO: Product slug lookup - searching for: used asus vs278 27inch led monitor porthdmivgadisplay  
+[2025-09-28 12:52:44] local.INFO: Product slug lookup result: not found  
+[2025-09-28 12:53:08] local.INFO: Product route binding - Value: used-asus-vs278-27inch-led-monitor-porthdmivgadisplay, Field: null  
+[2025-09-28 12:53:08] local.INFO: Product found via direct slug comparison: USED ASUS VS278 27INCH LED MONITOR (PORT:HDMI,VGA,DISPLAY)  
+[2025-09-28 12:58:47] local.INFO: Category route binding - Value: monitors-and-accessories, Field: null  
+[2025-09-28 12:58:47] local.INFO: Category slug lookup (stored) result: MONITORS & ACCESSORIES  
+[2025-09-28 12:58:47] local.INFO: Product route binding - Value: used-asus-vs278-27inch-led-monitor-porthdmivgadisplay, Field: null  
+[2025-09-28 12:58:47] local.INFO: Product found via direct slug comparison: USED ASUS VS278 27INCH LED MONITOR (PORT:HDMI,VGA,DISPLAY)  
+[2025-09-28 12:58:47] local.INFO: ProductController@show - Category: MONITORS & ACCESSORIES (ID: 391), Product: USED ASUS VS278 27INCH LED MONITOR (PORT:HDMI,VGA,DISPLAY) (ID: 3154, Category: 391)  
+[2025-09-28 13:03:19] local.INFO: Product route binding - Value: used-stcomforsamanli-gtx960-2gb-vga-card, Field: null  
+[2025-09-28 13:03:19] local.INFO: Product found via database slug: USED STCOM/FORSA/MANLI/AXLE GTX960 2GB VGA CARD  
+[2025-09-28 13:03:19] local.INFO: Product route binding - Value: used-asus-vs278-27inch-led-monitor-porthdmivgadisplay, Field: null  
+[2025-09-28 13:03:19] local.INFO: Product found via database slug: USED ASUS VS278 27INCH LED MONITOR (PORT:HDMI,VGA,DISPLAY)  
+[2025-09-28 13:03:19] local.INFO: Product route binding - Value: used-stcomforsamanliaxle-gtx960-2gb-vga-card, Field: null  
+[2025-09-28 13:03:19] local.INFO: Product slug lookup - searching for: used stcomforsamanliaxle gtx960 2gb vga card  
+[2025-09-28 13:03:19] local.INFO: Product slug lookup result: not found  
+[2025-09-28 13:03:19] local.INFO: Product route binding - Value: used-asus-vs278-27inch-led-monitor-porthdmivgadisplay, Field: null  
+[2025-09-28 13:03:19] local.INFO: Product found via database slug: USED ASUS VS278 27INCH LED MONITOR (PORT:HDMI,VGA,DISPLAY)  
+[2025-09-28 13:07:32] local.INFO: Category route binding - Value: memory-ram, Field: null  
+[2025-09-28 13:07:32] local.INFO: Category slug lookup (stored) result: MEMORY (RAM)  
+[2025-09-28 13:07:32] local.INFO: Product route binding - Value: kingston-8gb-value-2666mhz, Field: null  
+[2025-09-28 13:07:32] local.INFO: Product found via database slug: KINGSTON 8GB VALUE 2666MHZ  
+[2025-09-28 13:07:32] local.INFO: ProductController@show - Category: MEMORY (RAM) (ID: 384), Product: KINGSTON 8GB VALUE 2666MHZ (ID: 815, Category: 384)  
+[2025-09-28 13:07:32] local.INFO: Category route binding - Value: optical-drives, Field: null  
+[2025-09-28 13:07:32] local.INFO: Category slug lookup (stored) result: OPTICAL DRIVES  
+[2025-09-28 13:07:32] local.INFO: Product route binding - Value: pop-up-mobile-external-dvd-writter, Field: null  
+[2025-09-28 13:07:32] local.INFO: Product found via database slug: POP-UP MOBILE EXTERNAL DVD WRITTER  
+[2025-09-28 13:07:32] local.INFO: ProductController@show - Category: OPTICAL DRIVES (ID: 403), Product: POP-UP MOBILE EXTERNAL DVD WRITTER (ID: 1316, Category: 403)  
+[2025-09-28 13:07:46] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 13:07:46] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 13:07:51] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 13:07:51] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 13:07:51] local.INFO: Product route binding - Value: used-hp-z22n-22inch-frameless-monitor-portdisplayvgahdm, Field: null  
+[2025-09-28 13:07:51] local.INFO: Product found via database slug: USED HP Z22N 22INCH FRAMELESS MONITOR (PORT:DISPLAY,VGA,HDMI)  
+[2025-09-28 13:07:51] local.INFO: ProductController@show - Category: USED MONITORS (ID: 446), Product: USED HP Z22N 22INCH FRAMELESS MONITOR (PORT:DISPLAY,VGA,HDMI) (ID: 3157, Category: 391)  
+[2025-09-28 13:07:51] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 13:07:51] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 13:07:51] local.INFO: Product route binding - Value: dell-p2217hb-22inch-led-ips-1080p-monitor-port-vgahdmi-, Field: null  
+[2025-09-28 13:07:51] local.INFO: Product found via database slug: DELL P2217H 22INCH LED IPS 1080P MONITOR ( PORT : VGA,HDMI , DISPLAY,USB )  
+[2025-09-28 13:07:51] local.INFO: ProductController@show - Category: USED MONITORS (ID: 446), Product: DELL P2217H 22INCH LED IPS 1080P MONITOR ( PORT : VGA,HDMI , DISPLAY,USB ) (ID: 990, Category: 391)  
+[2025-09-28 13:07:51] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 13:07:52] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 13:07:52] local.INFO: Product route binding - Value: dell-p2217hb-22inch-led-ips-1080p-monitor-port-vgahdmi-, Field: null  
+[2025-09-28 13:07:52] local.INFO: Product found via database slug: DELL P2217H 22INCH LED IPS 1080P MONITOR ( PORT : VGA,HDMI , DISPLAY,USB )  
+[2025-09-28 13:07:52] local.INFO: ProductController@show - Category: USED MONITORS (ID: 446), Product: DELL P2217H 22INCH LED IPS 1080P MONITOR ( PORT : VGA,HDMI , DISPLAY,USB ) (ID: 990, Category: 391)  
+[2025-09-28 13:07:52] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 13:07:52] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 13:07:52] local.INFO: Product route binding - Value: used-dell-p2214-22inch-ips-1080p-full-hd-monitor-displa, Field: null  
+[2025-09-28 13:07:52] local.INFO: Product found via database slug: USED DELL P2214 22INCH IPS 1080P FULL HD MONITOR ( DISPLAY, VGA, DVI,USB )  
+[2025-09-28 13:07:52] local.INFO: ProductController@show - Category: USED MONITORS (ID: 446), Product: USED DELL P2214 22INCH IPS 1080P FULL HD MONITOR ( DISPLAY, VGA, DVI,USB ) (ID: 761, Category: 391)  
+[2025-09-28 13:07:54] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 13:07:54] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 13:07:54] local.INFO: Product route binding - Value: used-dell-p2422h-24-inch-fhd-ips-1920-x-1080-frameless-, Field: null  
+[2025-09-28 13:07:54] local.INFO: Product found via database slug: USED DELL P2422H 24 INCH FHD IPS (1920 x 1080) FRAMELESS MONITOR (VGA,DISPLAY,HDMI)  
+[2025-09-28 13:07:54] local.INFO: ProductController@show - Category: USED MONITORS (ID: 446), Product: USED DELL P2422H 24 INCH FHD IPS (1920 x 1080) FRAMELESS MONITOR (VGA,DISPLAY,HDMI) (ID: 493, Category: 391)  
+[2025-09-28 13:07:54] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 13:07:54] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 13:07:54] local.INFO: Product route binding - Value: used-dell-e2422-24inch-ips-monitor-portvgahdmi, Field: null  
+[2025-09-28 13:07:54] local.INFO: Product found via database slug: USED DELL E2422 24INCH IPS MONITOR (PORT:VGA,HDMI)  
+[2025-09-28 13:07:54] local.INFO: ProductController@show - Category: USED MONITORS (ID: 446), Product: USED DELL E2422 24INCH IPS MONITOR (PORT:VGA,HDMI) (ID: 3164, Category: 391)  
+[2025-09-28 13:07:54] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 13:07:54] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 13:07:54] local.INFO: Product route binding - Value: used-dell-e2422-24inch-ips-monitor-portvgahdmi, Field: null  
+[2025-09-28 13:07:54] local.INFO: Product found via database slug: USED DELL E2422 24INCH IPS MONITOR (PORT:VGA,HDMI)  
+[2025-09-28 13:07:54] local.INFO: ProductController@show - Category: USED MONITORS (ID: 446), Product: USED DELL E2422 24INCH IPS MONITOR (PORT:VGA,HDMI) (ID: 3164, Category: 391)  
+[2025-09-28 13:07:55] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 13:07:55] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 13:07:55] local.INFO: Product route binding - Value: used-dell-p2018h-led-20inch-monitor-porthdmidisplayvgau, Field: null  
+[2025-09-28 13:07:55] local.INFO: Product found via database slug: USED DELL P2018H LED 20INCH MONITOR (PORT:HDMI,DISPLAY,VGA,USB)  
+[2025-09-28 13:07:55] local.INFO: ProductController@show - Category: USED MONITORS (ID: 446), Product: USED DELL P2018H LED 20INCH MONITOR (PORT:HDMI,DISPLAY,VGA,USB) (ID: 3162, Category: 391)  
+[2025-09-28 13:07:55] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 13:07:55] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 13:07:55] local.INFO: Product route binding - Value: used-hp-z30i-ips-2k-30inch-monitor-portdisplayvgadvihdm, Field: null  
+[2025-09-28 13:07:55] local.INFO: Product found via database slug: USED HP Z30I IPS 2K 30INCH MONITOR (PORT:DISPLAY,VGA,DVI,HDMI,USB)  
+[2025-09-28 13:07:55] local.INFO: ProductController@show - Category: USED MONITORS (ID: 446), Product: USED HP Z30I IPS 2K 30INCH MONITOR (PORT:DISPLAY,VGA,DVI,HDMI,USB) (ID: 3152, Category: 391)  
+[2025-09-28 13:07:56] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 13:07:56] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 13:07:56] local.INFO: Product route binding - Value: used-asus-vs278-27inch-led-monitor-porthdmivgadisplay, Field: null  
+[2025-09-28 13:07:56] local.INFO: Product found via database slug: USED ASUS VS278 27INCH LED MONITOR (PORT:HDMI,VGA,DISPLAY)  
+[2025-09-28 13:07:56] local.INFO: ProductController@show - Category: USED MONITORS (ID: 446), Product: USED ASUS VS278 27INCH LED MONITOR (PORT:HDMI,VGA,DISPLAY) (ID: 3154, Category: 391)  
+[2025-09-28 13:07:56] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 13:07:56] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 13:07:56] local.INFO: Product route binding - Value: used-hp-healthcare-hc241-24inch-white-monittor-portdisp, Field: null  
+[2025-09-28 13:07:56] local.INFO: Product found via database slug: USED HP HEALTHCARE HC241 24INCH WHITE MONITTOR (PORT:DISPLAY, HDMI, VGA)  
+[2025-09-28 13:07:56] local.INFO: ProductController@show - Category: USED MONITORS (ID: 446), Product: USED HP HEALTHCARE HC241 24INCH WHITE MONITTOR (PORT:DISPLAY, HDMI, VGA) (ID: 3156, Category: 391)  
+[2025-09-28 13:08:28] local.INFO: Category route binding - Value: used-monitors, Field: null  
+[2025-09-28 13:08:28] local.INFO: Category slug lookup (stored) result: USED MONITORS  
+[2025-09-28 13:08:51] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-09-28 13:08:51] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-09-28 13:08:59] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-09-28 13:08:59] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-09-28 13:09:10] local.INFO: Category route binding - Value: brand-new-pc-build, Field: null  
+[2025-09-28 13:09:10] local.INFO: Category slug lookup (stored) result: BRAND NEW PC BUILD  
+[2025-09-28 13:09:13] local.INFO: Category route binding - Value: combo-kit, Field: null  
+[2025-09-28 13:09:13] local.INFO: Category slug lookup (stored) result: COMBO KIT  
+[2025-09-28 13:09:19] local.INFO: Category route binding - Value: used-pc-build, Field: null  
+[2025-09-28 13:09:19] local.INFO: Category slug lookup (stored) result: USED PC BUILD  
+[2025-09-28 13:10:40] local.INFO: Category route binding - Value: combo-kit, Field: null  
+[2025-09-28 13:10:40] local.INFO: Category slug lookup (stored) result: COMBO KIT  
+[2025-09-28 14:37:59] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-09-28 14:37:59] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-09-28 14:38:03] local.INFO: Cart add request: {"product_id":426,"quantity":1} 
+[2025-09-28 14:38:03] local.INFO: Product found: {"product":426} 
+[2025-09-28 14:38:04] local.INFO: Cart add request: {"product_id":3197,"quantity":1} 
+[2025-09-28 14:38:04] local.INFO: Product found: {"product":3197} 
+[2025-09-28 14:48:24] local.INFO: Category route binding - Value: cables-and-convertors, Field: null  
+[2025-09-28 14:48:24] local.INFO: Category slug lookup (stored) result: CABLES & CONVERTORS  
+[2025-09-28 14:48:24] local.INFO: Product route binding - Value: sata-cable, Field: null  
+[2025-09-28 14:48:24] local.INFO: Product found via database slug: SATA CABLE  
+[2025-09-28 14:48:24] local.INFO: ProductController@show - Category: CABLES & CONVERTORS (ID: 401), Product: SATA CABLE (ID: 721, Category: 401)  
+[2025-09-28 14:48:26] local.INFO: Cart add request: {"product_id":721,"quantity":1} 
+[2025-09-28 14:48:26] local.INFO: Product found: {"product":721} 
+[2025-09-28 14:48:47] local.INFO: Category route binding - Value: used-motherboard, Field: null  
+[2025-09-28 14:48:47] local.INFO: Category slug lookup (stored) result: USED MOTHERBOARD  
+[2025-09-28 14:48:56] local.INFO: Cart add request: {"product_id":796,"quantity":1} 
+[2025-09-28 14:48:56] local.INFO: Product found: {"product":796} 
+[2025-09-28 14:49:07] local.INFO: Category route binding - Value: other, Field: null  
+[2025-09-28 14:49:07] local.INFO: Category slug lookup (stored) result: OTHER  
+[2025-09-28 14:49:07] local.INFO: Product route binding - Value: small-thermal-paste, Field: null  
+[2025-09-28 14:49:07] local.INFO: Product found via database slug: SMALL THERMAL PASTE  
+[2025-09-28 14:49:07] local.INFO: ProductController@show - Category: OTHER (ID: 407), Product: SMALL THERMAL PASTE (ID: 621, Category: 407)  
+[2025-09-28 14:49:08] local.INFO: Cart add request: {"product_id":621,"quantity":1} 
+[2025-09-28 14:49:08] local.INFO: Product found: {"product":621} 
+[2025-09-28 14:53:42] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-09-28 14:53:42] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-09-28 14:53:50] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-09-28 14:53:50] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-09-28 14:54:02] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-09-28 14:54:02] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-09-28 14:54:09] local.INFO: Cart add request: {"product_id":2396,"quantity":1} 
+[2025-09-28 14:54:09] local.INFO: Product found: {"product":2396} 
+[2025-09-28 14:54:14] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-09-28 14:54:14] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-09-28 14:54:19] local.INFO: Category route binding - Value: brand-new-memory-ram, Field: null  
+[2025-09-28 14:54:19] local.INFO: Category slug lookup (stored) result: BRAND NEW MEMORY (RAM)  
+[2025-09-28 14:54:24] local.INFO: Cart add request: {"product_id":275,"quantity":1} 
+[2025-09-28 14:54:24] local.INFO: Product found: {"product":275} 
+[2025-09-28 14:54:30] local.INFO: Cart add request: {"product_id":3138,"quantity":1} 
+[2025-09-28 14:54:30] local.INFO: Product found: {"product":3138} 
+[2025-09-28 14:54:32] local.INFO: Cart add request: {"product_id":2972,"quantity":1} 
+[2025-09-28 14:54:32] local.INFO: Product found: {"product":2972} 
+[2025-09-28 14:54:35] local.INFO: Cart add request: {"product_id":1253,"quantity":1} 
+[2025-09-28 14:54:35] local.INFO: Product found: {"product":1253} 

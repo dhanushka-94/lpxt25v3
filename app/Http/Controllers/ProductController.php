@@ -11,7 +11,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $query = SmaProduct::active()
-            ->select(['id', 'name', 'code', 'price', 'promo_price', 'quantity', 'category_id', 'product_status', 'image', 'promotion', 'details'])
+            ->select(['id', 'name', 'code', 'price', 'promo_price', 'quantity', 'category_id', 'product_status', 'image', 'promotion', 'details', 'slug'])
             ->with([
                 'category:id,name,slug',
                 'photos:id,product_id,photo',
@@ -108,7 +108,7 @@ class ProductController extends Controller
                          ->orWhere('details', 'like', "%{$searchTerm}%")
                          ->orWhere('code', 'like', "%{$searchTerm}%");
             })
-            ->select(['id', 'name', 'code', 'price', 'promo_price', 'quantity', 'category_id', 'product_status', 'image', 'details'])
+            ->select(['id', 'name', 'code', 'price', 'promo_price', 'quantity', 'category_id', 'product_status', 'image', 'details', 'slug'])
             ->with([
                 'category:id,name,slug',
                 'photos:id,product_id,photo',
@@ -177,7 +177,7 @@ class ProductController extends Controller
 
         // For now, use direct query for pagination support (cache optimization for later)
         $query = SmaProduct::active()
-            ->select(['id', 'name', 'price', 'promo_price', 'quantity', 'category_id', 'subcategory_id', 'product_status', 'image', 'promotion', 'details'])
+            ->select(['id', 'name', 'price', 'promo_price', 'quantity', 'category_id', 'subcategory_id', 'product_status', 'image', 'promotion', 'details', 'slug'])
             ->where('promotion', 1)
             ->where('promo_price', '>', 0)
             ->where('quantity', '>', 0) // Hide out of stock products

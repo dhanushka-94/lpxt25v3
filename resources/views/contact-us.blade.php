@@ -206,7 +206,7 @@
                     
                     <div class="space-y-4">
                         <div class="flex justify-between items-center p-4 bg-gray-800/50 rounded-lg">
-                            <span class="text-gray-300 font-medium">Tuesday to Friday:</span>
+                            <span class="text-gray-300 font-medium">Monday to Friday:</span>
                             <span class="text-[#f59e0b] font-bold">9:00 AM - 7:00 PM</span>
                         </div>
                         <div class="flex justify-between items-center p-4 bg-gray-800/50 rounded-lg">
@@ -376,7 +376,7 @@
                         </svg>
                         <div>
                             <p class="text-white font-medium">Hours</p>
-                            <p class="text-gray-400 text-sm">Tue-Fri: 9AM-7PM, Sat-Sun: 9AM-6PM</p>
+                            <p class="text-gray-400 text-sm">Mon-Fri: 9AM-7PM, Sat-Sun: 9AM-6PM</p>
                         </div>
                     </div>
                 </div>

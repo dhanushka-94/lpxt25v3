@@ -1,9 +1,7 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Checkout - MSK COMPUTERS'); ?>
+<?php $__env->startSection('description', 'Complete your purchase at MSK Computers with secure checkout and multiple payment options.'); ?>
 
-@section('title', 'Checkout - MSK COMPUTERS')
-@section('description', 'Complete your purchase at MSK Computers with secure checkout and multiple payment options.')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="min-h-screen bg-[#0f0f0f] py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -15,38 +13,38 @@
             <p class="text-gray-400">Complete your order with secure payment</p>
                 </div>
                 
-                @guest
+                <?php if(auth()->guard()->guest()): ?>
                 <div class="text-right">
                     <p class="text-gray-400 text-sm mb-2">Returning customer?</p>
-                    <a href="{{ route('login') }}" class="inline-flex items-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-black font-medium rounded-lg transition-colors">
+                    <a href="<?php echo e(route('login')); ?>" class="inline-flex items-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-black font-medium rounded-lg transition-colors">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
                         </svg>
                         Login
                     </a>
                 </div>
-                @else
+                <?php else: ?>
                 <div class="text-right">
                     <p class="text-gray-400 text-sm">Welcome back,</p>
-                    <p class="text-white font-medium">{{ Auth::user()->name }}</p>
+                    <p class="text-white font-medium"><?php echo e(Auth::user()->name); ?></p>
                 </div>
-                @endguest
+                <?php endif; ?>
             </div>
         </div>
 
         <!-- Error Messages -->
-        @if ($errors->any())
+        <?php if($errors->any()): ?>
             <div class="bg-red-900/50 border border-red-500 text-red-200 px-4 py-3 rounded-lg mb-6">
                 <ul class="list-disc list-inside space-y-1">
-                    @foreach ($errors->all() as $error)
-                        <li class="text-sm">{{ $error }}</li>
-                    @endforeach
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li class="text-sm"><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </ul>
             </div>
-        @endif
+        <?php endif; ?>
 
-        <form action="{{ route('checkout.process') }}" method="POST" id="checkout-form" novalidate>
-            @csrf
+        <form action="<?php echo e(route('checkout.process')); ?>" method="POST" id="checkout-form" novalidate>
+            <?php echo csrf_field(); ?>
             
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 
@@ -66,7 +64,7 @@
                                 <input type="text" 
                                        id="customer_name" 
                                        name="customer_name" 
-                                       value="{{ old('customer_name', Auth::user()->name ?? '') }}" 
+                                       value="<?php echo e(old('customer_name', Auth::user()->name ?? '')); ?>" 
                                        required
                                        placeholder="Enter your full name"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
@@ -80,7 +78,7 @@
                                 <input type="tel" 
                                        id="customer_phone" 
                                        name="customer_phone" 
-                                       value="{{ old('customer_phone', Auth::user()->phone ?? '') }}" 
+                                       value="<?php echo e(old('customer_phone', Auth::user()->phone ?? '')); ?>" 
                                        required
                                        placeholder="Enter your phone number (e.g., 0771234567)"
                                        pattern="^0[1-9][0-9]{8}$"
@@ -102,7 +100,7 @@
                                 <input type="email" 
                                        id="customer_email" 
                                        name="customer_email" 
-                                       value="{{ old('customer_email', Auth::user()->email ?? '') }}" 
+                                       value="<?php echo e(old('customer_email', Auth::user()->email ?? '')); ?>" 
                                        placeholder="Enter your email address (optional)"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                             </div>
@@ -122,7 +120,7 @@
                                 <input type="text" 
                                        id="billing_address_line_1" 
                                        name="billing_address_line_1" 
-                                       value="{{ old('billing_address_line_1') }}" 
+                                       value="<?php echo e(old('billing_address_line_1')); ?>" 
                                        required
                                        placeholder="Enter your street address, house number"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
@@ -136,7 +134,7 @@
                                 <input type="text" 
                                        id="billing_address_line_2" 
                                        name="billing_address_line_2" 
-                                       value="{{ old('billing_address_line_2') }}"
+                                       value="<?php echo e(old('billing_address_line_2')); ?>"
                                        placeholder="Apartment, suite, building (optional)"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                             </div>
@@ -149,7 +147,7 @@
                                 <input type="text" 
                                        id="billing_city" 
                                        name="billing_city" 
-                                       value="{{ old('billing_city') }}" 
+                                       value="<?php echo e(old('billing_city')); ?>" 
                                        required
                                        placeholder="Enter your city"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
@@ -163,7 +161,7 @@
                                 <input type="text" 
                                        id="billing_state" 
                                        name="billing_state" 
-                                       value="{{ old('billing_state') }}" 
+                                       value="<?php echo e(old('billing_state')); ?>" 
                                        placeholder="State or province (optional)"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                             </div>
@@ -176,7 +174,7 @@
                                 <input type="text" 
                                        id="billing_postal_code" 
                                        name="billing_postal_code" 
-                                       value="{{ old('billing_postal_code') }}" 
+                                       value="<?php echo e(old('billing_postal_code')); ?>" 
                                        placeholder="Postal code (optional)"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                             </div>
@@ -189,7 +187,7 @@
                                 <input type="text" 
                                        id="billing_country" 
                                        name="billing_country" 
-                                       value="{{ old('billing_country', 'Sri Lanka') }}"
+                                       value="<?php echo e(old('billing_country', 'Sri Lanka')); ?>"
                                        placeholder="Country (optional)"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                             </div>
@@ -218,7 +216,7 @@
                                 <input type="text" 
                                        id="shipping_address_line_1" 
                                        name="shipping_address_line_1" 
-                                       value="{{ old('shipping_address_line_1') }}" 
+                                       value="<?php echo e(old('shipping_address_line_1')); ?>" 
                                        placeholder="Enter delivery street address, house number"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                             </div>
@@ -231,7 +229,7 @@
                                 <input type="text" 
                                        id="shipping_address_line_2" 
                                        name="shipping_address_line_2" 
-                                       value="{{ old('shipping_address_line_2') }}"
+                                       value="<?php echo e(old('shipping_address_line_2')); ?>"
                                        placeholder="Apartment, suite, building (optional)"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                             </div>
@@ -244,7 +242,7 @@
                                 <input type="text" 
                                        id="shipping_city" 
                                        name="shipping_city" 
-                                       value="{{ old('shipping_city') }}" 
+                                       value="<?php echo e(old('shipping_city')); ?>" 
                                        placeholder="Enter delivery city"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                             </div>
@@ -257,7 +255,7 @@
                                 <input type="text" 
                                        id="shipping_state" 
                                        name="shipping_state" 
-                                       value="{{ old('shipping_state') }}" 
+                                       value="<?php echo e(old('shipping_state')); ?>" 
                                        placeholder="State or province (optional)"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                             </div>
@@ -270,7 +268,7 @@
                                 <input type="text" 
                                        id="shipping_postal_code" 
                                        name="shipping_postal_code" 
-                                       value="{{ old('shipping_postal_code') }}" 
+                                       value="<?php echo e(old('shipping_postal_code')); ?>" 
                                        placeholder="Postal code (optional)"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                             </div>
@@ -283,7 +281,7 @@
                                 <input type="text" 
                                        id="shipping_country" 
                                        name="shipping_country" 
-                                       value="{{ old('shipping_country', 'Sri Lanka') }}"
+                                       value="<?php echo e(old('shipping_country', 'Sri Lanka')); ?>"
                                        placeholder="Country (optional)"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                             </div>
@@ -421,7 +419,7 @@
                                     <div class="text-sm text-gray-400">Split into 3 easy payments • 10% transaction fee applies</div>
                                 </div>
                                 <div class="flex items-center space-x-2 text-purple-400">
-                                    <img src="{{ asset('images/kokopay-logo.png') }}" alt="Koko Pay" class="h-6 w-auto">
+                                    <img src="<?php echo e(asset('images/kokopay-logo.png')); ?>" alt="Koko Pay" class="h-6 w-auto">
                                 </div>
                             </label>
                             
@@ -513,7 +511,7 @@
                                   name="notes" 
                                   rows="3" 
                                   placeholder="Any special instructions for your order..."
-                                  class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">{{ old('notes') }}</textarea>
+                                  class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent"><?php echo e(old('notes')); ?></textarea>
                     </div>
                 </div>
 
@@ -524,45 +522,45 @@
                         
                         <!-- Cart Items -->
                         <div class="space-y-4 mb-6">
-                            @foreach($cartProducts as $cartProduct)
+                            <?php $__currentLoopData = $cartProducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cartProduct): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="flex items-center space-x-3">
                                     <div class="flex-shrink-0 w-12 h-12 bg-gray-800 rounded-lg overflow-hidden">
-                                        <img src="{{ $cartProduct['product']->main_image }}" 
-                                             alt="{{ $cartProduct['product']->name }}" 
+                                        <img src="<?php echo e($cartProduct['product']->main_image); ?>" 
+                                             alt="<?php echo e($cartProduct['product']->name); ?>" 
                                              class="w-full h-full object-cover">
                                     </div>
                                     <div class="flex-1 min-w-0">
-                                        <p class="text-sm font-medium text-white truncate">{{ $cartProduct['product']->name }}</p>
-                                        <p class="text-sm text-gray-400">Qty: {{ $cartProduct['cart_item']->quantity }}</p>
+                                        <p class="text-sm font-medium text-white truncate"><?php echo e($cartProduct['product']->name); ?></p>
+                                        <p class="text-sm text-gray-400">Qty: <?php echo e($cartProduct['cart_item']->quantity); ?></p>
                                     </div>
-                                    <p class="text-sm font-medium text-white">LKR {{ number_format($cartProduct['line_total'], 2) }}</p>
+                                    <p class="text-sm font-medium text-white">LKR <?php echo e(number_format($cartProduct['line_total'], 2)); ?></p>
                                 </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
 
                         <!-- Price Breakdown -->
                         <div class="border-t border-gray-700 pt-4 space-y-2">
                             <div class="flex justify-between text-sm">
                                 <span class="text-gray-400">Subtotal</span>
-                                <span class="text-white">LKR {{ number_format($originalSubtotal > 0 ? $originalSubtotal : $subtotal, 2) }}</span>
+                                <span class="text-white">LKR <?php echo e(number_format($originalSubtotal > 0 ? $originalSubtotal : $subtotal, 2)); ?></span>
                             </div>
                             
                             <!-- Discount Section -->
-                            @if($totalDiscount > 0)
+                            <?php if($totalDiscount > 0): ?>
                             <div class="flex justify-between text-sm">
                                 <span class="text-green-400">
                                     Discount
                                     <span class="text-xs text-gray-500 block">You save</span>
                                 </span>
-                                <span class="text-green-400">-LKR {{ number_format($totalDiscount, 2) }}</span>
+                                <span class="text-green-400">-LKR <?php echo e(number_format($totalDiscount, 2)); ?></span>
                             </div>
                             
                             <!-- Subtotal after discount -->
                             <div class="flex justify-between text-sm">
                                 <span class="text-gray-400">Subtotal (after discount)</span>
-                                <span class="text-white">LKR {{ number_format($subtotal, 2) }}</span>
+                                <span class="text-white">LKR <?php echo e(number_format($subtotal, 2)); ?></span>
                             </div>
-                            @endif
+                            <?php endif; ?>
                             
                             <div class="flex justify-between text-sm">
                                 <span class="text-gray-400">Shipping</span>
@@ -571,12 +569,12 @@
                                 </span>
                             </div>
                             
-                            @if($taxAmount > 0)
+                            <?php if($taxAmount > 0): ?>
                                 <div class="flex justify-between text-sm">
                                     <span class="text-gray-400">Tax</span>
-                                    <span class="text-white">LKR {{ number_format($taxAmount, 2) }}</span>
+                                    <span class="text-white">LKR <?php echo e(number_format($taxAmount, 2)); ?></span>
                                 </div>
-                            @endif
+                            <?php endif; ?>
                             
                             <!-- Transaction Fee (shown only when WebXPay is selected) -->
                             <div class="flex justify-between text-sm webxpay-fee" style="display: none;">
@@ -603,7 +601,7 @@
                             <div class="border-t border-gray-700 pt-2">
                                 <div class="flex justify-between">
                                     <span class="text-lg font-medium text-white">Order Total</span>
-                                    <span class="text-lg font-bold text-[#f59e0b] order-total">LKR {{ number_format($total, 2) }}</span>
+                                    <span class="text-lg font-bold text-[#f59e0b] order-total">LKR <?php echo e(number_format($total, 2)); ?></span>
                                 </div>
                             </div>
                         </div>
@@ -616,8 +614,8 @@
                                        required
                                        class="h-4 w-4 text-[#f59e0b] focus:ring-[#f59e0b] border-gray-700 rounded bg-[#0f0f0f] mt-0.5">
                                 <span class="ml-3 text-sm text-gray-300">
-                                    I agree to the <a href="{{ route('terms-of-service') }}" target="_blank" class="text-[#f59e0b] hover:text-[#d97706] underline">Terms of Service</a> and 
-                                    <a href="{{ route('privacy-policy') }}" target="_blank" class="text-[#f59e0b] hover:text-[#d97706] underline">Privacy Policy</a>
+                                    I agree to the <a href="<?php echo e(route('terms-of-service')); ?>" target="_blank" class="text-[#f59e0b] hover:text-[#d97706] underline">Terms of Service</a> and 
+                                    <a href="<?php echo e(route('privacy-policy')); ?>" target="_blank" class="text-[#f59e0b] hover:text-[#d97706] underline">Privacy Policy</a>
                                 </span>
                             </label>
                             
@@ -676,7 +674,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Transaction fee calculation and display
-    const baseOrderTotal = {{ $total }};
+    const baseOrderTotal = <?php echo e($total); ?>;
     
     function formatCurrency(amount) {
         return 'LKR ' + parseFloat(amount).toLocaleString('en-US', {
@@ -1160,4 +1158,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Dhanushka\Desktop\MSK\MSKMSV3\resources\views/checkout/index.blade.php ENDPATH**/ ?>

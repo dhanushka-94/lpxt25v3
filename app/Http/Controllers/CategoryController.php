@@ -26,7 +26,7 @@ class CategoryController extends Controller
                   ->orWhere('subcategory_id', $category->id);
         })
         ->where('hide', 0)
-        ->select(['id', 'name', 'code', 'price', 'promo_price', 'quantity', 'category_id', 'subcategory_id', 'product_status', 'image', 'promotion', 'details'])
+        ->select(['id', 'name', 'code', 'price', 'promo_price', 'quantity', 'category_id', 'subcategory_id', 'product_status', 'image', 'promotion', 'details', 'slug'])
         ->with([
             'category:id,name,slug',
             'photos:id,product_id,photo',
@@ -107,7 +107,8 @@ class CategoryController extends Controller
                     'main_image', 
                     'final_price',
                     'is_on_sale',
-                    'stock_quantity'
+                    'stock_quantity',
+                    'slug'
                 ]);
                 return $product;
             });

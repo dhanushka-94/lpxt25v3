@@ -302,13 +302,8 @@ class CheckoutController extends Controller
      */
     private function calculateShippingCost($subtotal)
     {
-        // Free shipping for orders over LKR 50,000
-        if ($subtotal >= 50000) {
-            return 0;
-        }
-        
-        // Standard shipping cost
-        return 500;
+        // Shipping is always pay on delivery - not included in order total
+        return 0;
     }
 
     /**

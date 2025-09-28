@@ -21,7 +21,7 @@ class SearchController extends Controller
             ->with('category:id,name,slug')
             ->where('name', 'like', "%{$query}%")
             ->take(5)
-            ->get(['id', 'name', 'price', 'promo_price', 'slug', 'category_id']);
+            ->get(['id', 'name', 'price', 'promo_price', 'category_id', 'slug']);
 
         // Get category suggestions
         $categories = SmaCategory::where('name', 'like', "%{$query}%")
