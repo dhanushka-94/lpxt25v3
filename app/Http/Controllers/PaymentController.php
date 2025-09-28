@@ -441,10 +441,28 @@ class PaymentController extends Controller
             // Redirect based on payment status
             switch ($processedResponse['payment_status']) {
                 case 'success':
+                    // Clear cart after successful payment
+                    \App\Models\Cart::where('session_id', session()->getId())
+                        ->orWhere(function($query) {
+                            if (\Illuminate\Support\Facades\Auth::check()) {
+                                $query->where('user_id', \Illuminate\Support\Facades\Auth::id());
+                            }
+                        })
+                        ->delete();
+                        
                     return redirect()->route('checkout.success', $order->order_number)
                         ->with('success', 'Payment completed successfully via WebXPay!');
                         
                 case 'pending':
+                    // Clear cart for pending payments too (order is created)
+                    \App\Models\Cart::where('session_id', session()->getId())
+                        ->orWhere(function($query) {
+                            if (\Illuminate\Support\Facades\Auth::check()) {
+                                $query->where('user_id', \Illuminate\Support\Facades\Auth::id());
+                            }
+                        })
+                        ->delete();
+                        
                     return redirect()->route('checkout.success', $order->order_number)
                         ->with('info', 'Payment is being processed. You will receive confirmation once completed.');
                         
@@ -743,12 +761,22 @@ class PaymentController extends Controller
             // Clear session
             session()->forget('kokopay_order_id');
 
+            // Clear cart after successful payment
+            \App\Models\Cart::where('session_id', session()->getId())
+                ->orWhere(function($query) {
+                    if (\Illuminate\Support\Facades\Auth::check()) {
+                        $query->where('user_id', \Illuminate\Support\Facades\Auth::id());
+                    }
+                })
+                ->delete();
+
             Log::info('Koko Pay payment completed successfully', [
                 'order_id' => $order->id,
                 'order_number' => $order->order_number,
                 'payment_reference' => $transactionId,
                 'description' => $description,
-                'transaction_created' => true
+                'transaction_created' => true,
+                'cart_cleared' => true
             ]);
 
             // Use order_number (not id) for success route

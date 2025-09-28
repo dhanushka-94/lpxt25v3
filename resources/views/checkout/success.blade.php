@@ -227,4 +227,44 @@
         </div>
     </div>
 </div>
+
+<script>
+// Clear cart from localStorage and session after successful order
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Order completed successfully - clearing cart data');
+    
+    // Clear localStorage cart data
+    localStorage.removeItem('cartTotal');
+    localStorage.removeItem('cartCount');
+    localStorage.removeItem('cart');
+    
+    // Force update any cart displays on the page
+    const cartTotalElements = document.querySelectorAll('.cart-total, [data-cart-total]');
+    cartTotalElements.forEach(element => {
+        element.textContent = 'LKR 0.00';
+    });
+    
+    const cartCountElements = document.querySelectorAll('.cart-count, [data-cart-count]');
+    cartCountElements.forEach(element => {
+        element.textContent = '0';
+        element.style.display = 'none'; // Hide cart count badges
+    });
+    
+    // Update header cart if the function exists
+    if (typeof updateHeaderCartTotal === 'function') {
+        updateHeaderCartTotal('0.00');
+    }
+    
+    // Clear any cart-related session storage as well
+    try {
+        sessionStorage.removeItem('cartTotal');
+        sessionStorage.removeItem('cartCount');
+        sessionStorage.removeItem('cart');
+    } catch (e) {
+        // Session storage might not be available
+    }
+    
+    console.log('Cart data cleared from browser storage');
+});
+</script>
 @endsection

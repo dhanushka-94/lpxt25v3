@@ -158,12 +158,19 @@ class CartController extends Controller
     public function clear()
     {
         $sessionId = Session::getId();
-        Cart::where('session_id', $sessionId)->delete();
+        Cart::where('session_id', $sessionId)
+             ->orWhere(function($query) {
+                 if (Auth::check()) {
+                     $query->where('user_id', Auth::id());
+                 }
+             })
+             ->delete();
 
         return response()->json([
             'success' => true,
             'message' => 'Cart cleared successfully',
-            'cart_total' => '0.00'
+            'cart_total' => '0.00',
+            'cart_count' => 0
         ]);
     }
     
