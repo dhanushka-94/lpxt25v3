@@ -22451,3 +22451,27 @@ Stack trace:
 #19 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\artisan(16): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
 #20 {main}
 "} 
+[2025-09-28 17:27:48] local.INFO: Category route binding - Value: other, Field: null  
+[2025-09-28 17:27:48] local.INFO: Category slug lookup (stored) result: OTHER  
+[2025-09-28 17:27:48] local.INFO: Product route binding - Value: small-thermal-paste, Field: null  
+[2025-09-28 17:27:48] local.INFO: Product found via database slug: SMALL THERMAL PASTE  
+[2025-09-28 17:27:48] local.INFO: ProductController@show - Category: OTHER (ID: 407), Product: SMALL THERMAL PASTE (ID: 621, Category: 407)  
+[2025-09-28 17:27:53] local.INFO: Cart add request: {"product_id":621,"quantity":1} 
+[2025-09-28 17:27:53] local.INFO: Product found: {"product":621} 
+[2025-09-28 17:28:38] local.INFO: Checkout process started {"payment_method":"kokopay","customer_name":"Dhanushka Bandara","request_data":{"payment_method":"kokopay","customer_name":"Dhanushka Bandara","customer_phone":"0714245192","customer_email":"olexto@gmail.com"}} 
+[2025-09-28 17:28:38] local.INFO: Checkout validation passed, proceeding with order creation  
+[2025-09-28 17:28:38] local.INFO: Redirecting to Koko Pay payment {"order_id":341,"order_number":"MSK-2025-XVVM18NR","payment_method":"kokopay","redirect_url":"http://127.0.0.1:8000/payment/kokopay/341"} 
+[2025-09-28 17:28:38] local.INFO: Generated Koko Pay redirect URL {"url":"http://127.0.0.1:8000/payment/kokopay/341"} 
+[2025-09-28 17:28:38] local.INFO: Initiating Koko Pay payment {"order_id":341,"order_number":"MSK-2025-XVVM18NR","auth_check":true,"order_user_id":96} 
+[2025-09-28 17:28:38] local.INFO: Koko Pay customer data prepared {"order_id":341,"amount":165.0,"firstName":"Dhanushka","lastName":"Bandara","email":"olexto@gmail.com","contactNumber":"0714245192","description":"MSK Computers Order #341"} 
+[2025-09-28 17:28:38] local.INFO: Koko Pay payment data prepared {"order_id":341,"amount":"165.00","reference":"7d3f30056c643b23b9fef10aac9d6425130-341"} 
+[2025-09-28 17:28:38] local.INFO: Koko Pay payment initialized successfully {"order_id":341,"reference":"7d3f30056c643b23b9fef10aac9d6425130-341"} 
+[2025-09-28 17:29:18] local.ERROR: === KOKO PAY RETURN DEBUG START ===  
+[2025-09-28 17:29:18] local.ERROR: Request URL: http://localhost:8000/payment/kokopay/return?desc=%20&frontend=true&key=&orderId=341&status=SUCCESS&trnId=c4f795a4e992ca266e89a72fa8bdcabb&wc-api=http%3A%2F%2Flocalhost%3A8000%2Fpayment%2Fkokopay%2Freturn  
+[2025-09-28 17:29:18] local.ERROR: Request Method: GET  
+[2025-09-28 17:29:18] local.ERROR: All Request Data:  {"trnId":"c4f795a4e992ca266e89a72fa8bdcabb","orderId":"341","status":"SUCCESS","desc":null,"key":null,"wc-api":"http://localhost:8000/payment/kokopay/return","frontend":"true"} 
+[2025-09-28 17:29:18] local.ERROR: Route Name: payment.kokopay.return  
+[2025-09-28 17:29:18] local.ERROR: === KOKO PAY RETURN DEBUG END ===  
+[2025-09-28 17:29:18] local.INFO: Koko Pay return received {"trnId":"c4f795a4e992ca266e89a72fa8bdcabb","orderId":"341","status":"SUCCESS","desc":null,"key":null,"wc-api":"http://localhost:8000/payment/kokopay/return","frontend":"true"} 
+[2025-09-28 17:29:18] local.INFO: Processing Koko Pay payment status {"order_id":341,"order_number":"MSK-2025-XVVM18NR","status":"success","original_status":"SUCCESS","transaction_id":"c4f795a4e992ca266e89a72fa8bdcabb"} 
+[2025-09-28 17:29:18] local.INFO: Koko Pay payment completed successfully {"order_id":341,"order_number":"MSK-2025-XVVM18NR","payment_reference":"c4f795a4e992ca266e89a72fa8bdcabb","description":null} 

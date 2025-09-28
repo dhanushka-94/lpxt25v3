@@ -185,6 +185,9 @@ class WebXPayService
                         'payment_reference' => $processedResponse['reference_number'],
                         'payment_method' => 'webxpay'
                     ]);
+                    
+                    // Create successful transaction record
+                    $this->createTransactionRecord($order, $processedResponse, 'completed');
                     break;
                     
                 case 'pending':
@@ -193,6 +196,9 @@ class WebXPayService
                         'payment_reference' => $processedResponse['reference_number'],
                         'payment_method' => 'webxpay'
                     ]);
+                    
+                    // Create pending transaction record
+                    $this->createTransactionRecord($order, $processedResponse, 'processing');
                     break;
                     
                 case 'failed':
@@ -204,13 +210,17 @@ class WebXPayService
                         'payment_reference' => $processedResponse['reference_number'],
                         'payment_method' => 'webxpay'
                     ]);
+                    
+                    // Create failed transaction record
+                    $this->createTransactionRecord($order, $processedResponse, 'failed');
                     break;
             }
             
             Log::info('Order status updated from WebXPay', [
                 'order_number' => $order->order_number,
                 'payment_status' => $processedResponse['payment_status'],
-                'reference' => $processedResponse['reference_number']
+                'reference' => $processedResponse['reference_number'],
+                'transaction_created' => true
             ]);
             
             return true;
@@ -221,6 +231,76 @@ class WebXPayService
                 'error' => $e->getMessage()
             ]);
             return false;
+        }
+    }
+
+    /**
+     * Create transaction record for WebXPay payment
+     */
+    private function createTransactionRecord(Order $order, array $processedResponse, string $status): void
+    {
+        try {
+            // Check if transaction already exists to avoid duplicates
+            $existingTransaction = \App\Models\Transaction::where('order_id', $order->id)
+                ->where('gateway_transaction_id', $processedResponse['reference_number'])
+                ->first();
+                
+            if ($existingTransaction) {
+                // Update existing transaction
+                $existingTransaction->update([
+                    'status' => $status,
+                    'gateway_response' => $processedResponse,
+                    'completed_at' => $status === 'completed' ? now() : null,
+                    'failed_at' => $status === 'failed' ? now() : null,
+                    'failure_reason' => $status === 'failed' ? $processedResponse['comment'] : null,
+                ]);
+                
+                Log::info('WebXPay transaction updated', [
+                    'transaction_id' => $existingTransaction->transaction_id,
+                    'status' => $status
+                ]);
+                return;
+            }
+
+            // Create new transaction record
+            \App\Models\Transaction::create([
+                'transaction_id' => 'WXP-' . strtoupper(substr($processedResponse['reference_number'], 0, 16)),
+                'order_id' => $order->id,
+                'payment_method' => 'webxpay',
+                'status' => $status,
+                'amount' => $order->total_amount,
+                'currency' => 'LKR',
+                'gateway_transaction_id' => $processedResponse['reference_number'],
+                'gateway_reference' => $processedResponse['reference_number'],
+                'gateway_response' => $processedResponse,
+                'customer_name' => $order->customer_name,
+                'customer_email' => $order->customer_email,
+                'customer_phone' => $order->customer_phone,
+                'description' => "WebXPay payment for order {$order->order_number}",
+                'failure_reason' => $status === 'failed' ? $processedResponse['comment'] : null,
+                'initiated_at' => $order->created_at,
+                'completed_at' => $status === 'completed' ? now() : null,
+                'failed_at' => $status === 'failed' ? now() : null,
+                'metadata' => [
+                    'payment_gateway' => $processedResponse['payment_gateway'],
+                    'transaction_datetime' => $processedResponse['transaction_datetime'],
+                    'custom_fields' => $processedResponse['custom_fields'],
+                    'signature_valid' => $processedResponse['signature_valid'],
+                ],
+            ]);
+            
+            Log::info('WebXPay transaction created', [
+                'order_number' => $order->order_number,
+                'status' => $status,
+                'reference_number' => $processedResponse['reference_number']
+            ]);
+            
+        } catch (Exception $e) {
+            Log::error('Failed to create WebXPay transaction record', [
+                'order_number' => $order->order_number,
+                'error' => $e->getMessage()
+            ]);
+            // Don't throw the exception to avoid breaking the payment process
         }
     }
 

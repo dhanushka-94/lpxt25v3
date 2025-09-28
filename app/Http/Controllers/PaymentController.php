@@ -694,6 +694,32 @@ class PaymentController extends Controller
                 'status' => 'confirmed' // Update order status as well
             ]);
 
+            // Create transaction record for admin transactions page
+            \App\Models\Transaction::create([
+                'transaction_id' => 'TXN-' . strtoupper(substr($transactionId, 0, 16)),
+                'order_id' => $order->id,
+                'payment_method' => 'kokopay',
+                'status' => 'completed',
+                'amount' => $order->total_amount,
+                'currency' => 'LKR',
+                'gateway_transaction_id' => $transactionId,
+                'gateway_reference' => $request->get('key', ''),
+                'gateway_response' => $request->all(),
+                'customer_name' => $order->customer_name,
+                'customer_email' => $order->customer_email,
+                'customer_phone' => $order->customer_phone,
+                'description' => "Koko Pay payment for order {$order->order_number}",
+                'initiated_at' => $order->created_at,
+                'completed_at' => now(),
+                'metadata' => [
+                    'frontend' => $request->get('frontend', false),
+                    'wc_api' => $request->get('wc-api', ''),
+                    'desc' => $description,
+                ],
+                'ip_address' => $request->ip(),
+                'user_agent' => $request->header('User-Agent'),
+            ]);
+
             // Clear session
             session()->forget('kokopay_order_id');
 
@@ -701,13 +727,42 @@ class PaymentController extends Controller
                 'order_id' => $order->id,
                 'order_number' => $order->order_number,
                 'payment_reference' => $transactionId,
-                'description' => $description
+                'description' => $description,
+                'transaction_created' => true
             ]);
 
             // Use order_number (not id) for success route
             return redirect()->route('checkout.success', $order->order_number)
                            ->with('success', 'Payment completed successfully with Koko Pay!');
         } else {
+            // Create transaction record for failed payment
+            \App\Models\Transaction::create([
+                'transaction_id' => 'TXN-' . strtoupper(substr($transactionId ?: uniqid(), 0, 16)),
+                'order_id' => $order->id,
+                'payment_method' => 'kokopay',
+                'status' => 'failed',
+                'amount' => $order->total_amount,
+                'currency' => 'LKR',
+                'gateway_transaction_id' => $transactionId,
+                'gateway_reference' => $request->get('key', ''),
+                'gateway_response' => $request->all(),
+                'customer_name' => $order->customer_name,
+                'customer_email' => $order->customer_email,
+                'customer_phone' => $order->customer_phone,
+                'description' => "Failed Koko Pay payment for order {$order->order_number}",
+                'failure_reason' => "Payment status: {$paymentStatus}. " . ($description ? "Description: {$description}" : ''),
+                'initiated_at' => $order->created_at,
+                'failed_at' => now(),
+                'metadata' => [
+                    'frontend' => $request->get('frontend', false),
+                    'wc_api' => $request->get('wc-api', ''),
+                    'desc' => $description,
+                    'original_status' => $request->get('status'),
+                ],
+                'ip_address' => $request->ip(),
+                'user_agent' => $request->header('User-Agent'),
+            ]);
+
             Log::warning('Koko Pay payment failed or cancelled', [
                 'order_id' => $order->id,
                 'order_number' => $order->order_number,
@@ -715,7 +770,8 @@ class PaymentController extends Controller
                 'original_status' => $request->get('status'),
                 'transaction_id' => $transactionId,
                 'description' => $description,
-                'request_data' => $request->all()
+                'request_data' => $request->all(),
+                'transaction_created' => true
             ]);
 
             return redirect()->route('checkout.index')

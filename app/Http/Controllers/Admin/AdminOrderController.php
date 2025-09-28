@@ -175,6 +175,8 @@ class AdminOrderController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
+        $oldPaymentStatus = $order->payment_status;
+        
         $updateData = [
             'payment_status' => $request->payment_status,
         ];
@@ -185,7 +187,83 @@ class AdminOrderController extends Controller
 
         $order->update($updateData);
 
+        // Create transaction record when payment status changes to 'paid'
+        if ($request->payment_status === 'paid' && $oldPaymentStatus !== 'paid') {
+            $this->createAdminTransactionRecord($order, $request);
+        }
+
         return back()->with('success', 'Payment status updated successfully');
+    }
+    
+    /**
+     * Create transaction record for admin-updated payments (usually bank transfers)
+     */
+    private function createAdminTransactionRecord(Order $order, Request $request): void
+    {
+        try {
+            // Check if transaction already exists to avoid duplicates
+            $existingTransaction = \App\Models\Transaction::where('order_id', $order->id)->first();
+            
+            if ($existingTransaction) {
+                // Update existing transaction
+                $existingTransaction->update([
+                    'status' => 'completed',
+                    'gateway_transaction_id' => $request->payment_reference ?? $order->payment_reference,
+                    'completed_at' => now(),
+                    'metadata' => array_merge($existingTransaction->metadata ?? [], [
+                        'admin_updated' => true,
+                        'admin_id' => auth()->id(),
+                        'updated_at' => now()->toISOString(),
+                    ]),
+                ]);
+                
+                Log::info('Admin transaction updated', [
+                    'transaction_id' => $existingTransaction->transaction_id,
+                    'order_number' => $order->order_number,
+                    'admin_id' => auth()->id()
+                ]);
+                return;
+            }
+
+            // Create new transaction record
+            \App\Models\Transaction::create([
+                'transaction_id' => 'ADM-' . strtoupper(substr($order->order_number, 0, 16)),
+                'order_id' => $order->id,
+                'payment_method' => $order->payment_method ?? 'bank_transfer',
+                'status' => 'completed',
+                'amount' => $order->total_amount,
+                'currency' => 'LKR',
+                'gateway_transaction_id' => $request->payment_reference ?? $order->payment_reference ?? 'MANUAL-' . time(),
+                'gateway_reference' => $request->payment_reference ?? $order->payment_reference,
+                'customer_name' => $order->customer_name,
+                'customer_email' => $order->customer_email,
+                'customer_phone' => $order->customer_phone,
+                'description' => "Manual payment confirmation by admin for order {$order->order_number}",
+                'initiated_at' => $order->created_at,
+                'completed_at' => now(),
+                'metadata' => [
+                    'admin_updated' => true,
+                    'admin_id' => auth()->id(),
+                    'admin_name' => auth()->user()->name ?? 'Admin',
+                    'payment_method' => $order->payment_method ?? 'bank_transfer',
+                    'manually_confirmed' => true,
+                ],
+            ]);
+            
+            Log::info('Admin transaction created', [
+                'order_number' => $order->order_number,
+                'payment_method' => $order->payment_method ?? 'bank_transfer',
+                'admin_id' => auth()->id()
+            ]);
+            
+        } catch (\Exception $e) {
+            Log::error('Failed to create admin transaction record', [
+                'order_number' => $order->order_number,
+                'error' => $e->getMessage(),
+                'admin_id' => auth()->id()
+            ]);
+            // Don't throw the exception to avoid breaking the admin workflow
+        }
     }
 
     /**
