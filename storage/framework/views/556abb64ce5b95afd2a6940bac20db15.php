@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Shopping Cart - MSK Computers'); ?>
 
-@section('title', 'Shopping Cart - MSK Computers')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="min-h-screen bg-black py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Header -->
@@ -11,7 +9,7 @@
             <p class="text-gray-400 mt-2">Review your items before checkout</p>
         </div>
 
-        @if($cartItems->isEmpty())
+        <?php if($cartItems->isEmpty()): ?>
             <!-- Empty Cart -->
             <div class="bg-[#1a1a1c] rounded-lg border border-gray-800 p-12 text-center">
                 <div class="w-24 h-24 mx-auto mb-6 text-gray-600">
@@ -21,7 +19,7 @@
                 </div>
                 <h3 class="text-xl font-semibold text-white mb-2">Your cart is empty</h3>
                 <p class="text-gray-400 mb-6">Looks like you haven't added any items to your cart yet.</p>
-                <a href="{{ route('categories.index') }}" 
+                <a href="<?php echo e(route('categories.index')); ?>" 
                    class="inline-flex items-center px-6 py-3 bg-[#f59e0b] text-black font-semibold rounded-lg hover:bg-[#d97706] transition-colors">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -29,7 +27,7 @@
                     Continue Shopping
                 </a>
             </div>
-        @else
+        <?php else: ?>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Cart Items -->
                 <div class="lg:col-span-2">
@@ -39,31 +37,31 @@
                         </div>
                         
                         <div class="divide-y divide-gray-800">
-                            @foreach($cartItems as $item)
-                                <div class="p-6 cart-item" data-item-id="{{ $item->id }}">
+                            <?php $__currentLoopData = $cartItems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="p-6 cart-item" data-item-id="<?php echo e($item->id); ?>">
                                     <div class="flex items-start space-x-4">
                                         <!-- Product Image -->
                                         <div class="flex-shrink-0">
                                             <div class="w-20 h-20 bg-[#2c2c2e] rounded-lg overflow-hidden">
-                                                <img src="{{ $item->product->main_image }}" 
-                                                     alt="{{ $item->product->name }}"
+                                                <img src="<?php echo e($item->product->main_image); ?>" 
+                                                     alt="<?php echo e($item->product->name); ?>"
                                                      class="w-full h-full object-cover">
                                             </div>
                                         </div>
                                         
                                         <!-- Product Details -->
                                         <div class="flex-grow">
-                                            <h3 class="text-white font-medium text-sm">{{ $item->product->name }}</h3>
-                                            <p class="text-gray-400 text-xs mt-1">Code: {{ $item->product->code }}</p>
+                                            <h3 class="text-white font-medium text-sm"><?php echo e($item->product->name); ?></h3>
+                                            <p class="text-gray-400 text-xs mt-1">Code: <?php echo e($item->product->code); ?></p>
                                             
-                                            @if($item->product->is_on_sale)
+                                            <?php if($item->product->is_on_sale): ?>
                                                 <div class="flex items-center space-x-2 mt-2">
-                                                    <span class="text-[#f59e0b] font-semibold">LKR {{ number_format($item->product->final_price, 2) }}</span>
-                                                    <span class="text-gray-500 line-through text-sm">LKR {{ number_format($item->product->price, 2) }}</span>
+                                                    <span class="text-[#f59e0b] font-semibold">LKR <?php echo e(number_format($item->product->final_price, 2)); ?></span>
+                                                    <span class="text-gray-500 line-through text-sm">LKR <?php echo e(number_format($item->product->price, 2)); ?></span>
                                                 </div>
-                                            @else
-                                                <p class="text-[#f59e0b] font-semibold mt-2">LKR {{ number_format($item->product->final_price, 2) }}</p>
-                                            @endif
+                                            <?php else: ?>
+                                                <p class="text-[#f59e0b] font-semibold mt-2">LKR <?php echo e(number_format($item->product->final_price, 2)); ?></p>
+                                            <?php endif; ?>
                                             
                                             <!-- Quantity Controls -->
                                             <div class="flex items-center space-x-3 mt-3">
@@ -71,39 +69,39 @@
                                                 <div class="flex items-center space-x-2">
                                                     <button type="button" 
                                                             class="quantity-btn w-8 h-8 bg-[#2c2c2e] border border-gray-700 rounded text-white hover:bg-[#3c3c3e] transition-colors"
-                                                            data-action="decrease" data-item-id="{{ $item->id }}">-</button>
+                                                            data-action="decrease" data-item-id="<?php echo e($item->id); ?>">-</button>
                                                     <input type="number" 
-                                                           value="{{ $item->quantity }}" 
+                                                           value="<?php echo e($item->quantity); ?>" 
                                                            min="1" 
-                                                           max="{{ $item->product->stock_quantity }}"
+                                                           max="<?php echo e($item->product->stock_quantity); ?>"
                                                            class="quantity-input w-16 h-8 bg-[#2c2c2e] border border-gray-700 text-white text-center text-sm rounded focus:ring-1 focus:ring-[#f59e0b] focus:border-[#f59e0b]"
-                                                           data-item-id="{{ $item->id }}"
-                                                           data-max-stock="{{ $item->product->stock_quantity }}">
+                                                           data-item-id="<?php echo e($item->id); ?>"
+                                                           data-max-stock="<?php echo e($item->product->stock_quantity); ?>">
                                                     <button type="button" 
                                                             class="quantity-btn w-8 h-8 bg-[#2c2c2e] border border-gray-700 rounded text-white hover:bg-[#3c3c3e] transition-colors"
-                                                            data-action="increase" data-item-id="{{ $item->id }}">+</button>
+                                                            data-action="increase" data-item-id="<?php echo e($item->id); ?>">+</button>
                                                 </div>
                                             </div>
                                         </div>
                                         
                                         <!-- Item Total & Remove -->
                                         <div class="flex-shrink-0 text-right">
-                                            <p class="text-white font-semibold item-total">LKR {{ number_format($item->product->final_price * $item->quantity, 2) }}</p>
+                                            <p class="text-white font-semibold item-total">LKR <?php echo e(number_format($item->product->final_price * $item->quantity, 2)); ?></p>
                                             <button type="button" 
                                                     class="remove-item text-red-400 hover:text-red-300 text-sm mt-2 transition-colors"
-                                                    data-item-id="{{ $item->id }}">
+                                                    data-item-id="<?php echo e($item->id); ?>">
                                                 Remove
                                             </button>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
                     
                     <!-- Continue Shopping -->
                     <div class="mt-6">
-                        <a href="{{ route('categories.index') }}" 
+                        <a href="<?php echo e(route('categories.index')); ?>" 
                            class="inline-flex items-center text-[#f59e0b] hover:text-[#d97706] transition-colors">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -122,17 +120,18 @@
                             <!-- Subtotal (before discounts) -->
                             <div class="flex justify-between text-gray-300">
                                 <span>Subtotal</span>
-                                <span class="cart-original-subtotal">LKR {{ number_format($cartItems->sum(function($item) { return $item->product->price * $item->quantity; }), 2) }}</span>
+                                <span class="cart-original-subtotal">LKR <?php echo e(number_format($cartItems->sum(function($item) { return $item->product->price * $item->quantity; }), 2)); ?></span>
                             </div>
                             
                             <!-- Discount (if any) -->
-                            <div class="flex justify-between text-green-400 discount-row" style="{{ $cartItems->sum(function($item) { return ($item->product->price - $item->product->final_price) * $item->quantity; }) > 0 ? '' : 'display: none;' }}">
+                            <div class="flex justify-between text-green-400 discount-row" style="<?php echo e($cartItems->sum(function($item) { return ($item->product->price - $item->product->final_price) * $item->quantity; }) > 0 ? '' : 'display: none;'); ?>">
                                 <span>
                                     Discount
                                     <span class="text-xs text-gray-500 block">You save</span>
                                 </span>
                                 <span class="cart-discount">
-                                    -LKR {{ number_format($cartItems->sum(function($item) { return ($item->product->price - $item->product->final_price) * $item->quantity; }), 2) }}
+                                    -LKR <?php echo e(number_format($cartItems->sum(function($item) { return ($item->product->price - $item->product->final_price) * $item->quantity; }), 2)); ?>
+
                                 </span>
                             </div>
                             
@@ -147,7 +146,7 @@
                             <div class="border-t border-gray-700 pt-4">
                                 <div class="flex justify-between items-center text-white font-bold text-xl mb-2">
                                     <span>Grand Total</span>
-                                    <span class="cart-total text-[#f59e0b]">LKR {{ number_format($cartTotal, 2) }}</span>
+                                    <span class="cart-total text-[#f59e0b]">LKR <?php echo e(number_format($cartTotal, 2)); ?></span>
                                 </div>
                                 <div class="flex justify-between text-gray-400 text-sm">
                                     <span>Final amount to pay</span>
@@ -157,7 +156,7 @@
                         </div>
                         
                         <div class="mt-6 space-y-3">
-                            <a href="{{ route('checkout.index') }}" 
+                            <a href="<?php echo e(route('checkout.index')); ?>" 
                                class="w-full bg-[#f59e0b] text-black font-semibold py-3 px-4 rounded-lg hover:bg-[#d97706] transition-colors text-center block">
                                 Proceed to Checkout
                             </a>
@@ -197,11 +196,11 @@
                     </div>
                 </div>
             </div>
-        @endif
+        <?php endif; ?>
     </div>
 </div>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Quantity buttons
@@ -568,14 +567,16 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('- window.inspectCartElements() - Inspect DOM elements');
 });
 </script>
-@endpush
-@endsection
+<?php $__env->stopPush(); ?>
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
     // Initialize cart total on page load (no count needed)
     document.addEventListener('DOMContentLoaded', function() {
         // No need to fetch cart count anymore - removed feature
     });
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Dhanushka\Desktop\MSK\MSKMSV3\resources\views/cart/index.blade.php ENDPATH**/ ?>
