@@ -423,6 +423,97 @@
             </div>
             @endif
 
+            <!-- WebXPay Details -->
+            @if($transaction->payment_method === 'webxpay' && $transaction->metadata)
+            <div class="bg-gradient-to-br from-[#1a1a1c] to-[#2a2a2c] rounded-xl border border-gray-800 p-6">
+                <h3 class="text-lg font-semibold text-white mb-6 flex items-center">
+                    <div class="w-6 h-6 bg-purple-500/20 rounded flex items-center justify-center mr-2">
+                        <svg class="w-3 h-3 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3-3v8a3 3 0 003 3z"/>
+                        </svg>
+                    </div>
+                    WebXPay Payment Details
+                </h3>
+                <div class="space-y-3">
+                    <!-- CORE WEBXPAY PARAMETERS -->
+                    @if($transaction->gateway_reference)
+                    <div class="flex justify-between items-center p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
+                        <span class="text-purple-300 font-medium">Reference Number</span>
+                        <span class="text-white font-mono font-bold">{{ $transaction->gateway_reference }}</span>
+                    </div>
+                    @endif
+                    
+                    @if(isset($transaction->metadata['payment_gateway']))
+                    <div class="flex justify-between items-center p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
+                        <span class="text-purple-300 font-medium">Payment Gateway</span>
+                        <span class="text-white capitalize">{{ $transaction->metadata['payment_gateway'] }}</span>
+                    </div>
+                    @endif
+                    
+                    @if(isset($transaction->metadata['transaction_datetime']))
+                    <div class="flex justify-between items-center p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
+                        <span class="text-purple-300 font-medium">Transaction DateTime</span>
+                        <span class="text-white font-mono">{{ $transaction->metadata['transaction_datetime'] }}</span>
+                    </div>
+                    @endif
+                    
+                    @if(isset($transaction->metadata['signature_valid']))
+                    <div class="flex justify-between items-center p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
+                        <span class="text-purple-300 font-medium">Signature Valid</span>
+                        <span class="text-white font-bold {{ $transaction->metadata['signature_valid'] ? 'text-green-400' : 'text-red-400' }}">
+                            {{ $transaction->metadata['signature_valid'] ? 'YES' : 'NO' }}
+                        </span>
+                    </div>
+                    @endif
+                    
+                    <!-- GATEWAY RESPONSE DATA -->
+                    @if($transaction->gateway_response)
+                    <div class="p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
+                        <div class="text-purple-300 font-medium mb-2">Gateway Response</div>
+                        <div class="space-y-2 text-sm">
+                            @if(isset($transaction->gateway_response['order_id']))
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">Order ID:</span>
+                                <span class="text-white font-mono">{{ $transaction->gateway_response['order_id'] }}</span>
+                            </div>
+                            @endif
+                            @if(isset($transaction->gateway_response['status_code']))
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">Status Code:</span>
+                                <span class="text-white font-mono">{{ $transaction->gateway_response['status_code'] }}</span>
+                            </div>
+                            @endif
+                            @if(isset($transaction->gateway_response['comment']))
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">Comment:</span>
+                                <span class="text-white">{{ $transaction->gateway_response['comment'] ?: '(empty)' }}</span>
+                            </div>
+                            @endif
+                            @if(isset($transaction->gateway_response['payment_status']))
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">Payment Status:</span>
+                                <span class="text-white font-bold {{ $transaction->gateway_response['payment_status'] === 'success' ? 'text-green-400' : 'text-red-400' }}">
+                                    {{ strtoupper($transaction->gateway_response['payment_status']) }}
+                                </span>
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                    @endif
+                    
+                    <!-- CUSTOM FIELDS -->
+                    @if(isset($transaction->metadata['custom_fields']) && $transaction->metadata['custom_fields'])
+                    <div class="p-3 bg-purple-900/20 rounded-lg border border-purple-500/30">
+                        <div class="text-purple-300 font-medium mb-2">Custom Fields</div>
+                        <div class="text-white font-mono text-xs break-all bg-purple-800/30 p-2 rounded">
+                            {{ $transaction->metadata['custom_fields'] }}
+                        </div>
+                    </div>
+                    @endif
+                </div>
+            </div>
+            @endif
+
             <!-- Additional Metadata -->
             @if($transaction->metadata)
             <div class="bg-gradient-to-br from-[#1a1a1c] to-[#2a2a2c] rounded-xl border border-gray-800 p-6">

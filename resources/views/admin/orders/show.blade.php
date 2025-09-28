@@ -337,6 +337,33 @@
                             </div>
                         </div>
                         @endif
+                    @elseif($order->payment_method === 'webxpay')
+                        @php
+                            // Get the related transaction to find WebXPay reference
+                            $webxpayTransaction = $order->transactions()->where('payment_method', 'webxpay')->first();
+                            $webxpayReference = null;
+                            
+                            if ($webxpayTransaction) {
+                                $webxpayReference = $webxpayTransaction->gateway_reference ?? $webxpayTransaction->gateway_transaction_id;
+                            }
+                        @endphp
+                        
+                        @if($webxpayReference)
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-400">💳 WebXPay Reference</span>
+                            <div class="flex items-center space-x-2">
+                                <span class="bg-purple-900/30 px-3 py-1 rounded-lg text-purple-300 font-mono text-sm font-bold border border-purple-500/30">
+                                    {{ $webxpayReference }}
+                                </span>
+                                @if($webxpayTransaction)
+                                <a href="{{ route('admin.transactions.show', $webxpayTransaction) }}" 
+                                   class="text-purple-400 hover:text-purple-300 text-xs">
+                                    View Transaction →
+                                </a>
+                                @endif
+                            </div>
+                        </div>
+                        @endif
                     @endif
                     
                     <div class="flex items-center justify-between">

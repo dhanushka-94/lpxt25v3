@@ -22754,3 +22754,7 @@ Stack trace:
 #52 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('C:\\\\Users\\\\Dhanus...')
 #53 {main}
 "} 
+[2025-09-28 18:56:38] local.INFO: Cart add request: {"product_id":1316,"quantity":1} 
+[2025-09-28 18:56:38] local.INFO: Product found: {"product":1316} 
+[2025-09-28 18:56:39] local.INFO: Cart add request: {"product_id":2646,"quantity":1} 
+[2025-09-28 18:56:39] local.INFO: Product found: {"product":2646} 

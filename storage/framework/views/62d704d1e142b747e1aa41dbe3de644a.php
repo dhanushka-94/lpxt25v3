@@ -1,8 +1,8 @@
-@extends('admin.layout')
 
-@section('title', 'Transactions')
 
-@section('content')
+<?php $__env->startSection('title', 'Transactions'); ?>
+
+<?php $__env->startSection('content'); ?>
 <div class="space-y-8">
     
     <!-- Page Header -->
@@ -14,7 +14,7 @@
         
         <div class="flex items-center space-x-4">
             <!-- Export Button -->
-            <a href="{{ route('admin.transactions.export', request()->query()) }}" 
+            <a href="<?php echo e(route('admin.transactions.export', request()->query())); ?>" 
                class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
@@ -32,8 +32,8 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-400">Total Transactions</p>
-                    <p class="text-3xl font-bold text-white">{{ number_format($stats['total_transactions']) }}</p>
-                    <p class="text-sm text-blue-400">{{ $stats['success_rate'] }}% success rate</p>
+                    <p class="text-3xl font-bold text-white"><?php echo e(number_format($stats['total_transactions'])); ?></p>
+                    <p class="text-sm text-blue-400"><?php echo e($stats['success_rate']); ?>% success rate</p>
                 </div>
                 <div class="p-3 bg-blue-500/20 rounded-lg">
                     <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,8 +48,8 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-400">Total Revenue</p>
-                    <p class="text-3xl font-bold text-white">LKR {{ number_format($stats['total_amount'], 2) }}</p>
-                    <p class="text-sm text-green-400">+LKR {{ number_format($stats['total_fees'], 2) }} in fees</p>
+                    <p class="text-3xl font-bold text-white">LKR <?php echo e(number_format($stats['total_amount'], 2)); ?></p>
+                    <p class="text-sm text-green-400">+LKR <?php echo e(number_format($stats['total_fees'], 2)); ?> in fees</p>
                 </div>
                 <div class="p-3 bg-green-500/20 rounded-lg">
                     <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -64,7 +64,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-400">Failed Transactions</p>
-                    <p class="text-3xl font-bold text-white">{{ number_format($stats['failed_transactions']) }}</p>
+                    <p class="text-3xl font-bold text-white"><?php echo e(number_format($stats['failed_transactions'])); ?></p>
                     <p class="text-sm text-red-400">Requires attention</p>
                 </div>
                 <div class="p-3 bg-red-500/20 rounded-lg">
@@ -80,7 +80,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-400">Pending Transactions</p>
-                    <p class="text-3xl font-bold text-white">{{ number_format($stats['pending_transactions']) }}</p>
+                    <p class="text-3xl font-bold text-white"><?php echo e(number_format($stats['pending_transactions'])); ?></p>
                     <p class="text-sm text-yellow-400">Awaiting processing</p>
                 </div>
                 <div class="p-3 bg-yellow-500/20 rounded-lg">
@@ -98,7 +98,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-400">Credit/Debit Cards</p>
-                    <p class="text-2xl font-bold text-white">{{ number_format($stats['webxpay_count']) }}</p>
+                    <p class="text-2xl font-bold text-white"><?php echo e(number_format($stats['webxpay_count'])); ?></p>
                 </div>
                 <div class="p-3 bg-purple-500/20 rounded-lg">
                     <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,7 +112,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-400">Koko Pay (BNPL)</p>
-                    <p class="text-2xl font-bold text-white">{{ number_format($stats['kokopay_count']) }}</p>
+                    <p class="text-2xl font-bold text-white"><?php echo e(number_format($stats['kokopay_count'])); ?></p>
                 </div>
                 <div class="p-3 bg-indigo-500/20 rounded-lg">
                     <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -126,7 +126,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-400">Bank Transfers</p>
-                    <p class="text-2xl font-bold text-white">{{ number_format($stats['bank_transfer_count']) }}</p>
+                    <p class="text-2xl font-bold text-white"><?php echo e(number_format($stats['bank_transfer_count'])); ?></p>
                 </div>
                 <div class="p-3 bg-cyan-500/20 rounded-lg">
                     <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -139,7 +139,7 @@
 
     <!-- Filters and Search -->
     <div class="bg-gradient-to-br from-[#1a1a1c] to-[#2a2a2c] rounded-xl border border-gray-800 p-6">
-        <form method="GET" action="{{ route('admin.transactions.index') }}" class="space-y-4">
+        <form method="GET" action="<?php echo e(route('admin.transactions.index')); ?>" class="space-y-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 
                 <!-- Search -->
@@ -147,7 +147,7 @@
                     <label class="block text-sm font-medium text-gray-300 mb-2">Search</label>
                     <input type="text" 
                            name="search" 
-                           value="{{ request('search') }}"
+                           value="<?php echo e(request('search')); ?>"
                            placeholder="Transaction ID, Order, Customer..."
                            class="w-full px-3 py-2 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                 </div>
@@ -158,9 +158,9 @@
                     <select name="payment_method" 
                             class="w-full px-3 py-2 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                         <option value="">All Methods</option>
-                        <option value="webxpay" {{ request('payment_method') == 'webxpay' ? 'selected' : '' }}>Credit/Debit Card</option>
-                        <option value="kokopay" {{ request('payment_method') == 'kokopay' ? 'selected' : '' }}>Koko Pay (BNPL)</option>
-                        <option value="bank_transfer" {{ request('payment_method') == 'bank_transfer' ? 'selected' : '' }}>Bank Transfer</option>
+                        <option value="webxpay" <?php echo e(request('payment_method') == 'webxpay' ? 'selected' : ''); ?>>Credit/Debit Card</option>
+                        <option value="kokopay" <?php echo e(request('payment_method') == 'kokopay' ? 'selected' : ''); ?>>Koko Pay (BNPL)</option>
+                        <option value="bank_transfer" <?php echo e(request('payment_method') == 'bank_transfer' ? 'selected' : ''); ?>>Bank Transfer</option>
                     </select>
                 </div>
 
@@ -170,12 +170,12 @@
                     <select name="status" 
                             class="w-full px-3 py-2 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                         <option value="">All Statuses</option>
-                        <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
-                        <option value="processing" {{ request('status') == 'processing' ? 'selected' : '' }}>Processing</option>
-                        <option value="completed" {{ request('status') == 'completed' ? 'selected' : '' }}>Completed</option>
-                        <option value="failed" {{ request('status') == 'failed' ? 'selected' : '' }}>Failed</option>
-                        <option value="cancelled" {{ request('status') == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
-                        <option value="refunded" {{ request('status') == 'refunded' ? 'selected' : '' }}>Refunded</option>
+                        <option value="pending" <?php echo e(request('status') == 'pending' ? 'selected' : ''); ?>>Pending</option>
+                        <option value="processing" <?php echo e(request('status') == 'processing' ? 'selected' : ''); ?>>Processing</option>
+                        <option value="completed" <?php echo e(request('status') == 'completed' ? 'selected' : ''); ?>>Completed</option>
+                        <option value="failed" <?php echo e(request('status') == 'failed' ? 'selected' : ''); ?>>Failed</option>
+                        <option value="cancelled" <?php echo e(request('status') == 'cancelled' ? 'selected' : ''); ?>>Cancelled</option>
+                        <option value="refunded" <?php echo e(request('status') == 'refunded' ? 'selected' : ''); ?>>Refunded</option>
                     </select>
                 </div>
 
@@ -185,14 +185,14 @@
                         <label class="block text-sm font-medium text-gray-300 mb-2">Date From</label>
                         <input type="date" 
                                name="date_from" 
-                               value="{{ request('date_from') }}"
+                               value="<?php echo e(request('date_from')); ?>"
                                class="w-full px-3 py-2 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-300 mb-2">Date To</label>
                         <input type="date" 
                                name="date_to" 
-                               value="{{ request('date_to') }}"
+                               value="<?php echo e(request('date_to')); ?>"
                                class="w-full px-3 py-2 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                     </div>
                 </div>
@@ -207,7 +207,7 @@
                     Filter Transactions
                 </button>
                 
-                <a href="{{ route('admin.transactions.index') }}" 
+                <a href="<?php echo e(route('admin.transactions.index')); ?>" 
                    class="inline-flex items-center px-6 py-2 bg-gray-600 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
@@ -234,43 +234,43 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-800">
-                    @forelse($transactions as $transaction)
+                    <?php $__empty_1 = true; $__currentLoopData = $transactions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $transaction): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <tr class="hover:bg-gray-800/30 transition-colors">
                         <!-- Transaction Info -->
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex flex-col">
-                                <div class="text-sm font-medium text-white">{{ $transaction->transaction_id }}</div>
-                                @if($transaction->order)
-                                    <div class="text-sm text-gray-400">Order: {{ $transaction->order->order_number }}</div>
-                                @endif
-                        @if($transaction->payment_method === 'kokopay' && $transaction->gateway_reference)
-                            <div class="text-xs text-purple-400 font-mono">⏰ Koko ID: {{ $transaction->gateway_reference }}</div>
-                        @elseif($transaction->payment_method === 'webxpay' && $transaction->gateway_reference)
-                            <div class="text-xs text-purple-400 font-mono">💳 WebX Ref: {{ $transaction->gateway_reference }}</div>
-                        @endif
-                                @if($transaction->gateway_transaction_id)
-                                    <div class="text-xs text-gray-500">Gateway: {{ $transaction->gateway_transaction_id }}</div>
-                                @endif
+                                <div class="text-sm font-medium text-white"><?php echo e($transaction->transaction_id); ?></div>
+                                <?php if($transaction->order): ?>
+                                    <div class="text-sm text-gray-400">Order: <?php echo e($transaction->order->order_number); ?></div>
+                                <?php endif; ?>
+                        <?php if($transaction->payment_method === 'kokopay' && $transaction->gateway_reference): ?>
+                            <div class="text-xs text-purple-400 font-mono">⏰ Koko ID: <?php echo e($transaction->gateway_reference); ?></div>
+                        <?php elseif($transaction->payment_method === 'webxpay' && $transaction->gateway_reference): ?>
+                            <div class="text-xs text-purple-400 font-mono">💳 WebX Ref: <?php echo e($transaction->gateway_reference); ?></div>
+                        <?php endif; ?>
+                                <?php if($transaction->gateway_transaction_id): ?>
+                                    <div class="text-xs text-gray-500">Gateway: <?php echo e($transaction->gateway_transaction_id); ?></div>
+                                <?php endif; ?>
                             </div>
                         </td>
 
                         <!-- Customer Info -->
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex flex-col">
-                                <div class="text-sm font-medium text-white">{{ $transaction->customer_name ?: 'N/A' }}</div>
-                                @if($transaction->customer_email)
-                                    <div class="text-sm text-gray-400">{{ $transaction->customer_email }}</div>
-                                @endif
-                                @if($transaction->customer_phone)
-                                    <div class="text-xs text-gray-500">{{ $transaction->customer_phone }}</div>
-                                @endif
+                                <div class="text-sm font-medium text-white"><?php echo e($transaction->customer_name ?: 'N/A'); ?></div>
+                                <?php if($transaction->customer_email): ?>
+                                    <div class="text-sm text-gray-400"><?php echo e($transaction->customer_email); ?></div>
+                                <?php endif; ?>
+                                <?php if($transaction->customer_phone): ?>
+                                    <div class="text-xs text-gray-500"><?php echo e($transaction->customer_phone); ?></div>
+                                <?php endif; ?>
                             </div>
                         </td>
 
                         <!-- Payment Method -->
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
-                                @if($transaction->payment_method === 'webxpay')
+                                <?php if($transaction->payment_method === 'webxpay'): ?>
                                     <div class="flex items-center">
                                         <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center mr-3">
                                             <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -279,7 +279,7 @@
                                         </div>
                                         <span class="text-sm text-white">Credit/Debit Card</span>
                                     </div>
-                                @elseif($transaction->payment_method === 'kokopay')
+                                <?php elseif($transaction->payment_method === 'kokopay'): ?>
                                     <div class="flex items-center">
                                         <div class="w-8 h-8 bg-indigo-500/20 rounded-lg flex items-center justify-center mr-3">
                                             <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -288,7 +288,7 @@
                                         </div>
                                         <span class="text-sm text-white">Koko Pay (BNPL)</span>
                                     </div>
-                                @elseif($transaction->payment_method === 'bank_transfer')
+                                <?php elseif($transaction->payment_method === 'bank_transfer'): ?>
                                     <div class="flex items-center">
                                         <div class="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center mr-3">
                                             <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -297,24 +297,24 @@
                                         </div>
                                         <span class="text-sm text-white">Bank Transfer</span>
                                     </div>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </td>
 
                         <!-- Amount -->
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex flex-col">
-                                <div class="text-sm font-medium text-white">LKR {{ number_format($transaction->amount, 2) }}</div>
-                                @if($transaction->transaction_fee > 0)
-                                    <div class="text-xs text-gray-400">Fee: LKR {{ number_format($transaction->transaction_fee, 2) }}</div>
-                                    <div class="text-xs text-green-400">Total: LKR {{ number_format($transaction->total_amount, 2) }}</div>
-                                @endif
+                                <div class="text-sm font-medium text-white">LKR <?php echo e(number_format($transaction->amount, 2)); ?></div>
+                                <?php if($transaction->transaction_fee > 0): ?>
+                                    <div class="text-xs text-gray-400">Fee: LKR <?php echo e(number_format($transaction->transaction_fee, 2)); ?></div>
+                                    <div class="text-xs text-green-400">Total: LKR <?php echo e(number_format($transaction->total_amount, 2)); ?></div>
+                                <?php endif; ?>
                             </div>
                         </td>
 
                         <!-- Status -->
                         <td class="px-6 py-4 whitespace-nowrap">
-                            @php
+                            <?php
                                 $statusColors = [
                                     'pending' => 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
                                     'processing' => 'bg-blue-500/20 text-blue-400 border-blue-500/30',
@@ -324,32 +324,33 @@
                                     'refunded' => 'bg-purple-500/20 text-purple-400 border-purple-500/30',
                                 ];
                                 $statusColor = $statusColors[$transaction->status] ?? 'bg-gray-500/20 text-gray-400 border-gray-500/30';
-                            @endphp
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border {{ $statusColor }}">
-                                {{ ucfirst($transaction->status) }}
+                            ?>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border <?php echo e($statusColor); ?>">
+                                <?php echo e(ucfirst($transaction->status)); ?>
+
                             </span>
-                            @if($transaction->failure_reason)
-                                <div class="text-xs text-red-400 mt-1">{{ Str::limit($transaction->failure_reason, 30) }}</div>
-                            @endif
+                            <?php if($transaction->failure_reason): ?>
+                                <div class="text-xs text-red-400 mt-1"><?php echo e(Str::limit($transaction->failure_reason, 30)); ?></div>
+                            <?php endif; ?>
                         </td>
 
                         <!-- Date -->
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
                             <div class="flex flex-col">
-                                <div>{{ $transaction->created_at->format('M d, Y') }}</div>
-                                <div class="text-xs text-gray-500">{{ $transaction->created_at->format('H:i:s') }}</div>
-                                @if($transaction->completed_at)
-                                    <div class="text-xs text-green-400">Completed: {{ $transaction->completed_at->format('H:i:s') }}</div>
-                                @elseif($transaction->failed_at)
-                                    <div class="text-xs text-red-400">Failed: {{ $transaction->failed_at->format('H:i:s') }}</div>
-                                @endif
+                                <div><?php echo e($transaction->created_at->format('M d, Y')); ?></div>
+                                <div class="text-xs text-gray-500"><?php echo e($transaction->created_at->format('H:i:s')); ?></div>
+                                <?php if($transaction->completed_at): ?>
+                                    <div class="text-xs text-green-400">Completed: <?php echo e($transaction->completed_at->format('H:i:s')); ?></div>
+                                <?php elseif($transaction->failed_at): ?>
+                                    <div class="text-xs text-red-400">Failed: <?php echo e($transaction->failed_at->format('H:i:s')); ?></div>
+                                <?php endif; ?>
                             </div>
                         </td>
 
                         <!-- Actions -->
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex items-center justify-end space-x-2">
-                                <a href="{{ route('admin.transactions.show', $transaction) }}" 
+                                <a href="<?php echo e(route('admin.transactions.show', $transaction)); ?>" 
                                    class="text-[#f59e0b] hover:text-[#d97706] transition-colors"
                                    title="View Details">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -358,9 +359,9 @@
                                     </svg>
                                 </a>
                                 
-                                @if($transaction->isFailed())
-                                    <form action="{{ route('admin.transactions.retry', $transaction) }}" method="POST" class="inline-block">
-                                        @csrf
+                                <?php if($transaction->isFailed()): ?>
+                                    <form action="<?php echo e(route('admin.transactions.retry', $transaction)); ?>" method="POST" class="inline-block">
+                                        <?php echo csrf_field(); ?>
                                         <button type="submit" 
                                                 class="text-blue-400 hover:text-blue-300 transition-colors"
                                                 title="Retry Transaction"
@@ -370,22 +371,22 @@
                                             </svg>
                                         </button>
                                     </form>
-                                @endif
+                                <?php endif; ?>
 
-                                @if($transaction->isCompleted())
+                                <?php if($transaction->isCompleted()): ?>
                                     <button type="button" 
                                             class="text-purple-400 hover:text-purple-300 transition-colors"
                                             title="Refund Transaction"
-                                            onclick="openRefundModal('{{ $transaction->id }}')">
+                                            onclick="openRefundModal('<?php echo e($transaction->id); ?>')">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/>
                                         </svg>
                                     </button>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </td>
                     </tr>
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                     <tr>
                         <td colspan="7" class="px-6 py-12 text-center">
                             <div class="flex flex-col items-center">
@@ -397,16 +398,17 @@
                             </div>
                         </td>
                     </tr>
-                    @endforelse
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
 
-        @if($transactions->hasPages())
+        <?php if($transactions->hasPages()): ?>
         <div class="px-6 py-4 border-t border-gray-800">
-            {{ $transactions->appends(request()->query())->links() }}
+            <?php echo e($transactions->appends(request()->query())->links()); ?>
+
         </div>
-        @endif
+        <?php endif; ?>
     </div>
 </div>
 
@@ -423,7 +425,7 @@
         </div>
         
         <form id="refundForm" method="POST">
-            @csrf
+            <?php echo csrf_field(); ?>
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-300 mb-2">Refund Reason</label>
                 <textarea name="refund_reason" 
@@ -470,4 +472,6 @@ document.getElementById('refundModal').addEventListener('click', function(e) {
     }
 });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Dhanushka\Desktop\MSK\MSKMSV3\resources\views/admin/transactions/index.blade.php ENDPATH**/ ?>
