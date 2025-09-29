@@ -204,8 +204,8 @@ class ProductController extends Controller
             });
         }
 
-        // Sort by latest first (newest promotion items first)
-        $query->orderBy('created_at', 'DESC');
+        // Sort by latest first (newest promotion items first - using ID as proxy for creation order)
+        $query->orderBy('id', 'DESC');
         
         // Sort by discount percentage (highest discount first) as secondary
         $query->orderByRaw('((price - promo_price) / price) DESC');
