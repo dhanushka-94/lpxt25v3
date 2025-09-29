@@ -563,12 +563,6 @@
                         </div>
                     </div>
 
-                            <!-- Credit/Debit Card Payment - Primary Payment Option -->
-                            <label class="flex items-center p-4 border-2 border-primary-500 bg-gradient-to-r from-primary-900/20 to-primary-800/20 rounded-lg hover:border-primary-400 transition-colors cursor-pointer relative">
-                                <input type="radio" 
-                                       name="payment_method" 
-                                       value="webxpay" 
-                                       checked
                                        class="h-4 w-4 text-primary-500 focus:ring-primary-500 border-gray-700 bg-[#0f0f0f]">
                                 <div class="ml-3 flex-1">
                                     <div class="flex items-center space-x-2">
