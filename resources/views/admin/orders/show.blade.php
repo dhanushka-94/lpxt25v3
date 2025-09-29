@@ -279,13 +279,13 @@ use Illuminate\Support\Facades\Storage;
                         <div class="bg-gray-700/30 rounded-lg p-4">
                             <h5 class="text-sm font-medium text-gray-300 mb-2">📦 Additional Charges</h5>
                             <div class="space-y-2 text-sm">
-                                @if($order->shipping_cost > 0)
+                    @if($order->shipping_cost > 0)
                                     <div class="flex justify-between">
                                         <span class="text-gray-400">🚚 Shipping Cost</span>
                                         <span class="text-white">+LKR {{ number_format($order->shipping_cost, 2) }}</span>
-                                    </div>
-                                @endif
-                                @if($order->tax_amount > 0)
+                        </div>
+                    @endif
+                    @if($order->tax_amount > 0)
                                     <div class="flex justify-between">
                                         <span class="text-gray-400">🧾 Tax</span>
                                         <span class="text-white">+LKR {{ number_format($order->tax_amount, 2) }}</span>
@@ -353,8 +353,8 @@ use Illuminate\Support\Facades\Storage;
                                 @if($totalDiscountSavings > 0)
                                     <div class="text-center text-sm text-green-400 bg-green-900/20 rounded px-2 py-1">
                                         🎉 Customer saved LKR {{ number_format($totalDiscountSavings, 2) }} on this order!
-                                    </div>
-                                @endif
+                        </div>
+                    @endif
                             </div>
                         </div>
                     </div>
