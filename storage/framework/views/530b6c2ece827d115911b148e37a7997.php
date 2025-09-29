@@ -2,6 +2,10 @@
 
 <?php $__env->startSection('title', 'Order Details - ' . $order->order_number); ?>
 
+<?php
+use Illuminate\Support\Facades\Storage;
+?>
+
 <?php $__env->startSection('content'); ?>
 <div class="space-y-6">
     

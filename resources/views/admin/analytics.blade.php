@@ -66,11 +66,11 @@
                         <label class="block text-sm font-medium text-gray-300 mb-2">Legacy Periods</label>
                         <select name="period" class="w-full px-3 py-2 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#f59e0b]">
                             <option value="">Custom Range</option>
-                            <option value="7" {{ $period == '7' ? 'selected' : '' }}>Last 7 Days</option>
-                            <option value="30" {{ $period == '30' ? 'selected' : '' }}>Last 30 Days</option>
-                            <option value="90" {{ $period == '90' ? 'selected' : '' }}>Last 90 Days</option>
-                            <option value="365" {{ $period == '365' ? 'selected' : '' }}>Last Year</option>
-                        </select>
+                    <option value="7" {{ $period == '7' ? 'selected' : '' }}>Last 7 Days</option>
+                    <option value="30" {{ $period == '30' ? 'selected' : '' }}>Last 30 Days</option>
+                    <option value="90" {{ $period == '90' ? 'selected' : '' }}>Last 90 Days</option>
+                    <option value="365" {{ $period == '365' ? 'selected' : '' }}>Last Year</option>
+                </select>
                     </div>
 
                     <!-- Filter Buttons -->
@@ -89,7 +89,7 @@
                                 Reset
                             </a>
                         @endif
-                    </div>
+        </div>
                 </div>
 
                 <!-- Active Filters Display -->

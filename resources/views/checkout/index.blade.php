@@ -515,6 +515,7 @@
                                                            class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-500 file:text-white hover:file:bg-blue-600 file:transition-colors border border-gray-700 rounded-lg bg-[#0f0f0f] focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                     <div class="text-xs text-gray-500 mt-1">
                                                         📋 Please upload a clear photo or scan of your bank transfer slip/receipt
+                                                        <br>💡 File will be saved with your name and phone number for easy identification
                                                     </div>
                                                 </div>
                                                 
@@ -535,6 +536,7 @@
                                                                 <li>• Clear, readable image of transfer receipt</li>
                                                                 <li>• Include transaction reference number</li>
                                                                 <li>• Show transfer amount and date</li>
+                                                                <li>• Full Name and Phone Number must be filled</li>
                                                                 <li>• JPG, PNG, or PDF format only</li>
                                                                 <li>• Maximum file size: 2MB</li>
                                                             </ul>

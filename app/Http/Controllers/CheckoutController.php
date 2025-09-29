@@ -208,14 +208,23 @@ class CheckoutController extends Controller
                     Storage::disk('public')->makeDirectory($uploadPath);
                 }
                 
-                // Generate unique filename
-                $filename = time() . '_' . uniqid() . '.' . $transferSlip->getClientOriginalExtension();
+                // Generate filename with customer details
+                $customerName = preg_replace('/[^A-Za-z0-9\-_]/', '_', $request->customer_name);
+                $customerPhone = preg_replace('/[^0-9]/', '', $request->customer_phone);
+                $timestamp = time();
+                $uniqueId = uniqid();
+                $extension = $transferSlip->getClientOriginalExtension();
+                
+                $filename = "{$customerName}_{$customerPhone}_{$timestamp}_{$uniqueId}.{$extension}";
                 
                 // Store file
                 $transferSlipPath = $transferSlip->storeAs($uploadPath, $filename, 'public');
                 
                 \Log::info('Transfer slip uploaded', [
+                    'customer_name' => $request->customer_name,
+                    'customer_phone' => $request->customer_phone,
                     'original_name' => $transferSlip->getClientOriginalName(),
+                    'stored_filename' => $filename,
                     'path' => $transferSlipPath,
                     'size' => $transferSlip->getSize()
                 ]);
