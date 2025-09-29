@@ -23,6 +23,104 @@
         </div>
     </div>
 
+    <!-- Quick Sort & Filter Buttons -->
+    <div class="bg-gradient-to-r from-[#1a1a1c] to-[#2a2a2c] rounded-xl border border-gray-800 p-4">
+        <div class="flex flex-wrap items-center gap-3">
+            <span class="text-sm font-medium text-gray-300">🚀 Quick Filters:</span>
+            
+            <!-- New/Unread Orders -->
+            <a href="{{ route('admin.orders.index', ['status' => 'pending', 'view_status' => 'unread']) }}" 
+               class="inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors
+                      {{ request('status') === 'pending' && request('view_status') === 'unread' ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-gray-700/50 text-gray-300 hover:bg-red-500/10 hover:text-red-400' }}">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                </svg>
+                🔴 New Orders
+                @php
+                    $newOrdersCount = \App\Models\Order::where('status', 'pending')->where('admin_viewed_at', null)->count();
+                @endphp
+                @if($newOrdersCount > 0)
+                    <span class="ml-2 px-2 py-1 bg-red-500 text-white text-xs rounded-full">{{ $newOrdersCount }}</span>
+                @endif
+            </a>
+            
+            <!-- Confirmed Orders -->
+            <a href="{{ route('admin.orders.index', ['status' => 'confirmed']) }}" 
+               class="inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors
+                      {{ request('status') === 'confirmed' ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' : 'bg-gray-700/50 text-gray-300 hover:bg-blue-500/10 hover:text-blue-400' }}">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                </svg>
+                ✅ Confirmed
+                @php
+                    $confirmedCount = \App\Models\Order::where('status', 'confirmed')->count();
+                @endphp
+                @if($confirmedCount > 0)
+                    <span class="ml-2 px-2 py-1 bg-blue-500/70 text-white text-xs rounded-full">{{ $confirmedCount }}</span>
+                @endif
+            </a>
+            
+            <!-- Pending Orders -->
+            <a href="{{ route('admin.orders.index', ['status' => 'pending']) }}" 
+               class="inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors
+                      {{ request('status') === 'pending' && !request('view_status') ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' : 'bg-gray-700/50 text-gray-300 hover:bg-yellow-500/10 hover:text-yellow-400' }}">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                ⏰ Pending
+                @php
+                    $pendingCount = \App\Models\Order::where('status', 'pending')->count();
+                @endphp
+                @if($pendingCount > 0)
+                    <span class="ml-2 px-2 py-1 bg-yellow-500/70 text-white text-xs rounded-full">{{ $pendingCount }}</span>
+                @endif
+            </a>
+            
+            <!-- Processing Orders -->
+            <a href="{{ route('admin.orders.index', ['status' => 'processing']) }}" 
+               class="inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors
+                      {{ request('status') === 'processing' ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30' : 'bg-gray-700/50 text-gray-300 hover:bg-purple-500/10 hover:text-purple-400' }}">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+                🔄 Processing
+                @php
+                    $processingCount = \App\Models\Order::where('status', 'processing')->count();
+                @endphp
+                @if($processingCount > 0)
+                    <span class="ml-2 px-2 py-1 bg-purple-500/70 text-white text-xs rounded-full">{{ $processingCount }}</span>
+                @endif
+            </a>
+            
+            <!-- Payment Pending -->
+            <a href="{{ route('admin.orders.index', ['payment_status' => 'pending']) }}" 
+               class="inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors
+                      {{ request('payment_status') === 'pending' ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30' : 'bg-gray-700/50 text-gray-300 hover:bg-orange-500/10 hover:text-orange-400' }}">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3-3v8a3 3 0 003 3z"/>
+                </svg>
+                💳 Payment Due
+                @php
+                    $paymentPendingCount = \App\Models\Order::where('payment_status', 'pending')->count();
+                @endphp
+                @if($paymentPendingCount > 0)
+                    <span class="ml-2 px-2 py-1 bg-orange-500/70 text-white text-xs rounded-full">{{ $paymentPendingCount }}</span>
+                @endif
+            </a>
+            
+            <!-- Clear All Filters -->
+            <div class="border-l border-gray-600 pl-3 ml-2">
+                <a href="{{ route('admin.orders.index') }}" 
+                   class="inline-flex items-center px-3 py-2 bg-gray-600/50 text-gray-300 rounded-lg text-sm font-medium hover:bg-gray-500/50 transition-colors">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                    Clear All
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Filters -->
     <div class="bg-gradient-to-r from-[#1a1a1c] to-[#2a2a2c] rounded-xl border border-gray-800 p-6">
         <form method="GET" action="{{ route('admin.orders.index') }}">
