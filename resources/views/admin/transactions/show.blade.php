@@ -244,18 +244,60 @@
 
                 <div class="space-y-4">
                     @foreach($transaction->order->orderItems as $item)
+                    @php
+                        // Get product details to check for discounts
+                        $product = \App\Models\SmaProduct::find($item->product_id);
+                        $hasDiscount = false;
+                        $originalPrice = $item->unit_price;
+                        $discountAmount = 0;
+                        $discountPercentage = 0;
+                        
+                        if ($product) {
+                            $hasDiscount = $product->price > $product->final_price;
+                            $originalPrice = $product->price;
+                            if ($hasDiscount) {
+                                $discountAmount = $originalPrice - $item->unit_price;
+                                $discountPercentage = round(($discountAmount / $originalPrice) * 100);
+                            }
+                        }
+                    @endphp
+                    
                     <div class="flex items-center space-x-4 p-4 bg-[#0f0f0f] rounded-lg">
                         @if($item->product)
                             <img src="{{ $item->product->main_image }}" 
                                  alt="{{ $item->product->name }}" 
                                  class="w-16 h-16 object-cover rounded-lg">
                             <div class="flex-1">
-                                <h4 class="text-white font-medium">{{ $item->product->name }}</h4>
+                                <div class="flex items-center space-x-2">
+                                    <h4 class="text-white font-medium">{{ $item->product->name }}</h4>
+                                    @if($hasDiscount)
+                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-900/50 text-red-300 border border-red-700/50">
+                                            {{ $discountPercentage }}% OFF
+                                        </span>
+                                    @endif
+                                </div>
+                                @if($item->product_code)
+                                    <p class="text-gray-500 text-xs">Code: {{ $item->product_code }}</p>
+                                @endif
                                 <p class="text-gray-400 text-sm">Quantity: {{ $item->quantity }}</p>
-                                <p class="text-[#f59e0b] font-medium">LKR {{ number_format($item->price, 2) }} each</p>
+                                @if($hasDiscount)
+                                    <div class="space-y-1">
+                                        <p class="text-gray-500 text-sm line-through">LKR {{ number_format($originalPrice, 2) }} each</p>
+                                        <p class="text-green-400 font-medium text-sm">LKR {{ number_format($item->unit_price, 2) }} each (Sale Price)</p>
+                                    </div>
+                                @else
+                                    <p class="text-[#f59e0b] font-medium">LKR {{ number_format($item->unit_price, 2) }} each</p>
+                                @endif
                             </div>
                             <div class="text-right">
-                                <p class="text-white font-medium">LKR {{ number_format($item->price * $item->quantity, 2) }}</p>
+                                @if($hasDiscount)
+                                    <div class="space-y-1">
+                                        <p class="text-white font-medium">LKR {{ number_format($item->total_price, 2) }}</p>
+                                        <p class="text-green-400 text-xs">Saved: LKR {{ number_format($discountAmount * $item->quantity, 2) }}</p>
+                                    </div>
+                                @else
+                                    <p class="text-white font-medium">LKR {{ number_format($item->total_price, 2) }}</p>
+                                @endif
                             </div>
                         @else
                             <div class="w-16 h-16 bg-gray-700 rounded-lg flex items-center justify-center">
@@ -264,12 +306,15 @@
                                 </svg>
                             </div>
                             <div class="flex-1">
-                                <h4 class="text-gray-400 font-medium">Product Not Found</h4>
+                                <h4 class="text-gray-400 font-medium">{{ $item->product_name ?? 'Product Not Found' }}</h4>
+                                @if($item->product_code)
+                                    <p class="text-gray-500 text-xs">Code: {{ $item->product_code }}</p>
+                                @endif
                                 <p class="text-gray-500 text-sm">Quantity: {{ $item->quantity }}</p>
-                                <p class="text-gray-400 font-medium">LKR {{ number_format($item->price, 2) }} each</p>
+                                <p class="text-gray-400 font-medium">LKR {{ number_format($item->unit_price, 2) }} each</p>
                             </div>
                             <div class="text-right">
-                                <p class="text-gray-400 font-medium">LKR {{ number_format($item->price * $item->quantity, 2) }}</p>
+                                <p class="text-gray-400 font-medium">LKR {{ number_format($item->total_price, 2) }}</p>
                             </div>
                         @endif
                     </div>

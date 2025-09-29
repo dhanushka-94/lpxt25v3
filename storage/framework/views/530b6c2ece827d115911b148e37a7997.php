@@ -204,6 +204,24 @@ use Illuminate\Support\Facades\Storage;
             
             <div class="divide-y divide-gray-800">
                 <?php $__currentLoopData = $order->orderItems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php
+                        // Get product details to check for discounts
+                        $product = \App\Models\SmaProduct::find($item->product_id);
+                        $hasDiscount = false;
+                        $originalPrice = $item->unit_price;
+                        $discountAmount = 0;
+                        $discountPercentage = 0;
+                        
+                        if ($product) {
+                            $hasDiscount = $product->price > $product->final_price;
+                            $originalPrice = $product->price;
+                            if ($hasDiscount) {
+                                $discountAmount = $originalPrice - $item->unit_price;
+                                $discountPercentage = round(($discountAmount / $originalPrice) * 100);
+                            }
+                        }
+                    ?>
+                    
                     <div class="px-6 py-4">
                         <div class="flex items-center space-x-4">
                             <div class="flex-shrink-0 w-16 h-16 bg-gray-800 rounded-lg overflow-hidden">
@@ -212,14 +230,66 @@ use Illuminate\Support\Facades\Storage;
                                      class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1">
+                                <div class="flex items-center space-x-2">
                                 <h4 class="text-white font-medium"><?php echo e($item->product_name); ?></h4>
+                                    <?php if($hasDiscount): ?>
+                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-900/50 text-red-300 border border-red-700/50">
+                                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+                                            </svg>
+                                            <?php echo e($discountPercentage); ?>% OFF
+                                        </span>
+                                    <?php endif; ?>
+                                </div>
+                                
                                 <?php if($item->product_code): ?>
                                     <p class="text-sm text-gray-400">Code: <?php echo e($item->product_code); ?></p>
                                 <?php endif; ?>
-                                <p class="text-sm text-gray-400">Quantity: <?php echo e($item->quantity); ?> × LKR <?php echo e(number_format($item->unit_price, 2)); ?></p>
+                                
+                                <!-- Pricing Information -->
+                                <div class="mt-2">
+                                    <?php if($hasDiscount): ?>
+                                        <!-- Product had discount -->
+                                        <div class="space-y-1">
+                                            <div class="flex items-center space-x-2 text-sm">
+                                                <span class="text-gray-400">Original Price:</span>
+                                                <span class="text-gray-500 line-through">LKR <?php echo e(number_format($originalPrice, 2)); ?></span>
+                                            </div>
+                                            <div class="flex items-center space-x-2 text-sm">
+                                                <span class="text-gray-400">Sale Price:</span>
+                                                <span class="text-green-400 font-medium">LKR <?php echo e(number_format($item->unit_price, 2)); ?></span>
+                                                <span class="text-green-400 text-xs">(Save LKR <?php echo e(number_format($discountAmount, 2)); ?>)</span>
+                                            </div>
+                                            <div class="flex items-center space-x-2 text-sm">
+                                                <span class="text-gray-400">Quantity:</span>
+                                                <span class="text-white"><?php echo e($item->quantity); ?></span>
+                                            </div>
+                                        </div>
+                                    <?php else: ?>
+                                        <!-- Product had no discount -->
+                                        <div class="flex items-center space-x-2 text-sm text-gray-400">
+                                            <span>Quantity: <?php echo e($item->quantity); ?> × LKR <?php echo e(number_format($item->unit_price, 2)); ?></span>
+                                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-700/50 text-gray-400">
+                                                Regular Price
+                                            </span>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                             <div class="text-right">
+                                <?php if($hasDiscount): ?>
+                                    <!-- Show savings summary -->
+                                    <div class="space-y-1">
+                                        <p class="text-sm text-gray-400">Total Item Cost:</p>
+                                        <p class="text-lg font-medium text-white">LKR <?php echo e(number_format($item->total_price, 2)); ?></p>
+                                        <p class="text-xs text-green-400">
+                                            Saved: LKR <?php echo e(number_format($discountAmount * $item->quantity, 2)); ?>
+
+                                        </p>
+                                    </div>
+                                <?php else: ?>
                                 <p class="text-lg font-medium text-white">LKR <?php echo e(number_format($item->total_price, 2)); ?></p>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -279,13 +349,13 @@ use Illuminate\Support\Facades\Storage;
                         <div class="bg-gray-700/30 rounded-lg p-4">
                             <h5 class="text-sm font-medium text-gray-300 mb-2">📦 Additional Charges</h5>
                             <div class="space-y-2 text-sm">
-                                <?php if($order->shipping_cost > 0): ?>
+                    <?php if($order->shipping_cost > 0): ?>
                                     <div class="flex justify-between">
                                         <span class="text-gray-400">🚚 Shipping Cost</span>
                                         <span class="text-white">+LKR <?php echo e(number_format($order->shipping_cost, 2)); ?></span>
-                                    </div>
-                                <?php endif; ?>
-                                <?php if($order->tax_amount > 0): ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if($order->tax_amount > 0): ?>
                                     <div class="flex justify-between">
                                         <span class="text-gray-400">🧾 Tax</span>
                                         <span class="text-white">+LKR <?php echo e(number_format($order->tax_amount, 2)); ?></span>
@@ -354,8 +424,8 @@ use Illuminate\Support\Facades\Storage;
                                 <?php if($totalDiscountSavings > 0): ?>
                                     <div class="text-center text-sm text-green-400 bg-green-900/20 rounded px-2 py-1">
                                         🎉 Customer saved LKR <?php echo e(number_format($totalDiscountSavings, 2)); ?> on this order!
-                                    </div>
-                                <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
                             </div>
                         </div>
                     </div>
