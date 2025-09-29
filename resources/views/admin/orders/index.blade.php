@@ -426,6 +426,11 @@
                                             <span class="text-xs text-blue-400 font-medium">Gateway</span>
                                         @elseif($order->payment_method === 'bank_transfer')
                                             <span class="text-xs text-green-400 font-medium">Manual</span>
+                                            @if($order->transfer_slip_path)
+                                                <span class="text-xs text-blue-400 font-medium" title="Transfer slip uploaded">📎</span>
+                                            @else
+                                                <span class="text-xs text-gray-500 font-medium" title="No transfer slip">⏳</span>
+                                            @endif
                                         @endif
                                     </div>
                                 </td>

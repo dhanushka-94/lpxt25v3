@@ -2,6 +2,10 @@
 
 @section('title', 'Order Details - ' . $order->order_number)
 
+@php
+use Illuminate\Support\Facades\Storage;
+@endphp
+
 @section('content')
 <div class="space-y-6">
     
@@ -471,6 +475,115 @@
                             </div>
                         </div>
                         @endif
+                    @elseif($order->payment_method === 'bank_transfer')
+                        <!-- Bank Transfer Slip Display -->
+                        @if($order->transfer_slip_path)
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-400">🏦 Transfer Slip</span>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-green-900/30 px-3 py-1 rounded-lg text-green-300 text-sm font-medium border border-green-500/30">
+                                        ✅ Uploaded
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Transfer Slip Preview -->
+                            <div class="bg-gray-800/50 rounded-lg p-4 border border-gray-700">
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0">
+                                        @php
+                                            $fileExtension = pathinfo($order->transfer_slip_path, PATHINFO_EXTENSION);
+                                            $isImage = in_array(strtolower($fileExtension), ['jpg', 'jpeg', 'png']);
+                                            $isPdf = strtolower($fileExtension) === 'pdf';
+                                        @endphp
+                                        
+                                        @if($isImage)
+                                            <!-- Image Preview -->
+                                            <div class="w-32 h-32 bg-gray-900 rounded-lg overflow-hidden border border-gray-600">
+                                                <img src="{{ asset('storage/' . $order->transfer_slip_path) }}" 
+                                                     alt="Transfer Slip" 
+                                                     class="w-full h-full object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                                                     onclick="openImageModal('{{ asset('storage/' . $order->transfer_slip_path) }}', 'Transfer Slip - {{ $order->order_number }}')">
+                                            </div>
+                                        @elseif($isPdf)
+                                            <!-- PDF Icon -->
+                                            <div class="w-32 h-32 bg-red-900/20 rounded-lg border border-red-500/30 flex items-center justify-center">
+                                                <div class="text-center">
+                                                    <svg class="w-12 h-12 text-red-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                                    </svg>
+                                                    <span class="text-xs text-red-300 font-medium">PDF</span>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <!-- Generic File Icon -->
+                                            <div class="w-32 h-32 bg-gray-900 rounded-lg border border-gray-600 flex items-center justify-center">
+                                                <div class="text-center">
+                                                    <svg class="w-12 h-12 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                                    </svg>
+                                                    <span class="text-xs text-gray-400 font-medium">{{ strtoupper($fileExtension) }}</span>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    
+                                    <div class="flex-1 min-w-0">
+                                        <div class="space-y-2">
+                                            <div>
+                                                <div class="text-sm font-medium text-white">Transfer Receipt</div>
+                                                <div class="text-xs text-gray-400">{{ basename($order->transfer_slip_path) }}</div>
+                                            </div>
+                                            
+                                            <div class="text-xs text-gray-500">
+                                                <div>File Type: {{ strtoupper($fileExtension) }}</div>
+                                                @if(Storage::disk('public')->exists($order->transfer_slip_path))
+                                                    @php
+                                                        $fileSize = Storage::disk('public')->size($order->transfer_slip_path);
+                                                        $formattedSize = $fileSize < 1024 ? $fileSize . ' B' : 
+                                                                        ($fileSize < 1048576 ? round($fileSize/1024, 2) . ' KB' : 
+                                                                        round($fileSize/1048576, 2) . ' MB');
+                                                    @endphp
+                                                    <div>Size: {{ $formattedSize }}</div>
+                                                @endif
+                                                <div>Uploaded: {{ $order->created_at->format('M d, Y \a\t g:i A') }}</div>
+                                            </div>
+                                            
+                                            <!-- Action Buttons -->
+                                            <div class="flex items-center space-x-2 pt-2">
+                                                <a href="{{ asset('storage/' . $order->transfer_slip_path) }}" 
+                                                   target="_blank"
+                                                   class="inline-flex items-center px-3 py-1.5 bg-blue-600 text-white text-xs font-medium rounded-lg hover:bg-blue-700 transition-colors">
+                                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                                    </svg>
+                                                    View Full Size
+                                                </a>
+                                                
+                                                <a href="{{ asset('storage/' . $order->transfer_slip_path) }}" 
+                                                   download="transfer_slip_{{ $order->order_number }}.{{ $fileExtension }}"
+                                                   class="inline-flex items-center px-3 py-1.5 bg-green-600 text-white text-xs font-medium rounded-lg hover:bg-green-700 transition-colors">
+                                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                                    </svg>
+                                                    Download
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @else
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-400">🏦 Transfer Slip</span>
+                            <span class="bg-yellow-900/30 px-3 py-1 rounded-lg text-yellow-300 text-sm font-medium border border-yellow-500/30">
+                                ⏳ Not Uploaded
+                            </span>
+                        </div>
+                        @endif
                     @endif
                     
                     <div class="flex items-center justify-between">
@@ -545,6 +658,25 @@
     </div>
 </div>
 
+<!-- Image Modal -->
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="max-w-4xl max-h-full p-4">
+        <div class="bg-gray-900 rounded-lg overflow-hidden">
+            <div class="flex items-center justify-between p-4 border-b border-gray-700">
+                <h3 id="modalTitle" class="text-lg font-medium text-white"></h3>
+                <button onclick="closeImageModal()" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="p-4">
+                <img id="modalImage" src="" alt="" class="max-w-full max-h-96 mx-auto">
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 // Show/hide shipping fields based on status
 document.getElementById('status').addEventListener('change', function() {
@@ -553,6 +685,37 @@ document.getElementById('status').addEventListener('change', function() {
         shippingFields.style.display = 'block';
     } else {
         shippingFields.style.display = 'none';
+    }
+});
+
+// Image modal functions
+function openImageModal(imageUrl, title) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    
+    modalImage.src = imageUrl;
+    modalImage.alt = title;
+    modalTitle.textContent = title;
+    modal.classList.remove('hidden');
+    
+    // Close modal when clicking outside
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeImageModal();
+        }
+    });
+}
+
+function closeImageModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.add('hidden');
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeImageModal();
     }
 });
 </script>
