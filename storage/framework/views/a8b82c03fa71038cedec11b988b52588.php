@@ -57,16 +57,30 @@
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label for="customer_name" class="block text-sm font-medium text-gray-300 mb-2">
-                                    Full Name *
+                                <label for="first_name" class="block text-sm font-medium text-gray-300 mb-2">
+                                    First Name *
                                     <span class="text-red-400 text-xs">(Required)</span>
                                 </label>
                                 <input type="text" 
-                                       id="customer_name" 
-                                       name="customer_name" 
-                                       value="<?php echo e(old('customer_name', Auth::user()->name ?? '')); ?>" 
+                                       id="first_name" 
+                                       name="first_name" 
+                                       value="<?php echo e(old('first_name', Auth::user() ? explode(' ', Auth::user()->name)[0] : '')); ?>" 
                                        required
-                                       placeholder="Enter your full name"
+                                       placeholder="Enter your first name"
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                            </div>
+                            
+                            <div>
+                                <label for="last_name" class="block text-sm font-medium text-gray-300 mb-2">
+                                    Last Name *
+                                    <span class="text-red-400 text-xs">(Required)</span>
+                                </label>
+                                <input type="text" 
+                                       id="last_name" 
+                                       name="last_name" 
+                                       value="<?php echo e(old('last_name', Auth::user() && str_contains(Auth::user()->name, ' ') ? substr(Auth::user()->name, strpos(Auth::user()->name, ' ') + 1) : '')); ?>" 
+                                       required
+                                       placeholder="Enter your last name"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                             </div>
                             
@@ -391,12 +405,37 @@
                         </div>
                         
                         <div class="space-y-4">
-                            <!-- Credit/Debit Card Payment - Primary Payment Option -->
-                            <label class="flex items-center p-4 border-2 border-primary-500 bg-gradient-to-r from-primary-900/20 to-primary-800/20 rounded-lg hover:border-primary-400 transition-colors cursor-pointer relative">
+                            <!-- Bank Transfer - Now Primary/Default Option -->
+                            <label class="flex items-center p-4 border-2 border-green-500 bg-gradient-to-r from-green-900/20 to-green-800/20 rounded-lg hover:border-green-400 transition-colors cursor-pointer relative">
+                                <input type="radio" 
+                                       name="payment_method" 
+                                       value="bank_transfer"
+                                       checked
+                                       class="h-4 w-4 text-green-500 focus:ring-green-500 border-gray-700 bg-[#0f0f0f]">
+                                <div class="ml-3 flex-1">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="text-sm font-medium text-white">Bank Transfer</div>
+                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-600 text-white">
+                                            No Fees
+                                        </span>
+                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-600 text-white">
+                                            Recommended
+                                        </span>
+                                    </div>
+                                    <div class="text-sm text-gray-400">Direct transfer to our bank account • Upload transfer slip for verification</div>
+                                </div>
+                                <div class="flex items-center space-x-2 text-green-400">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m11 0a2 2 0 01-2 2H7a2 2 0 01-2-2m14 0V9a2 2 0 00-2-2M9 7h6m-6 4h6m-6 4h6m-6 4h6"/>
+                                    </svg>
+                                </div>
+                            </label>
+                            
+                            <!-- Credit/Debit Card Payment -->
+                            <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-primary-400 transition-colors cursor-pointer">
                                 <input type="radio" 
                                        name="payment_method" 
                                        value="webxpay" 
-                                       checked
                                        class="h-4 w-4 text-primary-500 focus:ring-primary-500 border-gray-700 bg-[#0f0f0f]">
                                 <div class="ml-3 flex-1">
                                     <div class="flex items-center space-x-2">
@@ -409,13 +448,13 @@
                                 </div>
                                 <div class="flex items-center space-x-2 text-primary-400">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3-3v8a3 3 0 003 3z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
                                     </svg>
                                 </div>
                             </label>
 
                             <!-- Koko Pay - BNPL Option -->
-                            <label class="flex items-center p-4 border-2 border-purple-500 bg-gradient-to-r from-purple-900/20 to-blue-900/20 rounded-lg hover:border-purple-400 transition-colors cursor-pointer relative">
+                            <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-purple-400 transition-colors cursor-pointer">
                                 <input type="radio" 
                                        name="payment_method" 
                                        value="kokopay"
@@ -431,28 +470,6 @@
                                 </div>
                                 <div class="flex items-center space-x-2 text-purple-400">
                                     <img src="<?php echo e(asset('images/kokopay-logo.png')); ?>" alt="Koko Pay" class="h-6 w-auto">
-                                </div>
-                            </label>
-                            
-                            <!-- Bank Transfer -->
-                            <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-[#f59e0b] transition-colors cursor-pointer">
-                                <input type="radio" 
-                                       name="payment_method" 
-                                       value="bank_transfer"
-                                       class="h-4 w-4 text-[#f59e0b] focus:ring-[#f59e0b] border-gray-700 bg-[#0f0f0f]">
-                                <div class="ml-3 flex-1">
-                                    <div class="flex items-center space-x-2">
-                                    <div class="text-sm font-medium text-white">Bank Transfer</div>
-                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-600 text-white">
-                                            No Fees
-                                        </span>
-                                    </div>
-                                    <div class="text-sm text-gray-400">Direct transfer to our bank account • Manual verification required</div>
-                                </div>
-                                <div class="flex items-center space-x-2 text-[#f59e0b]">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m11 0a2 2 0 01-2 2H7a2 2 0 01-2-2m14 0V9a2 2 0 00-2-2M9 7h6m-6 4h6m-6 4h6m-6 4h6"/>
-                                    </svg>
                                 </div>
                             </label>
                             
@@ -1100,7 +1117,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Always required fields
         const alwaysRequiredFields = [
-            'customer_name',
+            'first_name',
+            'last_name',
             'customer_phone', 
             'billing_address_line_1',
             'billing_city',

@@ -64,9 +64,10 @@ class WebXPayService
             // Validate and format contact number
             $contactNumber = $this->formatPhoneNumber($order->customer_phone);
             
-            // Validate required fields
-            $firstName = $this->getFirstName($order->customer_name);
-            $lastName = $this->getLastName($order->customer_name);
+            // Extract first and last names from order
+            $nameParts = explode(' ', trim($order->customer_name), 2);
+            $firstName = $nameParts[0] ?? '';
+            $lastName = $nameParts[1] ?? ($nameParts[0] ?? '');
             $email = $order->customer_email ?: 'customer@mskcomputers.lk';
             $addressLine1 = $order->billing_address_line_1 ?: $order->shipping_address_line_1;
             $city = $order->billing_city ?: $order->shipping_city;

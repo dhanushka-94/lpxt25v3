@@ -88,13 +88,14 @@ class CheckoutController extends Controller
     {
         \Log::info('Checkout process started', [
             'payment_method' => $request->payment_method,
-            'customer_name' => $request->customer_name,
-            'request_data' => $request->only(['payment_method', 'customer_name', 'customer_phone', 'customer_email'])
+            'customer_name' => $request->first_name . ' ' . $request->last_name,
+            'request_data' => $request->only(['payment_method', 'first_name', 'last_name', 'customer_phone', 'customer_email'])
         ]);
 
         $validator = Validator::make($request->all(), [
             // Required customer information
-            'customer_name' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'customer_phone' => ['required', 'string', 'regex:/^0[1-9][0-9]{8}$/', 'max:20'],
             
             // Optional customer information
@@ -209,7 +210,7 @@ class CheckoutController extends Controller
                 }
                 
                 // Generate filename with customer details
-                $customerName = preg_replace('/[^A-Za-z0-9\-_]/', '_', $request->customer_name);
+                $customerName = preg_replace('/[^A-Za-z0-9\-_]/', '_', $request->first_name . '_' . $request->last_name);
                 $customerPhone = preg_replace('/[^0-9]/', '', $request->customer_phone);
                 $timestamp = time();
                 $uniqueId = uniqid();
@@ -221,7 +222,7 @@ class CheckoutController extends Controller
                 $transferSlipPath = $transferSlip->storeAs($uploadPath, $filename, 'public');
                 
                 \Log::info('Transfer slip uploaded', [
-                    'customer_name' => $request->customer_name,
+                    'customer_name' => $request->first_name . ' ' . $request->last_name,
                     'customer_phone' => $request->customer_phone,
                     'original_name' => $transferSlip->getClientOriginalName(),
                     'stored_filename' => $filename,
@@ -233,7 +234,7 @@ class CheckoutController extends Controller
             // Create order
             $order = Order::create([
                 'user_id' => Auth::id(),
-                'customer_name' => $request->customer_name,
+                'customer_name' => $request->first_name . ' ' . $request->last_name,
                 'customer_email' => $request->customer_email ?: null,
                 'customer_phone' => $request->customer_phone,
                 'billing_address_line_1' => $request->billing_address_line_1,
