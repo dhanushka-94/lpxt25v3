@@ -340,7 +340,10 @@
                                     LKR {{ number_format($order->total_amount, 2) }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
-                                    {{ $order->created_at->format('M d, Y') }}
+                                    <div class="flex flex-col">
+                                        <div>{{ $order->created_at->format('M d, Y') }}</div>
+                                        <div class="text-xs text-gray-500">{{ $order->created_at->format('h:i A') }}</div>
+                                    </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <div class="flex items-center space-x-2">

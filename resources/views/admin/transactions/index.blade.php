@@ -337,11 +337,11 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
                             <div class="flex flex-col">
                                 <div>{{ $transaction->created_at->format('M d, Y') }}</div>
-                                <div class="text-xs text-gray-500">{{ $transaction->created_at->format('H:i:s') }}</div>
+                                <div class="text-xs text-gray-500">{{ $transaction->created_at->format('h:i A') }}</div>
                                 @if($transaction->completed_at)
-                                    <div class="text-xs text-green-400">Completed: {{ $transaction->completed_at->format('H:i:s') }}</div>
+                                    <div class="text-xs text-green-400">Completed: {{ $transaction->completed_at->format('h:i A') }}</div>
                                 @elseif($transaction->failed_at)
-                                    <div class="text-xs text-red-400">Failed: {{ $transaction->failed_at->format('H:i:s') }}</div>
+                                    <div class="text-xs text-red-400">Failed: {{ $transaction->failed_at->format('h:i A') }}</div>
                                 @endif
                             </div>
                         </td>

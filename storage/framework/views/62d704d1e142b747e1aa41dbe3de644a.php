@@ -338,9 +338,9 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
                             <div class="flex flex-col">
                                 <div><?php echo e($transaction->created_at->format('M d, Y')); ?></div>
-                                <div class="text-xs text-gray-500"><?php echo e($transaction->created_at->format('H:i:s')); ?></div>
+                                <div class="text-xs text-gray-500"><?php echo e($transaction->created_at->format('h:i A')); ?></div>
                                 <?php if($transaction->completed_at): ?>
-                                    <div class="text-xs text-green-400">Completed: <?php echo e($transaction->completed_at->format('H:i:s')); ?></div>
+                                    <div class="text-xs text-green-400">Completed: <?php echo e($transaction->completed_at->format('h:i A')); ?></div>
                                 <?php elseif($transaction->failed_at): ?>
                                     <div class="text-xs text-red-400">Failed: <?php echo e($transaction->failed_at->format('H:i:s')); ?></div>
                                 <?php endif; ?>
