@@ -1133,7 +1133,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Only check absolutely critical fields
         const criticalFieldsCheck = [
-            {name: 'customer_name', required: true},
+            {name: 'first_name', required: true},
+            {name: 'last_name', required: true},
             {name: 'customer_phone', required: true},
             {name: 'billing_address_line_1', required: true},
             {name: 'billing_city', required: true},
@@ -1234,8 +1235,11 @@ document.addEventListener('DOMContentLoaded', function() {
             let errorMessage = 'Please fill in the following required fields:\n\n';
             missingFields.forEach(field => {
                 switch(field) {
-                    case 'customer_name':
-                        errorMessage += '• Full Name\n';
+                    case 'first_name':
+                        errorMessage += '• First Name\n';
+                        break;
+                    case 'last_name':
+                        errorMessage += '• Last Name\n';
                         break;
                     case 'customer_phone':
                         errorMessage += '• Phone Number\n';

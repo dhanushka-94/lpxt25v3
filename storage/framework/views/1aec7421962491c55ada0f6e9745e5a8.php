@@ -1,8 +1,6 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Secure Payment - MSK Computers'); ?>
 
-@section('title', 'Secure Payment - MSK Computers')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="min-h-screen bg-dark-900 py-8">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -46,7 +44,7 @@
             <div class="text-center">
                 <div class="flex items-center justify-center space-x-6 mb-6">
                     <div class="flex items-center space-x-3">
-                        <img src="{{ asset('msk-computers-logo-color.png') }}" alt="MSK Computers" class="w-12 h-12">
+                        <img src="<?php echo e(asset('msk-computers-logo-color.png')); ?>" alt="MSK Computers" class="w-12 h-12">
                         <div class="text-left">
                             <div class="text-lg font-bold text-white">MSK Computers</div>
                             <div class="text-xs text-gray-400">Secure Checkout</div>
@@ -63,7 +61,7 @@
                     
                     <div class="flex items-center space-x-3">
                         <div class="bg-white p-2 rounded-lg shadow-lg">
-                            <img src="{{ asset('images/webxpay-logo.webp') }}" alt="WebXPay" class="h-8">
+                            <img src="<?php echo e(asset('images/webxpay-logo.webp')); ?>" alt="WebXPay" class="h-8">
                         </div>
                         <div class="text-left">
                             <div class="text-lg font-bold text-white">Card Payment</div>
@@ -98,24 +96,24 @@
                         <div class="bg-dark-800/50 rounded-lg p-4 space-y-3">
                             <div class="flex justify-between items-center text-sm">
                                 <span class="text-gray-400">Order #</span>
-                                <span class="font-mono text-primary-400 font-medium">{{ $order->order_number }}</span>
+                                <span class="font-mono text-primary-400 font-medium"><?php echo e($order->order_number); ?></span>
                             </div>
                             
                             <div class="flex justify-between items-center text-sm">
                                 <span class="text-gray-400">Customer</span>
-                                <span class="text-gray-200">{{ $order->customer_name }}</span>
+                                <span class="text-gray-200"><?php echo e($order->customer_name); ?></span>
                             </div>
                             
-                            @if($order->customer_email)
+                            <?php if($order->customer_email): ?>
                             <div class="flex justify-between items-center text-sm">
                                 <span class="text-gray-400">Email</span>
-                                <span class="text-gray-200">{{ $order->customer_email }}</span>
+                                <span class="text-gray-200"><?php echo e($order->customer_email); ?></span>
                             </div>
-                            @endif
+                            <?php endif; ?>
                             
                             <div class="flex justify-between items-center text-sm">
                                 <span class="text-gray-400">Phone</span>
-                                <span class="text-gray-200">{{ $order->customer_phone }}</span>
+                                <span class="text-gray-200"><?php echo e($order->customer_phone); ?></span>
                             </div>
                         </div>
                     </div>
@@ -124,7 +122,7 @@
                     <div class="space-y-3 mb-6">
                         <h3 class="text-sm font-medium text-gray-300 uppercase tracking-wider">Items Ordered</h3>
                         <div class="space-y-3">
-                            @foreach($order->orderItems as $item)
+                            <?php $__currentLoopData = $order->orderItems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="flex items-start space-x-3 p-3 bg-dark-800/30 rounded-lg">
                                 <div class="w-10 h-10 bg-dark-700 rounded-lg flex items-center justify-center">
                                     <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -132,14 +130,15 @@
                                     </svg>
                                 </div>
                                 <div class="flex-1 min-w-0">
-                                    <p class="text-white font-medium text-sm truncate">{{ $item->product_name }}</p>
-                                    <p class="text-gray-400 text-xs">{{ $item->quantity }} × LKR {{ number_format($item->unit_price, 2) }}</p>
+                                    <p class="text-white font-medium text-sm truncate"><?php echo e($item->product_name); ?></p>
+                                    <p class="text-gray-400 text-xs"><?php echo e($item->quantity); ?> × LKR <?php echo e(number_format($item->unit_price, 2)); ?></p>
                                 </div>
                                 <div class="text-primary-400 font-semibold text-sm">
-                                    LKR {{ number_format($item->total_price, 2) }}
+                                    LKR <?php echo e(number_format($item->total_price, 2)); ?>
+
                                 </div>
                             </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
 
@@ -147,25 +146,25 @@
                     <div class="border-t border-gray-700 pt-4 space-y-3">
                         <div class="flex justify-between text-sm">
                             <span class="text-gray-400">Subtotal</span>
-                            <span class="text-gray-200">LKR {{ number_format($originalSubtotal > 0 ? $originalSubtotal : $subtotal, 2) }}</span>
+                            <span class="text-gray-200">LKR <?php echo e(number_format($originalSubtotal > 0 ? $originalSubtotal : $subtotal, 2)); ?></span>
                         </div>
                         
                         <!-- Discount Section -->
-                        @if($totalDiscount > 0)
+                        <?php if($totalDiscount > 0): ?>
                         <div class="flex justify-between text-sm">
                             <span class="text-green-400">
                                 Discount
                                 <span class="text-xs text-gray-500 block">You save</span>
                             </span>
-                            <span class="text-green-400">-LKR {{ number_format($totalDiscount, 2) }}</span>
+                            <span class="text-green-400">-LKR <?php echo e(number_format($totalDiscount, 2)); ?></span>
                         </div>
                         
                         <!-- Subtotal after discount -->
                         <div class="flex justify-between text-sm">
                             <span class="text-gray-400">Subtotal (after discount)</span>
-                            <span class="text-gray-200">LKR {{ number_format($subtotal, 2) }}</span>
+                            <span class="text-gray-200">LKR <?php echo e(number_format($subtotal, 2)); ?></span>
                         </div>
-                        @endif
+                        <?php endif; ?>
                         
                         <!-- Shipping Information -->
                         <div class="flex justify-between text-sm">
@@ -181,13 +180,13 @@
                                 Transaction Fee (3%)
                                 <span class="text-xs text-blue-400 block">Payment processing</span>
                             </span>
-                            <span class="text-blue-400">LKR {{ number_format($transactionFee, 2) }}</span>
+                            <span class="text-blue-400">LKR <?php echo e(number_format($transactionFee, 2)); ?></span>
                         </div>
                         
                         <div class="border-t border-gray-600 pt-3">
                             <div class="flex justify-between items-center">
                                 <span class="text-lg font-semibold text-white">Total (with fee)</span>
-                                <span class="text-xl font-bold text-primary-400">LKR {{ number_format($totalWithFee, 2) }}</span>
+                                <span class="text-xl font-bold text-primary-400">LKR <?php echo e(number_format($totalWithFee, 2)); ?></span>
                             </div>
                             <p class="text-xs text-gray-500 mt-1">+ Shipping charges on delivery</p>
                         </div>
@@ -253,58 +252,48 @@
                         <div class="text-xs text-gray-400">All fields are pre-filled from your order</div>
                     </div>
 
-                    <form action="{{ $paymentData['checkout_url'] }}" method="POST" id="webxpay-form" class="space-y-6">
-                        @csrf
+                    <form action="<?php echo e($paymentData['checkout_url']); ?>" method="POST" id="webxpay-form" class="space-y-6">
+                        <?php echo csrf_field(); ?>
                         
                         <!-- Hidden Fields for WebXPay -->
-                        <input type="hidden" name="secret_key" value="{{ $paymentData['secret_key'] }}">
-                        <input type="hidden" name="payment" value="{{ $paymentData['payment'] }}">
-                        <input type="hidden" name="custom_fields" value="{{ $paymentData['custom_fields'] }}">
-                        <input type="hidden" name="enc_method" value="{{ $paymentData['enc_method'] }}">
-                        <input type="hidden" name="process_currency" value="{{ $paymentData['process_currency'] }}">
-                        <input type="hidden" name="cms" value="{{ $paymentData['cms'] }}">
+                        <input type="hidden" name="secret_key" value="<?php echo e($paymentData['secret_key']); ?>">
+                        <input type="hidden" name="payment" value="<?php echo e($paymentData['payment']); ?>">
+                        <input type="hidden" name="custom_fields" value="<?php echo e($paymentData['custom_fields']); ?>">
+                        <input type="hidden" name="enc_method" value="<?php echo e($paymentData['enc_method']); ?>">
+                        <input type="hidden" name="process_currency" value="<?php echo e($paymentData['process_currency']); ?>">
+                        <input type="hidden" name="cms" value="<?php echo e($paymentData['cms']); ?>">
                         
                         <!-- Customer Details Section -->
                         <div class="space-y-4">
                             <h4 class="text-sm font-medium text-gray-300 uppercase tracking-wider">Customer Information</h4>
                             
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-300 mb-2">
-                                        First Name *
-                                        <span class="text-red-400 text-xs">(Required)</span>
-                                    </label>
-                                    <input type="text" name="first_name" id="webxpay_first_name" 
-                                           value="{{ $paymentData['first_name'] }}" 
-                                           class="w-full bg-[#0f0f0f] border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
-                                           placeholder="Enter your first name" required>
-                                </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">
+                                    Full Name *
+                                    <span class="text-red-400 text-xs">(Required)</span>
+                                </label>
+                                <input type="text" id="customer_full_name" value="<?php echo e($order->customer_name); ?>" 
+                                       class="w-full bg-[#0f0f0f] border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+                                       placeholder="Enter your full name" required>
                                 
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-300 mb-2">
-                                        Last Name *
-                                        <span class="text-red-400 text-xs">(Required)</span>
-                                    </label>
-                                    <input type="text" name="last_name" id="webxpay_last_name" 
-                                           value="{{ $paymentData['last_name'] }}" 
-                                           class="w-full bg-[#0f0f0f] border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
-                                           placeholder="Enter your last name" required>
-                                </div>
+                                <!-- Hidden fields for WebXPay (auto-populated from full name) -->
+                                <input type="hidden" name="first_name" value="<?php echo e($paymentData['first_name']); ?>" id="webxpay_first_name">
+                                <input type="hidden" name="last_name" value="<?php echo e($paymentData['last_name']); ?>" id="webxpay_last_name">
                             </div>
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-300 mb-2">
                                     Email Address 
-                                    @if($order->customer_email)
+                                    <?php if($order->customer_email): ?>
                                         *<span class="text-red-400 text-xs">(Required)</span>
-                                    @else
+                                    <?php else: ?>
                                         <span class="text-gray-500 text-xs">(Optional)</span>
-                                    @endif
+                                    <?php endif; ?>
                                 </label>
-                                <input type="email" name="email" value="{{ $paymentData['email'] }}" 
+                                <input type="email" name="email" value="<?php echo e($paymentData['email']); ?>" 
                                        class="w-full bg-[#0f0f0f] border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
                                        placeholder="Enter your email address"
-                                       {{ $order->customer_email ? 'required' : '' }}>
+                                       <?php echo e($order->customer_email ? 'required' : ''); ?>>
                             </div>
 
                             <div>
@@ -312,7 +301,7 @@
                                     Contact Number *
                                     <span class="text-red-400 text-xs">(Required)</span>
                                 </label>
-                                <input type="text" name="contact_number" value="{{ $paymentData['contact_number'] }}" 
+                                <input type="text" name="contact_number" value="<?php echo e($paymentData['contact_number']); ?>" 
                                        class="w-full bg-[#0f0f0f] border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
                                        placeholder="0771234567" required>
                             </div>
@@ -327,7 +316,7 @@
                                     Address Line 1 *
                                     <span class="text-red-400 text-xs">(Required)</span>
                                 </label>
-                                <input type="text" name="address_line_one" value="{{ $paymentData['address_line_one'] }}" 
+                                <input type="text" name="address_line_one" value="<?php echo e($paymentData['address_line_one']); ?>" 
                                        class="w-full bg-[#0f0f0f] border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
                                        placeholder="Street address, building number" required>
                             </div>
@@ -336,7 +325,7 @@
                                 <label class="block text-sm font-medium text-gray-300 mb-2">
                                     Address Line 2 <span class="text-gray-500 text-xs">(Optional)</span>
                                 </label>
-                                <input type="text" name="address_line_two" value="{{ $paymentData['address_line_two'] }}" 
+                                <input type="text" name="address_line_two" value="<?php echo e($paymentData['address_line_two']); ?>" 
                                        class="w-full bg-[#0f0f0f] border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                                        placeholder="Apartment, suite, unit, etc.">
                             </div>
@@ -347,7 +336,7 @@
                                         City *
                                         <span class="text-red-400 text-xs">(Required)</span>
                                     </label>
-                                    <input type="text" name="city" value="{{ $paymentData['city'] }}" 
+                                    <input type="text" name="city" value="<?php echo e($paymentData['city']); ?>" 
                                            class="w-full bg-[#0f0f0f] border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
                                            placeholder="Colombo" required>
                                 </div>
@@ -355,7 +344,7 @@
                                     <label class="block text-sm font-medium text-gray-300 mb-2">
                                         State/Province <span class="text-gray-500 text-xs">(Optional)</span>
                                     </label>
-                                    <input type="text" name="state" value="{{ $paymentData['state'] }}" 
+                                    <input type="text" name="state" value="<?php echo e($paymentData['state']); ?>" 
                                            class="w-full bg-[#0f0f0f] border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                                            placeholder="Western Province">
                                 </div>
@@ -363,7 +352,7 @@
                                     <label class="block text-sm font-medium text-gray-300 mb-2">
                                         Postal Code <span class="text-gray-500 text-xs">(Optional)</span>
                                     </label>
-                                    <input type="text" name="postal_code" value="{{ $paymentData['postal_code'] }}" 
+                                    <input type="text" name="postal_code" value="<?php echo e($paymentData['postal_code']); ?>" 
                                            class="w-full bg-[#0f0f0f] border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                                            placeholder="10100">
                                 </div>
@@ -373,7 +362,7 @@
                                 <label class="block text-sm font-medium text-gray-300 mb-2">
                                     Country <span class="text-gray-500 text-xs">(Optional)</span>
                                 </label>
-                                <input type="text" name="country" value="{{ $paymentData['country'] }}" 
+                                <input type="text" name="country" value="<?php echo e($paymentData['country']); ?>" 
                                        class="w-full bg-[#0f0f0f] border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                                        placeholder="Sri Lanka">
                             </div>
@@ -404,11 +393,11 @@
                                 </svg>
                                 <div class="text-center">
                                     <div class="text-lg">🔒 Complete Secure Payment</div>
-                                    <div class="text-sm font-semibold">LKR {{ number_format($totalWithFee, 2) }}</div>
+                                    <div class="text-sm font-semibold">LKR <?php echo e(number_format($totalWithFee, 2)); ?></div>
                                 </div>
                             </button>
                             
-                            <a href="{{ route('checkout.index') }}" 
+                            <a href="<?php echo e(route('checkout.index')); ?>" 
                                class="sm:w-auto px-6 py-4 bg-dark-700 border border-gray-600 text-gray-300 font-semibold rounded-lg hover:bg-dark-600 transition-colors flex items-center justify-center">
                                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -637,22 +626,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 15000);
     });
     
-    // Name field validation - ensure both first and last names are filled
+    // Handle full name splitting for WebXPay
+    const fullNameField = document.getElementById('customer_full_name');
     const firstNameField = document.getElementById('webxpay_first_name');
     const lastNameField = document.getElementById('webxpay_last_name');
     
-    if (firstNameField && lastNameField) {
-        // Validate that both names are provided
-        [firstNameField, lastNameField].forEach(field => {
-            field.addEventListener('blur', function() {
-                if (!this.value.trim()) {
-                    this.classList.add('border-red-500');
-                    this.classList.remove('border-gray-700');
-                } else {
-                    this.classList.remove('border-red-500');
-                    this.classList.add('border-gray-700');
-                }
-            });
+    if (fullNameField && firstNameField && lastNameField) {
+        fullNameField.addEventListener('input', function() {
+            const fullName = this.value.trim();
+            const nameParts = fullName.split(' ');
+            
+            if (nameParts.length > 0) {
+                firstNameField.value = nameParts[0];
+                lastNameField.value = nameParts.slice(1).join(' ');
+            } else {
+                firstNameField.value = '';
+                lastNameField.value = '';
+            }
         });
     }
     
@@ -675,4 +665,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Dhanushka\Desktop\MSK\MSKMSV3\resources\views/payment/webxpay.blade.php ENDPATH**/ ?>
