@@ -33,8 +33,21 @@ class WebXPayService
     public function preparePayment(Order $order): array
     {
         try {
-            // Prepare the plaintext for encryption: unique_order_id|total_amount
-            $plaintext = $order->order_number . '|' . number_format($order->total_amount, 2, '.', '');
+            // Calculate the total amount with WebXPay transaction fee (3%)
+            $transactionFee = $order->total_amount * 0.03;
+            $totalWithFee = $order->total_amount + $transactionFee;
+            
+            // Prepare the plaintext for encryption: unique_order_id|total_amount_with_fee
+            $plaintext = $order->order_number . '|' . number_format($totalWithFee, 2, '.', '');
+            
+            // Log the amounts for debugging
+            \Log::info('WebXPay amount calculation', [
+                'order_number' => $order->order_number,
+                'base_amount' => $order->total_amount,
+                'transaction_fee' => $transactionFee,
+                'total_with_fee' => $totalWithFee,
+                'plaintext' => $plaintext
+            ]);
             
             // Encrypt the payment data using public key
             if (!openssl_public_encrypt($plaintext, $encryptedData, $this->publicKey)) {
@@ -246,9 +259,14 @@ class WebXPayService
                 ->first();
                 
             if ($existingTransaction) {
+                // Calculate total amount with WebXPay fee for consistency
+                $transactionFee = $order->total_amount * 0.03;
+                $totalWithFee = $order->total_amount + $transactionFee;
+                
                 // Update existing transaction
                 $existingTransaction->update([
                     'status' => $status,
+                    'amount' => $totalWithFee,
                     'gateway_response' => $processedResponse,
                     'completed_at' => $status === 'completed' ? now() : null,
                     'failed_at' => $status === 'failed' ? now() : null,
@@ -257,18 +275,23 @@ class WebXPayService
                 
                 Log::info('WebXPay transaction updated', [
                     'transaction_id' => $existingTransaction->transaction_id,
-                    'status' => $status
+                    'status' => $status,
+                    'amount_with_fee' => $totalWithFee
                 ]);
                 return;
             }
 
+            // Calculate total amount with WebXPay fee (same as sent to WebXPay)
+            $transactionFee = $order->total_amount * 0.03;
+            $totalWithFee = $order->total_amount + $transactionFee;
+            
             // Create new transaction record
             \App\Models\Transaction::create([
                 'transaction_id' => 'WXP-' . strtoupper(substr($processedResponse['reference_number'], 0, 16)),
                 'order_id' => $order->id,
                 'payment_method' => 'webxpay',
                 'status' => $status,
-                'amount' => $order->total_amount,
+                'amount' => $totalWithFee,
                 'currency' => 'LKR',
                 'gateway_transaction_id' => $processedResponse['reference_number'],
                 'gateway_reference' => $processedResponse['reference_number'],
@@ -286,6 +309,10 @@ class WebXPayService
                     'transaction_datetime' => $processedResponse['transaction_datetime'],
                     'custom_fields' => $processedResponse['custom_fields'],
                     'signature_valid' => $processedResponse['signature_valid'],
+                    'base_order_amount' => $order->total_amount,
+                    'webxpay_transaction_fee' => $transactionFee,
+                    'total_amount_with_fee' => $totalWithFee,
+                    'fee_percentage' => '3%',
                 ],
             ]);
             

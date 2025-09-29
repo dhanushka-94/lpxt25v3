@@ -148,7 +148,7 @@
                                 <div class="flex justify-between items-center text-white font-bold text-xl mb-2">
                                     <span>Grand Total</span>
                                     <span class="cart-total cart-page-total text-[#f59e0b]">LKR {{ number_format($cartTotal, 2) }}</span>
-                                </div>
+                            </div>
                                 <div class="flex justify-between text-gray-400 text-sm">
                                     <span>Final amount to pay</span>
                                     <span>(Excluding delivery charges)</span>
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let newQuantity = parseInt(input.value);
             if (action === 'increase') {
                 if (newQuantity < maxStock) {
-                    newQuantity++;
+                newQuantity++;
                 } else {
                     alert(`Maximum available quantity is ${maxStock}`);
                     return;
@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Small delay to ensure count update is visible before reload
                 setTimeout(() => {
-                    location.reload();
+                location.reload();
                 }, 300);
             }
         })

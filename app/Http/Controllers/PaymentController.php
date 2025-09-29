@@ -359,10 +359,11 @@ class PaymentController extends Controller
             
             Log::info('WebXPay payment initiated successfully', [
                 'order_number' => $order->order_number,
-                'amount' => $order->total_amount,
+                'base_amount' => $order->total_amount,
                 'transaction_fee' => $transactionFee,
                 'total_with_fee' => $totalWithFee,
-                'discount_calculated' => $totalDiscount
+                'discount_calculated' => $totalDiscount,
+                'amount_sent_to_webxpay' => $totalWithFee
             ]);
 
             return view('payment.webxpay', compact('paymentData', 'order', 'subtotal', 'originalSubtotal', 'totalDiscount', 'transactionFee', 'totalWithFee'));
