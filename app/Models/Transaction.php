@@ -47,6 +47,15 @@ class Transaction extends Model
         return $this->belongsTo(Order::class);
     }
 
+    // Card type detection
+    public function getCardTypeAttribute(): array
+    {
+        return \App\Services\CardTypeDetector::detectFromTransactionData(
+            $this->metadata ?? [], 
+            $this->payment_method
+        );
+    }
+    
     // Status check methods
     public function isPending(): bool
     {

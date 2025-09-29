@@ -94,27 +94,44 @@
 
                     <div>
                         <label class="block text-sm font-medium text-gray-400 mb-1">Payment Method</label>
-                        <div class="flex items-center">
-                            @if($transaction->payment_method === 'webxpay')
-                                <div class="w-6 h-6 bg-purple-500/20 rounded flex items-center justify-center mr-2">
-                                    <svg class="w-3 h-3 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3-3v8a3 3 0 003 3z"/>
-                                    </svg>
-                                </div>
-                            @elseif($transaction->payment_method === 'kokopay')
-                                <div class="w-6 h-6 bg-indigo-500/20 rounded flex items-center justify-center mr-2">
-                                    <svg class="w-3 h-3 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
-                                    </svg>
-                                </div>
-                            @elseif($transaction->payment_method === 'bank_transfer')
-                                <div class="w-6 h-6 bg-cyan-500/20 rounded flex items-center justify-center mr-2">
-                                    <svg class="w-3 h-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m11 0a2 2 0 01-2 2H7a2 2 0 01-2-2m14 0V9a2 2 0 00-2-2M9 7h6m-6 4h6m-6 4h6m-6 4h6"/>
-                                    </svg>
+                        @php $cardType = $transaction->card_type; @endphp
+                        <div class="flex flex-col space-y-2">
+                            <!-- Primary Payment Method -->
+                            <div class="flex items-center">
+                                @if($transaction->payment_method === 'webxpay')
+                                    <div class="w-6 h-6 bg-purple-500/20 rounded flex items-center justify-center mr-2">
+                                        <svg class="w-3 h-3 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3-3v8a3 3 0 003 3z"/>
+                                        </svg>
+                                    </div>
+                                @elseif($transaction->payment_method === 'kokopay')
+                                    <div class="w-6 h-6 bg-indigo-500/20 rounded flex items-center justify-center mr-2">
+                                        <svg class="w-3 h-3 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+                                        </svg>
+                                    </div>
+                                @elseif($transaction->payment_method === 'bank_transfer')
+                                    <div class="w-6 h-6 bg-cyan-500/20 rounded flex items-center justify-center mr-2">
+                                        <svg class="w-3 h-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m11 0a2 2 0 01-2 2H7a2 2 0 01-2-2m14 0V9a2 2 0 00-2-2M9 7h6m-6 4h6m-6 4h6m-6 4h6"/>
+                                        </svg>
+                                    </div>
+                                @endif
+                                <span class="text-white">{{ $transaction->payment_method_name }}</span>
+                            </div>
+                            
+                            <!-- Card Type Information -->
+                            @if($cardType['type'] !== 'unknown')
+                                <div class="flex items-center space-x-2 ml-8 p-2 bg-gray-700/30 rounded-lg">
+                                    <span class="text-lg">{{ $cardType['icon'] }}</span>
+                                    <div class="flex flex-col">
+                                        <span class="text-sm {{ $cardType['color'] }} font-medium">{{ $cardType['brand'] }}</span>
+                                        @if(isset($cardType['gateway']) && $transaction->payment_method === 'webxpay')
+                                            <span class="text-xs text-gray-400">Gateway: {{ $cardType['gateway'] }}</span>
+                                        @endif
+                                    </div>
                                 </div>
                             @endif
-                            <span class="text-white">{{ $transaction->payment_method_name }}</span>
                         </div>
                     </div>
 

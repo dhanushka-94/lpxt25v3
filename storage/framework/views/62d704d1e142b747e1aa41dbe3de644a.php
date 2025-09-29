@@ -267,35 +267,44 @@
                             </div>
                         </td>
 
-                        <!-- Payment Method -->
+                        <!-- Payment Method with Card Type -->
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <?php if($transaction->payment_method === 'webxpay'): ?>
-                                    <div class="flex items-center">
+                            <?php $cardType = $transaction->card_type; ?>
+                            <div class="flex flex-col space-y-1">
+                                <!-- Primary Payment Method -->
+                                <div class="flex items-center">
+                                    <?php if($transaction->payment_method === 'webxpay'): ?>
                                         <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center mr-3">
                                             <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3-3v8a3 3 0 003 3z"/>
                                             </svg>
                                         </div>
                                         <span class="text-sm text-white">Credit/Debit Card</span>
-                                    </div>
-                                <?php elseif($transaction->payment_method === 'kokopay'): ?>
-                                    <div class="flex items-center">
+                                    <?php elseif($transaction->payment_method === 'kokopay'): ?>
                                         <div class="w-8 h-8 bg-indigo-500/20 rounded-lg flex items-center justify-center mr-3">
                                             <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
                                             </svg>
                                         </div>
                                         <span class="text-sm text-white">Koko Pay (BNPL)</span>
-                                    </div>
-                                <?php elseif($transaction->payment_method === 'bank_transfer'): ?>
-                                    <div class="flex items-center">
+                                    <?php elseif($transaction->payment_method === 'bank_transfer'): ?>
                                         <div class="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center mr-3">
                                             <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m11 0a2 2 0 01-2 2H7a2 2 0 01-2-2m14 0V9a2 2 0 00-2-2M9 7h6m-6 4h6m-6 4h6m-6 4h6"/>
                                             </svg>
                                         </div>
                                         <span class="text-sm text-white">Bank Transfer</span>
+                                    <?php endif; ?>
+                                </div>
+                                
+                                <!-- Card Type Information -->
+                                <?php if($cardType['type'] !== 'unknown' && $transaction->payment_method === 'webxpay'): ?>
+                                    <div class="flex items-center space-x-1 ml-11">
+                                        <span class="text-sm"><?php echo e($cardType['icon']); ?></span>
+                                        <span class="text-xs <?php echo e($cardType['color']); ?> font-medium"><?php echo e($cardType['brand']); ?></span>
+                                        <?php if(isset($cardType['gateway'])): ?>
+                                            <span class="text-xs text-gray-500">(<?php echo e($cardType['gateway']); ?>)</span>
+                                        <?php endif; ?>
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -342,7 +351,7 @@
                                 <?php if($transaction->completed_at): ?>
                                     <div class="text-xs text-green-400">Completed: <?php echo e($transaction->completed_at->format('h:i A')); ?></div>
                                 <?php elseif($transaction->failed_at): ?>
-                                    <div class="text-xs text-red-400">Failed: <?php echo e($transaction->failed_at->format('H:i:s')); ?></div>
+                                    <div class="text-xs text-red-400">Failed: <?php echo e($transaction->failed_at->format('h:i A')); ?></div>
                                 <?php endif; ?>
                             </div>
                         </td>
