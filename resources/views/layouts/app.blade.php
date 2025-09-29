@@ -1147,11 +1147,29 @@
                     const productSlug = product.slug || product.id;
                     const productUrl = `/${categorySlug}/${productSlug}`;
                     
+                    // Check if product has promotion/sale price
+                    const hasPromotion = product.is_on_sale && product.final_price && parseFloat(product.final_price) < parseFloat(product.price);
+                    const originalPrice = parseFloat(product.price);
+                    const finalPrice = product.final_price ? parseFloat(product.final_price) : originalPrice;
+                    
+                    let priceHtml = '';
+                    if (hasPromotion) {
+                        priceHtml = `
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-primary-400 font-semibold">LKR ${finalPrice.toLocaleString()}</span>
+                                <span class="text-xs text-gray-500 line-through">LKR ${originalPrice.toLocaleString()}</span>
+                                <span class="text-xs bg-red-500 text-white px-1 py-0.5 rounded">SALE</span>
+                            </div>
+                        `;
+                    } else {
+                        priceHtml = `<div class="text-xs text-primary-400">LKR ${finalPrice.toLocaleString()}</div>`;
+                    }
+                    
                     html += `<a href="${productUrl}" class="block py-2 px-3 text-gray-300 hover:bg-gray-900 hover:text-primary-400 transition-colors rounded">
                         <div class="flex items-center justify-between">
                             <div>
                                 <div class="font-medium">${product.name}</div>
-                                <div class="text-xs text-primary-400">LKR ${parseFloat(product.price).toLocaleString()}</div>
+                                ${priceHtml}
                             </div>
                             <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>

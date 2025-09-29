@@ -204,10 +204,13 @@ class ProductController extends Controller
             });
         }
 
-        // Sort by discount percentage (highest discount first)
+        // Sort by latest first (newest promotion items first)
+        $query->orderBy('created_at', 'DESC');
+        
+        // Sort by discount percentage (highest discount first) as secondary
         $query->orderByRaw('((price - promo_price) / price) DESC');
 
-        // Apply stock-priority sorting as secondary
+        // Apply stock-priority sorting as tertiary
         $query->orderByRaw("
             CASE 
                 WHEN quantity > 10 THEN 1 
