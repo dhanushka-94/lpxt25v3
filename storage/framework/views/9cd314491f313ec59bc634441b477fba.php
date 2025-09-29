@@ -322,6 +322,215 @@
                     </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
+                
+                <!-- Order Summary Breakdown -->
+                <?php if($transaction->order): ?>
+                <?php
+                    $order = $transaction->order;
+                    // Calculate original subtotal and discounts
+                    $originalSubtotal = 0;
+                    $currentSubtotal = 0;
+                    foreach($order->orderItems as $item) {
+                        $product = \App\Models\SmaProduct::find($item->product_id);
+                        if ($product) {
+                            $originalSubtotal += $item->quantity * $product->price;
+                            $currentSubtotal += $item->quantity * $product->final_price;
+                        } else {
+                            // For deleted products, use stored prices
+                            $currentSubtotal += $item->total_price;
+                            $originalSubtotal += $item->total_price; // Assume no discount for deleted products
+                        }
+                    }
+                    $totalDiscountSavings = $originalSubtotal - $currentSubtotal;
+                    
+                    // Calculate payment fees if applicable
+                    $paymentFee = 0;
+                    if ($transaction->payment_method === 'webxpay') {
+                        $paymentFee = $order->total_amount * 0.03;
+                    }
+                    
+                    $finalTotal = $order->total_amount + $paymentFee;
+                ?>
+                
+                <div class="mt-6 bg-gradient-to-br from-[#1a1a1c] to-[#2a2a2c] rounded-xl border border-gray-800 p-6">
+                    <h4 class="text-lg font-medium text-white mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                        💰 Complete Order Summary
+                    </h4>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Left Column: Price Breakdown -->
+                        <div class="space-y-4">
+                            <!-- Product Pricing Breakdown -->
+                            <div class="bg-gray-700/30 rounded-lg p-4">
+                                <h5 class="text-sm font-medium text-gray-300 mb-3">🛍️ Product Pricing</h5>
+                                <div class="space-y-2 text-sm">
+                                    <?php if($totalDiscountSavings > 0): ?>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-400">Original Subtotal</span>
+                                            <span class="text-gray-300 line-through">LKR <?php echo e(number_format($originalSubtotal, 2)); ?></span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-green-400">💸 Product Discounts</span>
+                                            <span class="text-green-400">-LKR <?php echo e(number_format($totalDiscountSavings, 2)); ?></span>
+                                        </div>
+                                    <?php endif; ?>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Subtotal (After Discounts)</span>
+                                        <span class="text-white font-medium">LKR <?php echo e(number_format($order->subtotal, 2)); ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <!-- Additional Charges -->
+                            <?php if($order->shipping_cost > 0 || $order->tax_amount > 0 || $order->discount_amount > 0): ?>
+                                <div class="bg-gray-700/30 rounded-lg p-4">
+                                    <h5 class="text-sm font-medium text-gray-300 mb-3">📦 Additional Charges</h5>
+                                    <div class="space-y-2 text-sm">
+                                        <?php if($order->shipping_cost > 0): ?>
+                                            <div class="flex justify-between">
+                                                <span class="text-gray-400">🚚 Shipping Cost</span>
+                                                <span class="text-white">+LKR <?php echo e(number_format($order->shipping_cost, 2)); ?></span>
+                                            </div>
+                                        <?php endif; ?>
+                                        <?php if($order->tax_amount > 0): ?>
+                                            <div class="flex justify-between">
+                                                <span class="text-gray-400">🧾 Tax</span>
+                                                <span class="text-white">+LKR <?php echo e(number_format($order->tax_amount, 2)); ?></span>
+                                            </div>
+                                        <?php endif; ?>
+                                        <?php if($order->discount_amount > 0): ?>
+                                            <div class="flex justify-between">
+                                                <span class="text-green-400">🎫 Order Discount</span>
+                                                <span class="text-green-400">-LKR <?php echo e(number_format($order->discount_amount, 2)); ?></span>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                
+                            <!-- Payment Information -->
+                            <div class="bg-gray-700/30 rounded-lg p-4">
+                                <h5 class="text-sm font-medium text-gray-300 mb-3">💳 Payment Details</h5>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Payment Method</span>
+                                        <span class="text-white">
+                                            <?php if($transaction->payment_method === 'webxpay'): ?>
+                                                💳 WebXPay (Card Payment)
+                                            <?php elseif($transaction->payment_method === 'kokopay'): ?>
+                                                ⏰ Koko Pay (BNPL)
+                                            <?php elseif($transaction->payment_method === 'bank_transfer'): ?>
+                                                🏦 Bank Transfer
+                                            <?php else: ?>
+                                                <?php echo e(ucfirst(str_replace('_', ' ', $transaction->payment_method))); ?>
+
+                                            <?php endif; ?>
+                                        </span>
+                                    </div>
+                                    <?php if($paymentFee > 0): ?>
+                                        <div class="flex justify-between">
+                                            <span class="text-yellow-400">⚡ Payment Processing Fee (3%)</span>
+                                            <span class="text-yellow-400">+LKR <?php echo e(number_format($paymentFee, 2)); ?></span>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if($transaction->gateway_reference): ?>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-400">Transaction ID</span>
+                                            <span class="text-blue-400 font-mono text-xs"><?php echo e($transaction->gateway_reference); ?></span>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                
+                            <!-- Total Summary -->
+                            <div class="bg-gradient-to-r from-orange-500/20 to-yellow-500/20 rounded-lg p-4">
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-lg font-medium text-white">Order Total</span>
+                                        <span class="text-lg font-bold text-white">LKR <?php echo e(number_format($order->total_amount, 2)); ?></span>
+                                    </div>
+                                    <?php if($paymentFee > 0): ?>
+                                        <div class="flex justify-between items-center text-sm border-t border-gray-600 pt-2">
+                                            <span class="text-yellow-300 font-medium">💰 Total Paid</span>
+                                            <span class="text-xl font-bold text-[#f59e0b]">LKR <?php echo e(number_format($finalTotal, 2)); ?></span>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if($totalDiscountSavings > 0): ?>
+                                        <div class="text-center text-sm text-green-400 bg-green-900/20 rounded px-2 py-1">
+                                            🎉 Customer saved LKR <?php echo e(number_format($totalDiscountSavings, 2)); ?> on this order!
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- Right Column: Delivery & Transaction Info -->
+                        <div class="space-y-4">
+                            <!-- Customer Information -->
+                            <div class="bg-gray-700/30 rounded-lg p-4">
+                                <h5 class="text-sm font-medium text-gray-300 mb-3">👤 Customer Information</h5>
+                                <div class="text-sm text-gray-300">
+                                    <p class="font-medium text-white"><?php echo e($order->customer_name); ?></p>
+                                    <p class="text-blue-400">📞 <?php echo e($order->customer_phone); ?></p>
+                                    <?php if($order->customer_email): ?>
+                                        <p class="text-blue-400">📧 <?php echo e($order->customer_email); ?></p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            
+                            <!-- Shipping Address -->
+                            <div class="bg-gray-700/30 rounded-lg p-4">
+                                <h5 class="text-sm font-medium text-gray-300 mb-3">📍 Delivery Address</h5>
+                                <div class="text-sm text-gray-300">
+                                    <p><?php echo e($order->shipping_address_line_1); ?></p>
+                                    <?php if($order->shipping_address_line_2): ?>
+                                        <p><?php echo e($order->shipping_address_line_2); ?></p>
+                                    <?php endif; ?>
+                                    <p><?php echo e($order->shipping_city); ?>, <?php echo e($order->shipping_state); ?> <?php echo e($order->shipping_postal_code); ?></p>
+                                    <p><?php echo e($order->shipping_country); ?></p>
+                                </div>
+                            </div>
+                
+                            <!-- Transaction Status & Timeline -->
+                            <div class="bg-gray-700/30 rounded-lg p-4">
+                                <h5 class="text-sm font-medium text-gray-300 mb-3">📊 Status Information</h5>
+                                <div class="space-y-3">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-xs <?php echo e($order->status_badge); ?> px-2 py-1 rounded-full">
+                                            📋 <?php echo e(ucfirst($order->status)); ?>
+
+                                        </span>
+                                        <span class="text-xs <?php echo e($order->payment_status_badge); ?> px-2 py-1 rounded-full">
+                                            💳 <?php echo e(ucfirst(str_replace('_', ' ', $order->payment_status))); ?>
+
+                                        </span>
+                                    </div>
+                                    <div class="text-xs text-gray-400">
+                                        <p>Order Placed: <?php echo e($order->created_at->format('M d, Y \a\t g:i A')); ?></p>
+                                        <?php if($transaction->completed_at): ?>
+                                            <p>Payment Completed: <?php echo e($transaction->completed_at->format('M d, Y \a\t g:i A')); ?></p>
+                                        <?php endif; ?>
+                                        <?php if($order->payment_method === 'bank_transfer' && $order->transfer_slip_path): ?>
+                                            <p class="text-green-400 mt-1">✅ Transfer slip uploaded</p>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <!-- Special Instructions -->
+                            <?php if($order->notes): ?>
+                                <div class="bg-gray-700/30 rounded-lg p-4">
+                                    <h5 class="text-sm font-medium text-gray-300 mb-3">📝 Special Instructions</h5>
+                                    <p class="text-sm text-gray-300"><?php echo e($order->notes); ?></p>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
             </div>
             <?php endif; ?>
         </div>
