@@ -31,10 +31,10 @@
                         <div class="text-3xl font-bold text-[#f59e0b]">{{ $order->formatted_total }}</div>
                         <div class="flex items-center space-x-2 mt-1">
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium {{ $order->status_badge }}">
-                                {{ ucfirst($order->status) }}
+                                📋 {{ ucfirst($order->status) }}
                             </span>
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium {{ $order->payment_status_badge }}">
-                                {{ ucfirst(str_replace('_', ' ', $order->payment_status)) }}
+                                💳 {{ ucfirst(str_replace('_', ' ', $order->payment_status)) }}
                             </span>
                         </div>
                         <!-- Quick Invoice Download in Header -->
@@ -79,51 +79,186 @@
                 </div>
             </div>
 
-            <!-- Order Summary -->
+            <!-- Complete Order Summary Breakdown -->
             <div class="px-6 py-4 border-t border-gray-800 bg-gray-800/20">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Price Breakdown -->
-                    <div>
-                        <h4 class="text-lg font-medium text-white mb-3">Price Breakdown</h4>
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-sm">
-                                <span class="text-gray-400">Subtotal</span>
-                                <span class="text-white">LKR {{ number_format($order->subtotal, 2) }}</span>
+                <h4 class="text-lg font-medium text-white mb-4">💰 Complete Order Summary</h4>
+                
+                @php
+                    // Calculate original subtotal and discounts for customer view
+                    $originalSubtotal = 0;
+                    $currentSubtotal = 0;
+                    foreach($order->orderItems as $item) {
+                        $product = \App\Models\SmaProduct::find($item->product_id);
+                        if ($product) {
+                            $originalSubtotal += $item->quantity * $product->price;
+                            $currentSubtotal += $item->quantity * $product->final_price;
+                        }
+                    }
+                    $totalDiscountSavings = $originalSubtotal - $currentSubtotal;
+                    
+                    // Calculate payment fees if applicable
+                    $paymentFee = 0;
+                    if ($order->payment_method === 'webxpay') {
+                        $paymentFee = $order->total_amount * 0.03;
+                    }
+                    
+                    $finalTotal = $order->total_amount + $paymentFee;
+                @endphp
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Left Column: Price Breakdown -->
+                    <div class="space-y-4">
+                        <!-- Product Pricing Breakdown -->
+                        <div class="bg-gray-700/30 rounded-lg p-4">
+                            <h5 class="text-sm font-medium text-gray-300 mb-3">🛍️ Product Pricing</h5>
+                            <div class="space-y-2 text-sm">
+                                @if($totalDiscountSavings > 0)
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Original Subtotal</span>
+                                        <span class="text-gray-300 line-through">LKR {{ number_format($originalSubtotal, 2) }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-green-400">💸 Product Discounts</span>
+                                        <span class="text-green-400">-LKR {{ number_format($totalDiscountSavings, 2) }}</span>
+                                    </div>
+                                @endif
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Subtotal (After Discounts)</span>
+                                    <span class="text-white font-medium">LKR {{ number_format($order->subtotal, 2) }}</span>
+                                </div>
                             </div>
-                            @if($order->shipping_cost > 0)
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-400">Shipping</span>
-                                    <span class="text-white">LKR {{ number_format($order->shipping_cost, 2) }}</span>
+                        </div>
+
+                        <!-- Additional Charges -->
+                        @if($order->shipping_cost > 0 || $order->tax_amount > 0 || $order->discount_amount > 0)
+                            <div class="bg-gray-700/30 rounded-lg p-4">
+                                <h5 class="text-sm font-medium text-gray-300 mb-3">📦 Additional Charges</h5>
+                                <div class="space-y-2 text-sm">
+                                    @if($order->shipping_cost > 0)
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-400">🚚 Shipping Cost</span>
+                                            <span class="text-white">+LKR {{ number_format($order->shipping_cost, 2) }}</span>
+                                        </div>
+                                    @endif
+                                    @if($order->tax_amount > 0)
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-400">🧾 Tax</span>
+                                            <span class="text-white">+LKR {{ number_format($order->tax_amount, 2) }}</span>
+                                        </div>
+                                    @endif
+                                    @if($order->discount_amount > 0)
+                                        <div class="flex justify-between">
+                                            <span class="text-green-400">🎫 Order Discount</span>
+                                            <span class="text-green-400">-LKR {{ number_format($order->discount_amount, 2) }}</span>
+                                        </div>
+                                    @endif
                                 </div>
-                            @endif
-                            @if($order->tax_amount > 0)
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-400">Tax</span>
-                                    <span class="text-white">LKR {{ number_format($order->tax_amount, 2) }}</span>
+                            </div>
+                        @endif
+
+                        <!-- Payment Information -->
+                        <div class="bg-gray-700/30 rounded-lg p-4">
+                            <h5 class="text-sm font-medium text-gray-300 mb-3">💳 Payment Details</h5>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Payment Method</span>
+                                    <span class="text-white">
+                                        @if($order->payment_method === 'webxpay')
+                                            💳 WebXPay (Card Payment)
+                                        @elseif($order->payment_method === 'kokopay')
+                                            ⏰ Koko Pay (BNPL)
+                                        @elseif($order->payment_method === 'bank_transfer')
+                                            🏦 Bank Transfer
+                                        @else
+                                            {{ ucfirst(str_replace('_', ' ', $order->payment_method)) }}
+                                        @endif
+                                    </span>
                                 </div>
-                            @endif
-                            <div class="border-t border-gray-700 pt-2">
-                                <div class="flex justify-between font-medium">
-                                    <span class="text-white">Total</span>
-                                    <span class="text-[#f59e0b]">LKR {{ number_format($order->total_amount, 2) }}</span>
+                                @if($paymentFee > 0)
+                                    <div class="flex justify-between">
+                                        <span class="text-yellow-400">⚡ Payment Processing Fee (3%)</span>
+                                        <span class="text-yellow-400">+LKR {{ number_format($paymentFee, 2) }}</span>
+                                    </div>
+                                @endif
+                                @if($order->payment_reference)
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-400">Transaction ID</span>
+                                        <span class="text-blue-400 font-mono text-xs">{{ $order->payment_reference }}</span>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- Total Summary -->
+                        <div class="bg-gradient-to-r from-orange-500/20 to-yellow-500/20 rounded-lg p-4">
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-lg font-medium text-white">Order Total</span>
+                                    <span class="text-lg font-bold text-white">LKR {{ number_format($order->total_amount, 2) }}</span>
                                 </div>
+                                @if($paymentFee > 0)
+                                    <div class="flex justify-between items-center text-sm border-t border-gray-600 pt-2">
+                                        <span class="text-yellow-300 font-medium">💰 Total Paid</span>
+                                        <span class="text-xl font-bold text-[#f59e0b]">LKR {{ number_format($finalTotal, 2) }}</span>
+                                    </div>
+                                @endif
+                                @if($totalDiscountSavings > 0)
+                                    <div class="text-center text-sm text-green-400 bg-green-900/20 rounded px-2 py-1">
+                                        🎉 You saved LKR {{ number_format($totalDiscountSavings, 2) }} on this order!
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
 
-                    <!-- Shipping Info -->
-                    <div>
-                        <h4 class="text-lg font-medium text-white mb-3">Shipping Address</h4>
-                        <div class="text-sm text-gray-300">
-                            <p class="font-medium text-white">{{ $order->customer_name }}</p>
-                            <p>{{ $order->shipping_address_line_1 }}</p>
-                            @if($order->shipping_address_line_2)
-                                <p>{{ $order->shipping_address_line_2 }}</p>
-                            @endif
-                            <p>{{ $order->shipping_city }}, {{ $order->shipping_state }} {{ $order->shipping_postal_code }}</p>
-                            <p>{{ $order->shipping_country }}</p>
-                            <p class="mt-2">{{ $order->customer_phone }}</p>
+                    <!-- Right Column: Delivery & Contact Info -->
+                    <div class="space-y-4">
+                        <!-- Shipping Address -->
+                        <div class="bg-gray-700/30 rounded-lg p-4">
+                            <h5 class="text-sm font-medium text-gray-300 mb-3">📍 Delivery Address</h5>
+                            <div class="text-sm text-gray-300">
+                                <p class="font-medium text-white">{{ $order->customer_name }}</p>
+                                <p>{{ $order->shipping_address_line_1 }}</p>
+                                @if($order->shipping_address_line_2)
+                                    <p>{{ $order->shipping_address_line_2 }}</p>
+                                @endif
+                                <p>{{ $order->shipping_city }}, {{ $order->shipping_state }} {{ $order->shipping_postal_code }}</p>
+                                <p>{{ $order->shipping_country }}</p>
+                                <p class="mt-2 text-blue-400">📞 {{ $order->customer_phone }}</p>
+                                @if($order->customer_email)
+                                    <p class="text-blue-400">📧 {{ $order->customer_email }}</p>
+                                @endif
+                            </div>
                         </div>
+
+                        <!-- Order Status & Timeline -->
+                        <div class="bg-gray-700/30 rounded-lg p-4">
+                            <h5 class="text-sm font-medium text-gray-300 mb-3">📊 Order Status</h5>
+                            <div class="space-y-3">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs {{ $order->status_badge }} px-2 py-1 rounded-full">
+                                        📋 {{ ucfirst($order->status) }}
+                                    </span>
+                                    <span class="text-xs {{ $order->payment_status_badge }} px-2 py-1 rounded-full">
+                                        💳 {{ ucfirst(str_replace('_', ' ', $order->payment_status)) }}
+                                    </span>
+                                </div>
+                                <div class="text-xs text-gray-400">
+                                    <p>Placed: {{ $order->created_at->format('M d, Y \a\t g:i A') }}</p>
+                                    @if($order->payment_method === 'bank_transfer' && $order->transfer_slip_path)
+                                        <p class="text-green-400 mt-1">✅ Transfer slip uploaded</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Special Instructions -->
+                        @if($order->notes)
+                            <div class="bg-gray-700/30 rounded-lg p-4">
+                                <h5 class="text-sm font-medium text-gray-300 mb-3">📝 Special Instructions</h5>
+                                <p class="text-sm text-gray-300">{{ $order->notes }}</p>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

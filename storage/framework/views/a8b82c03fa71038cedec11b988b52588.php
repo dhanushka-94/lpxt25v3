@@ -43,7 +43,7 @@
             </div>
         <?php endif; ?>
 
-        <form action="<?php echo e(route('checkout.process')); ?>" method="POST" id="checkout-form" novalidate>
+        <form action="<?php echo e(route('checkout.process')); ?>" method="POST" id="checkout-form" enctype="multipart/form-data" novalidate>
             <?php echo csrf_field(); ?>
             
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -496,6 +496,52 @@
                                             </ul>
                                         </div>
                                         
+                                        <!-- Transfer Slip Upload -->
+                                        <div class="mt-4 p-4 bg-blue-900/20 border border-blue-700/50 rounded-lg">
+                                            <h5 class="text-blue-400 font-medium text-sm mb-3">📎 Upload Transfer Slip</h5>
+                                            <div class="space-y-3">
+                                                <div>
+                                                    <label for="transfer_slip" class="block text-sm font-medium text-blue-200 mb-2">
+                                                        Upload Payment Receipt/Slip <span class="text-red-400">*</span>
+                                                        <span class="text-xs text-gray-400">(Max 2MB - JPG, PNG, PDF only)</span>
+                                                    </label>
+                                                    <input type="file" 
+                                                           id="transfer_slip" 
+                                                           name="transfer_slip" 
+                                                           accept=".jpg,.jpeg,.png,.pdf"
+                                                           required
+                                                           class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-500 file:text-white hover:file:bg-blue-600 file:transition-colors border border-gray-700 rounded-lg bg-[#0f0f0f] focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                                    <div class="text-xs text-gray-500 mt-1">
+                                                        📋 Please upload a clear photo or scan of your bank transfer slip/receipt
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Upload Status Display -->
+                                                <div id="upload-status" class="hidden">
+                                                    <!-- File info will be displayed here -->
+                                                </div>
+                                                
+                                                <!-- Upload Instructions -->
+                                                <div class="bg-gray-800/50 rounded-lg p-3 text-xs text-gray-400">
+                                                    <div class="flex items-start space-x-2">
+                                                        <svg class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                        </svg>
+                                                        <div>
+                                                            <p class="font-medium text-blue-300 mb-1">Upload Requirements:</p>
+                                                            <ul class="space-y-0.5">
+                                                                <li>• Clear, readable image of transfer receipt</li>
+                                                                <li>• Include transaction reference number</li>
+                                                                <li>• Show transfer amount and date</li>
+                                                                <li>• JPG, PNG, or PDF format only</li>
+                                                                <li>• Maximum file size: 2MB</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="mt-4 p-3 bg-[#f59e0b]/10 border border-[#f59e0b]/20 rounded-lg">
                                             <div class="flex items-center space-x-2">
                                                 <svg class="w-4 h-4 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -769,10 +815,22 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reset to original total (no fees for bank transfer)
             if (orderTotalElement) orderTotalElement.textContent = formatCurrency(baseOrderTotal);
             
+            // Make transfer slip upload required
+            const transferSlipInput = document.getElementById('transfer_slip');
+            if (transferSlipInput) {
+                transferSlipInput.setAttribute('required', '');
+            }
+            
             console.log('Bank Transfer selected - No fees applied, Total: ' + formatCurrency(baseOrderTotal));
         } else {
             // Reset to original total for no selection
             if (orderTotalElement) orderTotalElement.textContent = formatCurrency(baseOrderTotal);
+            
+            // Remove transfer slip requirement for other payment methods
+            const transferSlipInput = document.getElementById('transfer_slip');
+            if (transferSlipInput) {
+                transferSlipInput.removeAttribute('required');
+            }
             
             console.log('No payment method selected - Total: ' + formatCurrency(baseOrderTotal));
         }
@@ -827,49 +885,111 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Set shipping city as required');
             }
         } else {
-            console.log('Enabling shipping fields - different from billing address');
+            console.log('Hiding shipping address fields - using billing address');
             
-            // Update labels to show fields are required when different from billing
-            const shippingLine1Label = document.querySelector('label[for="shipping_address_line_1"]');
-            const shippingCityLabel = document.querySelector('label[for="shipping_city"]');
+            // Hide shipping fields and show default message
+            shippingFields.style.display = 'none';
+            sameAddressMessage.style.display = 'block';
             
-            if (shippingLine1Label) {
-                shippingLine1Label.innerHTML = 'Address Line 1 * <span class="text-red-400 text-xs">(Required)</span>';
-            }
-            if (shippingCityLabel) {
-                shippingCityLabel.innerHTML = 'City * <span class="text-red-400 text-xs">(Required)</span>';
-            }
-            
-            // Add required attribute to key shipping fields when user wants different shipping address
+            // Remove required attributes from shipping fields
             const shippingAddressLine1 = document.getElementById('shipping_address_line_1');
             const shippingCity = document.getElementById('shipping_city');
             
             if (shippingAddressLine1) {
-                shippingAddressLine1.setAttribute('required', '');
-                console.log('Added required to shipping_address_line_1');
+                shippingAddressLine1.removeAttribute('required');
+                shippingAddressLine1.value = '';
             }
-            
             if (shippingCity) {
-                shippingCity.setAttribute('required', '');
-                console.log('Added required to shipping_city');
+                shippingCity.removeAttribute('required');
+                shippingCity.value = '';
             }
             
-            // Enable shipping fields
-            shippingFields.style.opacity = '1';
-            shippingFields.style.pointerEvents = 'auto';
+            // Clear all shipping fields when not using different address
+            document.getElementById('shipping_address_line_2').value = '';
+            document.getElementById('shipping_state').value = '';
+            document.getElementById('shipping_postal_code').value = '';
+            document.getElementById('shipping_country').value = 'Sri Lanka';
         }
     });
 
-    // Update shipping address when billing address changes (if same as billing is checked)
-    const billingFields = ['billing_address_line_1', 'billing_address_line_2', 'billing_city', 'billing_state', 'billing_postal_code', 'billing_country'];
-    billingFields.forEach(fieldId => {
-        document.getElementById(fieldId).addEventListener('input', function() {
-            if (sameAsBillingCheckbox.checked) {
-                const shippingFieldId = fieldId.replace('billing_', 'shipping_');
-                document.getElementById(shippingFieldId).value = this.value;
+    // Shipping address toggle is now handled above
+
+    // Transfer slip upload validation
+    const transferSlipInput = document.getElementById('transfer_slip');
+    const uploadStatus = document.getElementById('upload-status');
+    
+    if (transferSlipInput) {
+        transferSlipInput.addEventListener('change', function() {
+            const file = this.files[0];
+            
+            if (file) {
+                const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+                const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+                
+                // Clear previous status
+                uploadStatus.classList.add('hidden');
+                uploadStatus.innerHTML = '';
+                
+                // Validate file size
+                if (file.size > maxSize) {
+                    uploadStatus.innerHTML = `
+                        <div class="flex items-center space-x-2 p-3 bg-red-900/20 border border-red-700/50 rounded-lg">
+                            <svg class="w-4 h-4 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <div>
+                                <p class="text-red-400 text-sm font-medium">File too large!</p>
+                                <p class="text-red-300 text-xs">Maximum size allowed is 2MB. Your file is ${(file.size / 1024 / 1024).toFixed(2)}MB.</p>
+                            </div>
+                        </div>
+                    `;
+                    uploadStatus.classList.remove('hidden');
+                    this.value = '';
+                    return;
+                }
+                
+                // Validate file type
+                if (!allowedTypes.includes(file.type)) {
+                    uploadStatus.innerHTML = `
+                        <div class="flex items-center space-x-2 p-3 bg-red-900/20 border border-red-700/50 rounded-lg">
+                            <svg class="w-4 h-4 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <div>
+                                <p class="text-red-400 text-sm font-medium">Invalid file type!</p>
+                                <p class="text-red-300 text-xs">Only JPG, PNG, and PDF files are allowed.</p>
+                            </div>
+                        </div>
+                    `;
+                    uploadStatus.classList.remove('hidden');
+                    this.value = '';
+                    return;
+                }
+                
+                // Show success status
+                const fileSize = (file.size / 1024 / 1024).toFixed(2);
+                const fileType = file.type.split('/')[1].toUpperCase();
+                uploadStatus.innerHTML = `
+                    <div class="flex items-center space-x-2 p-3 bg-green-900/20 border border-green-700/50 rounded-lg">
+                        <svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                        </svg>
+                        <div>
+                            <p class="text-green-400 text-sm font-medium">✅ File uploaded successfully!</p>
+                            <p class="text-green-300 text-xs">${file.name} (${fileSize}MB, ${fileType})</p>
+                        </div>
+                    </div>
+                `;
+                uploadStatus.classList.remove('hidden');
+                
+                console.log('Transfer slip uploaded:', {
+                    name: file.name,
+                    size: fileSize + 'MB',
+                    type: file.type
+                });
             }
         });
-    });
+    }
 
     // Sri Lankan phone number validation
     const phoneInput = document.getElementById('customer_phone');
