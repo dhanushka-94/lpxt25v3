@@ -45,7 +45,7 @@
             </div>
         @endif
 
-        <form action="{{ route('checkout.process') }}" method="POST" id="checkout-form" novalidate>
+        <form action="{{ route('checkout.process') }}" method="POST" id="checkout-form" enctype="multipart/form-data" novalidate>
             @csrf
             
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -202,14 +202,23 @@
                             <h3 class="text-lg font-medium text-white">Shipping Address</h3>
                             <label class="flex items-center">
                                 <input type="checkbox" 
-                                       id="same_as_billing" 
-                                       checked
+                                       id="different_shipping_address" 
                                        class="h-4 w-4 text-[#f59e0b] focus:ring-[#f59e0b] border-gray-700 rounded bg-[#0f0f0f]">
-                                <span class="ml-2 text-sm text-gray-300">Same as billing address</span>
+                                <span class="ml-2 text-sm text-gray-300">📦 Deliver to different address</span>
                             </label>
                         </div>
                         
-                        <div id="shipping-address-fields" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Default Message -->
+                        <div id="same-address-message" class="text-center py-6 border-2 border-dashed border-gray-700 rounded-lg">
+                            <svg class="w-12 h-12 text-gray-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2v10a2 2 0 002 2z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/>
+                            </svg>
+                            <p class="text-gray-400 text-sm">📍 Items will be delivered to your billing address</p>
+                            <p class="text-gray-500 text-xs mt-1">Check "Deliver to different address" above if you want to use a different shipping address</p>
+                        </div>
+                        
+                        <div id="shipping-address-fields" class="grid grid-cols-1 md:grid-cols-2 gap-4" style="display: none;">
                             <div class="md:col-span-2">
                                 <label for="shipping_address_line_1" class="block text-sm font-medium text-gray-300 mb-2">
                                     Address Line 1
@@ -489,6 +498,52 @@
                                             </ul>
                                         </div>
                                         
+                                        <!-- Transfer Slip Upload -->
+                                        <div class="mt-4 p-4 bg-blue-900/20 border border-blue-700/50 rounded-lg">
+                                            <h5 class="text-blue-400 font-medium text-sm mb-3">📎 Upload Transfer Slip</h5>
+                                            <div class="space-y-3">
+                                                <div>
+                                                    <label for="transfer_slip" class="block text-sm font-medium text-blue-200 mb-2">
+                                                        Upload Payment Receipt/Slip <span class="text-red-400">*</span>
+                                                        <span class="text-xs text-gray-400">(Max 2MB - JPG, PNG, PDF only)</span>
+                                                    </label>
+                                                    <input type="file" 
+                                                           id="transfer_slip" 
+                                                           name="transfer_slip" 
+                                                           accept=".jpg,.jpeg,.png,.pdf"
+                                                           required
+                                                           class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-500 file:text-white hover:file:bg-blue-600 file:transition-colors border border-gray-700 rounded-lg bg-[#0f0f0f] focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                                    <div class="text-xs text-gray-500 mt-1">
+                                                        📋 Please upload a clear photo or scan of your bank transfer slip/receipt
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Upload Status Display -->
+                                                <div id="upload-status" class="hidden">
+                                                    <!-- File info will be displayed here -->
+                                                </div>
+                                                
+                                                <!-- Upload Instructions -->
+                                                <div class="bg-gray-800/50 rounded-lg p-3 text-xs text-gray-400">
+                                                    <div class="flex items-start space-x-2">
+                                                        <svg class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                        </svg>
+                                                        <div>
+                                                            <p class="font-medium text-blue-300 mb-1">Upload Requirements:</p>
+                                                            <ul class="space-y-0.5">
+                                                                <li>• Clear, readable image of transfer receipt</li>
+                                                                <li>• Include transaction reference number</li>
+                                                                <li>• Show transfer amount and date</li>
+                                                                <li>• JPG, PNG, or PDF format only</li>
+                                                                <li>• Maximum file size: 2MB</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="mt-4 p-3 bg-[#f59e0b]/10 border border-[#f59e0b]/20 rounded-lg">
                                             <div class="flex items-center space-x-2">
                                                 <svg class="w-4 h-4 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -762,10 +817,22 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reset to original total (no fees for bank transfer)
             if (orderTotalElement) orderTotalElement.textContent = formatCurrency(baseOrderTotal);
             
+            // Make transfer slip upload required
+            const transferSlipInput = document.getElementById('transfer_slip');
+            if (transferSlipInput) {
+                transferSlipInput.setAttribute('required', '');
+            }
+            
             console.log('Bank Transfer selected - No fees applied, Total: ' + formatCurrency(baseOrderTotal));
         } else {
             // Reset to original total for no selection
             if (orderTotalElement) orderTotalElement.textContent = formatCurrency(baseOrderTotal);
+            
+            // Remove transfer slip requirement for other payment methods
+            const transferSlipInput = document.getElementById('transfer_slip');
+            if (transferSlipInput) {
+                transferSlipInput.removeAttribute('required');
+            }
             
             console.log('No payment method selected - Total: ' + formatCurrency(baseOrderTotal));
         }
@@ -780,87 +847,31 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize on page load
     updatePaymentFees();
     
-    // Same as billing address functionality
-    const sameAsBillingCheckbox = document.getElementById('same_as_billing');
+    // Different shipping address functionality
+    const differentShippingCheckbox = document.getElementById('different_shipping_address');
     const shippingFields = document.getElementById('shipping-address-fields');
+    const sameAddressMessage = document.getElementById('same-address-message');
     
-    console.log('Same as billing checkbox found:', sameAsBillingCheckbox ? 'Yes' : 'No');
+    console.log('Different shipping checkbox found:', differentShippingCheckbox ? 'Yes' : 'No');
     console.log('Shipping fields found:', shippingFields ? 'Yes' : 'No');
     
-    // Initialize the shipping fields state based on default checkbox state
-    if (sameAsBillingCheckbox && sameAsBillingCheckbox.checked) {
-        console.log('Initializing: Same as billing is checked by default');
-        // Disable shipping fields and set labels initially
-        shippingFields.style.opacity = '0.5';
-        shippingFields.style.pointerEvents = 'none';
-        
-        const shippingLine1Label = document.querySelector('label[for="shipping_address_line_1"]');
-        const shippingCityLabel = document.querySelector('label[for="shipping_city"]');
-        
-        if (shippingLine1Label) {
-            shippingLine1Label.innerHTML = 'Address Line 1 <span class="text-gray-500 text-xs">(Copied from billing address)</span>';
-        }
-        if (shippingCityLabel) {
-            shippingCityLabel.innerHTML = 'City <span class="text-gray-500 text-xs">(Copied from billing address)</span>';
-        }
-    }
-    
-    sameAsBillingCheckbox.addEventListener('change', function() {
-        console.log('Same as billing checkbox changed:', this.checked);
+    differentShippingCheckbox.addEventListener('change', function() {
+        console.log('Different shipping checkbox changed:', this.checked);
         
         if (this.checked) {
-            // Copy billing address to shipping address
-            const billingLine1 = document.getElementById('billing_address_line_1').value;
-            const billingLine2 = document.getElementById('billing_address_line_2').value;
-            const billingCity = document.getElementById('billing_city').value;
-            const billingState = document.getElementById('billing_state').value;
-            const billingPostal = document.getElementById('billing_postal_code').value;
-            const billingCountry = document.getElementById('billing_country').value;
-            
-            console.log('Copying billing to shipping:', {
-                line1: billingLine1,
-                line2: billingLine2,
-                city: billingCity,
-                state: billingState,
-                postal: billingPostal,
-                country: billingCountry
-            });
-            
-            document.getElementById('shipping_address_line_1').value = billingLine1;
-            document.getElementById('shipping_address_line_2').value = billingLine2;
-            document.getElementById('shipping_city').value = billingCity;
-            document.getElementById('shipping_state').value = billingState;
-            document.getElementById('shipping_postal_code').value = billingPostal;
-            document.getElementById('shipping_country').value = billingCountry;
-            
-            // Update labels to show fields are not required when same as billing
-            const shippingLine1Label = document.querySelector('label[for="shipping_address_line_1"]');
-            const shippingCityLabel = document.querySelector('label[for="shipping_city"]');
-            
-            if (shippingLine1Label) {
-                shippingLine1Label.innerHTML = 'Address Line 1 <span class="text-gray-500 text-xs">(Copied from billing address)</span>';
-            }
-            if (shippingCityLabel) {
-                shippingCityLabel.innerHTML = 'City <span class="text-gray-500 text-xs">(Copied from billing address)</span>';
-            }
-            
-            console.log('Shipping fields will use billing address - no validation needed');
-            
-            // Disable shipping fields
-            shippingFields.style.opacity = '0.5';
-            shippingFields.style.pointerEvents = 'none';
-        } else {
-            console.log('Enabling shipping fields - different from billing address');
-            
+            // Show shipping address fields
+            console.log('Showing shipping address fields');
+            sameAddressMessage.style.display = 'none';
+            shippingFields.style.display = 'grid';
             // Update labels to show fields are required when different from billing
             const shippingLine1Label = document.querySelector('label[for="shipping_address_line_1"]');
             const shippingCityLabel = document.querySelector('label[for="shipping_city"]');
             
             if (shippingLine1Label) {
-                shippingLine1Label.innerHTML = 'Address Line 1 * <span class="text-red-400 text-xs">(Required)</span>';
+                shippingLine1Label.innerHTML = 'Address Line 1 * <span class="text-red-400 text-xs">(Required for different shipping address)</span>';
             }
             if (shippingCityLabel) {
-                shippingCityLabel.innerHTML = 'City * <span class="text-red-400 text-xs">(Required)</span>';
+                shippingCityLabel.innerHTML = 'City * <span class="text-red-400 text-xs">(Required for different shipping address)</span>';
             }
             
             // Add required attribute to key shipping fields when user wants different shipping address
@@ -869,30 +880,118 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (shippingAddressLine1) {
                 shippingAddressLine1.setAttribute('required', '');
-                console.log('Added required to shipping_address_line_1');
+                console.log('Set shipping address line 1 as required');
             }
-            
             if (shippingCity) {
                 shippingCity.setAttribute('required', '');
-                console.log('Added required to shipping_city');
+                console.log('Set shipping city as required');
+            }
+        } else {
+            console.log('Hiding shipping address fields - using billing address');
+            
+            // Hide shipping fields and show default message
+            shippingFields.style.display = 'none';
+            sameAddressMessage.style.display = 'block';
+            
+            // Remove required attributes from shipping fields
+            const shippingAddressLine1 = document.getElementById('shipping_address_line_1');
+            const shippingCity = document.getElementById('shipping_city');
+            
+            if (shippingAddressLine1) {
+                shippingAddressLine1.removeAttribute('required');
+                shippingAddressLine1.value = '';
+            }
+            if (shippingCity) {
+                shippingCity.removeAttribute('required');
+                shippingCity.value = '';
             }
             
-            // Enable shipping fields
-            shippingFields.style.opacity = '1';
-            shippingFields.style.pointerEvents = 'auto';
+            // Clear all shipping fields when not using different address
+            document.getElementById('shipping_address_line_2').value = '';
+            document.getElementById('shipping_state').value = '';
+            document.getElementById('shipping_postal_code').value = '';
+            document.getElementById('shipping_country').value = 'Sri Lanka';
         }
     });
 
-    // Update shipping address when billing address changes (if same as billing is checked)
-    const billingFields = ['billing_address_line_1', 'billing_address_line_2', 'billing_city', 'billing_state', 'billing_postal_code', 'billing_country'];
-    billingFields.forEach(fieldId => {
-        document.getElementById(fieldId).addEventListener('input', function() {
-            if (sameAsBillingCheckbox.checked) {
-                const shippingFieldId = fieldId.replace('billing_', 'shipping_');
-                document.getElementById(shippingFieldId).value = this.value;
+    // Shipping address toggle is now handled above
+
+    // Transfer slip upload validation
+    const transferSlipInput = document.getElementById('transfer_slip');
+    const uploadStatus = document.getElementById('upload-status');
+    
+    if (transferSlipInput) {
+        transferSlipInput.addEventListener('change', function() {
+            const file = this.files[0];
+            
+            if (file) {
+                const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+                const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+                
+                // Clear previous status
+                uploadStatus.classList.add('hidden');
+                uploadStatus.innerHTML = '';
+                
+                // Validate file size
+                if (file.size > maxSize) {
+                    uploadStatus.innerHTML = `
+                        <div class="flex items-center space-x-2 p-3 bg-red-900/20 border border-red-700/50 rounded-lg">
+                            <svg class="w-4 h-4 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <div>
+                                <p class="text-red-400 text-sm font-medium">File too large!</p>
+                                <p class="text-red-300 text-xs">Maximum size allowed is 2MB. Your file is ${(file.size / 1024 / 1024).toFixed(2)}MB.</p>
+                            </div>
+                        </div>
+                    `;
+                    uploadStatus.classList.remove('hidden');
+                    this.value = '';
+                    return;
+                }
+                
+                // Validate file type
+                if (!allowedTypes.includes(file.type)) {
+                    uploadStatus.innerHTML = `
+                        <div class="flex items-center space-x-2 p-3 bg-red-900/20 border border-red-700/50 rounded-lg">
+                            <svg class="w-4 h-4 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <div>
+                                <p class="text-red-400 text-sm font-medium">Invalid file type!</p>
+                                <p class="text-red-300 text-xs">Only JPG, PNG, and PDF files are allowed.</p>
+                            </div>
+                        </div>
+                    `;
+                    uploadStatus.classList.remove('hidden');
+                    this.value = '';
+                    return;
+                }
+                
+                // Show success status
+                const fileSize = (file.size / 1024 / 1024).toFixed(2);
+                const fileType = file.type.split('/')[1].toUpperCase();
+                uploadStatus.innerHTML = `
+                    <div class="flex items-center space-x-2 p-3 bg-green-900/20 border border-green-700/50 rounded-lg">
+                        <svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                        </svg>
+                        <div>
+                            <p class="text-green-400 text-sm font-medium">✅ File uploaded successfully!</p>
+                            <p class="text-green-300 text-xs">${file.name} (${fileSize}MB, ${fileType})</p>
+                        </div>
+                    </div>
+                `;
+                uploadStatus.classList.remove('hidden');
+                
+                console.log('Transfer slip uploaded:', {
+                    name: file.name,
+                    size: fileSize + 'MB',
+                    type: file.type
+                });
             }
         });
-    });
+    }
 
     // Sri Lankan phone number validation
     const phoneInput = document.getElementById('customer_phone');

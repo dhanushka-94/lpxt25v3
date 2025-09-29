@@ -200,14 +200,23 @@
                             <h3 class="text-lg font-medium text-white">Shipping Address</h3>
                             <label class="flex items-center">
                                 <input type="checkbox" 
-                                       id="same_as_billing" 
-                                       checked
+                                       id="different_shipping_address" 
                                        class="h-4 w-4 text-[#f59e0b] focus:ring-[#f59e0b] border-gray-700 rounded bg-[#0f0f0f]">
-                                <span class="ml-2 text-sm text-gray-300">Same as billing address</span>
+                                <span class="ml-2 text-sm text-gray-300">📦 Deliver to different address</span>
                             </label>
                         </div>
                         
-                        <div id="shipping-address-fields" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Default Message -->
+                        <div id="same-address-message" class="text-center py-6 border-2 border-dashed border-gray-700 rounded-lg">
+                            <svg class="w-12 h-12 text-gray-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2v10a2 2 0 002 2z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/>
+                            </svg>
+                            <p class="text-gray-400 text-sm">📍 Items will be delivered to your billing address</p>
+                            <p class="text-gray-500 text-xs mt-1">Check "Deliver to different address" above if you want to use a different shipping address</p>
+                        </div>
+                        
+                        <div id="shipping-address-fields" class="grid grid-cols-1 md:grid-cols-2 gap-4" style="display: none;">
                             <div class="md:col-span-2">
                                 <label for="shipping_address_line_1" class="block text-sm font-medium text-gray-300 mb-2">
                                     Address Line 1
@@ -778,75 +787,45 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize on page load
     updatePaymentFees();
     
-    // Same as billing address functionality
-    const sameAsBillingCheckbox = document.getElementById('same_as_billing');
+    // Different shipping address functionality
+    const differentShippingCheckbox = document.getElementById('different_shipping_address');
     const shippingFields = document.getElementById('shipping-address-fields');
+    const sameAddressMessage = document.getElementById('same-address-message');
     
-    console.log('Same as billing checkbox found:', sameAsBillingCheckbox ? 'Yes' : 'No');
+    console.log('Different shipping checkbox found:', differentShippingCheckbox ? 'Yes' : 'No');
     console.log('Shipping fields found:', shippingFields ? 'Yes' : 'No');
     
-    // Initialize the shipping fields state based on default checkbox state
-    if (sameAsBillingCheckbox && sameAsBillingCheckbox.checked) {
-        console.log('Initializing: Same as billing is checked by default');
-        // Disable shipping fields and set labels initially
-        shippingFields.style.opacity = '0.5';
-        shippingFields.style.pointerEvents = 'none';
-        
-        const shippingLine1Label = document.querySelector('label[for="shipping_address_line_1"]');
-        const shippingCityLabel = document.querySelector('label[for="shipping_city"]');
-        
-        if (shippingLine1Label) {
-            shippingLine1Label.innerHTML = 'Address Line 1 <span class="text-gray-500 text-xs">(Copied from billing address)</span>';
-        }
-        if (shippingCityLabel) {
-            shippingCityLabel.innerHTML = 'City <span class="text-gray-500 text-xs">(Copied from billing address)</span>';
-        }
-    }
-    
-    sameAsBillingCheckbox.addEventListener('change', function() {
-        console.log('Same as billing checkbox changed:', this.checked);
+    differentShippingCheckbox.addEventListener('change', function() {
+        console.log('Different shipping checkbox changed:', this.checked);
         
         if (this.checked) {
-            // Copy billing address to shipping address
-            const billingLine1 = document.getElementById('billing_address_line_1').value;
-            const billingLine2 = document.getElementById('billing_address_line_2').value;
-            const billingCity = document.getElementById('billing_city').value;
-            const billingState = document.getElementById('billing_state').value;
-            const billingPostal = document.getElementById('billing_postal_code').value;
-            const billingCountry = document.getElementById('billing_country').value;
-            
-            console.log('Copying billing to shipping:', {
-                line1: billingLine1,
-                line2: billingLine2,
-                city: billingCity,
-                state: billingState,
-                postal: billingPostal,
-                country: billingCountry
-            });
-            
-            document.getElementById('shipping_address_line_1').value = billingLine1;
-            document.getElementById('shipping_address_line_2').value = billingLine2;
-            document.getElementById('shipping_city').value = billingCity;
-            document.getElementById('shipping_state').value = billingState;
-            document.getElementById('shipping_postal_code').value = billingPostal;
-            document.getElementById('shipping_country').value = billingCountry;
-            
-            // Update labels to show fields are not required when same as billing
+            // Show shipping address fields
+            console.log('Showing shipping address fields');
+            sameAddressMessage.style.display = 'none';
+            shippingFields.style.display = 'grid';
+            // Update labels to show fields are required when different from billing
             const shippingLine1Label = document.querySelector('label[for="shipping_address_line_1"]');
             const shippingCityLabel = document.querySelector('label[for="shipping_city"]');
             
             if (shippingLine1Label) {
-                shippingLine1Label.innerHTML = 'Address Line 1 <span class="text-gray-500 text-xs">(Copied from billing address)</span>';
+                shippingLine1Label.innerHTML = 'Address Line 1 * <span class="text-red-400 text-xs">(Required for different shipping address)</span>';
             }
             if (shippingCityLabel) {
-                shippingCityLabel.innerHTML = 'City <span class="text-gray-500 text-xs">(Copied from billing address)</span>';
+                shippingCityLabel.innerHTML = 'City * <span class="text-red-400 text-xs">(Required for different shipping address)</span>';
             }
             
-            console.log('Shipping fields will use billing address - no validation needed');
+            // Add required attribute to key shipping fields when user wants different shipping address
+            const shippingAddressLine1 = document.getElementById('shipping_address_line_1');
+            const shippingCity = document.getElementById('shipping_city');
             
-            // Disable shipping fields
-            shippingFields.style.opacity = '0.5';
-            shippingFields.style.pointerEvents = 'none';
+            if (shippingAddressLine1) {
+                shippingAddressLine1.setAttribute('required', '');
+                console.log('Set shipping address line 1 as required');
+            }
+            if (shippingCity) {
+                shippingCity.setAttribute('required', '');
+                console.log('Set shipping city as required');
+            }
         } else {
             console.log('Enabling shipping fields - different from billing address');
             

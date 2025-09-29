@@ -10,6 +10,7 @@ use App\Models\UserAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class CheckoutController extends Controller
@@ -191,6 +192,35 @@ class CheckoutController extends Controller
             $shippingPostalCode = $request->shipping_postal_code ?: $request->billing_postal_code;
             $shippingCountry = $request->shipping_country ?: $request->billing_country ?: 'Sri Lanka';
 
+            // Handle transfer slip upload for bank transfer
+            $transferSlipPath = null;
+            if ($request->payment_method === 'bank_transfer' && $request->hasFile('transfer_slip')) {
+                $transferSlip = $request->file('transfer_slip');
+                
+                // Validate file
+                $request->validate([
+                    'transfer_slip' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048', // 2MB max
+                ]);
+                
+                // Create directory if it doesn't exist
+                $uploadPath = 'transfer_slips/' . date('Y/m');
+                if (!Storage::disk('public')->exists($uploadPath)) {
+                    Storage::disk('public')->makeDirectory($uploadPath);
+                }
+                
+                // Generate unique filename
+                $filename = time() . '_' . uniqid() . '.' . $transferSlip->getClientOriginalExtension();
+                
+                // Store file
+                $transferSlipPath = $transferSlip->storeAs($uploadPath, $filename, 'public');
+                
+                \Log::info('Transfer slip uploaded', [
+                    'original_name' => $transferSlip->getClientOriginalName(),
+                    'path' => $transferSlipPath,
+                    'size' => $transferSlip->getSize()
+                ]);
+            }
+
             // Create order
             $order = Order::create([
                 'user_id' => Auth::id(),
@@ -214,6 +244,7 @@ class CheckoutController extends Controller
                 'shipping_cost' => $shippingCost,
                 'total_amount' => $totalAmount,
                 'payment_method' => $request->payment_method,
+                'transfer_slip_path' => $transferSlipPath,
                 'notes' => $request->notes,
                 'status' => 'pending',
                 'payment_status' => 'pending',

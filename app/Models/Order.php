@@ -39,6 +39,7 @@ class Order extends Model
         'payment_status',
         'payment_method',
         'payment_reference',
+        'transfer_slip_path',
         'notes',
         'admin_notes',
         'shipped_at',
