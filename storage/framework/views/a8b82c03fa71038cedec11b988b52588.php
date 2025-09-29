@@ -206,14 +206,12 @@
                             </label>
                         </div>
                         
-                        <!-- Default Message -->
-                        <div id="same-address-message" class="text-center py-6 border-2 border-dashed border-gray-700 rounded-lg">
-                            <svg class="w-12 h-12 text-gray-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <!-- Compact Default Message -->
+                        <div id="same-address-message" class="flex items-center justify-center py-3 border border-dashed border-gray-700 rounded-lg bg-gray-800/20">
+                            <svg class="w-5 h-5 text-gray-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2v10a2 2 0 002 2z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/>
                             </svg>
                             <p class="text-gray-400 text-sm">📍 Items will be delivered to your billing address</p>
-                            <p class="text-gray-500 text-xs mt-1">Check "Deliver to different address" above if you want to use a different shipping address</p>
                         </div>
                         
                         <div id="shipping-address-fields" class="grid grid-cols-1 md:grid-cols-2 gap-4" style="display: none;">
@@ -297,47 +295,205 @@
                         </div>
                     </div>
 
-                    <!-- Shipping/Delivery Information -->
+                    <!-- Payment Method -->
                     <div class="bg-gradient-to-br from-[#1a1a1c] to-[#2a2a2c] rounded-xl border border-gray-800 p-6">
-                        <div class="flex items-center mb-4">
-                            <svg class="w-5 h-5 text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/>
-                            </svg>
-                            <h3 class="text-lg font-medium text-white">Shipping/Delivery Information</h3>
+                        <div class="bg-gradient-to-r from-primary-500/10 to-purple-500/10 border border-primary-500/30 rounded-lg p-4 mb-6">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                                </svg>
+                                <h3 class="text-lg font-semibold text-white">Choose Your Payment Method</h3>
+                            </div>
+                            <p class="text-gray-300 text-sm">Select how you'd like to pay for your order. All payments are secured with SSL encryption.</p>
                         </div>
                         
-                        <div class="bg-amber-900/20 border border-amber-700/50 rounded-lg p-4">
-                            <div class="flex items-start space-x-3">
-                                <svg class="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                <div>
-                                    <h4 class="text-amber-400 font-medium text-sm mb-2">Important Notice - Delivery Charges</h4>
-                                    <p class="text-amber-300 text-sm mb-3">
-                                        Kindly note that delivery charges are due at the time of parcel receipt.
-                                    </p>
-                                    <p class="text-amber-300 text-sm font-medium">
-                                        පාර්සලය ලැබුණු අවස්ථාවේදී බෙදා හැරීමේ ගාස්තු ගෙවිය යුතු බව කරුණාවෙන් සලකන්න.
-                                    </p>
+                        <div class="space-y-4">
+                            <!-- WebXPay Credit/Debit Card -->
+                            <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-[#f59e0b] transition-colors cursor-pointer">
+                                <input type="radio" 
+                                       name="payment_method" 
+                                       value="webxpay"
+                                       class="h-4 w-4 text-[#f59e0b] focus:ring-[#f59e0b] border-gray-700 bg-[#0f0f0f]">
+                                <div class="ml-3 flex-1">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="text-sm font-medium text-white">Credit/Debit Card</div>
+                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-600 text-white">
+                                            3% Fee
+                                        </span>
+                                    </div>
+                                    <div class="text-sm text-gray-400">Visa, Mastercard, American Express • Powered by WebXPay</div>
+                                </div>
+                                <div class="flex items-center space-x-2 text-blue-400">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                                    </svg>
+                                </div>
+                            </label>
+                            
+                            <!-- Koko Pay -->
+                            <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-[#f59e0b] transition-colors cursor-pointer">
+                                <input type="radio" 
+                                       name="payment_method" 
+                                       value="kokopay"
+                                       class="h-4 w-4 text-[#f59e0b] focus:ring-[#f59e0b] border-gray-700 bg-[#0f0f0f]">
+                                <div class="ml-3 flex-1">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="text-sm font-medium text-white">Koko Pay (Buy Now, Pay Later)</div>
+                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-600 text-white">
+                                            BNPL
+                                        </span>
+                                    </div>
+                                    <div class="text-sm text-gray-400">Pay in 3 installments • No interest charges</div>
+                                </div>
+                                <div class="flex items-center space-x-2 text-purple-400">
+                                    <img src="<?php echo e(asset('images/kokopay-logo.png')); ?>" alt="Koko Pay" class="h-6 w-auto">
+                                </div>
+                            </label>
+                            
+                            <!-- Bank Transfer -->
+                            <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-[#f59e0b] transition-colors cursor-pointer">
+                                <input type="radio" 
+                                       name="payment_method" 
+                                       value="bank_transfer"
+                                       class="h-4 w-4 text-[#f59e0b] focus:ring-[#f59e0b] border-gray-700 bg-[#0f0f0f]">
+                                <div class="ml-3 flex-1">
+                                    <div class="flex items-center space-x-2">
+                                    <div class="text-sm font-medium text-white">Bank Transfer</div>
+                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-600 text-white">
+                                            No Fees
+                                        </span>
+                                    </div>
+                                    <div class="text-sm text-gray-400">Direct transfer to our bank account • Manual verification required</div>
+                                </div>
+                                <div class="flex items-center space-x-2 text-[#f59e0b]">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m11 0a2 2 0 01-2 2H7a2 2 0 01-2-2m14 0V9a2 2 0 00-2-2M9 7h6m-6 4h6m-6 4h6m-6 4h6"/>
+                                    </svg>
+                                </div>
+                            </label>
+                            
+                            <!-- Bank Transfer Details (shown only when Bank Transfer is selected) -->
+                            <div class="bg-green-900/20 border border-green-700/50 rounded-lg p-4 bank-transfer-notice" style="display: none;">
+                                <div class="flex items-start space-x-3">
+                                    <svg class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m11 0a2 2 0 01-2 2H7a2 2 0 01-2-2m14 0V9a2 2 0 00-2-2M9 7h6m-6 4h6m-6 4h6m-6 4h6"/>
+                                    </svg>
+                                    <div class="flex-1">
+                                        <h4 class="text-green-400 font-medium text-sm mb-3">Bank Transfer Details</h4>
+                                        
+                                        <div class="bg-black/30 rounded-lg p-4 mb-4">
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                                <div>
+                                                    <div class="text-gray-400 mb-1">Bank Name:</div>
+                                                    <div class="text-white font-medium">Commercial Bank of Ceylon PLC</div>
+                                                </div>
+                                                <div>
+                                                    <div class="text-gray-400 mb-1">Account Name:</div>
+                                                    <div class="text-white font-medium">MSK Computers (Pvt) Ltd</div>
+                                                </div>
+                                                <div>
+                                                    <div class="text-gray-400 mb-1">Account Number:</div>
+                                                    <div class="text-white font-medium">8001234567890</div>
+                                                </div>
+                                                <div>
+                                                    <div class="text-gray-400 mb-1">Branch:</div>
+                                                    <div class="text-white font-medium">Colombo Main Branch</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="space-y-2 text-sm">
+                                            <p class="text-green-300 font-medium">
+                                                📝 Important Instructions:
+                                            </p>
+                                            <ul class="text-green-200 space-y-1 text-xs ml-4">
+                                                <li>• Please include your <strong>Order Number</strong> in the transfer reference</li>
+                                                <li>• Send the payment slip/screenshot to <strong>payments@mskcomputers.lk</strong></li>
+                                                <li>• Your order will be processed within 1-2 business days after payment confirmation</li>
+                                                <li>• Keep your payment receipt for tracking purposes</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <!-- Transfer Slip Upload -->
+                                        <div class="mt-4 p-4 bg-blue-900/20 border border-blue-700/50 rounded-lg">
+                                            <h5 class="text-blue-400 font-medium text-sm mb-3">📎 Upload Transfer Slip</h5>
+                                            <div class="space-y-3">
+                                                <div>
+                                                    <label for="transfer_slip" class="block text-sm font-medium text-blue-200 mb-2">
+                                                        Upload Payment Receipt/Slip <span class="text-red-400">*</span>
+                                                        <span class="text-xs text-gray-400">(Max 2MB - JPG, PNG, PDF only)</span>
+                                                    </label>
+                                                    <input type="file" 
+                                                           id="transfer_slip" 
+                                                           name="transfer_slip" 
+                                                           accept=".jpg,.jpeg,.png,.pdf"
+                                                           required
+                                                           class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-500 file:text-white hover:file:bg-blue-600 file:transition-colors border border-gray-700 rounded-lg bg-[#0f0f0f] focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                                    <div class="text-xs text-gray-500 mt-1">
+                                                        📋 Please upload a clear photo or scan of your bank transfer slip/receipt
+                                                        <br>💡 File will be saved with your name and phone number for easy identification
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Upload Status Display -->
+                                                <div id="upload-status" class="hidden">
+                                                    <!-- File info will be displayed here -->
+                                                </div>
+                                                
+                                                <!-- Upload Instructions -->
+                                                <div class="bg-gray-800/50 rounded-lg p-3 text-xs text-gray-400">
+                                                    <div class="flex items-start space-x-2">
+                                                        <svg class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                        </svg>
+                                                        <div>
+                                                            <p class="font-medium text-blue-300 mb-1">Upload Requirements:</p>
+                                                            <ul class="space-y-0.5">
+                                                                <li>• Clear, readable image of transfer receipt</li>
+                                                                <li>• Include transaction reference number</li>
+                                                                <li>• Show transfer amount and date</li>
+                                                                <li>• Full Name and Phone Number must be filled</li>
+                                                                <li>• JPG, PNG, or PDF format only</li>
+                                                                <li>• Maximum file size: 2MB</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mt-4 p-3 bg-[#f59e0b]/10 border border-[#f59e0b]/20 rounded-lg">
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="w-4 h-4 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                                </svg>
+                                                <div class="text-sm">
+                                                    <span class="text-[#f59e0b] font-medium">Need help?</span>
+                                                    <span class="text-gray-300"> Call us at </span>
+                                                    <a href="tel:+94777123456" class="text-[#f59e0b] font-medium hover:underline">+94 77 712 3456</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- Transaction Fee Notice (shown only when Credit/Debit Card is selected) -->
-                        <div class="bg-blue-900/20 border border-blue-700/50 rounded-lg p-4 webxpay-notice" style="display: none;">
-                            <div class="flex items-start space-x-3">
-                                <svg class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                <div>
-                                    <h4 class="text-blue-400 font-medium text-sm mb-2">Card Payment Processing Fee</h4>
-                                    <p class="text-blue-300 text-sm mb-3">
-                                        A standard transaction fee of 3% will be applied for secure card payment processing.
-                                    </p>
-                                    <p class="text-blue-300 text-sm font-medium">
-                                        ✓ SSL Encrypted • ✓ PCI Compliant • ✓ Instant Processing
-                                    </p>
-                                </div>
+                    </div>
+
+                    <!-- Transaction Fee Notice (shown only when Credit/Debit Card is selected) -->
+                    <div class="bg-blue-900/20 border border-blue-700/50 rounded-lg p-4 webxpay-notice" style="display: none;">
+                        <div class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <div>
+                                <h4 class="text-blue-400 font-medium text-sm mb-2">Card Payment Processing Fee</h4>
+                                <p class="text-blue-300 text-sm mb-3">
+                                    A standard transaction fee of 3% will be applied for secure card payment processing.
+                                </p>
+                                <p class="text-blue-300 text-sm font-medium">
+                                    ✓ SSL Encrypted • ✓ PCI Compliant • ✓ Instant Processing
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -372,6 +528,33 @@
                                 <p class="text-purple-300 text-sm font-medium">
                                     කොකෝ පේ සමඟ දැන් මිලදී ගෙන පසුව ගෙවන්න. වාරික 3කින් ගෙවන්න.
                                 </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shipping/Delivery Information -->
+                    <div class="bg-gradient-to-br from-[#1a1a1c] to-[#2a2a2c] rounded-xl border border-gray-800 p-6">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-5 h-5 text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/>
+                            </svg>
+                            <h3 class="text-lg font-medium text-white">Shipping/Delivery Information</h3>
+                        </div>
+                        
+                        <div class="bg-amber-900/20 border border-amber-700/50 rounded-lg p-4">
+                            <div class="flex items-start space-x-3">
+                                <svg class="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <div>
+                                    <h4 class="text-amber-400 font-medium text-sm mb-2">Important Notice - Delivery Charges</h4>
+                                    <p class="text-amber-300 text-sm mb-3">
+                                        Kindly note that delivery charges are due at the time of parcel receipt.
+                                    </p>
+                                    <p class="text-amber-300 text-sm font-medium">
+                                        පාර්සලය ලැබුණු අවස්ථාවේදී බෙදා හැරීමේ ගාස්තු ගෙවිය යුතු බව කරුණාවෙන් සලකන්න.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -513,6 +696,7 @@
                                                            class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-500 file:text-white hover:file:bg-blue-600 file:transition-colors border border-gray-700 rounded-lg bg-[#0f0f0f] focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                     <div class="text-xs text-gray-500 mt-1">
                                                         📋 Please upload a clear photo or scan of your bank transfer slip/receipt
+                                                        <br>💡 File will be saved with your name and phone number for easy identification
                                                     </div>
                                                 </div>
                                                 
@@ -533,6 +717,7 @@
                                                                 <li>• Clear, readable image of transfer receipt</li>
                                                                 <li>• Include transaction reference number</li>
                                                                 <li>• Show transfer amount and date</li>
+                                                                <li>• Full Name and Phone Number must be filled</li>
                                                                 <li>• JPG, PNG, or PDF format only</li>
                                                                 <li>• Maximum file size: 2MB</li>
                                                             </ul>
