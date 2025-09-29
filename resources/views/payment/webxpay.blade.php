@@ -312,9 +312,17 @@
                                     Contact Number *
                                     <span class="text-red-400 text-xs">(Required)</span>
                                 </label>
-                                <input type="text" name="contact_number" value="{{ $paymentData['contact_number'] }}" 
+                                <input type="tel" name="contact_number" value="{{ $paymentData['contact_number'] }}" 
+                                       pattern="^0[1-9][0-9]{8}$"
+                                       title="Please enter a valid Sri Lankan phone number (10 digits starting with 0)"
                                        class="w-full bg-[#0f0f0f] border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
-                                       placeholder="0771234567" required>
+                                       placeholder="Enter your phone number (e.g., 0771234567)" required>
+                                <div class="flex items-center mt-2 text-xs text-gray-400">
+                                    <svg class="w-4 h-4 mr-1 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                    </svg>
+                                    Sri Lankan format: 10 digits starting with 0 (e.g., 0771234567, 0112345678)
+                                </div>
                             </div>
                         </div>
 
@@ -653,6 +661,70 @@ document.addEventListener('DOMContentLoaded', function() {
                     this.classList.add('border-gray-700');
                 }
             });
+        });
+    }
+    
+    // Sri Lankan phone number validation
+    const contactNumberField = document.querySelector('input[name="contact_number"]');
+    if (contactNumberField) {
+        // Real-time validation for Sri Lankan phone numbers
+        contactNumberField.addEventListener('input', function() {
+            let value = this.value.replace(/\D/g, ''); // Remove non-digits
+            
+            // Limit to 10 digits
+            if (value.length > 10) {
+                value = value.slice(0, 10);
+            }
+            
+            this.value = value;
+            
+            // Validate format: 10 digits starting with 0
+            const isValid = /^0[1-9][0-9]{8}$/.test(value);
+            const isEmpty = value.length === 0;
+            
+            if (isEmpty) {
+                this.classList.remove('border-red-500', 'border-green-500');
+                this.classList.add('border-gray-700');
+            } else if (isValid) {
+                this.classList.remove('border-red-500');
+                this.classList.add('border-green-500');
+            } else {
+                this.classList.remove('border-green-500');
+                this.classList.add('border-red-500');
+            }
+        });
+        
+        contactNumberField.addEventListener('blur', function() {
+            const value = this.value;
+            const isValid = /^0[1-9][0-9]{8}$/.test(value);
+            
+            if (!isValid && value.length > 0) {
+                this.classList.add('border-red-500');
+                this.classList.remove('border-gray-700', 'border-green-500');
+                
+                // Show error message
+                const existingError = this.parentNode.querySelector('.phone-error');
+                if (!existingError) {
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'phone-error mt-1 text-xs text-red-400';
+                    errorDiv.innerHTML = '⚠️ Invalid format. Use 10 digits starting with 0 (e.g., 0771234567)';
+                    this.parentNode.appendChild(errorDiv);
+                }
+            } else {
+                // Remove error message
+                const existingError = this.parentNode.querySelector('.phone-error');
+                if (existingError) {
+                    existingError.remove();
+                }
+                
+                if (isValid) {
+                    this.classList.remove('border-red-500');
+                    this.classList.add('border-green-500');
+                } else if (value.length === 0) {
+                    this.classList.remove('border-red-500', 'border-green-500');
+                    this.classList.add('border-gray-700');
+                }
+            }
         });
     }
     

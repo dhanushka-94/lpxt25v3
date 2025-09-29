@@ -267,18 +267,28 @@
                         <div class="space-y-4">
                             <h4 class="text-sm font-medium text-gray-300 uppercase tracking-wider">Customer Information</h4>
                             
-                            <div>
-                                <label class="block text-sm font-medium text-gray-300 mb-2">
-                                    Full Name *
-                                    <span class="text-red-400 text-xs">(Required)</span>
-                                </label>
-                                <input type="text" id="customer_full_name" value="<?php echo e($order->customer_name); ?>" 
-                                       class="w-full bg-[#0f0f0f] border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
-                                       placeholder="Enter your full name" required>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">
+                                        First Name *
+                                        <span class="text-red-400 text-xs">(Required)</span>
+                                    </label>
+                                    <input type="text" name="first_name" id="webxpay_first_name" 
+                                           value="<?php echo e($paymentData['first_name']); ?>" 
+                                           class="w-full bg-[#0f0f0f] border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+                                           placeholder="Enter your first name" required>
+                                </div>
                                 
-                                <!-- Hidden fields for WebXPay (auto-populated from full name) -->
-                                <input type="hidden" name="first_name" value="<?php echo e($paymentData['first_name']); ?>" id="webxpay_first_name">
-                                <input type="hidden" name="last_name" value="<?php echo e($paymentData['last_name']); ?>" id="webxpay_last_name">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">
+                                        Last Name *
+                                        <span class="text-red-400 text-xs">(Required)</span>
+                                    </label>
+                                    <input type="text" name="last_name" id="webxpay_last_name" 
+                                           value="<?php echo e($paymentData['last_name']); ?>" 
+                                           class="w-full bg-[#0f0f0f] border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+                                           placeholder="Enter your last name" required>
+                                </div>
                             </div>
 
                             <div>
@@ -626,23 +636,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 15000);
     });
     
-    // Handle full name splitting for WebXPay
-    const fullNameField = document.getElementById('customer_full_name');
+    // Name field validation - ensure both first and last names are filled
     const firstNameField = document.getElementById('webxpay_first_name');
     const lastNameField = document.getElementById('webxpay_last_name');
     
-    if (fullNameField && firstNameField && lastNameField) {
-        fullNameField.addEventListener('input', function() {
-            const fullName = this.value.trim();
-            const nameParts = fullName.split(' ');
-            
-            if (nameParts.length > 0) {
-                firstNameField.value = nameParts[0];
-                lastNameField.value = nameParts.slice(1).join(' ');
-            } else {
-                firstNameField.value = '';
-                lastNameField.value = '';
-            }
+    if (firstNameField && lastNameField) {
+        // Validate that both names are provided
+        [firstNameField, lastNameField].forEach(field => {
+            field.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.classList.add('border-red-500');
+                    this.classList.remove('border-gray-700');
+                } else {
+                    this.classList.remove('border-red-500');
+                    this.classList.add('border-gray-700');
+                }
+            });
         });
     }
     
