@@ -142,7 +142,7 @@
                         <!-- Products Grid - 3 Column Layout -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
                         @foreach($products as $product)
-                                <a href="{{ route('products.show', ['category' => $product->category->slug ?: $product->category->id, 'product' => $product->slug]) }}" 
+                                <a href="{{ route('products.show', ['category' => $product->category ? ($product->category->slug ?: $product->category->id) : $product->category_id, 'product' => $product->slug ?: $product->id]) }}" 
                                    class="group bg-[#1c1c1e] rounded-xl border border-gray-800/30 overflow-hidden hover:border-primary-500/30 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary-500/10">
                                     
                                     <!-- Product Image -->
