@@ -540,7 +540,6 @@
                                                            id="transfer_slip" 
                                                            name="transfer_slip" 
                                                            accept=".jpg,.jpeg,.png,.pdf"
-                                                           required
                                                            class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-500 file:text-white hover:file:bg-blue-600 file:transition-colors border border-gray-700 rounded-lg bg-[#0f0f0f] focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                     <div class="text-xs text-gray-500 mt-1">
                                                         📋 Please upload a clear photo or scan of your bank transfer slip/receipt
@@ -816,6 +815,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (webxpayFeeAmount) webxpayFeeAmount.textContent = formatCurrency(transactionFee);
             if (orderTotalElement) orderTotalElement.textContent = formatCurrency(newTotal);
             
+            // Remove transfer slip requirement for WebXPay
+            const transferSlipInput = document.getElementById('transfer_slip');
+            if (transferSlipInput) {
+                transferSlipInput.removeAttribute('required');
+            }
+            
             console.log('WebXPay selected - Transaction Fee: ' + formatCurrency(transactionFee) + ', New Total: ' + formatCurrency(newTotal));
             
         } else if (kokopayRadio && kokopayRadio.checked) {
@@ -838,6 +843,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (kokopaySplit1) kokopaySplit1.textContent = formatCurrency(splitAmount);
             if (kokopaySplit2) kokopaySplit2.textContent = formatCurrency(splitAmount);
             if (kokopaySplit3) kokopaySplit3.textContent = formatCurrency(splitAmount);
+            
+            // Remove transfer slip requirement for KokoPay
+            const transferSlipInput = document.getElementById('transfer_slip');
+            if (transferSlipInput) {
+                transferSlipInput.removeAttribute('required');
+            }
             
             console.log('Koko Pay selected - Transaction Fee: ' + formatCurrency(transactionFee) + ', New Total: ' + formatCurrency(newTotal));
             
