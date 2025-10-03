@@ -10,8 +10,36 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // Get cached promotion products for better performance (replacing featured products)
-        $promotionProducts = \App\Services\PerformanceCacheService::getPromotionProducts(null, 8);
+        // Get promotion products directly (bypassing cache for debugging)
+        $promotionProducts = SmaProduct::active()
+            ->select(['id', 'name', 'price', 'promo_price', 'quantity', 'category_id', 'subcategory_id', 'product_status', 'image', 'promotion'])
+            ->where('promotion', 1)
+            ->where('promo_price', '>', 0)
+            ->where('quantity', '>', 0)
+            ->with([
+                'category:id,name,slug',
+                'subcategory:id,name,slug',
+                'photos:id,product_id,photo',
+                'status:id,status_name'
+            ])
+            ->where(function($q) {
+                $q->whereNull('start_date')
+                  ->orWhereNull('end_date')
+                  ->orWhere(function($dateQuery) {
+                      $dateQuery->where('start_date', '<=', now())
+                               ->where('end_date', '>=', now());
+                  });
+            })
+            ->orderByRaw('((price - promo_price) / price) DESC')
+            ->orderByRaw("
+                CASE 
+                    WHEN quantity > 10 THEN 1 
+                    WHEN quantity > 0 THEN 2 
+                    ELSE 3 
+                END ASC
+            ")
+            ->take(8)
+            ->get();
 
         // Get cached categories (limited to 6 for homepage)
         $categories = \App\Services\PerformanceCacheService::getNavigationCategories()->take(6);
