@@ -30,6 +30,7 @@ class HomeController extends Controller
                                ->where('end_date', '>=', now());
                   });
             })
+            ->orderBy('id', 'DESC')
             ->orderByRaw('((price - promo_price) / price) DESC')
             ->orderByRaw("
                 CASE 
