@@ -720,43 +720,46 @@ class PaymentController extends Controller
                 'status' => 'confirmed' // Update order status as well
             ]);
 
-            // Create transaction record for admin transactions page
-            \App\Models\Transaction::create([
-                'transaction_id' => 'TXN-' . strtoupper(substr($transactionId, 0, 16)),
-                'order_id' => $order->id,
-                'payment_method' => 'kokopay',
-                'status' => 'completed',
-                'amount' => $order->total_amount,
-                'currency' => 'LKR',
-                'gateway_transaction_id' => $transactionId, // trnId
-                'gateway_reference' => $request->get('orderId', ''), // orderId
-                'gateway_response' => $request->all(), // Complete raw response
-                'customer_name' => $order->customer_name,
-                'customer_email' => $order->customer_email,
-                'customer_phone' => $order->customer_phone,
-                'description' => $description ?: "Koko Pay payment for order {$order->order_number}", // desc field
-                'initiated_at' => $order->created_at,
-                'completed_at' => now(),
-                'metadata' => [
-                    // KOKO PAY CORE PARAMETERS
-                    'orderId' => $request->get('orderId', ''),
-                    'trnId' => $transactionId,
-                    'status' => $request->get('status', ''),
-                    'desc' => $description,
-                    
-                    // KOKO PAY ADDITIONAL PARAMETERS  
-                    'key' => $request->get('key', ''),
-                    'frontend' => $request->get('frontend', false),
-                    'wc_api' => $request->get('wc-api', ''),
-                    
-                    // INTERNAL TRACKING
-                    'source' => 'return_url',
-                    'payment_flow' => 'successful',
-                    'koko_pay_order_id' => $request->get('orderId', ''), // Legacy compatibility
-                    'koko_pay_transaction_id' => $transactionId, // Legacy compatibility
+            // Create or find existing transaction record for admin transactions page
+            $transactionRecord = \App\Models\Transaction::firstOrCreate(
+                [
+                    'transaction_id' => 'TXN-' . strtoupper(substr($transactionId, 0, 16)),
                 ],
-                'ip_address' => $request->ip(),
-                'user_agent' => $request->header('User-Agent'),
+                [
+                    'order_id' => $order->id,
+                    'payment_method' => 'kokopay',
+                    'status' => 'completed',
+                    'amount' => $order->total_amount,
+                    'currency' => 'LKR',
+                    'gateway_transaction_id' => $transactionId, // trnId
+                    'gateway_reference' => $request->get('orderId', ''), // orderId
+                    'gateway_response' => $request->all(), // Complete raw response
+                    'customer_name' => $order->customer_name,
+                    'customer_email' => $order->customer_email,
+                    'customer_phone' => $order->customer_phone,
+                    'description' => $description ?: "Koko Pay payment for order {$order->order_number}", // desc field
+                    'initiated_at' => $order->created_at,
+                    'completed_at' => now(),
+                    'metadata' => [
+                        // KOKO PAY CORE PARAMETERS
+                        'orderId' => $request->get('orderId', ''),
+                        'trnId' => $transactionId,
+                        'status' => $request->get('status', ''),
+                        'desc' => $description,
+                        
+                        // KOKO PAY ADDITIONAL PARAMETERS  
+                        'key' => $request->get('key', ''),
+                        'frontend' => $request->get('frontend', false),
+                        'wc_api' => $request->get('wc-api', ''),
+                        
+                        // INTERNAL TRACKING
+                        'source' => 'return_url',
+                        'payment_flow' => 'successful',
+                        'koko_pay_order_id' => $request->get('orderId', ''), // Legacy compatibility
+                        'koko_pay_transaction_id' => $transactionId, // Legacy compatibility
+                    ],
+                    'ip_address' => $request->ip(),
+                    'user_agent' => $request->header('User-Agent'),
             ]);
 
             // Clear session
@@ -784,9 +787,11 @@ class PaymentController extends Controller
             return redirect()->route('checkout.success', $order->order_number)
                            ->with('success', 'Payment completed successfully with Koko Pay!');
         } else {
-            // Create transaction record for failed payment
-            \App\Models\Transaction::create([
-                'transaction_id' => 'TXN-' . strtoupper(substr($transactionId ?: uniqid(), 0, 16)),
+            // Create or find existing transaction record for failed payment
+            $failedTransactionId = 'TXN-' . strtoupper(substr($transactionId ?: uniqid(), 0, 16));
+            \App\Models\Transaction::firstOrCreate(
+                ['transaction_id' => $failedTransactionId],
+                [
                 'order_id' => $order->id,
                 'payment_method' => 'kokopay',
                 'status' => 'failed',
@@ -823,7 +828,8 @@ class PaymentController extends Controller
                 ],
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->header('User-Agent'),
-            ]);
+                ]
+            );
 
             Log::warning('Koko Pay payment failed or cancelled', [
                 'order_id' => $order->id,
@@ -866,9 +872,11 @@ class PaymentController extends Controller
                     'payment_reference' => $transactionId
                 ]);
                 
-                // Create transaction record for cancelled payment
-                \App\Models\Transaction::create([
-                    'transaction_id' => 'TXN-' . strtoupper(substr($transactionId ?: uniqid(), 0, 16)),
+                // Create or find existing transaction record for cancelled payment
+                $cancelledTransactionId = 'TXN-' . strtoupper(substr($transactionId ?: uniqid(), 0, 16));
+                \App\Models\Transaction::firstOrCreate(
+                    ['transaction_id' => $cancelledTransactionId],
+                    [
                     'order_id' => $order->id,
                     'payment_method' => 'kokopay',
                     'status' => 'cancelled',
@@ -906,7 +914,8 @@ class PaymentController extends Controller
                     ],
                     'ip_address' => $request->ip(),
                     'user_agent' => $request->header('User-Agent'),
-                ]);
+                    ]
+                );
                 
                 Log::info('Koko Pay payment cancelled by user', [
                     'order_id' => $order->id,
@@ -1018,9 +1027,10 @@ class PaymentController extends Controller
                         'transaction_id' => $existingTransaction->transaction_id
                     ]);
                 } else {
-                    // Create new transaction record from webhook
-                    \App\Models\Transaction::create([
-                        'transaction_id' => 'TXN-' . strtoupper(substr($transactionId, 0, 16)),
+                    // Create or find existing transaction record from webhook
+                    \App\Models\Transaction::firstOrCreate(
+                        ['transaction_id' => 'TXN-' . strtoupper(substr($transactionId, 0, 16))],
+                        [
                         'order_id' => $order->id,
                         'payment_method' => 'kokopay',
                         'status' => 'completed',
@@ -1056,7 +1066,8 @@ class PaymentController extends Controller
                         ],
                         'ip_address' => $request->ip(),
                         'user_agent' => $request->header('User-Agent'),
-                    ]);
+                        ]
+                    );
                     Log::info('Created new transaction via Koko Pay webhook');
                 }
 
@@ -1087,8 +1098,9 @@ class PaymentController extends Controller
                         ])
                     ]);
                 } else {
-                    \App\Models\Transaction::create([
-                        'transaction_id' => 'TXN-' . strtoupper(substr($transactionId, 0, 16)),
+                    \App\Models\Transaction::firstOrCreate(
+                        ['transaction_id' => 'TXN-' . strtoupper(substr($transactionId, 0, 16))],
+                        [
                         'order_id' => $order->id,
                         'payment_method' => 'kokopay',
                         'status' => 'failed',
@@ -1126,7 +1138,8 @@ class PaymentController extends Controller
                         ],
                         'ip_address' => $request->ip(),
                         'user_agent' => $request->header('User-Agent'),
-                    ]);
+                        ]
+                    );
                 }
 
                 Log::warning('Koko Pay webhook: Payment failed', [
