@@ -337,6 +337,20 @@ class CheckoutController extends Controller
             session(['last_order_id' => $order->id]);
         }
 
+        // Clear cart if this is from a successful payment
+        if (session('payment_success_order') === $orderNumber) {
+            Cart::where('session_id', session()->getId())
+                ->orWhere(function($query) {
+                    if (Auth::check()) {
+                        $query->where('user_id', Auth::id());
+                    }
+                })
+                ->delete();
+                
+            // Remove the session flag
+            session()->forget('payment_success_order');
+        }
+
         return view('checkout.success', compact('order'));
     }
 

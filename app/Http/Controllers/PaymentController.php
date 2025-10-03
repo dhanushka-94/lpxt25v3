@@ -414,8 +414,18 @@ class PaymentController extends Controller
     public function handleWebXPayReturn(Request $request)
     {
         try {
+            // Log the incoming request for debugging
+            Log::info('WebXPay return handler called', [
+                'request_data' => $request->all(),
+                'has_payment' => $request->has('payment'),
+                'has_signature' => $request->has('signature')
+            ]);
+
             // Validate required parameters
             if (!$request->has(['payment', 'signature'])) {
+                Log::error('WebXPay return missing required parameters', [
+                    'available_keys' => array_keys($request->all())
+                ]);
                 throw new \Exception('Missing required payment response data');
             }
 
@@ -425,51 +435,65 @@ class PaymentController extends Controller
             // Process the response
             $processedResponse = $webxpayService->processResponse($responseData);
             
+            Log::info('WebXPay processed response', [
+                'processed_response' => $processedResponse,
+                'payment_status' => $processedResponse['payment_status'] ?? 'not_set'
+            ]);
+            
             // Find the order
             $order = Order::where('order_number', $processedResponse['order_id'])->first();
             
             if (!$order) {
+                Log::error('WebXPay order not found', [
+                    'order_number' => $processedResponse['order_id']
+                ]);
                 throw new \Exception('Order not found: ' . $processedResponse['order_id']);
             }
+
+            Log::info('WebXPay order found', [
+                'order_id' => $order->id,
+                'order_number' => $order->order_number,
+                'current_payment_status' => $order->payment_status
+            ]);
 
             // Update order status
             $updateSuccess = $webxpayService->updateOrderStatus($order, $responseData);
             
             if (!$updateSuccess) {
+                Log::error('WebXPay failed to update order status');
                 throw new \Exception('Failed to update order status');
             }
+
+            Log::info('WebXPay about to redirect', [
+                'payment_status' => $processedResponse['payment_status'],
+                'order_number' => $order->order_number
+            ]);
 
             // Redirect based on payment status
             switch ($processedResponse['payment_status']) {
                 case 'success':
-                    // Clear cart after successful payment
-                    \App\Models\Cart::where('session_id', session()->getId())
-                        ->orWhere(function($query) {
-                            if (\Illuminate\Support\Facades\Auth::check()) {
-                                $query->where('user_id', \Illuminate\Support\Facades\Auth::id());
-                            }
-                        })
-                        ->delete();
-                        
+                    Log::info('WebXPay success - redirecting to success page');
+                    // Store order number in session for cart clearing
+                    session(['payment_success_order' => $order->order_number]);
+                    
                     return redirect()->route('checkout.success', $order->order_number)
                         ->with('success', 'Payment completed successfully via WebXPay!');
                         
                 case 'pending':
-                    // Clear cart for pending payments too (order is created)
-                    \App\Models\Cart::where('session_id', session()->getId())
-                        ->orWhere(function($query) {
-                            if (\Illuminate\Support\Facades\Auth::check()) {
-                                $query->where('user_id', \Illuminate\Support\Facades\Auth::id());
-                            }
-                        })
-                        ->delete();
-                        
+                    Log::info('WebXPay pending - redirecting to success page');
+                    // Store order number in session for cart clearing
+                    session(['payment_success_order' => $order->order_number]);
+                    
                     return redirect()->route('checkout.success', $order->order_number)
                         ->with('info', 'Payment is being processed. You will receive confirmation once completed.');
                         
                 default:
+                    Log::warning('WebXPay non-success status', [
+                        'payment_status' => $processedResponse['payment_status'],
+                        'comment' => $processedResponse['comment'] ?? 'No comment'
+                    ]);
                     return redirect()->route('checkout.index')
-                        ->with('error', 'Payment was not completed. ' . $processedResponse['comment']);
+                        ->with('error', 'Payment was not completed. ' . ($processedResponse['comment'] ?? 'Unknown error'));
             }
 
         } catch (\Exception $e) {
