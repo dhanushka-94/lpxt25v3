@@ -436,7 +436,7 @@
                                             Recommended
                                         </span>
                                     </div>
-                                    <div class="text-sm text-gray-400">Direct transfer to our bank account • Upload transfer slip for verification</div>
+                                    <div class="text-sm text-gray-400">Direct transfer to our bank account • Optional slip upload for faster verification</div>
                                 </div>
                                 <div class="flex items-center space-x-2 text-green-400">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -535,7 +535,7 @@
                                             <div class="space-y-3">
                                                 <div>
                                                     <label for="transfer_slip" class="block text-sm font-medium text-blue-200 mb-2">
-                                                        Upload Payment Receipt/Slip <span class="text-red-400">*</span>
+                                                        Upload Payment Receipt/Slip <span class="text-gray-500">(Optional)</span>
                                                         <span class="text-xs text-gray-400">(Max 2MB - JPG, PNG, PDF only)</span>
                                                     </label>
                                                     <input type="file" 
@@ -544,8 +544,8 @@
                                                            accept=".jpg,.jpeg,.png,.pdf"
                                                            class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-500 file:text-white hover:file:bg-blue-600 file:transition-colors border border-gray-700 rounded-lg bg-[#0f0f0f] focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                     <div class="text-xs text-gray-500 mt-1">
-                                                        📋 Please upload a clear photo or scan of your bank transfer slip/receipt
-                                                        <br>💡 File will be saved with your name and phone number for easy identification
+                                                        📋 Optionally upload a clear photo or scan of your bank transfer slip/receipt
+                                                        <br>💡 This helps us verify your payment faster (but not required)
                                                     </div>
                                                 </div>
                                                 
@@ -861,10 +861,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reset to original total (no fees for bank transfer)
             if (orderTotalElement) orderTotalElement.textContent = formatCurrency(baseOrderTotal);
             
-            // Make transfer slip upload required
+            // Transfer slip upload is optional for bank transfer
             const transferSlipInput = document.getElementById('transfer_slip');
             if (transferSlipInput) {
-                transferSlipInput.setAttribute('required', '');
+                transferSlipInput.removeAttribute('required');
             }
             
             console.log('Bank Transfer selected - No fees applied, Total: ' + formatCurrency(baseOrderTotal));

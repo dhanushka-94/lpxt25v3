@@ -198,9 +198,9 @@ class CheckoutController extends Controller
             if ($request->payment_method === 'bank_transfer' && $request->hasFile('transfer_slip')) {
                 $transferSlip = $request->file('transfer_slip');
                 
-                // Validate file
+                // Validate file (optional)
                 $request->validate([
-                    'transfer_slip' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048', // 2MB max
+                    'transfer_slip' => 'nullable|file|mimes:jpeg,jpg,png,pdf|max:2048', // 2MB max
                 ]);
                 
                 // Create directory if it doesn't exist
