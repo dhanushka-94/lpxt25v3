@@ -264,6 +264,11 @@
                         <input type="hidden" name="process_currency" value="{{ $paymentData['process_currency'] }}">
                         <input type="hidden" name="cms" value="{{ $paymentData['cms'] }}">
                         
+                        <!-- Return URLs for WebXPay Gateway -->
+                        <input type="hidden" name="return_url" value="{{ $paymentData['return_url'] }}">
+                        <input type="hidden" name="cancel_url" value="{{ $paymentData['cancel_url'] }}">
+                        <input type="hidden" name="notify_url" value="{{ $paymentData['notify_url'] }}">
+                        
                         <!-- Customer Details Section -->
                         <div class="space-y-4">
                             <h4 class="text-sm font-medium text-gray-300 uppercase tracking-wider">Customer Information</h4>

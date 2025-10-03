@@ -94,6 +94,10 @@ class WebXPayService
                 'enc_method' => $this->encryptionMethod,
                 'secret_key' => $this->secretKey,
                 'payment' => $payment,
+                // Return URLs for WebXPay gateway
+                'return_url' => config('webxpay.return_url'),
+                'cancel_url' => config('webxpay.cancel_url'),
+                'notify_url' => config('webxpay.notify_url'),
             ];
             
             Log::info('WebXPay payment prepared', [
@@ -101,6 +105,11 @@ class WebXPayService
                 'amount' => $order->total_amount,
                 'plaintext' => $plaintext,
                 'checkout_url' => $paymentData['checkout_url'],
+                'return_urls' => [
+                    'return_url' => $paymentData['return_url'],
+                    'cancel_url' => $paymentData['cancel_url'],
+                    'notify_url' => $paymentData['notify_url']
+                ],
                 'customer_data' => [
                     'first_name' => $paymentData['first_name'],
                     'last_name' => $paymentData['last_name'],
