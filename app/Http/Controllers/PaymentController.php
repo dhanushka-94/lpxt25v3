@@ -414,11 +414,20 @@ class PaymentController extends Controller
     public function handleWebXPayReturn(Request $request)
     {
         try {
+            // Check if data was passed from cart redirect
+            $webxpayData = session('webxpay_data');
+            if ($webxpayData && !$request->has('payment')) {
+                Log::info('WebXPay data retrieved from cart redirect', ['webxpay_data' => $webxpayData]);
+                $request->merge($webxpayData);
+                session()->forget('webxpay_data');
+            }
+
             // Log the incoming request for debugging
             Log::info('WebXPay return handler called', [
                 'request_data' => $request->all(),
                 'has_payment' => $request->has('payment'),
-                'has_signature' => $request->has('signature')
+                'has_signature' => $request->has('signature'),
+                'from_cart_redirect' => !empty($webxpayData)
             ]);
 
             // Validate required parameters

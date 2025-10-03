@@ -22,6 +22,26 @@ class CartController extends Controller
             'timestamp' => now()->toDateTimeString()
         ]);
 
+        // TEMPORARY: Check if this is a WebXPay redirect by looking for WebXPay parameters
+        $queryParams = request()->all();
+        if (isset($queryParams['payment']) || isset($queryParams['signature']) || 
+            str_contains(request()->header('referer', ''), 'webxpay') ||
+            str_contains(request()->header('referer', ''), 'stagingxpay')) {
+            
+            \Log::error('WEBXPAY REDIRECT TO CART DETECTED!', [
+                'referer' => request()->header('referer'),
+                'query_params' => $queryParams,
+                'all_headers' => request()->headers->all()
+            ]);
+            
+            // Try to redirect to WebXPay return handler manually
+            if (isset($queryParams['payment']) && isset($queryParams['signature'])) {
+                \Log::info('WebXPay parameters found in cart URL - redirecting to return handler');
+                return redirect()->route('payment.webxpay.legacy.return')
+                    ->with('webxpay_data', $queryParams);
+            }
+        }
+
         $cartItems = $this->getCartItems();
         $cartTotal = $cartItems->sum(function($item) {
             return $item->product->final_price * $item->quantity;
