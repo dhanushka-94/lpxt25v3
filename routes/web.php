@@ -327,15 +327,15 @@ Route::get('/payment/return', [App\Http\Controllers\PaymentController::class, 'h
 Route::get('/payment/cancel', [App\Http\Controllers\PaymentController::class, 'handleCancel'])->name('payment.cancel');
 Route::post('/payment/notify', [App\Http\Controllers\PaymentController::class, 'handleNotify'])->name('payment.notify');
 
-// WebXPay Payment Routes
+// WebXPay Payment Routes (specific routes first, then parameterized routes)
 Route::get('/payment/webxpay/test', [App\Http\Controllers\PaymentController::class, 'testWebXPay'])->name('payment.webxpay.test');
-Route::get('/payment/webxpay/{order}', [App\Http\Controllers\PaymentController::class, 'initiateWebXPayPayment'])->name('payment.webxpay');
-Route::post('/payment/webxpay/{order}', [App\Http\Controllers\PaymentController::class, 'initiateWebXPayPayment'])->name('payment.webxpay.post');
 Route::get('/payment/webxpay/return', [App\Http\Controllers\PaymentController::class, 'handleWebXPayReturn'])->name('payment.webxpay.return');
 Route::post('/payment/webxpay/return', [App\Http\Controllers\PaymentController::class, 'handleWebXPayReturn'])->name('payment.webxpay.return.post');
 Route::get('/payment/webxpay/cancel', [App\Http\Controllers\PaymentController::class, 'handleWebXPayCancel'])->name('payment.webxpay.cancel');
 Route::post('/payment/webxpay/notify', [App\Http\Controllers\PaymentController::class, 'handleWebXPayNotify'])->name('payment.webxpay.notify');
 Route::get('/payment/webxpay/status/{order}', [App\Http\Controllers\PaymentController::class, 'checkWebXPayPaymentStatus'])->name('payment.webxpay.status');
+Route::get('/payment/webxpay/{order}', [App\Http\Controllers\PaymentController::class, 'initiateWebXPayPayment'])->name('payment.webxpay');
+Route::post('/payment/webxpay/{order}', [App\Http\Controllers\PaymentController::class, 'initiateWebXPayPayment'])->name('payment.webxpay.post');
 
 // WebXPay Legacy/Alternative Routes (for compatibility)
 Route::post('/pay/webxpayResponse', [App\Http\Controllers\PaymentController::class, 'handleWebXPayReturn'])->name('payment.webxpay.legacy.return');
