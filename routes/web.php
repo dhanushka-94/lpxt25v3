@@ -337,6 +337,10 @@ Route::get('/payment/webxpay/cancel', [App\Http\Controllers\PaymentController::c
 Route::post('/payment/webxpay/notify', [App\Http\Controllers\PaymentController::class, 'handleWebXPayNotify'])->name('payment.webxpay.notify');
 Route::get('/payment/webxpay/status/{order}', [App\Http\Controllers\PaymentController::class, 'checkWebXPayPaymentStatus'])->name('payment.webxpay.status');
 
+// WebXPay Legacy/Alternative Routes (for compatibility)
+Route::post('/pay/webxpayResponse', [App\Http\Controllers\PaymentController::class, 'handleWebXPayReturn'])->name('payment.webxpay.legacy.return');
+Route::get('/pay/webxpayResponse', [App\Http\Controllers\PaymentController::class, 'handleWebXPayReturn'])->name('payment.webxpay.legacy.return.get');
+
 // Koko Pay Payment Routes (specific routes first, then parameterized routes)
 Route::get('/payment/kokopay/test', [App\Http\Controllers\PaymentController::class, 'testKokoPay'])->name('payment.kokopay.test');
 Route::get('/payment/kokopay/return', [App\Http\Controllers\PaymentController::class, 'handleKokoPayReturn'])->name('payment.kokopay.return');
