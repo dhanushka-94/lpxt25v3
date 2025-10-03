@@ -833,10 +833,108 @@
 
         // Update pagination for AJAX
         function updatePagination(pagination) {
-            if (elements.paginationContainer) {
-                // Always show pagination container - let the pagination component itself decide visibility
-                elements.paginationContainer.style.display = 'block';
+            if (!elements.paginationContainer) return;
+            
+            // If no pagination data or only one page, hide pagination
+            if (!pagination || pagination.last_page <= 1) {
+                elements.paginationContainer.innerHTML = '';
+                return;
             }
+            
+            // Get current filter parameters
+            const currentParams = new URLSearchParams();
+            if (elements.filterForm) {
+                const formData = new FormData(elements.filterForm);
+                for (let [key, value] of formData.entries()) {
+                    if (value) currentParams.append(key, value);
+                }
+            }
+            if (elements.sortSelect && elements.sortSelect.value) {
+                currentParams.append('sort', elements.sortSelect.value);
+            }
+            
+            // Generate pagination HTML
+            let paginationHTML = '<nav class="flex items-center justify-center space-x-2 mt-8" role="navigation" aria-label="Pagination Navigation">';
+            
+            // Previous page link
+            if (pagination.current_page > 1) {
+                const prevParams = new URLSearchParams(currentParams);
+                prevParams.set('page', pagination.current_page - 1);
+                paginationHTML += `
+                    <a href="?${prevParams.toString()}" 
+                       class="px-3 py-2 text-sm leading-4 text-gray-300 bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </a>`;
+            } else {
+                paginationHTML += `
+                    <span class="px-3 py-2 text-sm leading-4 text-gray-500 bg-gray-800 border border-gray-700 rounded-md cursor-not-allowed">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </span>`;
+            }
+            
+            // Page number links
+            const startPage = Math.max(1, pagination.current_page - 2);
+            const endPage = Math.min(pagination.last_page, pagination.current_page + 2);
+            
+            // Show first page if we're not starting from 1
+            if (startPage > 1) {
+                const firstParams = new URLSearchParams(currentParams);
+                firstParams.set('page', 1);
+                paginationHTML += `<a href="?${firstParams.toString()}" class="px-3 py-2 text-sm leading-4 text-gray-300 bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-colors">1</a>`;
+                if (startPage > 2) {
+                    paginationHTML += `<span class="px-3 py-2 text-sm leading-4 text-gray-500 bg-gray-800 border border-gray-700 rounded-md">...</span>`;
+                }
+            }
+            
+            // Page numbers around current page
+            for (let page = startPage; page <= endPage; page++) {
+                if (page === pagination.current_page) {
+                    paginationHTML += `<span class="px-3 py-2 text-sm leading-4 text-white bg-[#f59e0b] border border-[#f59e0b] rounded-md font-medium">${page}</span>`;
+                } else {
+                    const pageParams = new URLSearchParams(currentParams);
+                    pageParams.set('page', page);
+                    paginationHTML += `<a href="?${pageParams.toString()}" class="px-3 py-2 text-sm leading-4 text-gray-300 bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-colors">${page}</a>`;
+                }
+            }
+            
+            // Show last page if we're not ending at the last page
+            if (endPage < pagination.last_page) {
+                if (endPage < pagination.last_page - 1) {
+                    paginationHTML += `<span class="px-3 py-2 text-sm leading-4 text-gray-500 bg-gray-800 border border-gray-700 rounded-md">...</span>`;
+                }
+                const lastParams = new URLSearchParams(currentParams);
+                lastParams.set('page', pagination.last_page);
+                paginationHTML += `<a href="?${lastParams.toString()}" class="px-3 py-2 text-sm leading-4 text-gray-300 bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-colors">${pagination.last_page}</a>`;
+            }
+            
+            // Next page link
+            if (pagination.current_page < pagination.last_page) {
+                const nextParams = new URLSearchParams(currentParams);
+                nextParams.set('page', pagination.current_page + 1);
+                paginationHTML += `
+                    <a href="?${nextParams.toString()}" 
+                       class="px-3 py-2 text-sm leading-4 text-gray-300 bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>`;
+            } else {
+                paginationHTML += `
+                    <span class="px-3 py-2 text-sm leading-4 text-gray-500 bg-gray-800 border border-gray-700 rounded-md cursor-not-allowed">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </span>`;
+            }
+            
+            paginationHTML += '</nav>';
+            
+            // Update pagination container
+            elements.paginationContainer.innerHTML = paginationHTML;
         }
 
         // Debounced search
