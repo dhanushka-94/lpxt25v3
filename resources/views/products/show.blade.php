@@ -121,103 +121,103 @@
                         $lastSplitAmount = $kokoPayTotal - ($splitAmount * 2); // Adjust last payment for exact total
                     @endphp
                     
-                    <!-- KOKO Pay - Buy Now Pay Later (Enhanced) -->
-                    <div class="mb-8">
-                        <div class="bg-gradient-to-br from-purple-600/20 via-pink-500/15 to-purple-800/20 border-2 border-purple-500/30 rounded-2xl p-6 shadow-2xl hover:shadow-purple-500/10 transition-all duration-300">
-                            <div class="flex items-center justify-between mb-5">
-                                <div class="flex items-center gap-4">
-                                    <img src="{{ asset('images/kokopay-logo.png') }}" alt="KOKO Pay" class="w-14 h-14 object-contain">
+                    <!-- KOKO Pay - Buy Now Pay Later (Compact) -->
+                    <div class="mb-4">
+                        <div class="bg-gradient-to-br from-purple-600/20 via-pink-500/15 to-purple-800/20 border-2 border-purple-500/30 rounded-xl p-4 shadow-xl hover:shadow-purple-500/10 transition-all duration-300">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-3">
+                                    <img src="{{ asset('images/kokopay-logo.png') }}" alt="KOKO Pay" class="w-10 h-10 object-contain">
                                     <div>
-                                        <h3 class="text-2xl font-bold text-white">KOKO Pay</h3>
-                                        <p class="text-purple-300 text-base font-medium">Buy Now, Pay Later</p>
+                                        <h3 class="text-lg font-bold text-white">KOKO Pay</h3>
+                                        <p class="text-purple-300 text-sm font-medium">Buy Now, Pay Later</p>
                                     </div>
                                 </div>
-                                <div class="bg-purple-500/20 px-4 py-2 rounded-full">
-                                    <span class="text-purple-300 text-sm font-semibold">0% Interest</span>
+                                <div class="bg-purple-500/20 px-3 py-1 rounded-full">
+                                    <span class="text-purple-300 text-xs font-semibold">0% Interest</span>
                                 </div>
                             </div>
                             
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
-                                <div class="text-center p-5 bg-gradient-to-br from-purple-500/20 to-pink-500/10 rounded-xl border border-purple-400/30 hover:border-purple-400/50 transition-all">
-                                    <div class="text-sm text-purple-300 mb-2 font-medium">1st Payment</div>
-                                    <div class="text-3xl font-bold text-white mb-2">LKR {{ number_format($splitAmount, 2) }}</div>
-                                    <div class="text-xs text-gray-400 bg-purple-500/10 px-3 py-1 rounded-full">Today</div>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
+                                <div class="text-center p-3 bg-gradient-to-br from-purple-500/20 to-pink-500/10 rounded-lg border border-purple-400/30 hover:border-purple-400/50 transition-all">
+                                    <div class="text-xs text-purple-300 mb-1 font-medium">1st Payment</div>
+                                    <div class="text-xl font-bold text-white mb-1">LKR {{ number_format($splitAmount, 2) }}</div>
+                                    <div class="text-xs text-gray-400 bg-purple-500/10 px-2 py-0.5 rounded-full">Today</div>
                                 </div>
-                                <div class="text-center p-5 bg-gradient-to-br from-purple-500/20 to-pink-500/10 rounded-xl border border-purple-400/30 hover:border-purple-400/50 transition-all">
-                                    <div class="text-sm text-purple-300 mb-2 font-medium">2nd Payment</div>
-                                    <div class="text-3xl font-bold text-white mb-2">LKR {{ number_format($splitAmount, 2) }}</div>
-                                    <div class="text-xs text-gray-400 bg-purple-500/10 px-3 py-1 rounded-full">After 30 days</div>
+                                <div class="text-center p-3 bg-gradient-to-br from-purple-500/20 to-pink-500/10 rounded-lg border border-purple-400/30 hover:border-purple-400/50 transition-all">
+                                    <div class="text-xs text-purple-300 mb-1 font-medium">2nd Payment</div>
+                                    <div class="text-xl font-bold text-white mb-1">LKR {{ number_format($splitAmount, 2) }}</div>
+                                    <div class="text-xs text-gray-400 bg-purple-500/10 px-2 py-0.5 rounded-full">30 days</div>
                                 </div>
-                                <div class="text-center p-5 bg-gradient-to-br from-purple-500/20 to-pink-500/10 rounded-xl border border-purple-400/30 hover:border-purple-400/50 transition-all">
-                                    <div class="text-sm text-purple-300 mb-2 font-medium">Final Payment</div>
-                                    <div class="text-3xl font-bold text-white mb-2">LKR {{ number_format($lastSplitAmount, 2) }}</div>
-                                    <div class="text-xs text-gray-400 bg-purple-500/10 px-3 py-1 rounded-full">After 60 days</div>
+                                <div class="text-center p-3 bg-gradient-to-br from-purple-500/20 to-pink-500/10 rounded-lg border border-purple-400/30 hover:border-purple-400/50 transition-all">
+                                    <div class="text-xs text-purple-300 mb-1 font-medium">Final Payment</div>
+                                    <div class="text-xl font-bold text-white mb-1">LKR {{ number_format($lastSplitAmount, 2) }}</div>
+                                    <div class="text-xs text-gray-400 bg-purple-500/10 px-2 py-0.5 rounded-full">60 days</div>
                                 </div>
                             </div>
                             
-                            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-purple-500/20">
-                                <div class="flex items-center gap-3 text-purple-300">
-                                    <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                            <div class="flex flex-col sm:flex-row items-center justify-between gap-2 pt-2 border-t border-purple-500/20">
+                                <div class="flex items-center gap-2 text-purple-300">
+                                    <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                                     </svg>
-                                    <span class="text-base font-medium">No credit check • Instant approval</span>
+                                    <span class="text-sm font-medium">No credit check • Instant approval</span>
                                 </div>
-                                <div class="text-sm text-gray-400">
+                                <div class="text-xs text-gray-400">
                                     Total: LKR {{ number_format($kokoPayTotal, 2) }} (incl. 10% fee)
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Credit Card Installments (New) -->
-                    <div class="mb-8">
-                        <div class="bg-gradient-to-br from-blue-600/20 via-indigo-500/15 to-blue-800/20 border-2 border-blue-500/30 rounded-2xl p-6 shadow-2xl hover:shadow-blue-500/10 transition-all duration-300">
-                            <div class="flex items-center justify-between mb-5">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
-                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- Credit Card Installments (Compact) -->
+                    <div class="mb-4">
+                        <div class="bg-gradient-to-br from-blue-600/20 via-indigo-500/15 to-blue-800/20 border-2 border-blue-500/30 rounded-xl p-4 shadow-xl hover:shadow-blue-500/10 transition-all duration-300">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
                                         </svg>
                                     </div>
                                     <div>
-                                        <h3 class="text-2xl font-bold text-white">Credit Card Installments</h3>
-                                        <p class="text-blue-300 text-base font-medium">Available via WebXPay Gateway</p>
+                                        <h3 class="text-lg font-bold text-white">Credit Card Installments</h3>
+                                        <p class="text-blue-300 text-sm font-medium">Available via WebXPay Gateway</p>
                                     </div>
                                 </div>
-                                <div class="bg-blue-500/20 px-4 py-2 rounded-full">
-                                    <span class="text-blue-300 text-sm font-semibold">Bank Rates Apply</span>
+                                <div class="bg-blue-500/20 px-3 py-1 rounded-full">
+                                    <span class="text-blue-300 text-xs font-semibold">Bank Rates Apply</span>
                                 </div>
                             </div>
                             
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-5">
-                                <div class="text-center p-4 bg-gradient-to-br from-blue-500/20 to-indigo-500/10 rounded-xl border border-blue-400/30 hover:border-blue-400/50 transition-all">
-                                    <div class="text-3xl font-bold text-white mb-1">3</div>
-                                    <div class="text-sm text-blue-300 font-medium">Months</div>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
+                                <div class="text-center p-3 bg-gradient-to-br from-blue-500/20 to-indigo-500/10 rounded-lg border border-blue-400/30 hover:border-blue-400/50 transition-all">
+                                    <div class="text-xl font-bold text-white mb-0.5">3</div>
+                                    <div class="text-xs text-blue-300 font-medium">Months</div>
                                 </div>
-                                <div class="text-center p-4 bg-gradient-to-br from-blue-500/20 to-indigo-500/10 rounded-xl border border-blue-400/30 hover:border-blue-400/50 transition-all">
-                                    <div class="text-3xl font-bold text-white mb-1">6</div>
-                                    <div class="text-sm text-blue-300 font-medium">Months</div>
+                                <div class="text-center p-3 bg-gradient-to-br from-blue-500/20 to-indigo-500/10 rounded-lg border border-blue-400/30 hover:border-blue-400/50 transition-all">
+                                    <div class="text-xl font-bold text-white mb-0.5">6</div>
+                                    <div class="text-xs text-blue-300 font-medium">Months</div>
                                 </div>
-                                <div class="text-center p-4 bg-gradient-to-br from-blue-500/20 to-indigo-500/10 rounded-xl border border-blue-400/30 hover:border-blue-400/50 transition-all">
-                                    <div class="text-3xl font-bold text-white mb-1">12</div>
-                                    <div class="text-sm text-blue-300 font-medium">Months</div>
+                                <div class="text-center p-3 bg-gradient-to-br from-blue-500/20 to-indigo-500/10 rounded-lg border border-blue-400/30 hover:border-blue-400/50 transition-all">
+                                    <div class="text-xl font-bold text-white mb-0.5">12</div>
+                                    <div class="text-xs text-blue-300 font-medium">Months</div>
                                 </div>
-                                <div class="text-center p-4 bg-gradient-to-br from-blue-500/20 to-indigo-500/10 rounded-xl border border-blue-400/30 hover:border-blue-400/50 transition-all">
-                                    <div class="text-3xl font-bold text-white mb-1">24</div>
-                                    <div class="text-sm text-blue-300 font-medium">Months</div>
+                                <div class="text-center p-3 bg-gradient-to-br from-blue-500/20 to-indigo-500/10 rounded-lg border border-blue-400/30 hover:border-blue-400/50 transition-all">
+                                    <div class="text-xl font-bold text-white mb-0.5">24</div>
+                                    <div class="text-xs text-blue-300 font-medium">Months</div>
                                 </div>
                             </div>
                             
-                            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-blue-500/20">
-                                <div class="flex items-center gap-3 text-blue-300">
-                                    <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                            <div class="flex flex-col sm:flex-row items-center justify-between gap-2 pt-2 border-t border-blue-500/20">
+                                <div class="flex items-center gap-2 text-blue-300">
+                                    <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                                     </svg>
-                                    <span class="text-base font-medium">All major credit cards accepted</span>
+                                    <span class="text-sm font-medium">All major credit cards accepted</span>
                                 </div>
-                                <div class="flex items-center gap-3">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa" class="h-6 opacity-70">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard" class="h-6 opacity-70">
+                                <div class="flex items-center gap-2">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa" class="h-4 opacity-70">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard" class="h-4 opacity-70">
                                 </div>
                             </div>
                         </div>
