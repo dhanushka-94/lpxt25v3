@@ -49,13 +49,31 @@ class WebXPayService
                 'plaintext' => $plaintext
             ]);
             
+            // Log encryption attempt
+            Log::info('WebXPay encryption attempt', [
+                'plaintext' => $plaintext,
+                'public_key_length' => strlen($this->publicKey),
+                'secret_key_preview' => substr($this->secretKey, 0, 10) . '...'
+            ]);
+            
             // Encrypt the payment data using public key
             if (!openssl_public_encrypt($plaintext, $encryptedData, $this->publicKey)) {
-                throw new Exception('Failed to encrypt payment data');
+                $error = openssl_error_string();
+                Log::error('WebXPay encryption failed', [
+                    'plaintext' => $plaintext,
+                    'openssl_error' => $error,
+                    'public_key_preview' => substr($this->publicKey, 0, 100) . '...'
+                ]);
+                throw new Exception('Failed to encrypt payment data: ' . $error);
             }
             
             // Base64 encode the encrypted data
             $payment = base64_encode($encryptedData);
+            
+            Log::info('WebXPay encryption successful', [
+                'payment_length' => strlen($payment),
+                'payment_preview' => substr($payment, 0, 50) . '...'
+            ]);
             
             // Prepare custom fields (you can customize this as needed)
             $customFields = $this->prepareCustomFields($order);
@@ -121,7 +139,10 @@ class WebXPayService
                     'country' => $paymentData['country'],
                     'process_currency' => $paymentData['process_currency'],
                     'cms' => $paymentData['cms']
-                ]
+                ],
+                'form_data_keys' => array_keys($paymentData),
+                'secret_key_preview' => substr($paymentData['secret_key'], 0, 10) . '...',
+                'payment_data_length' => strlen($paymentData['payment'])
             ]);
             
             return $paymentData;
