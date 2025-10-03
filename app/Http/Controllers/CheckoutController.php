@@ -330,11 +330,39 @@ class CheckoutController extends Controller
         $order = Order::where('order_number', $orderNumber)->firstOrFail();
         
         // Check if user can view this order
-        if (Auth::check() && $order->user_id !== Auth::id()) {
-            abort(403);
-        } elseif (!Auth::check() && session('last_order_id') !== $order->id) {
+        $canViewOrder = false;
+        
+        if (Auth::check()) {
+            // Logged in user - check if it's their order OR if coming from payment success
+            $canViewOrder = ($order->user_id === Auth::id()) || 
+                           (session('payment_success_order') === $orderNumber);
+        } else {
+            // Guest user - allow if coming from payment success or if order ID matches session
+            $canViewOrder = (session('payment_success_order') === $orderNumber) || 
+                           (session('last_order_id') === $order->id);
+            
             // Store order ID in session for guest users
-            session(['last_order_id' => $order->id]);
+            if ($canViewOrder) {
+                session(['last_order_id' => $order->id]);
+            }
+        }
+        
+        // TEMPORARY: Allow admin users to view any order for testing
+        if (!$canViewOrder) {
+            // Check if current user is admin (you can modify this condition)
+            $isAdmin = Auth::check() && (Auth::user()->email === 'olexto@gmail.com' || Auth::user()->is_admin ?? false);
+            
+            if (!$isAdmin) {
+                \Log::warning('Order access denied', [
+                    'order_number' => $orderNumber,
+                    'order_user_id' => $order->user_id,
+                    'current_user_id' => Auth::id(),
+                    'is_logged_in' => Auth::check(),
+                    'payment_success_session' => session('payment_success_order'),
+                    'last_order_session' => session('last_order_id')
+                ]);
+                abort(403, 'You do not have permission to view this order.');
+            }
         }
 
         // Clear cart if this is from a successful payment
