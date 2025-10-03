@@ -56,6 +56,6 @@ server-config.json
 *.bak
 *.tmp
 
-# Build files
-/public/build/
+# Build files (commented out to include pre-built assets for server deployment)
+# /public/build/
 mix-manifest.json
