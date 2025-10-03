@@ -670,13 +670,12 @@ class PaymentController extends Controller
      */
     public function handleKokoPayReturn(Request $request)
     {
-        // Add debugging to ensure this method is being called
-        \Log::error('=== KOKO PAY RETURN DEBUG START ===');
-        \Log::error('Request URL: ' . $request->fullUrl());
-        \Log::error('Request Method: ' . $request->method());
-        \Log::error('All Request Data: ', $request->all());
-        \Log::error('Route Name: ' . $request->route()->getName());
-        \Log::error('=== KOKO PAY RETURN DEBUG END ===');
+        // Log KokoPay return request
+        Log::info('KokoPay return request received', [
+            'url' => $request->fullUrl(),
+            'method' => $request->method(),
+            'data' => $request->all()
+        ]);
         
         Log::info('Koko Pay return received', $request->all());
 
@@ -688,14 +687,14 @@ class PaymentController extends Controller
                 'request_params' => $request->all(),
                 'session_id' => session('kokopay_order_id')
             ]);
-            return redirect()->route('checkout.index')->with('error', 'Session expired. Please try again.');
+            return redirect()->route('home')->with('error', 'Session expired. Please try again.');
         }
 
         $order = Order::find($orderId);
         
         if (!$order) {
             Log::error('Koko Pay return: Order not found', ['order_id' => $orderId]);
-            return redirect()->route('checkout.index')->with('error', 'Order not found.');
+            return redirect()->route('home')->with('error', 'Order not found.');
         }
 
         // Check payment status from the return parameters (case-insensitive)
@@ -781,6 +780,13 @@ class PaymentController extends Controller
                 'description' => $description,
                 'transaction_created' => true,
                 'cart_cleared' => true
+            ]);
+
+            // Log successful redirect
+            Log::info('KokoPay payment successful, redirecting to success page', [
+                'order_id' => $order->id,
+                'order_number' => $order->order_number,
+                'redirect_route' => route('checkout.success', $order->order_number)
             ]);
 
             // Use order_number (not id) for success route

@@ -346,13 +346,6 @@ Route::get('/payment/kokopay/test', [App\Http\Controllers\PaymentController::cla
 Route::get('/payment/kokopay/return', [App\Http\Controllers\PaymentController::class, 'handleKokoPayReturn'])->name('payment.kokopay.return');
 Route::post('/payment/kokopay/return', [App\Http\Controllers\PaymentController::class, 'handleKokoPayReturn'])->name('payment.kokopay.return.post');
 
-// Handle double slash URLs from KokoPay (fallback routes)
-Route::get('//payment/kokopay/return', function(\Illuminate\Http\Request $request) {
-    return redirect('/payment/kokopay/return?' . $request->getQueryString(), 301);
-})->name('payment.kokopay.return.fallback');
-Route::post('//payment/kokopay/return', function(\Illuminate\Http\Request $request) {
-    return redirect('/payment/kokopay/return?' . $request->getQueryString(), 301);
-})->name('payment.kokopay.return.fallback.post');
 Route::get('/payment/kokopay/cancel', [App\Http\Controllers\PaymentController::class, 'handleKokoPayCancel'])->name('payment.kokopay.cancel');
 Route::post('/payment/kokopay/notify', [App\Http\Controllers\PaymentController::class, 'handleKokoPayNotify'])->name('payment.kokopay.notify');
 Route::get('/payment/kokopay/status/{order}', [App\Http\Controllers\PaymentController::class, 'checkKokoPayPaymentStatus'])->name('payment.kokopay.status');
