@@ -12,6 +12,16 @@ class CartController extends Controller
 {
     public function index()
     {
+        // Log cart page access for WebXPay debugging
+        \Log::info('Cart page accessed', [
+            'referer' => request()->header('referer'),
+            'user_agent' => request()->header('user-agent'),
+            'query_params' => request()->all(),
+            'session_id' => session()->getId(),
+            'user_id' => Auth::id(),
+            'timestamp' => now()->toDateTimeString()
+        ]);
+
         $cartItems = $this->getCartItems();
         $cartTotal = $cartItems->sum(function($item) {
             return $item->product->final_price * $item->quantity;
