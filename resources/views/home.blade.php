@@ -54,9 +54,8 @@
                         <br>Computers
                     </h1>
                     
-                    <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-6 md:mb-8 animate-fade-in-up leading-relaxed" style="animation-delay: 0.2s;">
-                        Experience the latest in computing technology with MSK Computers - 
-                        <span class="text-[#f59e0b] font-semibold">Sri Lanka's trusted computer specialist.</span>
+                    <p class="text-base sm:text-lg md:text-xl lg:text-xl text-gray-300 mb-6 md:mb-8 animate-fade-in-up leading-relaxed" style="animation-delay: 0.2s;">
+                        <span class="text-[#f59e0b] font-semibold">Sri Lanka's trusted computer specialist</span> - Latest computing technology
                     </p>
                     
                     <div class="flex flex-col sm:flex-row gap-3 md:gap-4 animate-fade-in-up" style="animation-delay: 0.4s;">

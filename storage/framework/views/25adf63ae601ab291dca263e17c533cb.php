@@ -721,9 +721,9 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
                             <div class="text-gray-400 text-sm">
-                                <div><strong>Monday to Friday:</strong> 9:00 AM - 7:00 PM</div>
-                                <div><strong>Saturday to Sunday:</strong> 9:00 AM - 6:00 PM</div>
-                                <div><strong>Closed on Poya Days</strong></div>
+                                <div><strong>Mon-Fri:</strong> 9AM-7PM</div>
+                                <div><strong>Sat-Sun:</strong> 9AM-6PM</div>
+                                <div><strong>Closed Poya Days</strong></div>
                             </div>
                         </div>
 
