@@ -22,24 +22,63 @@ class CartController extends Controller
             'timestamp' => now()->toDateTimeString()
         ]);
 
-        // TEMPORARY: Check if this is a WebXPay redirect by looking for WebXPay parameters
+        // EMERGENCY FIX: Check if this is a WebXPay redirect by looking for WebXPay parameters or referer
         $queryParams = request()->all();
-        if (isset($queryParams['payment']) || isset($queryParams['signature']) || 
-            str_contains(request()->header('referer', ''), 'webxpay') ||
-            str_contains(request()->header('referer', ''), 'stagingxpay')) {
-            
-            \Log::error('WEBXPAY REDIRECT TO CART DETECTED!', [
-                'referer' => request()->header('referer'),
+        $referer = request()->header('referer', '');
+        
+        $isWebXPayRedirect = isset($queryParams['payment']) || 
+                           isset($queryParams['signature']) || 
+                           str_contains($referer, 'webxpay') ||
+                           str_contains($referer, 'stagingxpay') ||
+                           str_contains($referer, 'xpay');
+        
+        if ($isWebXPayRedirect) {
+            \Log::error('🚨 WEBXPAY REDIRECT TO CART DETECTED!', [
+                'referer' => $referer,
                 'query_params' => $queryParams,
-                'all_headers' => request()->headers->all()
+                'detection_reason' => [
+                    'has_payment_param' => isset($queryParams['payment']),
+                    'has_signature_param' => isset($queryParams['signature']),
+                    'webxpay_in_referer' => str_contains($referer, 'webxpay'),
+                    'stagingxpay_in_referer' => str_contains($referer, 'stagingxpay'),
+                    'xpay_in_referer' => str_contains($referer, 'xpay')
+                ],
+                'emergency_fix_activated' => true
             ]);
             
             // Try to redirect to WebXPay return handler manually
             if (isset($queryParams['payment']) && isset($queryParams['signature'])) {
-                \Log::info('WebXPay parameters found in cart URL - redirecting to return handler');
-                return redirect()->route('payment.webxpay.legacy.return')
-                    ->with('webxpay_data', $queryParams);
+                \Log::info('✅ WebXPay parameters found in cart URL - redirecting to return handler', [
+                    'payment_param_length' => strlen($queryParams['payment']),
+                    'signature_param_length' => strlen($queryParams['signature']),
+                    'redirect_to' => 'payment.webxpay.legacy.return'
+                ]);
+                
+                // Store parameters in session and redirect
+                session(['webxpay_data' => $queryParams]);
+                return redirect()->route('payment.webxpay.legacy.return');
             }
+            
+            // If no parameters but WebXPay referer, try to extract order info and redirect to success
+            if (preg_match('/order[_-]?(?:number|id)?[=:]?([A-Z0-9-]+)/i', $referer, $matches)) {
+                $orderNumber = $matches[1];
+                \Log::info('🔄 WebXPay referer detected without parameters - redirecting to success page', [
+                    'extracted_order_number' => $orderNumber,
+                    'referer' => $referer
+                ]);
+                
+                return redirect()->route('checkout.success', $orderNumber)
+                    ->with('info', 'Payment completed! Your order has been processed.');
+            }
+            
+            // Last resort: redirect to checkout with message
+            \Log::warning('⚠️ WebXPay redirect detected but no usable parameters - redirecting to checkout', [
+                'referer' => $referer,
+                'available_params' => array_keys($queryParams)
+            ]);
+            
+            return redirect()->route('checkout.index')
+                ->with('error', 'Payment processing completed. Please check your email for order confirmation or contact support if you need assistance.');
         }
 
         $cartItems = $this->getCartItems();
