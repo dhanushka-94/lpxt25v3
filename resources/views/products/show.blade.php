@@ -133,7 +133,7 @@
                                     </div>
                                 </div>
                                 <div class="bg-purple-500/20 px-2 py-1 rounded-full self-start sm:self-center">
-                                    <span class="text-purple-300 text-xs font-semibold">0% Interest</span>
+                                    <span class="text-purple-300 text-xs font-semibold">10% transaction fee included</span>
                                 </div>
                             </div>
                             
