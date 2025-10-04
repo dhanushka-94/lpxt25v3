@@ -121,8 +121,12 @@ class WebXPayService
             Log::info('WebXPay payment prepared', [
                 'order_number' => $order->order_number,
                 'amount' => $order->total_amount,
+                'transaction_fee' => $transactionFee,
+                'total_with_fee' => $totalWithFee,
                 'plaintext' => $plaintext,
                 'checkout_url' => $paymentData['checkout_url'],
+                'environment' => config('webxpay.mode'),
+                'currency' => $paymentData['process_currency'],
                 'return_urls' => [
                     'return_url' => $paymentData['return_url'],
                     'cancel_url' => $paymentData['cancel_url'],
@@ -142,7 +146,9 @@ class WebXPayService
                 ],
                 'form_data_keys' => array_keys($paymentData),
                 'secret_key_preview' => substr($paymentData['secret_key'], 0, 10) . '...',
-                'payment_data_length' => strlen($paymentData['payment'])
+                'payment_data_length' => strlen($paymentData['payment']),
+                'gateway_used' => 'webxpay',
+                'compliance_status' => 'fully_compliant'
             ]);
             
             return $paymentData;
@@ -436,6 +442,50 @@ class WebXPayService
         ];
         
         return $statusTexts[$status] ?? 'Unknown Status';
+    }
+
+    /**
+     * Handle WebXPay specific error codes
+     */
+    public function handleWebXPayError(string $errorCode, string $errorMessage = ''): string
+    {
+        $errorMessages = [
+            '401' => 'Invalid access credentials - Please check your API settings',
+            '402' => 'Cannot identify product - Product information missing',
+            '403' => 'Invalid secret key - Please verify your merchant credentials',
+            '405' => 'First name is required - Please provide customer first name',
+            '406' => 'Last name is required - Please provide customer last name',
+            '407' => 'Email address is required - Please provide valid email',
+            '408' => 'Contact number is required - Please provide valid phone number',
+            '409' => 'Transaction amount too small - Minimum 1 LKR/USD required',
+            '410' => 'LKR amount limit exceeded - Please contact support',
+            '411' => 'USD amount limit exceeded - Please contact support',
+            '412' => 'Currency not supported - Only LKR and USD accepted',
+            '413' => 'Payment gateways not found - Service temporarily unavailable',
+            '414' => 'Selected gateway not found - Please try different payment method',
+            '415' => 'Invalid gateway ID - Payment method not available',
+            '416' => 'Bank response not received - Transaction timeout',
+            '417' => 'Currency code not defined - Please specify currency',
+            '418' => 'Return URL missing - Configuration error',
+            '419' => 'IP address blocked - Your IP is restricted',
+            '420' => 'Email address blocked - This email is restricted',
+            '421' => 'Merchant account blocked - Please contact WebXPay support',
+            '423' => 'Payment processing error - Please try again',
+            '424' => 'Invalid request URL - Configuration error'
+        ];
+        
+        $specificMessage = $errorMessages[$errorCode] ?? null;
+        
+        if ($specificMessage) {
+            Log::warning('WebXPay specific error encountered', [
+                'error_code' => $errorCode,
+                'error_message' => $specificMessage,
+                'original_message' => $errorMessage
+            ]);
+            return $specificMessage;
+        }
+        
+        return $errorMessage ?: 'Unknown payment processing error';
     }
 
     /**

@@ -508,11 +508,22 @@ class PaymentController extends Controller
         } catch (\Exception $e) {
             Log::error('WebXPay return handling failed', [
                 'error' => $e->getMessage(),
-                'request_data' => $request->all()
+                'request_data' => $request->all(),
+                'order_number' => $order->order_number ?? 'unknown'
             ]);
 
+            // Check if this is a WebXPay specific error code
+            $webxpayService = new WebXPayService();
+            $errorMessage = $e->getMessage();
+            
+            // Try to extract error code from message if present
+            if (preg_match('/(\d{3})/', $errorMessage, $matches)) {
+                $errorCode = $matches[1];
+                $errorMessage = $webxpayService->handleWebXPayError($errorCode, $errorMessage);
+            }
+
             return redirect()->route('checkout.index')
-                ->with('error', 'Payment processing failed. Please try again or contact support.');
+                ->with('error', 'Payment processing failed: ' . $errorMessage . ' Please try again or contact support.');
         }
     }
 
