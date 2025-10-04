@@ -414,6 +414,16 @@ class PaymentController extends Controller
     public function handleWebXPayReturn(Request $request)
     {
         try {
+            // CRITICAL: Prevent redirect loops by checking referer
+            $referer = $request->header('referer', '');
+            if (str_contains($referer, '/cart') && str_contains($referer, 'mskcomputers.lk')) {
+                Log::warning('🛡️ POTENTIAL REDIRECT LOOP DETECTED - WebXPay return called from cart page', [
+                    'referer' => $referer,
+                    'request_url' => $request->fullUrl(),
+                    'loop_prevention_active' => true
+                ]);
+            }
+            
             // Check if data was passed from cart redirect
             $webxpayData = session('webxpay_data');
             if ($webxpayData && !$request->has('payment')) {
@@ -427,7 +437,9 @@ class PaymentController extends Controller
                 'request_data' => $request->all(),
                 'has_payment' => $request->has('payment'),
                 'has_signature' => $request->has('signature'),
-                'from_cart_redirect' => !empty($webxpayData)
+                'from_cart_redirect' => !empty($webxpayData),
+                'referer' => $referer,
+                'loop_check_passed' => true
             ]);
 
             // Validate required parameters

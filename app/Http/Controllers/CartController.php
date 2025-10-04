@@ -25,23 +25,38 @@ class CartController extends Controller
         // EMERGENCY FIX: Check if this is a WebXPay redirect by looking for WebXPay parameters or referer
         $queryParams = request()->all();
         $referer = request()->header('referer', '');
+        $currentUrl = request()->url();
         
-        $isWebXPayRedirect = isset($queryParams['payment']) || 
+        // CRITICAL: Prevent redirect loop - don't redirect if coming from our own WebXPay handlers
+        $isFromOurWebXPayHandler = str_contains($referer, '/pay/webxpayResponse') || 
+                                  str_contains($referer, '/payment/webxpay/return') ||
+                                  str_contains($currentUrl, '/pay/webxpayResponse') ||
+                                  str_contains($currentUrl, '/payment/webxpay/return');
+        
+        $isWebXPayRedirect = !$isFromOurWebXPayHandler && (
+                           isset($queryParams['payment']) || 
                            isset($queryParams['signature']) || 
-                           str_contains($referer, 'webxpay') ||
-                           str_contains($referer, 'stagingxpay') ||
-                           str_contains($referer, 'xpay');
+                           str_contains($referer, 'webxpay.com') ||
+                           str_contains($referer, 'stagingxpay.info') ||
+                           (str_contains($referer, 'xpay') && !str_contains($referer, 'mskcomputers.lk'))
+                           );
         
         if ($isWebXPayRedirect) {
             \Log::error('🚨 WEBXPAY REDIRECT TO CART DETECTED!', [
                 'referer' => $referer,
+                'current_url' => $currentUrl,
                 'query_params' => $queryParams,
                 'detection_reason' => [
                     'has_payment_param' => isset($queryParams['payment']),
                     'has_signature_param' => isset($queryParams['signature']),
-                    'webxpay_in_referer' => str_contains($referer, 'webxpay'),
-                    'stagingxpay_in_referer' => str_contains($referer, 'stagingxpay'),
-                    'xpay_in_referer' => str_contains($referer, 'xpay')
+                    'webxpay_in_referer' => str_contains($referer, 'webxpay.com'),
+                    'stagingxpay_in_referer' => str_contains($referer, 'stagingxpay.info'),
+                    'external_xpay_in_referer' => (str_contains($referer, 'xpay') && !str_contains($referer, 'mskcomputers.lk'))
+                ],
+                'loop_prevention' => [
+                    'is_from_our_handler' => $isFromOurWebXPayHandler,
+                    'referer_contains_webxpayResponse' => str_contains($referer, '/pay/webxpayResponse'),
+                    'referer_contains_webxpay_return' => str_contains($referer, '/payment/webxpay/return')
                 ],
                 'emergency_fix_activated' => true
             ]);
@@ -79,6 +94,15 @@ class CartController extends Controller
             
             return redirect()->route('checkout.index')
                 ->with('error', 'Payment processing completed. Please check your email for order confirmation or contact support if you need assistance.');
+        }
+
+        // Log if we prevented a potential loop
+        if ($isFromOurWebXPayHandler) {
+            \Log::info('🛡️ REDIRECT LOOP PREVENTED - Request from our own WebXPay handler', [
+                'referer' => $referer,
+                'current_url' => $currentUrl,
+                'loop_prevention_active' => true
+            ]);
         }
 
         $cartItems = $this->getCartItems();
