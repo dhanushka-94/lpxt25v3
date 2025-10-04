@@ -433,9 +433,20 @@ class PaymentController extends Controller
             // Validate required parameters
             if (!$request->has(['payment', 'signature'])) {
                 Log::error('WebXPay return missing required parameters', [
-                    'available_keys' => array_keys($request->all())
+                    'available_keys' => array_keys($request->all()),
+                    'missing_payment' => !$request->has('payment'),
+                    'missing_signature' => !$request->has('signature'),
+                    'url' => $request->fullUrl(),
+                    'referer' => $request->header('referer')
                 ]);
-                throw new \Exception('Missing required payment response data');
+                
+                // If this is a test URL without signature, redirect to checkout with helpful message
+                if ($request->has('payment') && $request->get('payment') === 'success') {
+                    return redirect()->route('checkout.index')
+                        ->with('error', 'Test URL detected. WebXPay requires both payment and signature parameters for security. Please use a real WebXPay transaction or test the success page directly at: /checkout/success/' . ($request->get('order', 'ORDER_NUMBER')));
+                }
+                
+                throw new \Exception('Missing required payment response data (payment and signature parameters required)');
             }
 
             $webxpayService = new WebXPayService();
