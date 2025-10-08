@@ -329,6 +329,17 @@
                 <p class="text-gray-300 mb-4">To cancel your order <strong class="text-white">{{ $order->order_number }}</strong>, please contact our customer service team:</p>
             </div>
             
+            <!-- Shop Information -->
+            <div class="mb-6 p-4 bg-[#f59e0b]/10 border border-[#f59e0b]/20 rounded-lg">
+                <div class="text-center">
+                    <h4 class="font-bold text-white text-lg mb-2">MSK COMPUTERS</h4>
+                    <div class="text-sm text-gray-300 space-y-1">
+                        <div>No.296/3D, Delpe Junction, Ragama</div>
+                        <div>Sri Lanka</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="space-y-4">
                 <!-- Phone Contact -->
                 <div class="flex items-center space-x-3 p-3 bg-gray-800/30 rounded-lg">
@@ -339,8 +350,11 @@
                     </div>
                     <div>
                         <div class="font-medium text-white">Call Us</div>
-                        <a href="tel:+94714245192" class="text-[#f59e0b] hover:text-[#d97706] text-sm">+94 71 424 5192</a>
-                        <div class="text-xs text-gray-400">Mon-Sat: 9:00 AM - 6:00 PM</div>
+                        <div class="space-y-1">
+                            <div><a href="tel:+94112959005" class="text-[#f59e0b] hover:text-[#d97706] text-sm">0112 95 9005</a></div>
+                            <div><a href="tel:+94777506939" class="text-[#f59e0b] hover:text-[#d97706] text-sm">0777 50 69 39</a></div>
+                        </div>
+                        <div class="text-xs text-gray-400">Call us anytime</div>
                     </div>
                 </div>
 
@@ -353,9 +367,9 @@
                     </div>
                     <div>
                         <div class="font-medium text-white">WhatsApp</div>
-                        <a href="https://wa.me/94714245192?text=Hi, I would like to cancel my order {{ $order->order_number }}" 
+                        <a href="https://wa.me/94777506939?text=Hi, I would like to cancel my order {{ $order->order_number }}" 
                            target="_blank"
-                           class="text-green-400 hover:text-green-300 text-sm">+94 71 424 5192</a>
+                           class="text-green-400 hover:text-green-300 text-sm">0777 50 69 39</a>
                         <div class="text-xs text-gray-400">Quick response available</div>
                     </div>
                 </div>
@@ -371,7 +385,7 @@
                         <div class="font-medium text-white">Email Us</div>
                         <a href="mailto:info@mskcomputers.lk?subject=Order Cancellation Request - {{ $order->order_number }}&body=Hi, I would like to cancel my order {{ $order->order_number }}. Please process this request and confirm." 
                            class="text-blue-400 hover:text-blue-300 text-sm">info@mskcomputers.lk</a>
-                        <div class="text-xs text-gray-400">Response within 24 hours</div>
+                        <div class="text-xs text-gray-400">Expert support</div>
                     </div>
                 </div>
             </div>
@@ -392,7 +406,7 @@
                         class="flex-1 px-4 py-2 border border-gray-700 text-gray-300 rounded-lg hover:bg-gray-800 transition-colors">
                     Close
                 </button>
-                <a href="https://wa.me/94714245192?text=Hi, I would like to cancel my order {{ $order->order_number }}" 
+                <a href="https://wa.me/94777506939?text=Hi, I would like to cancel my order {{ $order->order_number }}" 
                    target="_blank"
                    class="flex-1 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors text-center">
                     WhatsApp Now
