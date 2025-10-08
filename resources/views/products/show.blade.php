@@ -42,14 +42,14 @@
             <div>
                 <!-- Breadcrumb -->
                 <nav class="text-sm mb-4">
-                    <ol class="flex items-center space-x-2 text-gray-400">
-                        <li><a href="{{ route('home') }}" class="hover:text-primary-400">Home</a></li>
-                        <li>/</li>
-                        <li><a href="{{ route('products.index') }}" class="hover:text-primary-400">Products</a></li>
-                        <li>/</li>
-                        <li><a href="{{ route('categories.show', $product->category->slug ?: $product->category->id) }}" class="hover:text-primary-400">{{ $product->category->name }}</a></li>
-                        <li>/</li>
-                        <li class="text-gray-500">{{ $product->name }}</li>
+                    <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-gray-400">
+                        <li><a href="{{ route('home') }}" class="hover:text-primary-400 whitespace-nowrap">Home</a></li>
+                        <li class="hidden sm:block">/</li>
+                        <li><a href="{{ route('products.index') }}" class="hover:text-primary-400 whitespace-nowrap">Products</a></li>
+                        <li class="hidden sm:block">/</li>
+                        <li><a href="{{ route('categories.show', $product->category->slug ?: $product->category->id) }}" class="hover:text-primary-400 whitespace-nowrap">{{ $product->category->name }}</a></li>
+                        <li class="hidden sm:block">/</li>
+                        <li class="text-gray-500 break-words min-w-0 flex-1">{{ $product->name }}</li>
                     </ol>
                 </nav>
 
@@ -83,6 +83,24 @@
                         </div>
                     @endif
                 </div>
+
+                <!-- Stock Status -->
+                @if($product->status && in_array($product->status->status_name, ['Coming Soon', 'Pre Order']))
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="w-3 h-3 bg-blue-500 rounded-full"></span>
+                        <span class="text-blue-400 font-medium">{{ $product->status->status_name }}</span>
+                    </div>
+                @elseif($product->stock_quantity > 0)
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                        <span class="text-green-400 font-medium">In Stock</span>
+                    </div>
+                @else
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+                        <span class="text-red-400 font-medium">Out of Stock</span>
+                    </div>
+                @endif
 
                 <!-- Price -->
                 <div class="mb-6">
@@ -201,24 +219,6 @@
                         <div class="mb-4">
                             <h4 class="text-sm font-medium text-gray-400 mb-2">Product Status:</h4>
                             @include('components.product-status-badge', ['product' => $product])
-                        </div>
-                    @endif
-                    
-                    <!-- Stock Status -->
-                    @if($product->status && in_array($product->status->status_name, ['Coming Soon', 'Pre Order']))
-                        <div class="flex items-center gap-2 mb-6">
-                            <span class="w-3 h-3 bg-blue-500 rounded-full"></span>
-                            <span class="text-blue-400 font-medium">{{ $product->status->status_name }}</span>
-                        </div>
-                    @elseif($product->stock_quantity > 0)
-                        <div class="flex items-center gap-2 mb-6">
-                            <span class="w-3 h-3 bg-green-500 rounded-full"></span>
-                            <span class="text-green-400 font-medium">In Stock</span>
-                        </div>
-                    @else
-                        <div class="flex items-center gap-2 mb-6">
-                            <span class="w-3 h-3 bg-red-500 rounded-full"></span>
-                            <span class="text-red-400 font-medium">Out of Stock</span>
                         </div>
                     @endif
 
