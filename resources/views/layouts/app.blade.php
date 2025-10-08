@@ -347,13 +347,27 @@
                                 @foreach($menuCategories as $category)
                                     <!-- Main Category -->
                                     <div class="mb-1">
-                                        <a href="{{ route('categories.show', $category->slug ?: $category->id) }}" 
-                                           class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-900 hover:text-primary-400 transition-colors group">
+                                        @if($category->subcategories->count() > 0)
+                                            <!-- Main Category with Subcategories (Non-clickable) -->
+                                            <div class="flex items-center px-4 py-2 text-gray-300 cursor-default">
                                                 <svg class="w-4 h-4 mr-3 text-primary-400" fill="currentColor" viewBox="0 0 24 24">
                                                     <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
                                                 </svg>
                                                 <span class="font-medium text-sm">{{ $category->name }}</span>
-                                        </a>
+                                                <svg class="w-3 h-3 ml-auto text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                                                </svg>
+                                            </div>
+                                        @else
+                                            <!-- Main Category without Subcategories (Clickable) -->
+                                            <a href="{{ route('categories.show', $category->slug ?: $category->id) }}" 
+                                               class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-900 hover:text-primary-400 transition-colors group">
+                                                <svg class="w-4 h-4 mr-3 text-primary-400" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+                                                </svg>
+                                                <span class="font-medium text-sm">{{ $category->name }}</span>
+                                            </a>
+                                        @endif
                                         
                                         <!-- Subcategories -->
                                         @if($category->subcategories->count() > 0)
@@ -472,20 +486,28 @@
                         <!-- Main Category -->
                         <div class="mb-1">
                             <div class="flex items-center">
-                       <a href="{{ route('categories.show', $category->slug ?: $category->id) }}" 
-                          class="flex-1 flex items-center py-2 px-3 text-gray-300 hover:text-white hover:bg-gray-800 transition-colors rounded-lg group">
-                           <svg class="w-4 h-4 mr-3 text-primary-400" fill="currentColor" viewBox="0 0 24 24">
-                               <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/>
-                           </svg>
-                           <span class="font-medium text-sm">{{ $category->name }}</span>
-                       </a>
-                                
-                            @if($category->subcategories->count() > 0)
+                                @if($category->subcategories->count() > 0)
+                                    <!-- Main Category with Subcategories (Non-clickable) -->
+                                    <div class="flex-1 flex items-center py-2 px-3 text-gray-300 cursor-default rounded-lg">
+                                        <svg class="w-4 h-4 mr-3 text-primary-400" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/>
+                                        </svg>
+                                        <span class="font-medium text-sm">{{ $category->name }}</span>
+                                    </div>
                                     <button class="p-2 text-gray-400 hover:text-white transition-colors mobile-category-toggle" data-category="{{ $category->id }}">
                                         <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                                         </svg>
                                     </button>
+                                @else
+                                    <!-- Main Category without Subcategories (Clickable) -->
+                                    <a href="{{ route('categories.show', $category->slug ?: $category->id) }}" 
+                                       class="flex-1 flex items-center py-2 px-3 text-gray-300 hover:text-white hover:bg-gray-800 transition-colors rounded-lg group">
+                                        <svg class="w-4 h-4 mr-3 text-primary-400" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/>
+                                        </svg>
+                                        <span class="font-medium text-sm">{{ $category->name }}</span>
+                                    </a>
                                 @endif
                             </div>
                             
