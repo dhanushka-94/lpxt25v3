@@ -12,25 +12,25 @@
 <!-- Product Details -->
 <section class="py-12 bg-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
             <!-- Product Images -->
-            <div class="p-6 bg-gradient-to-br from-gray-900 to-black rounded-xl border border-gray-800">
+            <div class="p-3 sm:p-6 bg-gradient-to-br from-gray-900 to-black rounded-xl border border-gray-800">
                 <!-- Main Image -->
-                <div class="mb-6 p-4 bg-black/30 rounded-xl border border-gray-700/50">
+                <div class="mb-4 sm:mb-6 p-2 sm:p-4 bg-black/30 rounded-xl border border-gray-700/50">
                     <img id="mainImage" 
                          src="{{ $product->images[0] ?? 'https://via.placeholder.com/600x400?text=No+Image' }}" 
                          alt="{{ $product->name }}" 
-                         class="w-full h-96 object-contain rounded-lg shadow-2xl p-4 bg-white/5 backdrop-blur-sm">
+                         class="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-contain rounded-lg shadow-2xl p-2 sm:p-4 bg-white/5 backdrop-blur-sm">
                 </div>
                 
                 <!-- Thumbnail Images -->
                 @if(count($product->images) > 1)
-                    <div class="grid grid-cols-4 gap-3 p-2">
+                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3 p-1 sm:p-2">
                         @foreach($product->images as $index => $image)
-                            <div class="p-2 bg-black/20 rounded-lg border border-gray-700/30 hover:border-primary-500/50 transition-all">
+                            <div class="p-1 sm:p-2 bg-black/20 rounded-lg border border-gray-700/30 hover:border-primary-500/50 transition-all">
                                 <img src="{{ $image }}" 
                                      alt="{{ $product->name }} - Image {{ $index + 1 }}"
-                                     class="w-full h-20 object-contain rounded cursor-pointer hover:opacity-80 transition-opacity p-1 bg-white/5 {{ $index === 0 ? 'ring-2 ring-primary-500' : '' }}"
+                                     class="w-full h-12 sm:h-16 md:h-20 object-contain rounded cursor-pointer hover:opacity-80 transition-opacity p-1 bg-white/5 {{ $index === 0 ? 'ring-2 ring-primary-500' : '' }}"
                                      onclick="changeMainImage('{{ $image }}', this)">
                             </div>
                         @endforeach
