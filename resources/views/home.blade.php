@@ -802,18 +802,18 @@
     }
     
     .animate-scroll-right {
-        animation: scrollRight 40s linear infinite;
+        animation: scrollRight 60s linear infinite;
         width: 200%;
     }
     
     .animate-scroll-left {
-        animation: scrollLeft 40s linear infinite;
+        animation: scrollLeft 60s linear infinite;
         width: 200%;
     }
     
     @keyframes scrollRight {
         0% {
-            transform: translateX(0);
+            transform: translateX(0%);
         }
         100% {
             transform: translateX(-50%);
@@ -825,7 +825,7 @@
             transform: translateX(-50%);
         }
         100% {
-            transform: translateX(0);
+            transform: translateX(0%);
         }
     }
     
