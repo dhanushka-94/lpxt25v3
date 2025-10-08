@@ -271,7 +271,11 @@
                             >
                             
                             <!-- Stock Badge -->
-                            @if($product->stock_quantity > 0)
+                            @if($product->status && in_array($product->status->status_name, ['Coming Soon', 'Pre Order']))
+                                <div class="absolute top-3 left-3 bg-[#3b82f6] text-white text-xs font-medium px-2.5 py-1 rounded-lg backdrop-blur-sm">
+                                    {{ strtoupper($product->status->status_name) }}
+                                </div>
+                            @elseif($product->stock_quantity > 0)
                                 <div class="absolute top-3 left-3 bg-[#34d399] text-white text-xs font-medium px-2.5 py-1 rounded-lg backdrop-blur-sm">
                                     IN STOCK
                                 </div>

@@ -225,7 +225,11 @@
 
                             <!-- Stock Status -->
                             <div class="absolute top-4 right-4 z-10">
-                                @if($product->stock_quantity > 0)
+                                @if($product->status && in_array($product->status->status_name, ['Coming Soon', 'Pre Order']))
+                                    <span class="bg-blue-500 text-white text-xs font-medium px-2 py-1 rounded-md">
+                                        {{ $product->status->status_name }}
+                                    </span>
+                                @elseif($product->stock_quantity > 0)
                                     <span class="bg-green-500 text-white text-xs font-medium px-2 py-1 rounded-md">
                                         In Stock
                                     </span>

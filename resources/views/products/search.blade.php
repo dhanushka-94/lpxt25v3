@@ -162,11 +162,21 @@
                                     </div>
                                     
                                     <!-- Stock Status -->
-                                        <div class="absolute top-3 right-3">
+                                    <div class="absolute top-3 right-3">
+                                        @if($product->status && in_array($product->status->status_name, ['Coming Soon', 'Pre Order']))
+                                            <div class="bg-blue-500/90 text-white text-xs font-medium px-2 py-1 rounded-lg backdrop-blur-sm">
+                                                {{ $product->status->status_name }}
+                                            </div>
+                                        @elseif($product->stock_quantity > 0)
                                             <div class="bg-green-500/90 text-white text-xs font-medium px-2 py-1 rounded-lg backdrop-blur-sm">
                                                 In Stock
+                                            </div>
+                                        @else
+                                            <div class="bg-red-500/90 text-white text-xs font-medium px-2 py-1 rounded-lg backdrop-blur-sm">
+                                                Out of Stock
+                                            </div>
+                                        @endif
                                     </div>
-                                </div>
                                     </div>
 
                                     <!-- Product Info -->

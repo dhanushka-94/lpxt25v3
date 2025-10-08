@@ -205,7 +205,12 @@
                     @endif
                     
                     <!-- Stock Status -->
-                    @if($product->stock_quantity > 0)
+                    @if($product->status && in_array($product->status->status_name, ['Coming Soon', 'Pre Order']))
+                        <div class="flex items-center gap-2 mb-6">
+                            <span class="w-3 h-3 bg-blue-500 rounded-full"></span>
+                            <span class="text-blue-400 font-medium">{{ $product->status->status_name }}</span>
+                        </div>
+                    @elseif($product->stock_quantity > 0)
                         <div class="flex items-center gap-2 mb-6">
                             <span class="w-3 h-3 bg-green-500 rounded-full"></span>
                             <span class="text-green-400 font-medium">In Stock</span>
@@ -509,7 +514,12 @@
                             
                             <!-- Stock Status -->
                             <div class="flex items-center justify-between mb-3">
-                                @if($relatedProduct->stock_quantity > 0)
+                                @if($relatedProduct->status && in_array($relatedProduct->status->status_name, ['Coming Soon', 'Pre Order']))
+                                    <span class="text-xs text-blue-400 flex items-center">
+                                        <span class="w-2 h-2 bg-blue-500 rounded-full mr-1"></span>
+                                        {{ $relatedProduct->status->status_name }}
+                                    </span>
+                                @elseif($relatedProduct->stock_quantity > 0)
                                     <span class="text-xs text-green-400 flex items-center">
                                         <span class="w-2 h-2 bg-green-500 rounded-full mr-1"></span>
                                         In Stock
@@ -521,8 +531,8 @@
                                     </span>
                                 @endif
                                 
-                                @if($relatedProduct->status && in_array($relatedProduct->status->status_name, ['Coming Soon', 'Pre Order']))
-                                    <span class="text-xs text-blue-400 bg-blue-500/20 px-2 py-1 rounded-full">{{ $relatedProduct->status->status_name }}</span>
+                                @if($relatedProduct->status && in_array($relatedProduct->status->status_name, ['Reserved', 'In Stock (for PC Build)']))
+                                    <span class="text-xs text-yellow-400 bg-yellow-500/20 px-2 py-1 rounded-full">{{ $relatedProduct->status->status_name }}</span>
                                 @endif
                             </div>
                             
