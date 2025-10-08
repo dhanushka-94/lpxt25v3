@@ -42,15 +42,31 @@
             <div>
                 <!-- Breadcrumb -->
                 <nav class="text-sm mb-4">
-                    <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-gray-400">
-                        <li><a href="{{ route('home') }}" class="hover:text-primary-400 whitespace-nowrap">Home</a></li>
-                        <li class="hidden sm:block">/</li>
-                        <li><a href="{{ route('products.index') }}" class="hover:text-primary-400 whitespace-nowrap">Products</a></li>
-                        <li class="hidden sm:block">/</li>
-                        <li><a href="{{ route('categories.show', $product->category->slug ?: $product->category->id) }}" class="hover:text-primary-400 whitespace-nowrap">{{ $product->category->name }}</a></li>
-                        <li class="hidden sm:block">/</li>
-                        <li class="text-gray-500 break-words min-w-0 flex-1">{{ $product->name }}</li>
+                    <!-- Desktop Breadcrumb -->
+                    <ol class="hidden sm:flex items-center space-x-2 text-gray-400">
+                        <li><a href="{{ route('home') }}" class="hover:text-primary-400 transition-colors">Home</a></li>
+                        <li>/</li>
+                        <li><a href="{{ route('products.index') }}" class="hover:text-primary-400 transition-colors">Products</a></li>
+                        <li>/</li>
+                        <li><a href="{{ route('categories.show', $product->category->slug ?: $product->category->id) }}" class="hover:text-primary-400 transition-colors">{{ $product->category->name }}</a></li>
+                        <li>/</li>
+                        <li class="text-gray-500">{{ $product->name }}</li>
                     </ol>
+                    
+                    <!-- Mobile Breadcrumb -->
+                    <div class="sm:hidden">
+                        <div class="flex items-center gap-2 mb-2">
+                            <a href="{{ route('categories.show', $product->category->slug ?: $product->category->id) }}" class="inline-flex items-center gap-1 text-gray-400 hover:text-primary-400 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                                </svg>
+                                <span class="text-xs font-medium">{{ $product->category->name }}</span>
+                            </a>
+                        </div>
+                        <div class="text-xs text-gray-500 leading-relaxed">
+                            {{ $product->name }}
+                        </div>
+                    </div>
                 </nav>
 
                 <!-- Product Title -->
@@ -151,7 +167,7 @@
                                     </div>
                                 </div>
                                 <div class="bg-purple-500/20 px-2 py-1 rounded-full self-start sm:self-center">
-                                    <span class="text-purple-300 text-xs font-semibold">10% transaction fee included</span>
+                                    <span class="text-purple-300 text-xs font-semibold">Transaction fee included</span>
                                 </div>
                             </div>
                             
