@@ -87,7 +87,7 @@
 
 <!-- Products Section -->
 <section class="py-8 md:py-16 bg-black min-h-screen">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="w-full px-4 sm:px-6 lg:px-8">
         
         <!-- Mobile Filter Toggle -->
         <div class="lg:hidden mb-4">
@@ -106,7 +106,7 @@
 
         <div class="flex flex-col lg:flex-row gap-6 lg:gap-8">
             <!-- Filter Sidebar -->
-            <div class="w-full lg:w-80 lg:flex-shrink-0 hidden lg:block" id="filter-sidebar">
+            <div class="w-full lg:w-72 lg:flex-shrink-0 hidden lg:block" id="filter-sidebar">
                 <div class="bg-[#1c1c1e] rounded-xl border border-gray-800/30 p-6 shadow-lg sticky top-24">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-2 h-2 bg-[#f59e0b] rounded-full"></div>
@@ -258,7 +258,7 @@
                 <!-- Products Grid -->
                 <div id="products-container">
                     @if($products->count() > 0)
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12" id="products-grid">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-12" id="products-grid">
                 @foreach($products as $product)
                     <a href="{{ route('products.show', ['category' => $category->slug ?: $category->id, 'product' => $product->slug]) }}" class="product-card block bg-[#1c1c1e] rounded-xl border border-gray-800/30 overflow-hidden hover:border-[#f59e0b]/30 transition-all duration-300 group shadow-lg hover:shadow-xl hover:shadow-[#f59e0b]/10 cursor-pointer">
                         <!-- Product Image -->
@@ -760,7 +760,7 @@
                 return;
             }
 
-            let gridHTML = '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">';
+            let gridHTML = '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-12">';
             
             products.forEach(product => {
                 let stockBadge = '';
