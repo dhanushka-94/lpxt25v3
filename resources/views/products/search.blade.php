@@ -30,7 +30,7 @@
                         {{ $products->total() }} Products Found
                     </span>
                 </div>
-            </div>
+        </div>
     </div>
 </section>
 
@@ -81,9 +81,9 @@
                                     @if(!request('category'))
                                         <span class="ml-auto text-xs bg-black/20 px-2 py-0.5 rounded-full">{{ $products->total() }}</span>
                                     @endif
-                                </a>
+                            </a>
                                 
-                                @foreach($categories as $category)
+                            @foreach($categories as $category)
                                     <a href="{{ route('products.search', ['q' => $searchTerm, 'category' => $category->slug ?: $category->id]) }}" 
                                        class="flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-all {{ request('category') == ($category->slug ?: $category->id) ? 'bg-primary-500 text-black' : 'text-gray-300 hover:bg-primary-500/10 hover:text-primary-400' }}">
                                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,7 +113,7 @@
                                 <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Name: A to Z</option>
                             </select>
                         </form>
-                        </div>
+                    </div>
 
                         <!-- Mobile Product Count -->
                         <div class="block md:hidden mt-4 pt-4 border-t border-gray-700">
@@ -177,8 +177,8 @@
                                             </div>
                                         @endif
                                     </div>
-                                    </div>
-
+                                </div>
+                                
                                     <!-- Product Info -->
                                     <div class="p-4">
                                         <h3 class="text-sm font-semibold text-white mb-3 line-clamp-2 group-hover:text-primary-400 transition-colors">
@@ -225,9 +225,9 @@
                                             @if($product->can_add_to_cart)
                                                 <button onclick="event.preventDefault(); event.stopPropagation(); addToCartFromSearch({{ $product->id }}, '{{ addslashes($product->name) }}')" 
                                                         class="w-full bg-primary-500 hover:bg-primary-600 text-black px-4 py-2.5 rounded-lg text-sm font-semibold transition-all">
-                                                    Add to Cart
-                                                </button>
-                                            @else
+                                                Add to Cart
+                                            </button>
+                                        @else
                                                 @if($product->status && in_array($product->status->status_name, ['Coming Soon', 'Pre Order']))
                                                     <button onclick="event.preventDefault(); event.stopPropagation(); showSpecialOrderContact('{{ $product->status->status_name }}', '{{ addslashes($product->name) }}')" 
                                                             class="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-all">
@@ -237,8 +237,8 @@
                                                     <button class="w-full bg-gray-600/50 text-gray-400 px-4 py-2.5 rounded-lg text-sm font-semibold cursor-not-allowed" 
                                                             disabled title="{{ $product->cart_restriction_reason }}">
                                                         {{ $product->cart_restriction_reason ?: 'Unavailable' }}
-                                                    </button>
-                                                @endif
+                                            </button>
+                                        @endif
                                             @endif
                                         </div>
                                     </div>
@@ -282,7 +282,7 @@
                                        class="inline-flex items-center px-6 py-3 bg-[#2c2c2e] hover:bg-[#3c3c3e] text-gray-300 font-semibold rounded-lg transition-all border border-gray-700">
                                         Back to Home
                                     </a>
-                                </div>
+                            </div>
                         </div>
                     </div>
                 @endif

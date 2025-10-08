@@ -10,7 +10,7 @@
 
 @section('content')
 <!-- Product Details -->
-<section class="py-12 bg-black">
+<section class="py-6 sm:py-12 bg-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
             <!-- Product Images -->
@@ -70,12 +70,12 @@
                 </nav>
 
                 <!-- Product Title -->
-                <div class="mb-4">
-                    <div class="flex items-center gap-3 mb-2">
+                <div class="mb-4 sm:mb-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-3">
                         <span class="text-sm text-primary-400 font-medium">{{ $product->category->name }}</span>
                         @if($product->is_on_sale)
-                            <div class="flex items-center gap-2">
-                                <span class="bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span class="bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs font-bold px-2 sm:px-3 py-1 rounded-full animate-pulse">
                                     HOT DEAL
                                 </span>
                                 <span class="bg-primary-500 text-black text-xs font-bold px-2 py-1 rounded">
@@ -84,7 +84,7 @@
                             </div>
                         @endif
                     </div>
-                    <h1 class="text-3xl md:text-4xl font-bold text-white mt-1">{{ $product->name }}</h1>
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">{{ $product->name }}</h1>
                     
                     <!-- Product Code -->
                     @if($product->code)
@@ -119,28 +119,28 @@
                 @endif
 
                 <!-- Price -->
-                <div class="mb-6">
+                <div class="mb-4 sm:mb-6">
                     @if($product->is_on_sale)
-                        <div class="bg-gradient-to-r from-primary-500/10 to-red-500/10 border border-primary-500/20 rounded-xl p-4">
-                            <div class="flex items-center gap-3 mb-2">
-                                <span class="text-3xl font-bold text-primary-400">LKR {{ number_format($product->promo_price, 2) }}</span>
-                                <span class="text-xl text-gray-400 line-through">LKR {{ number_format($product->price, 2) }}</span>
+                        <div class="bg-gradient-to-r from-primary-500/10 to-red-500/10 border border-primary-500/20 rounded-xl p-3 sm:p-4">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+                                <span class="text-2xl sm:text-3xl font-bold text-primary-400">LKR {{ number_format($product->promo_price, 2) }}</span>
+                                <span class="text-lg sm:text-xl text-gray-400 line-through">LKR {{ number_format($product->price, 2) }}</span>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-green-400 font-semibold text-sm">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                                <span class="text-green-400 font-semibold text-xs sm:text-sm">
                                     💰 You Save: LKR {{ number_format($product->price - $product->promo_price, 2) }}
                                 </span>
-                                <span class="text-green-400 font-semibold text-sm">
+                                <span class="text-green-400 font-semibold text-xs sm:text-sm">
                                     ({{ round((($product->price - $product->promo_price) / $product->price) * 100) }}% OFF)
                                 </span>
                             </div>
                         </div>
                     @else
-                        <div class="bg-black/50 border border-gray-800 rounded-xl p-4">
+                        <div class="bg-black/50 border border-gray-800 rounded-xl p-3 sm:p-4">
                             @if($product->price > 0)
-                                <span class="text-3xl font-bold text-primary-400">LKR {{ number_format($product->price, 2) }}</span>
+                                <span class="text-2xl sm:text-3xl font-bold text-primary-400">LKR {{ number_format($product->price, 2) }}</span>
                             @else
-                                <span class="text-3xl font-bold text-primary-400">Contact for Price</span>
+                                <span class="text-2xl sm:text-3xl font-bold text-primary-400">Contact for Price</span>
                             @endif
                         </div>
                     @endif
@@ -157,12 +157,12 @@
                     
                     <!-- KOKO Pay - Buy Now Pay Later (Ultra Compact) -->
                     <div class="mb-3">
-                        <div class="bg-gradient-to-r from-purple-600/15 to-pink-500/15 border border-purple-500/30 rounded-lg p-3 shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
+                        <div class="bg-gradient-to-r from-purple-600/15 to-pink-500/15 border border-purple-500/30 rounded-lg p-2 sm:p-3 shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
                             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
                                 <div class="flex items-center gap-2">
-                                    <img src="{{ asset('images/kokopay-logo.png') }}" alt="KOKO Pay" class="w-8 h-8 object-contain">
+                                    <img src="{{ asset('images/kokopay-logo.png') }}" alt="KOKO Pay" class="w-6 sm:w-8 h-6 sm:h-8 object-contain">
                                     <div>
-                                        <h3 class="text-base font-bold text-white">KOKO Pay</h3>
+                                        <h3 class="text-sm sm:text-base font-bold text-white">KOKO Pay</h3>
                                         <p class="text-purple-300 text-xs font-medium">Buy Now, Pay Later</p>
                                     </div>
                                 </div>
@@ -171,22 +171,22 @@
                                 </div>
                             </div>
                             
-                            <div class="grid grid-cols-3 gap-2 mb-2">
-                                <div class="text-center p-2 bg-purple-500/10 rounded border border-purple-400/20">
+                            <div class="grid grid-cols-3 gap-1 sm:gap-2 mb-2">
+                                <div class="text-center p-1 sm:p-2 bg-purple-500/10 rounded border border-purple-400/20">
                                     <div class="text-xs text-purple-300 font-medium">Today</div>
-                                    <div class="text-sm font-bold text-white">LKR {{ number_format($splitAmount, 2) }}</div>
+                                    <div class="text-xs sm:text-sm font-bold text-white">LKR {{ number_format($splitAmount, 0) }}</div>
                                 </div>
-                                <div class="text-center p-2 bg-purple-500/10 rounded border border-purple-400/20">
+                                <div class="text-center p-1 sm:p-2 bg-purple-500/10 rounded border border-purple-400/20">
                                     <div class="text-xs text-purple-300 font-medium">30 days</div>
-                                    <div class="text-sm font-bold text-white">LKR {{ number_format($splitAmount, 2) }}</div>
+                                    <div class="text-xs sm:text-sm font-bold text-white">LKR {{ number_format($splitAmount, 0) }}</div>
                                 </div>
-                                <div class="text-center p-2 bg-purple-500/10 rounded border border-purple-400/20">
+                                <div class="text-center p-1 sm:p-2 bg-purple-500/10 rounded border border-purple-400/20">
                                     <div class="text-xs text-purple-300 font-medium">60 days</div>
-                                    <div class="text-sm font-bold text-white">LKR {{ number_format($lastSplitAmount, 2) }}</div>
+                                    <div class="text-xs sm:text-sm font-bold text-white">LKR {{ number_format($lastSplitAmount, 0) }}</div>
                                 </div>
                             </div>
                             
-                            <div class="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-1 pt-2 border-t border-purple-500/20">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 pt-2 border-t border-purple-500/20">
                                 <div class="flex items-center gap-1 text-purple-300">
                                     <svg class="w-3 h-3 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
@@ -194,7 +194,7 @@
                                     <span class="text-xs font-medium">No credit check</span>
                                 </div>
                                 <div class="text-xs text-gray-400">
-                                    Total: LKR {{ number_format($kokoPayTotal, 2) }}
+                                    Total: LKR {{ number_format($kokoPayTotal, 0) }}
                                 </div>
                             </div>
                         </div>
@@ -202,26 +202,26 @@
 
                     <!-- Credit Card Installments (Ultra Compact) -->
                     <div class="mb-3">
-                        <div class="bg-gradient-to-r from-blue-600/15 to-indigo-500/15 border border-blue-500/30 rounded-lg p-3 shadow-lg hover:shadow-blue-500/10 transition-all duration-300">
+                        <div class="bg-gradient-to-r from-blue-600/15 to-indigo-500/15 border border-blue-500/30 rounded-lg p-2 sm:p-3 shadow-lg hover:shadow-blue-500/10 transition-all duration-300">
                             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                                 <div class="flex items-center gap-2">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
-                                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div class="w-6 sm:w-8 h-6 sm:h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                                        <svg class="w-4 sm:w-5 h-4 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
                                         </svg>
                                     </div>
                                     <div class="flex-1">
-                                        <h3 class="text-base font-bold text-white">Credit Card Installments</h3>
+                                        <h3 class="text-sm sm:text-base font-bold text-white">Credit Card Installments</h3>
                                         <p class="text-blue-300 text-xs font-medium">Available via WebXPay Gateway</p>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-2 self-start sm:self-center">
+                                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 self-start sm:self-center">
                                     <div class="bg-blue-500/20 px-2 py-1 rounded-full">
                                         <span class="text-blue-300 text-xs font-semibold">Bank Rates Apply</span>
                                     </div>
                                     <div class="flex items-center gap-1">
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa" class="h-4 opacity-70">
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard" class="h-4 opacity-70">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa" class="h-3 sm:h-4 opacity-70">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard" class="h-3 sm:h-4 opacity-70">
                                     </div>
                                 </div>
                             </div>
@@ -240,38 +240,38 @@
 
                     <!-- Add to Cart Section -->
                     @if($product->can_add_to_cart)
-                        <div class="@if($product->is_on_sale) bg-gradient-to-r from-primary-500/5 to-red-500/5 border border-primary-500/20 @else bg-black/50 border border-gray-800 @endif rounded-xl p-4 mb-6">
+                        <div class="@if($product->is_on_sale) bg-gradient-to-r from-primary-500/5 to-red-500/5 border border-primary-500/20 @else bg-black/50 border border-gray-800 @endif rounded-xl p-3 sm:p-4 mb-4 sm:mb-6">
                             @if($product->is_on_sale)
-                                <div class="flex items-center gap-2 mb-4">
-                                    <span class="text-red-400 font-semibold text-sm animate-pulse">⚡ Limited Time Offer!</span>
-                                    <span class="text-gray-400 text-sm">Act fast before it's gone!</span>
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-3 sm:mb-4">
+                                    <span class="text-red-400 font-semibold text-xs sm:text-sm animate-pulse">⚡ Limited Time Offer!</span>
+                                    <span class="text-gray-400 text-xs sm:text-sm">Act fast before it's gone!</span>
                                 </div>
                             @endif
                             
-                            <div class="flex flex-col sm:flex-row gap-4">
-                                <div class="flex items-center border border-dark-600 rounded-lg">
-                                    <button type="button" class="px-3 py-2 text-gray-300 hover:text-primary-400" onclick="decreaseQuantity()">
+                            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                                <div class="flex items-center border border-gray-600 rounded-lg self-start sm:self-auto">
+                                    <button type="button" class="px-2 sm:px-3 py-2 text-gray-300 hover:text-primary-400" onclick="decreaseQuantity()">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
                                         </svg>
                                     </button>
                                     <input type="number" id="quantity" value="1" min="1" max="99" 
-                                           class="w-16 py-2 text-center bg-transparent text-white border-0 focus:outline-none">
-                                    <button type="button" class="px-3 py-2 text-gray-300 hover:text-primary-400" onclick="increaseQuantity()">
+                                           class="w-12 sm:w-16 py-2 text-center bg-transparent text-white border-0 focus:outline-none text-sm sm:text-base">
+                                    <button type="button" class="px-2 sm:px-3 py-2 text-gray-300 hover:text-primary-400" onclick="increaseQuantity()">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                         </svg>
                                     </button>
                                 </div>
-                                <button class="@if($product->is_on_sale) bg-gradient-to-r from-primary-500 to-red-500 hover:from-primary-600 hover:to-red-600 @else btn-primary @endif flex-1 text-lg py-3 font-semibold transition-all transform hover:scale-105" onclick="addToCart({{ $product->id }})">
+                                <button class="@if($product->is_on_sale) bg-gradient-to-r from-primary-500 to-red-500 hover:from-primary-600 hover:to-red-600 @else btn-primary @endif flex-1 text-base sm:text-lg py-3 font-semibold transition-all transform hover:scale-105" onclick="addToCart({{ $product->id }})">
                                     @if($product->is_on_sale)
                                         Add to Cart (SALE!)
                                     @else
                                         Add to Cart
                                     @endif
                                 </button>
-                                <button class="btn-outline px-6 py-3" onclick="addToWishlist({{ $product->id }})">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <button class="btn-outline px-4 sm:px-6 py-3" onclick="addToWishlist({{ $product->id }})">
+                                    <svg class="w-4 sm:w-5 h-4 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                                     </svg>
                                 </button>
