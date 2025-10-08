@@ -17,83 +17,63 @@
     </div>
     
     <div class="hero-slider relative z-10" id="heroSlider">
-        <!-- Hero Video -->
-        <div class="hero-slide active relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center">
-            <!-- Balanced Video Overlay -->
-            <div class="absolute inset-0 bg-black/50 z-10"></div>
-            <!-- Subtle Gradient for Text Readability -->
-            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40 z-20"></div>
-            <div class="absolute inset-0">
-                <video 
-                    autoplay 
-                    muted 
-                    playsinline
-                    class="w-full h-full object-cover"
-                    id="heroVideo">
-                    <source src="{{ asset('videos/slider/mskcomputers-video-promo.webm') }}" type="video/webm">
-                    <!-- Fallback image if video fails to load -->
-                    <img src="https://images.unsplash.com/photo-1547082299-de196ea013d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
-                         alt="Gaming PC Setup" 
-                         class="w-full h-full object-cover">
-                </video>
-            </div>
-            <div class="relative z-50 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-4xl">
-                    <!-- Badge -->
-                    <div class="inline-flex items-center px-4 py-2 bg-[#f59e0b]/10 border border-[#f59e0b]/20 rounded-full text-[#f59e0b] text-sm font-medium mb-6 animate-fade-in-up">
-                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        Your Best IT Partner
-                    </div>
-                    
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black text-white mb-4 md:mb-6 animate-fade-in-up leading-tight">
-                        <span class="bg-gradient-to-r from-[#f59e0b] via-[#fbbf24] to-[#f59e0b] bg-clip-text text-transparent">
-                            MSK
-                        </span>
-                        <br>Computers
-                    </h1>
-                    
-                    <p class="text-base sm:text-lg md:text-xl lg:text-xl text-gray-300 mb-6 md:mb-8 animate-fade-in-up leading-relaxed" style="animation-delay: 0.2s;">
-                        <span class="text-[#f59e0b] font-semibold">Sri Lanka's trusted computer specialist</span> - Latest computing technology
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-3 md:gap-4 animate-fade-in-up" style="animation-delay: 0.4s;">
-                        <a href="{{ route('products.index') }}" 
-                           class="group inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#f59e0b] to-[#d97706] text-black font-bold text-base md:text-lg rounded-xl hover:shadow-2xl hover:shadow-[#f59e0b]/25 transform hover:-translate-y-1 transition-all duration-300">
-                            <svg class="w-4 h-4 md:w-5 md:h-5 mr-2 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                            </svg>
-                            Explore Gaming PCs
-                        </a>
-                        <a href="{{ route('promotions.index') }}" 
-                           class="group inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-transparent border-2 border-[#f59e0b] text-[#f59e0b] font-bold text-base md:text-lg rounded-xl hover:bg-[#f59e0b] hover:text-black transition-all duration-300">
-                            <svg class="w-4 h-4 md:w-5 md:h-5 mr-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                            </svg>
-                            View Deals
-                        </a>
-                    </div>
-                    
-                    <!-- Stats -->
-                    <div class="grid grid-cols-3 gap-4 md:gap-8 mt-8 md:mt-12 animate-fade-in-up" style="animation-delay: 0.6s;">
-                        <div class="text-center">
-                            <div class="text-xl md:text-3xl font-bold text-white mb-1">3000+</div>
-                            <div class="text-xs md:text-sm text-gray-400">Products</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-xl md:text-3xl font-bold text-white mb-1">10,000+</div>
-                            <div class="text-xs md:text-sm text-gray-400">Happy Customers</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-xl md:text-3xl font-bold text-white mb-1">Expert</div>
-                            <div class="text-xs md:text-sm text-gray-400">Support</div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Image Slide 1 -->
+        <div class="hero-slide active relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+            <img src="{{ asset('images/sliders/Slider 1.png') }}" 
+                 alt="MSK Computers Slider 1" 
+                 class="w-full h-full object-cover object-center">
+        </div>
+
+        <!-- Image Slide 2 -->
+        <div class="hero-slide relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+            <img src="{{ asset('images/sliders/Slider 2.png') }}" 
+                 alt="MSK Computers Slider 2" 
+                 class="w-full h-full object-cover object-center">
+        </div>
+
+        <!-- Image Slide 3 -->
+        <div class="hero-slide relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+            <img src="{{ asset('images/sliders/Slider 3.png') }}" 
+                 alt="MSK Computers Slider 3" 
+                 class="w-full h-full object-cover object-center">
+        </div>
+
+        <!-- Image Slide 4 -->
+        <div class="hero-slide relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+            <img src="{{ asset('images/sliders/Slider 4.png') }}" 
+                 alt="MSK Computers Slider 4" 
+                 class="w-full h-full object-cover object-center">
+        </div>
+
+        <!-- Image Slide 5 -->
+        <div class="hero-slide relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+            <img src="{{ asset('images/sliders/Slider 5.png') }}" 
+                 alt="MSK Computers Slider 5" 
+                 class="w-full h-full object-cover object-center">
+        </div>
+
+        <!-- Slider Navigation -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+            <div class="flex space-x-2">
+                <button class="slider-dot active w-3 h-3 rounded-full bg-white/80 hover:bg-white transition-all duration-300" data-slide="0"></button>
+                <button class="slider-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="1"></button>
+                <button class="slider-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="2"></button>
+                <button class="slider-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="3"></button>
+                <button class="slider-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="4"></button>
             </div>
         </div>
 
+        <!-- Navigation Arrows -->
+        <button class="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300 group" id="prevSlide">
+            <svg class="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <button class="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300 group" id="nextSlide">
+            <svg class="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+        </button>
     </div>
 
 </section>
@@ -593,8 +573,8 @@
         });
     }
 
-    // Hero Slider Functionality
-    class HeroSlider {
+    // Image Slider Functionality
+    class ImageSlider {
         constructor() {
             this.currentSlide = 0;
             this.slides = document.querySelectorAll('.hero-slide');
@@ -606,9 +586,12 @@
         }
         
         init() {
-            // Add event listeners
-            document.getElementById('prevSlide').addEventListener('click', () => this.prevSlide());
-            document.getElementById('nextSlide').addEventListener('click', () => this.nextSlide());
+            // Add event listeners for navigation arrows
+            const prevBtn = document.getElementById('prevSlide');
+            const nextBtn = document.getElementById('nextSlide');
+            
+            if (prevBtn) prevBtn.addEventListener('click', () => this.prevSlide());
+            if (nextBtn) nextBtn.addEventListener('click', () => this.nextSlide());
             
             // Add dot listeners
             this.dots.forEach((dot, index) => {
@@ -618,47 +601,37 @@
             // Start auto-play
             this.startAutoPlay();
             
-            // Pause auto-play on hover
+            // Pause auto-play on hover for better UX
             const heroSlider = document.getElementById('heroSlider');
-            heroSlider.addEventListener('mouseenter', () => this.stopAutoPlay());
-            heroSlider.addEventListener('mouseleave', () => this.startAutoPlay());
+            if (heroSlider) {
+                heroSlider.addEventListener('mouseenter', () => this.stopAutoPlay());
+                heroSlider.addEventListener('mouseleave', () => this.startAutoPlay());
+            }
+
+            // Touch/swipe support for mobile
+            this.addTouchSupport();
         }
         
         goToSlide(slideIndex) {
             // Stop current auto-play
             this.stopAutoPlay();
             
-            // Remove active class from current slide
+            // Remove active class from current slide and dot
             this.slides[this.currentSlide].classList.remove('active');
             this.dots[this.currentSlide].classList.remove('active');
-            this.dots[this.currentSlide].classList.add('bg-gray-500');
-            this.dots[this.currentSlide].classList.remove('bg-primary-500');
-            
-            // Handle video playback
-            const heroVideo = document.getElementById('heroVideo');
-            if (heroVideo) {
-                if (this.currentSlide === 0) {
-                    // Leaving video slide - pause and reset
-                    heroVideo.pause();
-                    heroVideo.currentTime = 0;
-                }
-                if (slideIndex === 0) {
-                    // Going to video slide - play from start
-                    heroVideo.currentTime = 0;
-                    heroVideo.play().catch(e => console.log('Video autoplay prevented:', e));
-                }
-            }
+            this.dots[this.currentSlide].classList.remove('bg-white/80');
+            this.dots[this.currentSlide].classList.add('bg-white/40');
             
             // Update current slide
             this.currentSlide = slideIndex;
             
-            // Add active class to new slide
+            // Add active class to new slide and dot
             this.slides[this.currentSlide].classList.add('active');
             this.dots[this.currentSlide].classList.add('active');
-            this.dots[this.currentSlide].classList.remove('bg-gray-500');
-            this.dots[this.currentSlide].classList.add('bg-primary-500');
+            this.dots[this.currentSlide].classList.remove('bg-white/40');
+            this.dots[this.currentSlide].classList.add('bg-white/80');
             
-            // Restart auto-play for new slide
+            // Restart auto-play
             this.startAutoPlay();
         }
         
@@ -673,38 +646,55 @@
         }
         
         startAutoPlay() {
-            // Handle video slide differently
-            const heroVideo = document.getElementById('heroVideo');
-            if (heroVideo && this.currentSlide === 0) {
-                // For video slide, wait for video to end or use longer duration
-                heroVideo.addEventListener('ended', () => {
-                    this.nextSlide();
-                }, { once: true });
-                
-                // Fallback timer in case video doesn't fire ended event
-                this.autoPlayInterval = setTimeout(() => {
-                    this.nextSlide();
-                }, 15000); // 15 seconds for video slide
-            } else {
-                // For other slides, use normal timing
-                this.autoPlayInterval = setInterval(() => {
-                    this.nextSlide();
-                }, 5000); // Change slide every 5 seconds
-            }
+            // Auto-advance slides every 4 seconds
+            this.autoPlayInterval = setInterval(() => {
+                this.nextSlide();
+            }, 4000);
         }
         
         stopAutoPlay() {
             if (this.autoPlayInterval) {
                 clearInterval(this.autoPlayInterval);
-                clearTimeout(this.autoPlayInterval);
                 this.autoPlayInterval = null;
+            }
+        }
+
+        addTouchSupport() {
+            let startX = 0;
+            let endX = 0;
+            const slider = document.getElementById('heroSlider');
+            
+            if (slider) {
+                slider.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+                
+                slider.addEventListener('touchend', (e) => {
+                    endX = e.changedTouches[0].clientX;
+                    this.handleSwipe();
+                });
+            }
+        }
+
+        handleSwipe() {
+            const threshold = 50; // Minimum swipe distance
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    // Swiped left - next slide
+                    this.nextSlide();
+                } else {
+                    // Swiped right - previous slide
+                    this.prevSlide();
+                }
             }
         }
     }
     
     // Initialize slider when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
-        new HeroSlider();
+        new ImageSlider();
     });
 </script>
 
@@ -712,12 +702,32 @@
     .hero-slide {
         display: none;
         opacity: 0;
-        transition: opacity 0.5s ease-in-out;
+        transition: opacity 0.8s ease-in-out;
     }
     
     .hero-slide.active {
-        display: flex;
+        display: block;
         opacity: 1;
+    }
+
+    /* Smooth image loading */
+    .hero-slide img {
+        transition: transform 0.3s ease;
+    }
+
+    .hero-slide:hover img {
+        transform: scale(1.02);
+    }
+
+    /* Mobile optimizations */
+    @media (max-width: 640px) {
+        .hero-slide {
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .hero-slide:hover img {
+            transform: none; /* Disable hover effects on mobile */
+        }
     }
     
     .animate-fade-in-up {
