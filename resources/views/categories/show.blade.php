@@ -262,11 +262,11 @@
                 @foreach($products as $product)
                     <a href="{{ route('products.show', ['category' => $category->slug ?: $category->id, 'product' => $product->slug]) }}" class="product-card block bg-[#1c1c1e] rounded-xl border border-gray-800/30 overflow-hidden hover:border-[#f59e0b]/30 transition-all duration-300 group shadow-lg hover:shadow-xl hover:shadow-[#f59e0b]/10 cursor-pointer">
                         <!-- Product Image -->
-                        <div class="relative overflow-hidden bg-[#1a1a1c] aspect-square">
+                        <div class="relative overflow-hidden bg-[#1a1a1c] aspect-[4/3]">
                             <img 
                                 src="{{ $product->main_image }}" 
                                 alt="{{ $product->name }}" 
-                                class="product-image w-full h-full object-contain transition-transform duration-300 group-hover:scale-105 p-4 bg-white/5 rounded-lg"
+                                class="product-image w-full h-full object-contain transition-transform duration-300 group-hover:scale-105 p-6 bg-white/5 rounded-lg"
                                 loading="lazy"
                             >
                             
@@ -384,30 +384,30 @@
 
 @push('styles')
 <style>
-    /* Perfect 1:1 aspect ratio for product images */
-    .aspect-square {
-        aspect-ratio: 1 / 1;
+    /* 4:3 aspect ratio for product images */
+    .aspect-\[4\/3\] {
+        aspect-ratio: 4 / 3;
     }
     
     /* Fallback for older browsers */
-    @supports not (aspect-ratio: 1 / 1) {
-        .aspect-square {
+    @supports not (aspect-ratio: 4 / 3) {
+        .aspect-\[4\/3\] {
             position: relative;
         }
         
-        .aspect-square::before {
+        .aspect-\[4\/3\]::before {
             content: '';
             display: block;
-            padding-bottom: 100%;
+            padding-bottom: 75%; /* 3/4 = 0.75 = 75% */
         }
         
-        .aspect-square img {
+        .aspect-\[4\/3\] img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
         }
     }
     
@@ -802,8 +802,8 @@
                 
                 gridHTML += `
                     <a href="${productUrl}" class="product-card block bg-[#1c1c1e] rounded-xl border border-gray-800/30 overflow-hidden hover:border-[#f59e0b]/30 transition-all duration-300 group shadow-lg hover:shadow-xl hover:shadow-[#f59e0b]/10 cursor-pointer">
-                        <div class="relative overflow-hidden bg-[#1a1a1c] aspect-square">
-                            <img src="${product.main_image}" alt="${product.name}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy">
+                        <div class="relative overflow-hidden bg-[#1a1a1c] aspect-[4/3]">
+                            <img src="${product.main_image}" alt="${product.name}" class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105 p-6 bg-white/5 rounded-lg" loading="lazy">
                             ${stockBadge}
                             ${saleBadge}
                         </div>
