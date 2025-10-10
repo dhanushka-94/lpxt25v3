@@ -16,37 +16,37 @@
         <div class="absolute w-96 h-96 rounded-full bg-gradient-to-r from-[#3b82f6]/20 to-[#1d4ed8]/20 blur-3xl -bottom-48 -right-48 animate-pulse" style="animation-delay: 2s;"></div>
     </div>
     
-    <div class="hero-slider relative z-10" id="heroSlider">
+    <div class="hero-slider relative z-10 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-lg" id="heroSlider">
         <!-- Image Slide 1 -->
-        <div class="hero-slide active relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+        <div class="hero-slide active overflow-hidden">
             <img src="{{ asset('images/sliders/Slider 1.png') }}" 
                  alt="MSK Computers Slider 1" 
                  class="w-full h-full object-cover object-center">
         </div>
 
         <!-- Image Slide 2 -->
-        <div class="hero-slide relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+        <div class="hero-slide overflow-hidden">
             <img src="{{ asset('images/sliders/Slider 2.png') }}" 
                  alt="MSK Computers Slider 2" 
                  class="w-full h-full object-cover object-center">
         </div>
 
         <!-- Image Slide 3 -->
-        <div class="hero-slide relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+        <div class="hero-slide overflow-hidden">
             <img src="{{ asset('images/sliders/Slider 3.png') }}" 
                  alt="MSK Computers Slider 3" 
                  class="w-full h-full object-cover object-center">
         </div>
 
         <!-- Image Slide 4 -->
-        <div class="hero-slide relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+        <div class="hero-slide overflow-hidden">
             <img src="{{ asset('images/sliders/Slider 4.png') }}" 
                  alt="MSK Computers Slider 4" 
                  class="w-full h-full object-cover object-center">
         </div>
 
         <!-- Image Slide 5 -->
-        <div class="hero-slide relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+        <div class="hero-slide overflow-hidden">
             <img src="{{ asset('images/sliders/Slider 5.png') }}" 
                  alt="MSK Computers Slider 5" 
                  class="w-full h-full object-cover object-center">
@@ -627,23 +627,49 @@
             // Stop current auto-play
             this.stopAutoPlay();
             
-            // Remove active class from current slide and dot
-            this.slides[this.currentSlide].classList.remove('active');
+            // Don't transition if already on the target slide
+            if (slideIndex === this.currentSlide) {
+                this.startAutoPlay();
+                return;
+            }
+            
+            const currentSlide = this.slides[this.currentSlide];
+            const nextSlide = this.slides[slideIndex];
+            
+            // Add prev class to current slide for smooth exit
+            currentSlide.classList.add('prev');
+            currentSlide.classList.remove('active');
+            
+            // Update dots
             this.dots[this.currentSlide].classList.remove('active');
             this.dots[this.currentSlide].classList.remove('bg-white/80');
             this.dots[this.currentSlide].classList.add('bg-white/40');
             
-            // Update current slide
-            this.currentSlide = slideIndex;
+            // Small delay to ensure smooth transition
+            setTimeout(() => {
+                // Update current slide index
+                this.currentSlide = slideIndex;
+                
+                // Activate new slide
+                nextSlide.classList.add('active');
+                nextSlide.classList.remove('prev');
+                
+                // Update dot
+                this.dots[this.currentSlide].classList.add('active');
+                this.dots[this.currentSlide].classList.remove('bg-white/40');
+                this.dots[this.currentSlide].classList.add('bg-white/80');
+                
+                // Clean up previous slide after transition
+                setTimeout(() => {
+                    currentSlide.classList.remove('prev');
+                }, 50);
+                
+            }, 50);
             
-            // Add active class to new slide and dot
-            this.slides[this.currentSlide].classList.add('active');
-            this.dots[this.currentSlide].classList.add('active');
-            this.dots[this.currentSlide].classList.remove('bg-white/40');
-            this.dots[this.currentSlide].classList.add('bg-white/80');
-            
-            // Restart auto-play
-            this.startAutoPlay();
+            // Restart auto-play after transition
+            setTimeout(() => {
+                this.startAutoPlay();
+            }, 1200);
         }
         
         nextSlide() {
@@ -657,10 +683,10 @@
         }
         
         startAutoPlay() {
-            // Auto-advance slides every 4 seconds
+            // Auto-advance slides every 5 seconds (longer for smooth transitions)
             this.autoPlayInterval = setInterval(() => {
                 this.nextSlide();
-            }, 4000);
+            }, 5000);
         }
         
         stopAutoPlay() {
@@ -703,9 +729,31 @@
         }
     }
     
-    // Initialize slider when DOM is loaded
+    // Initialize slider when DOM is loaded with preloading
     document.addEventListener('DOMContentLoaded', function() {
-        new ImageSlider();
+        // Preload all slider images for smoother transitions
+        const preloadImages = () => {
+            const imageUrls = [
+                "{{ asset('images/sliders/Slider 1.png') }}",
+                "{{ asset('images/sliders/Slider 2.png') }}",
+                "{{ asset('images/sliders/Slider 3.png') }}",
+                "{{ asset('images/sliders/Slider 4.png') }}",
+                "{{ asset('images/sliders/Slider 5.png') }}"
+            ];
+            
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+        };
+        
+        // Start preloading
+        preloadImages();
+        
+        // Initialize slider after a small delay to ensure images start loading
+        setTimeout(() => {
+            new ImageSlider();
+        }, 100);
     });
 
     // Special Order Contact Modal Functions
@@ -749,35 +797,84 @@
 </script>
 
 <style>
+    /* Enhanced Hero Slider Animations */
     .hero-slide {
-        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         opacity: 0;
-        transition: opacity 0.8s ease-in-out;
+        transform: translateX(100%);
+        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        z-index: 1;
     }
     
     .hero-slide.active {
-        display: block;
         opacity: 1;
+        transform: translateX(0);
+        z-index: 2;
+    }
+    
+    .hero-slide.prev {
+        transform: translateX(-100%);
+        opacity: 0;
+        z-index: 1;
     }
 
-    /* Smooth image loading */
+    /* Smooth image animations */
     .hero-slide img {
-        transition: transform 0.3s ease;
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform: scale(1);
+    }
+
+    .hero-slide.active img {
+        transform: scale(1.05);
+        animation: smoothZoom 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     }
 
     .hero-slide:hover img {
-        transform: scale(1.02);
+        transform: scale(1.08);
+    }
+
+    /* Smooth zoom animation */
+    @keyframes smoothZoom {
+        0% {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+        100% {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+    }
+
+    /* Fade transition variant */
+    .hero-slide.fade-transition {
+        transform: translateX(0);
+        transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     /* Mobile optimizations */
     @media (max-width: 640px) {
         .hero-slide {
-            transition: opacity 0.5s ease-in-out;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .hero-slide.active img {
+            transform: scale(1.02);
         }
         
         .hero-slide:hover img {
-            transform: none; /* Disable hover effects on mobile */
+            transform: scale(1.02); /* Reduced hover effect on mobile */
         }
+    }
+
+    /* Preload optimization */
+    .hero-slide img {
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
     }
     
     .animate-fade-in-up {
