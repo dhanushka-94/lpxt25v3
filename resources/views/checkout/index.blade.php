@@ -59,22 +59,22 @@
                         
                         <div class="space-y-6">
                             <!-- Name Fields Row -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
                                     <label for="first_name" class="block text-sm font-medium text-gray-300 mb-2">
                                         First Name *
                                         <span class="text-red-400 text-xs">(Required)</span>
                                     </label>
-                                    <input type="text" 
+                                <input type="text" 
                                            id="first_name" 
                                            name="first_name" 
                                            value="{{ old('first_name', Auth::user() ? explode(' ', Auth::user()->name)[0] : '') }}" 
-                                           required
+                                       required
                                            placeholder="Enter your first name"
-                                           class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
-                                </div>
-                                
-                                <div>
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                            </div>
+                            
+                            <div>
                                     <label for="last_name" class="block text-sm font-medium text-gray-300 mb-2">
                                         Last Name *
                                         <span class="text-red-400 text-xs">(Required)</span>
@@ -83,9 +83,9 @@
                                            id="last_name" 
                                            name="last_name" 
                                            value="{{ old('last_name', Auth::user() && str_contains(Auth::user()->name, ' ') ? substr(Auth::user()->name, strpos(Auth::user()->name, ' ') + 1) : '') }}" 
-                                           required
+                                       required
                                            placeholder="Enter your last name"
-                                           class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                                 </div>
                             </div>
                             
@@ -96,11 +96,11 @@
                                         Phone Number *
                                         <span class="text-red-400 text-xs">(Required)</span>
                                     </label>
-                                    <input type="tel" 
-                                           id="customer_phone" 
-                                           name="customer_phone" 
-                                           value="{{ old('customer_phone', Auth::user()->phone ?? '') }}" 
-                                           required
+                                <input type="tel" 
+                                       id="customer_phone" 
+                                       name="customer_phone" 
+                                       value="{{ old('customer_phone', Auth::user()->phone ?? '') }}" 
+                                       required
                                            placeholder="Enter your phone number (e.g., 0771234567)"
                                            pattern="^0[1-9][0-9]{8}$"
                                            title="Please enter a valid Sri Lankan phone number (10 digits starting with 0)"
@@ -123,7 +123,7 @@
                                            name="customer_email" 
                                            value="{{ old('customer_email', Auth::user()->email ?? '') }}" 
                                            placeholder="Enter your email address (optional)"
-                                           class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                                     <div class="flex items-center mt-2 text-xs text-gray-400">
                                         <svg class="w-4 h-4 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
@@ -466,7 +466,7 @@
                                     </svg>
                                 </div>
                             </label>
-
+                            
                             <!-- Koko Pay - BNPL Option -->
                             <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-purple-400 transition-colors cursor-pointer">
                                 <input type="radio" 

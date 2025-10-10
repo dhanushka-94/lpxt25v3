@@ -6,9 +6,9 @@
 <div class="min-h-screen bg-black py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Header -->
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold text-white">Shopping Cart</h1>
-            <p class="text-gray-400 mt-2">Review your items before checkout</p>
+        <div class="mb-6 sm:mb-8">
+            <h1 class="text-2xl sm:text-3xl font-bold text-white">Shopping Cart</h1>
+            <p class="text-gray-400 mt-2 text-sm sm:text-base">Review your items before checkout</p>
         </div>
 
         @if($cartItems->isEmpty())
@@ -30,70 +30,87 @@
                 </a>
             </div>
         @else
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
                 <!-- Cart Items -->
                 <div class="lg:col-span-2">
                     <div class="bg-[#1a1a1c] rounded-lg border border-gray-800 overflow-hidden">
-                        <div class="px-6 py-4 border-b border-gray-800">
+                        <div class="px-4 sm:px-6 py-4 border-b border-gray-800">
                             <h2 class="text-lg font-semibold text-white">Cart Items</h2>
                         </div>
                         
                         <div class="divide-y divide-gray-800">
                             @foreach($cartItems as $item)
-                                <div class="p-6 cart-item" data-item-id="{{ $item->id }}">
-                                    <div class="flex items-start space-x-4">
-                                        <!-- Product Image -->
-                                        <div class="flex-shrink-0">
-                                            <div class="w-20 h-20 bg-[#2c2c2e] rounded-lg overflow-hidden">
-                                                <img src="{{ $item->product->main_image }}" 
-                                                     alt="{{ $item->product->name }}"
-                                                     class="w-full h-full object-cover">
+                                <div class="p-4 sm:p-6 cart-item" data-item-id="{{ $item->id }}">
+                                    <div class="flex flex-col sm:flex-row sm:items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                                        <!-- Product Image & Basic Info -->
+                                        <div class="flex items-start space-x-3 sm:space-x-4 flex-1">
+                                            <!-- Product Image -->
+                                            <div class="flex-shrink-0">
+                                                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-[#2c2c2e] rounded-lg overflow-hidden">
+                                                    <img src="{{ $item->product->main_image }}" 
+                                                         alt="{{ $item->product->name }}"
+                                                         class="w-full h-full object-cover">
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Product Details -->
+                                            <div class="flex-grow min-w-0">
+                                                <h3 class="text-white font-medium text-sm sm:text-base leading-tight">{{ $item->product->name }}</h3>
+                                                <p class="text-gray-400 text-xs mt-1">Code: {{ $item->product->code }}</p>
+                                                
+                                                @if($item->product->is_on_sale)
+                                                    <div class="flex items-center space-x-2 mt-2">
+                                                        <span class="text-[#f59e0b] font-semibold text-sm sm:text-base">LKR {{ number_format($item->product->final_price, 2) }}</span>
+                                                        <span class="text-gray-500 line-through text-xs sm:text-sm">LKR {{ number_format($item->product->price, 2) }}</span>
+                                                    </div>
+                                                @else
+                                                    <p class="text-[#f59e0b] font-semibold mt-2 text-sm sm:text-base">LKR {{ number_format($item->product->final_price, 2) }}</p>
+                                                @endif
                                             </div>
                                         </div>
                                         
-                                        <!-- Product Details -->
-                                        <div class="flex-grow">
-                                            <h3 class="text-white font-medium text-sm">{{ $item->product->name }}</h3>
-                                            <p class="text-gray-400 text-xs mt-1">Code: {{ $item->product->code }}</p>
-                                            
-                                            @if($item->product->is_on_sale)
-                                                <div class="flex items-center space-x-2 mt-2">
-                                                    <span class="text-[#f59e0b] font-semibold">LKR {{ number_format($item->product->final_price, 2) }}</span>
-                                                    <span class="text-gray-500 line-through text-sm">LKR {{ number_format($item->product->price, 2) }}</span>
-                                                </div>
-                                            @else
-                                                <p class="text-[#f59e0b] font-semibold mt-2">LKR {{ number_format($item->product->final_price, 2) }}</p>
-                                            @endif
-                                            
-                                            <!-- Quantity Controls -->
-                                            <div class="flex items-center space-x-3 mt-3">
+                                        <!-- Mobile: Price and Remove (shown on mobile) -->
+                                        <div class="flex sm:hidden items-center justify-between">
+                                            <div class="text-right">
+                                                <p class="text-white font-semibold item-total text-lg">LKR {{ number_format($item->product->final_price * $item->quantity, 2) }}</p>
+                                            </div>
+                                            <button type="button" 
+                                                    class="remove-item text-red-400 hover:text-red-300 text-sm px-3 py-1 rounded transition-colors"
+                                                    data-item-id="{{ $item->id }}">
+                                                Remove
+                                            </button>
+                                        </div>
+                                        
+                                        <!-- Quantity Controls -->
+                                        <div class="flex items-center justify-between sm:justify-start sm:flex-col sm:items-end space-y-0 sm:space-y-3">
+                                            <div class="flex items-center space-x-3">
                                                 <label class="text-gray-400 text-sm">Qty:</label>
                                                 <div class="flex items-center space-x-2">
                                                     <button type="button" 
-                                                            class="quantity-btn w-8 h-8 bg-[#2c2c2e] border border-gray-700 rounded text-white hover:bg-[#3c3c3e] transition-colors"
+                                                            class="quantity-btn w-10 h-10 sm:w-8 sm:h-8 bg-[#2c2c2e] border border-gray-700 rounded text-white hover:bg-[#3c3c3e] transition-colors text-lg sm:text-base"
                                                             data-action="decrease" data-item-id="{{ $item->id }}">-</button>
                                                     <input type="number" 
                                                            value="{{ $item->quantity }}" 
                                                            min="1" 
                                                            max="{{ $item->product->stock_quantity }}"
-                                                           class="quantity-input w-16 h-8 bg-[#2c2c2e] border border-gray-700 text-white text-center text-sm rounded focus:ring-1 focus:ring-[#f59e0b] focus:border-[#f59e0b]"
+                                                           class="quantity-input w-16 h-10 sm:w-16 sm:h-8 bg-[#2c2c2e] border border-gray-700 text-white text-center text-sm rounded focus:ring-1 focus:ring-[#f59e0b] focus:border-[#f59e0b]"
                                                            data-item-id="{{ $item->id }}"
                                                            data-max-stock="{{ $item->product->stock_quantity }}">
                                                     <button type="button" 
-                                                            class="quantity-btn w-8 h-8 bg-[#2c2c2e] border border-gray-700 rounded text-white hover:bg-[#3c3c3e] transition-colors"
+                                                            class="quantity-btn w-10 h-10 sm:w-8 sm:h-8 bg-[#2c2c2e] border border-gray-700 rounded text-white hover:bg-[#3c3c3e] transition-colors text-lg sm:text-base"
                                                             data-action="increase" data-item-id="{{ $item->id }}">+</button>
                                                 </div>
                                             </div>
-                                        </div>
-                                        
-                                        <!-- Item Total & Remove -->
-                                        <div class="flex-shrink-0 text-right">
-                                            <p class="text-white font-semibold item-total">LKR {{ number_format($item->product->final_price * $item->quantity, 2) }}</p>
-                                            <button type="button" 
-                                                    class="remove-item text-red-400 hover:text-red-300 text-sm mt-2 transition-colors"
-                                                    data-item-id="{{ $item->id }}">
-                                                Remove
-                                            </button>
+                                            
+                                            <!-- Desktop: Item Total & Remove (hidden on mobile) -->
+                                            <div class="hidden sm:block text-right">
+                                                <p class="text-white font-semibold item-total">LKR {{ number_format($item->product->final_price * $item->quantity, 2) }}</p>
+                                                <button type="button" 
+                                                        class="remove-item text-red-400 hover:text-red-300 text-sm mt-2 transition-colors"
+                                                        data-item-id="{{ $item->id }}">
+                                                    Remove
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -114,8 +131,8 @@
                 </div>
                 
                 <!-- Order Summary -->
-                <div class="lg:col-span-1 space-y-6">
-                    <div class="bg-[#1a1a1c] rounded-lg border border-gray-800 p-6 sticky top-32">
+                <div class="lg:col-span-1 space-y-4 sm:space-y-6">
+                    <div class="bg-[#1a1a1c] rounded-lg border border-gray-800 p-4 sm:p-6 lg:sticky lg:top-32">
                         <h2 class="text-lg font-semibold text-white mb-4">Order Summary</h2>
                         
                         <div class="space-y-3">
@@ -170,25 +187,25 @@
                     </div>
                     
                     <!-- Shipping/Delivery Information -->
-                    <div class="bg-gradient-to-br from-[#1a1a1c] to-[#2a2a2c] rounded-lg border border-gray-800 p-6">
+                    <div class="bg-gradient-to-br from-[#1a1a1c] to-[#2a2a2c] rounded-lg border border-gray-800 p-4 sm:p-6">
                         <div class="flex items-center mb-4">
                             <svg class="w-5 h-5 text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/>
                             </svg>
-                            <h3 class="text-lg font-medium text-white">Shipping Information</h3>
+                            <h3 class="text-base sm:text-lg font-medium text-white">Shipping Information</h3>
                         </div>
                         
-                        <div class="bg-amber-900/20 border border-amber-700/50 rounded-lg p-4">
+                        <div class="bg-amber-900/20 border border-amber-700/50 rounded-lg p-3 sm:p-4">
                             <div class="flex items-start space-x-3">
                                 <svg class="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
                                 <div>
                                     <h4 class="text-amber-400 font-medium text-sm mb-2">Delivery Charges</h4>
-                                    <p class="text-amber-300 text-sm mb-3">
+                                    <p class="text-amber-300 text-xs sm:text-sm mb-3 leading-relaxed">
                                         Kindly note that delivery charges are due at the time of parcel receipt.
                                     </p>
-                                    <p class="text-amber-300 text-sm font-medium">
+                                    <p class="text-amber-300 text-xs sm:text-sm font-medium leading-relaxed">
                                         පාර්සලය ලැබුණු අවස්ථාවේදී බෙදා හැරීමේ ගාස්තු ගෙවිය යුතු බව කරුණාවෙන් සලකන්න.
                                     </p>
                                 </div>
