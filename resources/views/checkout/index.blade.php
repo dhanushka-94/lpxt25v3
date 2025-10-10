@@ -480,7 +480,7 @@
                                             Buy Now, Pay Later
                                         </span>
                                     </div>
-                                    <div class="text-sm text-gray-400">Split into 3 easy payments • 10% transaction fee applies</div>
+                                    <div class="text-sm text-gray-400">Split into 3 easy payments • Transaction fee applies</div>
                                 </div>
                                 <div class="flex items-center space-x-2 text-purple-400">
                                     <img src="{{ asset('images/kokopay-logo.png') }}" alt="Koko Pay" class="h-6 w-auto">
@@ -500,19 +500,19 @@
                                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                                                 <div>
                                                     <div class="text-gray-400 mb-1">Bank Name:</div>
-                                                    <div class="text-white font-medium">Commercial Bank of Ceylon PLC</div>
+                                                    <div class="text-white font-medium">Commercial Bank</div>
                                                 </div>
                                                 <div>
                                                     <div class="text-gray-400 mb-1">Account Name:</div>
-                                                    <div class="text-white font-medium">MSK Computers (Pvt) Ltd</div>
+                                                    <div class="text-white font-medium">MSK Computers</div>
                                                 </div>
                                                 <div>
                                                     <div class="text-gray-400 mb-1">Account Number:</div>
-                                                    <div class="text-white font-medium">8001234567890</div>
+                                                    <div class="text-white font-medium">1000578810</div>
                                                 </div>
                                                 <div>
                                                     <div class="text-gray-400 mb-1">Branch:</div>
-                                                    <div class="text-white font-medium">Colombo Main Branch</div>
+                                                    <div class="text-white font-medium">Ragama Branch</div>
                                                 </div>
                                             </div>
                                         </div>
