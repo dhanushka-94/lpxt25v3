@@ -335,12 +335,44 @@ class SmaProduct extends Model
     }
 
     /**
-     * Get the SEO-friendly slug from database, fallback to generated slug
+     * Get the SEO-friendly slug from database, fallback to generated slug with custom rules
      */
     public function getSlugAttribute($value)
     {
-        // Return the stored slug from database, or generate one if not available
-        return $value ?: \Str::slug($this->name);
+        // Return the stored slug from database, or generate custom slug if not available
+        return $value ?: $this->generateCustomSlug($this->name);
+    }
+
+    /**
+     * Generate custom slug with special character handling
+     */
+    public function generateCustomSlug($text)
+    {
+        if (empty($text)) {
+            return '';
+        }
+
+        // Step 1: Convert to lowercase
+        $slug = strtolower($text);
+
+        // Step 2: Replace special characters with hyphens
+        // Handle parentheses, brackets, underscores, and other special chars
+        $specialChars = ['(', ')', '[', ']', '{', '}', '_', '=', '+', '&', '%', '$', '#', '@', '!', '?', ':', ';', '"', "'", '`', '~', '^', '*', '|', '\\', '/', '<', '>', ',', '.'];
+        $slug = str_replace($specialChars, '-', $slug);
+
+        // Step 3: Replace spaces with hyphens
+        $slug = str_replace(' ', '-', $slug);
+
+        // Step 4: Remove any characters that aren't letters, numbers, or hyphens
+        $slug = preg_replace('/[^a-z0-9\-]/', '', $slug);
+
+        // Step 5: Replace multiple consecutive hyphens with single hyphen
+        $slug = preg_replace('/-+/', '-', $slug);
+
+        // Step 6: Remove leading and trailing hyphens
+        $slug = trim($slug, '-');
+
+        return $slug;
     }
 
     /**

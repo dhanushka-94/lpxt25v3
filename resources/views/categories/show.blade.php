@@ -1195,31 +1195,31 @@
             button.innerHTML = originalText;
             
             if (data.success) {
-                // Add success animation to button
-                button.classList.add('bg-green-500', 'animate-pulse');
-                button.innerHTML = '✅ Added!';
+                // Professional success feedback - no childish animations
+                button.classList.add('bg-gray-700', 'border-primary-500');
+                button.innerHTML = 'Added to Cart';
                 
                 setTimeout(() => {
-                    button.classList.remove('bg-green-500', 'animate-pulse');
+                    button.classList.remove('bg-gray-700', 'border-primary-500');
                     button.innerHTML = originalText;
-                }, 2000);
+                }, 1500);
                 
                 // Get product name for animation
                 const productCard = button.closest('.product-card');
                 const productName = productCard.querySelector('h3')?.textContent.trim() || 'Product';
                 
-                // Animate cart addition with enhanced effects (simplified)
+                // Use professional cart animation (no flashy effects)
                 window.animateCartAddition(data.cart_total, productName);
                 
             } else {
-                // Add error animation to button
-                button.classList.add('bg-red-500', 'animate-pulse');
-                button.innerHTML = '❌ Error';
+                // Professional error feedback
+                button.classList.add('bg-red-900', 'border-red-500');
+                button.innerHTML = 'Error - Try Again';
                 
                 setTimeout(() => {
-                    button.classList.remove('bg-red-500', 'animate-pulse');
+                    button.classList.remove('bg-red-900', 'border-red-500');
                     button.innerHTML = originalText;
-                }, 2000);
+                }, 1500);
                 
                 showNotification(data.message, 'error');
             }
@@ -1231,6 +1231,9 @@
             showNotification('Something went wrong. Please try again. Check console for details.', 'error');
         });
     }
+    
+    // Fallback function for backward compatibility (AJAX Filter Fix)
+    window.addToCart = window.addToCartFromCategory;
     
     // Remove duplicate updateCartCount function - using global one from app.blade.php
 

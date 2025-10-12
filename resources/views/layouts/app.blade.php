@@ -947,27 +947,26 @@
         
         
         function animateCartIcon() {
-            // Cart icon shake and bounce
+            // Subtle professional cart feedback - no shaking or bouncing
             const cartIcons = document.querySelectorAll('.cart-icon, .mobile-cart-icon, .cart-icon-mobile');
             cartIcons.forEach(icon => {
-                icon.style.transform = 'scale(1.2) rotate(10deg)';
+                icon.style.transform = 'scale(1.05)';
+                icon.style.transition = 'transform 0.2s ease';
                 setTimeout(() => {
-                    icon.style.transform = 'scale(1.1) rotate(-5deg)';
-                }, 100);
-                setTimeout(() => {
-                    icon.style.transform = 'scale(1) rotate(0deg)';
-                }, 200);
+                    icon.style.transform = 'scale(1)';
+                }, 300);
             });
         }
         
         function showCartPulse() {
-            // Show pulse animation
+            // Subtle professional pulse - no excessive animation
             const pulseElements = document.querySelectorAll('.cart-pulse');
             pulseElements.forEach(pulse => {
-                pulse.style.opacity = '1';
+                pulse.style.opacity = '0.8';
+                pulse.style.transition = 'opacity 0.3s ease';
                 setTimeout(() => {
                     pulse.style.opacity = '0';
-                }, 1500);
+                }, 800);
             });
         }
         
@@ -1060,15 +1059,16 @@
                 // Show success notification
                 showCartSuccessNotification(`${productName} added to cart!`);
                 
-                // Add temporary glow effect to cart container
+                // Add temporary professional glow effect to cart container
                 const cartContainers = document.querySelectorAll('.cart-container, .mobile-cart-container, .cart-container-mobile');
                 cartContainers.forEach(container => {
-                    container.style.filter = 'drop-shadow(0 0 15px #10b981)';
-                    container.style.transform = 'scale(1.05)';
+                    container.style.filter = 'drop-shadow(0 0 8px rgba(245, 158, 11, 0.4))';
+                    container.style.transform = 'scale(1.02)';
+                    container.style.transition = 'all 0.3s ease';
                     setTimeout(() => {
                         container.style.filter = 'none';
                         container.style.transform = 'scale(1)';
-                    }, 800);
+                    }, 600);
                 });
             } catch (error) {
                 console.error('Cart animation error:', error);
@@ -1083,6 +1083,68 @@
             // Show saved total data
             updateCartTotal(savedTotal);
         });
+        
+        // Global fallback addToCart function for AJAX compatibility
+        window.addToCart = function(productId) {
+            // Check if we have a category-specific function
+            if (typeof window.addToCartFromCategory === 'function') {
+                return window.addToCartFromCategory(productId);
+            }
+            
+            // Check if we have a search-specific function
+            if (typeof window.addToCartFromSearch === 'function') {
+                return window.addToCartFromSearch(productId);
+            }
+            
+            // Check if we have a home-specific function
+            if (typeof window.addToCartFromHome === 'function') {
+                return window.addToCartFromHome(productId);
+            }
+            
+            // Fallback: Generic add to cart with professional feedback
+            const button = event.target;
+            const originalText = button.textContent;
+            
+            button.disabled = true;
+            button.textContent = 'Adding...';
+
+            fetch('/cart/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({
+                    product_id: productId,
+                    quantity: 1
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                button.disabled = false;
+                
+                if (data.success) {
+                    // Professional success feedback
+                    button.classList.add('bg-gray-700', 'border-primary-500');
+                    button.textContent = 'Added to Cart';
+                    setTimeout(() => {
+                        button.classList.remove('bg-gray-700', 'border-primary-500');
+                        button.textContent = originalText;
+                    }, 1200);
+                    
+                    window.animateCartAddition(data.cart_total, 'Product');
+                } else {
+                    button.textContent = originalText;
+                    alert(data.message || 'Failed to add product to cart');
+                }
+            })
+            .catch(error => {
+                button.disabled = false;
+                button.textContent = originalText;
+                console.error('Error:', error);
+                alert('Something went wrong. Please try again.');
+            });
+        };
         
 
         // Search Suggestions Functionality

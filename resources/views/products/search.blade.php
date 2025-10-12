@@ -322,14 +322,16 @@ function addToCartFromSearch(productId, productName = 'Product') {
         button.textContent = originalText;
         
         if (data.success) {
-            // Animate cart addition (simplified)
+            // Professional cart addition feedback
             window.animateCartAddition(data.cart_total, productName);
             
-            // Add success effect
-            button.classList.add('cart-success-flash');
+            // Subtle success effect
+            button.classList.add('bg-gray-700', 'border-primary-500');
+            button.textContent = 'Added to Cart';
             setTimeout(() => {
-                button.classList.remove('cart-success-flash');
-            }, 1000);
+                button.classList.remove('bg-gray-700', 'border-primary-500');
+                button.textContent = originalText;
+            }, 1200);
             
         } else {
             showNotification(data.message || 'Failed to add product to cart', 'error');

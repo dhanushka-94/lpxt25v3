@@ -73,7 +73,7 @@
             <div></div>
             @if($product->can_add_to_cart)
                 <button class="btn-primary px-4 py-2 text-sm group-hover:bg-primary-600 transition-colors" 
-                        onclick="addToCart({{ $product->id }})">
+                        onclick="addToCartFromCategory({{ $product->id }})">
                     Add to Cart
                 </button>
             @else
