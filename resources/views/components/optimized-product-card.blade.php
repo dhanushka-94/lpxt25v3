@@ -23,9 +23,19 @@
         <!-- Stock Status -->
         <div class="absolute top-2 right-2">
             @if($product->quantity > 0)
-                <span class="bg-green-500/80 text-white px-2 py-1 text-xs rounded-full">In Stock</span>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold backdrop-blur-sm border shadow-lg transition-all duration-300 bg-gradient-to-r from-green-500/15 to-emerald-500/15 text-green-200 border-green-400/40 hover:from-green-500/20 hover:to-emerald-500/20 hover:border-green-400/60 hover:shadow-green-500/20">
+                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                    <span class="tracking-wide">In Stock</span>
+                </div>
             @else
-                <span class="bg-red-500/80 text-white px-2 py-1 text-xs rounded-full">Out of Stock</span>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold backdrop-blur-sm border shadow-lg transition-all duration-300 bg-gradient-to-r from-red-500/15 to-rose-500/15 text-red-200 border-red-400/40 hover:from-red-500/20 hover:to-rose-500/20 hover:border-red-400/60 hover:shadow-red-500/20">
+                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    </svg>
+                    <span class="tracking-wide">Out of Stock</span>
+                </div>
             @endif
         </div>
     </div>

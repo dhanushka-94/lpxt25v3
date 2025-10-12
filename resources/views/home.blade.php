@@ -299,7 +299,7 @@
                             <div class="flex space-x-2">
                                 @if($product->can_add_to_cart)
                                     <button onclick="addToCartFromHome({{ $product->id }}, '{{ addslashes($product->name) }}')" 
-                                            class="flex-1 bg-[#f59e0b] hover:bg-[#d97706] text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-all">
+                                            class="flex-1 bg-gradient-to-r from-primary-500/15 to-amber-500/15 backdrop-blur-sm border border-primary-400/40 hover:from-primary-500/25 hover:to-amber-500/25 hover:border-primary-400/60 text-primary-200 px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-primary-500/20 hover:-translate-y-0.5 tracking-wide">
                                         Add to Cart
                                     </button>
                                 @else

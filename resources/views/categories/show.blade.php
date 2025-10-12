@@ -107,7 +107,7 @@
         <div class="flex flex-col lg:flex-row gap-6 lg:gap-8">
             <!-- Filter Sidebar -->
             <div class="w-full lg:w-72 lg:flex-shrink-0 hidden lg:block" id="filter-sidebar">
-                <div class="bg-[#1c1c1e] rounded-xl border border-gray-800/30 p-6 shadow-lg sticky top-24">
+                <div class="bg-[#1c1c1e] rounded-xl border border-gray-800/30 p-6 shadow-lg">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-2 h-2 bg-[#f59e0b] rounded-full"></div>
                         <h3 class="text-lg font-semibold text-white">Filters</h3>
@@ -329,7 +329,7 @@
                             <div class="mt-auto">
                                 @if($product->can_add_to_cart)
                                     <button onclick="event.preventDefault(); event.stopPropagation(); addToCartFromCategory({{ $product->id }})" 
-                                            class="w-full bg-[#f59e0b] hover:bg-[#d97706] text-white px-3 md:px-4 py-2 md:py-2.5 rounded-lg text-xs md:text-sm font-semibold transition-all">
+                                            class="w-full bg-gradient-to-r from-primary-500/15 to-amber-500/15 backdrop-blur-sm border border-primary-400/40 hover:from-primary-500/25 hover:to-amber-500/25 hover:border-primary-400/60 text-primary-200 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-primary-500/20 hover:-translate-y-0.5 tracking-wide">
                                         Add to Cart
                                     </button>
                                 @else
@@ -819,7 +819,7 @@
                             </div>
                             <div class="mt-auto">
                                 ${product.stock_quantity > 0 
-                                    ? `<button onclick="event.preventDefault(); event.stopPropagation(); addToCart(${product.id})" class="w-full bg-[#f59e0b] hover:bg-[#d97706] text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-all">Add to Cart</button>`
+                                    ? `<button onclick="event.preventDefault(); event.stopPropagation(); addToCart(${product.id})" class="w-full bg-gradient-to-r from-primary-500/15 to-amber-500/15 backdrop-blur-sm border border-primary-400/40 hover:from-primary-500/25 hover:to-amber-500/25 hover:border-primary-400/60 text-primary-200 px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-primary-500/20 hover:-translate-y-0.5 tracking-wide">Add to Cart</button>`
                                     : `<button disabled class="w-full bg-[#2c2c2e] text-gray-500 px-4 py-2.5 rounded-lg text-sm font-medium cursor-not-allowed border border-gray-700">Out of Stock</button>`
                                 }
                             </div>

@@ -310,6 +310,10 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l-1 12H6L5 9z"/>
                             </svg>
                         </div>
+                        <!-- Mobile Cart Total -->
+                        <div class="ml-1 min-w-[60px]">
+                            <span class="cart-total text-xs text-gray-400">LKR 0.00</span>
+                        </div>
                     </a>
 
                     <!-- Mobile menu button -->
@@ -643,11 +647,14 @@
                         </div>
                     @endauth
                     
-                    <a href="{{ route('cart.index') }}" class="flex items-center py-2 text-gray-300 hover:text-primary-400 mobile-cart-container">
-                        <svg class="w-5 h-5 mr-2 mobile-cart-icon transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l-1 12H6L5 9z"/>
-                        </svg>
-                        <span class="mobile-cart-text">Cart</span>
+                    <a href="{{ route('cart.index') }}" class="flex items-center justify-between py-2 text-gray-300 hover:text-primary-400 mobile-cart-container">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 mobile-cart-icon transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l-1 12H6L5 9z"/>
+                            </svg>
+                            <span class="mobile-cart-text">Cart</span>
+                        </div>
+                        <span class="cart-total text-xs text-gray-400">LKR 0.00</span>
                     </a>
                 </div>
             </div>

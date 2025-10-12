@@ -282,3 +282,181 @@
 [2025-10-12 22:37:59] local.INFO: Product found via database slug: AMD RYZEN 5 5500 PROCESSOR ( Not Sold Separately )  
 [2025-10-12 22:37:59] local.INFO: ProductController@show - Category: BRAND NEW PROCESSOR (ID: 412), Product: AMD RYZEN 5 5500 PROCESSOR ( Not Sold Separately ) (ID: 426, Category: 382)  
 [2025-10-12 22:38:06] local.INFO: Cart page accessed {"referer":"http://127.0.0.1:8000/brand-new-processor/amd-ryzen-5-5500-processor-for-pc-bulid-only","user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36","query_params":[],"session_id":"H2HHX926R8fHwVLwf8IKM94dqTCBZ9ZtpNvLtgPv","user_id":null,"timestamp":"2025-10-12 22:38:06"} 
+[2025-10-12 23:07:13] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:07:13] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:07:18] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:07:18] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:07:18] local.INFO: Product route binding - Value: msi-a520m-a-pro-motherboard-pc-bulid-only, Field: null  
+[2025-10-12 23:07:18] local.INFO: Product found via database slug: MSI A520M-A PRO MOTHERBOARD   
+[2025-10-12 23:07:18] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI A520M-A PRO MOTHERBOARD  (ID: 461, Category: 383)  
+[2025-10-12 23:08:26] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:08:26] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:09:44] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:09:44] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:10:03] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:10:03] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:10:03] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:10:03] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:11:10] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:11:10] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:11:10] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:11:10] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:11:28] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:11:28] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:11:29] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:11:29] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:12:02] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:12:02] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:12:05] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:12:05] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:12:05] local.INFO: Product route binding - Value: zotac-rtx5060-8gb-twin-edge-oc-white-graphic-card, Field: null  
+[2025-10-12 23:12:05] local.INFO: Product found via database slug: ZOTAC RTX5060 8GB TWIN EDGE OC WHITE GRAPHIC CARD  
+[2025-10-12 23:12:05] local.INFO: ProductController@show - Category: BRAND NEW GRAPHIC CARD (VGA) (ID: 415), Product: ZOTAC RTX5060 8GB TWIN EDGE OC WHITE GRAPHIC CARD (ID: 3069, Category: 385)  
+[2025-10-12 23:13:59] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:13:59] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:13:59] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:13:59] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:14:12] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:14:12] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:14:12] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:14:12] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:14:32] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:14:32] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:14:34] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:14:34] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:15:28] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:15:28] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:15:35] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:15:35] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:15:35] local.INFO: Product route binding - Value: msi-pro-b760m-e-ddr5-motherboard, Field: null  
+[2025-10-12 23:15:35] local.INFO: Product found via database slug: MSI PRO B760M-E DDR5 MOTHERBOARD   
+[2025-10-12 23:15:35] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI PRO B760M-E DDR5 MOTHERBOARD  (ID: 3059, Category: 383)  
+[2025-10-12 23:15:43] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:15:43] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:16:39] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:16:39] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:16:39] local.INFO: Product route binding - Value: msi-pro-b760m-e-ddr5-motherboard, Field: null  
+[2025-10-12 23:16:39] local.INFO: Product found via database slug: MSI PRO B760M-E DDR5 MOTHERBOARD   
+[2025-10-12 23:16:39] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI PRO B760M-E DDR5 MOTHERBOARD  (ID: 3059, Category: 383)  
+[2025-10-12 23:16:39] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:16:39] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:16:40] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:16:40] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:16:47] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:16:47] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:16:47] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:16:47] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:16:47] local.INFO: Product route binding - Value: msi-pro-b760m-e-ddr5-motherboard, Field: null  
+[2025-10-12 23:16:47] local.INFO: Product found via database slug: MSI PRO B760M-E DDR5 MOTHERBOARD   
+[2025-10-12 23:16:47] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI PRO B760M-E DDR5 MOTHERBOARD  (ID: 3059, Category: 383)  
+[2025-10-12 23:16:48] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:16:48] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:16:56] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:16:56] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:16:56] local.INFO: Product route binding - Value: msi-pro-b760m-e-ddr5-motherboard, Field: null  
+[2025-10-12 23:16:56] local.INFO: Product found via database slug: MSI PRO B760M-E DDR5 MOTHERBOARD   
+[2025-10-12 23:16:56] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI PRO B760M-E DDR5 MOTHERBOARD  (ID: 3059, Category: 383)  
+[2025-10-12 23:16:56] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:16:56] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:16:57] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:16:57] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:17:04] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:17:04] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:17:05] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:17:05] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:17:05] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:17:05] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:17:05] local.INFO: Product route binding - Value: msi-pro-b760m-e-ddr5-motherboard, Field: null  
+[2025-10-12 23:17:05] local.INFO: Product found via database slug: MSI PRO B760M-E DDR5 MOTHERBOARD   
+[2025-10-12 23:17:05] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI PRO B760M-E DDR5 MOTHERBOARD  (ID: 3059, Category: 383)  
+[2025-10-12 23:17:41] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:17:41] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:17:42] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:17:42] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:17:42] local.INFO: Product route binding - Value: msi-pro-b760m-e-ddr5-motherboard, Field: null  
+[2025-10-12 23:17:42] local.INFO: Product found via database slug: MSI PRO B760M-E DDR5 MOTHERBOARD   
+[2025-10-12 23:17:42] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI PRO B760M-E DDR5 MOTHERBOARD  (ID: 3059, Category: 383)  
+[2025-10-12 23:17:43] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:17:44] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:17:44] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:17:44] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:17:44] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:17:44] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:17:45] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:17:45] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:17:45] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:17:45] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:17:45] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:17:45] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:17:45] local.INFO: Product route binding - Value: msi-pro-b760m-e-ddr5-motherboard, Field: null  
+[2025-10-12 23:17:45] local.INFO: Product found via database slug: MSI PRO B760M-E DDR5 MOTHERBOARD   
+[2025-10-12 23:17:45] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI PRO B760M-E DDR5 MOTHERBOARD  (ID: 3059, Category: 383)  
+[2025-10-12 23:17:46] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:17:46] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:17:46] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:17:46] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:17:46] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:17:46] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:17:46] local.INFO: Product route binding - Value: msi-pro-b760m-e-ddr5-motherboard, Field: null  
+[2025-10-12 23:17:46] local.INFO: Product found via database slug: MSI PRO B760M-E DDR5 MOTHERBOARD   
+[2025-10-12 23:17:46] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI PRO B760M-E DDR5 MOTHERBOARD  (ID: 3059, Category: 383)  
+[2025-10-12 23:17:47] local.INFO: Cart add request: {"product_id":3223,"quantity":1} 
+[2025-10-12 23:17:47] local.INFO: Product found: {"product":3223} 
+[2025-10-12 23:17:48] local.INFO: Cart add request: {"product_id":3223,"quantity":1} 
+[2025-10-12 23:17:48] local.INFO: Product found: {"product":3223} 
+[2025-10-12 23:17:49] local.INFO: Cart add request: {"product_id":461,"quantity":1} 
+[2025-10-12 23:17:49] local.INFO: Product found: {"product":461} 
+[2025-10-12 23:17:50] local.INFO: Cart add request: {"product_id":3059,"quantity":1} 
+[2025-10-12 23:17:50] local.INFO: Product found: {"product":3059} 
+[2025-10-12 23:17:51] local.INFO: Cart add request: {"product_id":2930,"quantity":1} 
+[2025-10-12 23:17:51] local.INFO: Product found: {"product":2930} 
+[2025-10-12 23:17:56] local.INFO: Cart add request: {"product_id":2595,"quantity":1} 
+[2025-10-12 23:17:56] local.INFO: Product found: {"product":2595} 
+[2025-10-12 23:17:57] local.INFO: Cart add request: {"product_id":2843,"quantity":1} 
+[2025-10-12 23:17:57] local.INFO: Product found: {"product":2843} 
+[2025-10-12 23:18:03] local.INFO: FallbackController - Unknown URL: .well-known/appspecific/com.chrome.devtools.json  
+[2025-10-12 23:18:12] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:18:12] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:18:12] local.INFO: Product route binding - Value: msi-pro-b840m-p-ddr5-wi-fi6e-motherboard, Field: null  
+[2025-10-12 23:18:12] local.INFO: Product found via database slug: MSI PRO B840M P DDR5 (WI-FI6E) MOTHERBOARD  
+[2025-10-12 23:18:12] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI PRO B840M P DDR5 (WI-FI6E) MOTHERBOARD (ID: 3223, Category: 383)  
+[2025-10-12 23:18:15] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:18:15] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:18:15] local.INFO: Product route binding - Value: msi-pro-b840m-p-ddr5-wi-fi6e-motherboard, Field: null  
+[2025-10-12 23:18:15] local.INFO: Product found via database slug: MSI PRO B840M P DDR5 (WI-FI6E) MOTHERBOARD  
+[2025-10-12 23:18:16] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI PRO B840M P DDR5 (WI-FI6E) MOTHERBOARD (ID: 3223, Category: 383)  
+[2025-10-12 23:18:16] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:18:16] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:18:16] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:18:16] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:18:16] local.INFO: Product route binding - Value: msi-pro-b760m-e-ddr5-motherboard, Field: null  
+[2025-10-12 23:18:16] local.INFO: Product found via database slug: MSI PRO B760M-E DDR5 MOTHERBOARD   
+[2025-10-12 23:18:16] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI PRO B760M-E DDR5 MOTHERBOARD  (ID: 3059, Category: 383)  
+[2025-10-12 23:19:07] local.INFO: FallbackController - Unknown URL: .well-known/appspecific/com.chrome.devtools.json  
+[2025-10-12 23:19:20] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:19:20] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:19:20] local.INFO: Product route binding - Value: msi-pro-b760m-e-ddr5-motherboard, Field: null  
+[2025-10-12 23:19:20] local.INFO: Product found via database slug: MSI PRO B760M-E DDR5 MOTHERBOARD   
+[2025-10-12 23:19:20] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI PRO B760M-E DDR5 MOTHERBOARD  (ID: 3059, Category: 383)  
+[2025-10-12 23:19:21] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:19:21] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:19:22] local.INFO: FallbackController - Unknown URL: .well-known/appspecific/com.chrome.devtools.json  
+[2025-10-12 23:19:30] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:19:30] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:19:30] local.INFO: Product route binding - Value: msi-pro-b760m-e-ddr5-motherboard, Field: null  
+[2025-10-12 23:19:30] local.INFO: Product found via database slug: MSI PRO B760M-E DDR5 MOTHERBOARD   
+[2025-10-12 23:19:30] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI PRO B760M-E DDR5 MOTHERBOARD  (ID: 3059, Category: 383)  
+[2025-10-12 23:19:31] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:19:31] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:19:32] local.INFO: FallbackController - Unknown URL: .well-known/appspecific/com.chrome.devtools.json  
+[2025-10-12 23:19:50] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-12 23:19:50] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-12 23:19:50] local.INFO: Product route binding - Value: msi-pro-b760m-e-ddr5-motherboard, Field: null  
+[2025-10-12 23:19:50] local.INFO: Product found via database slug: MSI PRO B760M-E DDR5 MOTHERBOARD   
+[2025-10-12 23:19:50] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI PRO B760M-E DDR5 MOTHERBOARD  (ID: 3059, Category: 383)  
+[2025-10-12 23:19:52] local.INFO: Category route binding - Value: brand-new-graphic-card-vga, Field: null  
+[2025-10-12 23:19:52] local.INFO: Category slug lookup (stored) result: BRAND NEW GRAPHIC CARD (VGA)  
+[2025-10-12 23:19:53] local.INFO: FallbackController - Unknown URL: .well-known/appspecific/com.chrome.devtools.json  
+[2025-10-13 00:13:37] local.INFO: Cart page accessed {"referer":"http://127.0.0.1:8000/brand-new-motherboard/msi-pro-b760m-e-ddr5-motherboard","user_agent":"Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Mobile Safari/537.36","query_params":[],"session_id":"H2HHX926R8fHwVLwf8IKM94dqTCBZ9ZtpNvLtgPv","user_id":null,"timestamp":"2025-10-13 00:13:37"} 
+[2025-10-13 00:13:37] local.INFO: FallbackController - Unknown URL: .well-known/appspecific/com.chrome.devtools.json  
+[2025-10-13 00:13:43] local.INFO: FallbackController - Unknown URL: .well-known/appspecific/com.chrome.devtools.json  

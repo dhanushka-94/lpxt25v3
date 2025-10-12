@@ -224,7 +224,7 @@
                                         <div class="mt-auto">
                                             @if($product->can_add_to_cart)
                                                 <button onclick="event.preventDefault(); event.stopPropagation(); addToCartFromSearch({{ $product->id }}, '{{ addslashes($product->name) }}')" 
-                                                        class="w-full bg-primary-500 hover:bg-primary-600 text-black px-4 py-2.5 rounded-lg text-sm font-semibold transition-all">
+                                                        class="w-full bg-gradient-to-r from-primary-500/15 to-amber-500/15 backdrop-blur-sm border border-primary-400/40 hover:from-primary-500/25 hover:to-amber-500/25 hover:border-primary-400/60 text-primary-200 px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-primary-500/20 hover:-translate-y-0.5 tracking-wide">
                                                 Add to Cart
                                             </button>
                                         @else
