@@ -754,14 +754,14 @@ class PaymentController extends Controller
                 'request_params' => $request->all(),
                 'session_id' => session('kokopay_order_id')
             ]);
-            return redirect()->route('home')->with('error', 'Session expired. Please try again.');
+            return redirect()->route('checkout.index')->with('error', 'Session expired. Please try again.');
         }
 
         $order = Order::find($orderId);
         
         if (!$order) {
             Log::error('Koko Pay return: Order not found', ['order_id' => $orderId]);
-            return redirect()->route('home')->with('error', 'Order not found.');
+            return redirect()->route('checkout.index')->with('error', 'Order not found.');
         }
 
         // Check payment status from the return parameters (case-insensitive)
@@ -774,7 +774,8 @@ class PaymentController extends Controller
             'order_number' => $order->order_number,
             'status' => $paymentStatus,
             'original_status' => $request->get('status'),
-            'transaction_id' => $transactionId
+            'transaction_id' => $transactionId,
+            'full_request_data' => $request->all()
         ]);
         
         if ($paymentStatus === 'success' || $paymentStatus === 'completed' || $paymentStatus === 'paid') {
@@ -855,6 +856,9 @@ class PaymentController extends Controller
                 'order_number' => $order->order_number,
                 'redirect_route' => route('checkout.success', $order->order_number)
             ]);
+
+            // Store order number in session for cart clearing and access control
+            session(['payment_success_order' => $order->order_number]);
 
             // Use order_number (not id) for success route
             return redirect()->route('checkout.success', $order->order_number)

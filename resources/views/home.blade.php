@@ -13,7 +13,7 @@
     <!-- Background Animation -->
     <div class="absolute inset-0 overflow-hidden">
         <div class="absolute w-96 h-96 rounded-full bg-gradient-to-r from-[#f59e0b]/20 to-[#d97706]/20 blur-3xl -top-48 -left-48 animate-pulse"></div>
-        <div class="absolute w-96 h-96 rounded-full bg-gradient-to-r from-[#3b82f6]/20 to-[#1d4ed8]/20 blur-3xl -bottom-48 -right-48 animate-pulse" style="animation-delay: 2s;"></div>
+        <div class="absolute w-96 h-96 rounded-full bg-gradient-to-r from-[#3b82f6]/20 to-[#1d4ed8]/20 blur-3xl -bottom-48 -right-48 animate-pulse" style="animation-delay: 1s;"></div>
     </div>
     
     <div class="hero-slider relative z-10 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-lg" id="heroSlider">
@@ -364,89 +364,131 @@
             </p>
         </div>
 
-        <!-- Happy Customer Photos Grid -->
-        <div class="relative">
-            <div class="customer-slider-container mb-8" id="customerPhotoGrid">
-                <div class="animate-scroll-right">
-                    <!-- Happy Customer 1 -->
-                    <div class="customer-photo-card w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group">
+        <!-- Happy Customer Photos - Continuous One Line Carousel -->
+        <div class="relative overflow-hidden">
+            <!-- Carousel Container -->
+            <div class="customer-carousel-container" id="customerCarousel">
+                <!-- Continuous Scrolling Track -->
+                <div class="carousel-track-continuous flex animate-scroll-right" id="carouselTrackContinuous">
+                    <!-- First Set of Photos -->
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (1).jpg') }}" 
                              alt="Happy MSK Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    
-                    <!-- Happy Customer 2 -->
-                    <div class="customer-photo-card w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (2).jpg') }}" 
                              alt="Happy MSK Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    
-                    <!-- Happy Customer 3 -->
-                    <div class="customer-photo-card w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (3).jpg') }}" 
                              alt="Happy MSK Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    
-                    <!-- Happy Customer 4 -->
-                    <div class="customer-photo-card w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (4).jpg') }}" 
                              alt="Happy MSK Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    
-                    <!-- Happy Customer 5 -->
-                    <div class="customer-photo-card w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (5).jpg') }}" 
                              alt="Happy MSK Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    
-                    <!-- Happy Customer 6 -->
-                    <div class="customer-photo-card w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (6).jpg') }}" 
                              alt="Happy MSK Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    
-                    <!-- Happy Customer 7 -->
-                    <div class="customer-photo-card w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (7).jpg') }}" 
                              alt="Happy MSK Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    
-                    <!-- Happy Customer 8 -->
-                    <div class="customer-photo-card w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (8).jpg') }}" 
                              alt="Happy MSK Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    
-                    <!-- Happy Customer 9 -->
-                    <div class="customer-photo-card w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (9).jpg') }}" 
                              alt="Happy MSK Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    
-                    <!-- Happy Customer 10 -->
-                    <div class="customer-photo-card w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (10).jpg') }}" 
                              alt="Happy MSK Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    
-                    <!-- Happy Customer 11 -->
-                    <div class="customer-photo-card w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (11).jpg') }}" 
                              alt="Happy MSK Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    
-                    <!-- Happy Customer 12 -->
-                    <div class="customer-photo-card w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                        <img src="{{ asset('images/happy-customers/hc00 (12).jpg') }}" 
+                             alt="Happy MSK Customer" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+
+                    <!-- Duplicate Set for Seamless Loop -->
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                        <img src="{{ asset('images/happy-customers/hc00 (1).jpg') }}" 
+                             alt="Happy MSK Customer" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                        <img src="{{ asset('images/happy-customers/hc00 (2).jpg') }}" 
+                             alt="Happy MSK Customer" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                        <img src="{{ asset('images/happy-customers/hc00 (3).jpg') }}" 
+                             alt="Happy MSK Customer" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                        <img src="{{ asset('images/happy-customers/hc00 (4).jpg') }}" 
+                             alt="Happy MSK Customer" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                        <img src="{{ asset('images/happy-customers/hc00 (5).jpg') }}" 
+                             alt="Happy MSK Customer" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                        <img src="{{ asset('images/happy-customers/hc00 (6).jpg') }}" 
+                             alt="Happy MSK Customer" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                        <img src="{{ asset('images/happy-customers/hc00 (7).jpg') }}" 
+                             alt="Happy MSK Customer" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                        <img src="{{ asset('images/happy-customers/hc00 (8).jpg') }}" 
+                             alt="Happy MSK Customer" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                        <img src="{{ asset('images/happy-customers/hc00 (9).jpg') }}" 
+                             alt="Happy MSK Customer" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                        <img src="{{ asset('images/happy-customers/hc00 (10).jpg') }}" 
+                             alt="Happy MSK Customer" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                        <img src="{{ asset('images/happy-customers/hc00 (11).jpg') }}" 
+                             alt="Happy MSK Customer" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (12).jpg') }}" 
                              alt="Happy MSK Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -588,7 +630,7 @@
             // Restart auto-play after transition
             setTimeout(() => {
                 this.startAutoPlay();
-            }, 600);
+            }, 400);
         }
         
         nextSlide() {
@@ -602,10 +644,10 @@
         }
         
         startAutoPlay() {
-            // Auto-advance slides every 3 seconds (faster for dynamic experience)
+            // Auto-advance slides every 2 seconds (faster, more dynamic experience)
             this.autoPlayInterval = setInterval(() => {
                 this.nextSlide();
-            }, 3000);
+            }, 2000);
         }
         
         stopAutoPlay() {
@@ -648,6 +690,8 @@
         }
     }
     
+    // Continuous Customer Carousel - No JavaScript needed, pure CSS animation
+
     // Initialize slider when DOM is loaded with preloading
     document.addEventListener('DOMContentLoaded', function() {
         // Preload all slider images for smoother transitions
@@ -673,6 +717,8 @@
         setTimeout(() => {
             new ImageSlider();
         }, 100);
+        
+        // Customer carousel is now pure CSS - no JavaScript initialization needed
     });
 
     // Special Order Contact Modal Functions
@@ -716,7 +762,7 @@
 </script>
 
 <style>
-    /* Enhanced Hero Slider Animations */
+    /* Enhanced Hero Slider Animations - Fade Effect */
     .hero-slide {
         position: absolute;
         top: 0;
@@ -724,8 +770,8 @@
         width: 100%;
         height: 100%;
         opacity: 0;
-        transform: translateX(100%);
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform: translateX(0);
+        transition: opacity 0.6s ease-in-out;
         z-index: 1;
     }
     
@@ -736,34 +782,34 @@
     }
     
     .hero-slide.prev {
-        transform: translateX(-100%);
+        transform: translateX(0);
         opacity: 0;
         z-index: 1;
     }
 
     /* Smooth image animations */
     .hero-slide img {
-        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         transform: scale(1);
     }
 
     .hero-slide.active img {
-        transform: scale(1.05);
-        animation: smoothZoom 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        transform: scale(1.03);
+        animation: smoothZoom 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
 
     .hero-slide:hover img {
-        transform: scale(1.08);
+        transform: scale(1.05);
     }
 
     /* Smooth zoom animation */
     @keyframes smoothZoom {
         0% {
-            transform: scale(1.1);
-            opacity: 0.8;
+            transform: scale(1.06);
+            opacity: 0.9;
         }
         100% {
-            transform: scale(1.05);
+            transform: scale(1.03);
             opacity: 1;
         }
     }
@@ -771,21 +817,37 @@
     /* Fade transition variant */
     .hero-slide.fade-transition {
         transform: translateX(0);
-        transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: opacity 0.6s ease-in-out;
     }
 
     /* Mobile optimizations */
     @media (max-width: 640px) {
         .hero-slide {
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: opacity 0.4s ease-in-out;
+        }
+        
+        .hero-slide img {
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .hero-slide.active img {
-            transform: scale(1.02);
+            transform: scale(1.01);
+            animation: smoothZoomMobile 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
         
         .hero-slide:hover img {
-            transform: scale(1.02); /* Reduced hover effect on mobile */
+            transform: scale(1.01); /* Minimal hover effect on mobile */
+        }
+        
+        @keyframes smoothZoomMobile {
+            0% {
+                transform: scale(1.03);
+                opacity: 0.95;
+            }
+            100% {
+                transform: scale(1.01);
+                opacity: 1;
+            }
         }
     }
 
@@ -797,9 +859,9 @@
     }
     
     .animate-fade-in-up {
-        animation: slideUp 0.6s ease-out forwards;
+        animation: slideUp 0.4s ease-out forwards;
         opacity: 0;
-        transform: translateY(50px);
+        transform: translateY(30px);
     }
     
     @keyframes slideUp {
@@ -809,74 +871,65 @@
         }
     }
     
-    /* Customer Photo Grid Animations - Staggered Fade In */
-    .customer-slider-container {
+    /* Continuous Customer Photo Carousel Styles */
+    .customer-carousel-container {
+        width: 100%;
         overflow: hidden;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         padding: 2rem 0;
+        mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+        -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
     }
-    
-    .animate-scroll-right, .animate-scroll-left {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-        max-width: 1400px;
-        width: 100%;
-        animation: none;
+
+    .carousel-track-continuous {
+        display: flex;
+        width: fit-content;
+        animation: scrollRight 60s linear infinite;
     }
-    
-    .customer-photo-card {
-        backdrop-filter: blur(10px);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        opacity: 0;
-        transform: translateY(30px) scale(0.9);
-        animation: staggeredFadeIn 0.8s ease-out forwards;
-    }
-    
-    /* Staggered animation delays */
-    .customer-photo-card:nth-child(1) { animation-delay: 0.1s; }
-    .customer-photo-card:nth-child(2) { animation-delay: 0.2s; }
-    .customer-photo-card:nth-child(3) { animation-delay: 0.3s; }
-    .customer-photo-card:nth-child(4) { animation-delay: 0.4s; }
-    .customer-photo-card:nth-child(5) { animation-delay: 0.5s; }
-    .customer-photo-card:nth-child(6) { animation-delay: 0.6s; }
-    .customer-photo-card:nth-child(7) { animation-delay: 0.7s; }
-    .customer-photo-card:nth-child(8) { animation-delay: 0.8s; }
-    .customer-photo-card:nth-child(9) { animation-delay: 0.9s; }
-    .customer-photo-card:nth-child(10) { animation-delay: 1.0s; }
-    .customer-photo-card:nth-child(11) { animation-delay: 1.1s; }
-    .customer-photo-card:nth-child(12) { animation-delay: 1.2s; }
-    
-    @keyframes staggeredFadeIn {
+
+    @keyframes scrollRight {
         0% {
-            opacity: 0;
-            transform: translateY(30px) scale(0.9);
+            transform: translateX(0);
         }
         100% {
-            opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateX(-50%);
         }
     }
-    
+
+    .customer-photo-card {
+        backdrop-filter: blur(10px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
     .customer-photo-card:hover {
-        transform: translateY(-5px) scale(1.03);
+        transform: translateY(-5px) scale(1.05);
         box-shadow: 0 15px 35px rgba(245, 158, 11, 0.25);
         filter: brightness(1.1);
     }
-    
-    /* Floating animation on load */
-    .customer-photo-card {
-        animation: staggeredFadeIn 0.8s ease-out forwards, gentleFloat 6s ease-in-out infinite;
+
+    /* Pause animation on hover */
+    .customer-carousel-container:hover .carousel-track-continuous {
+        animation-play-state: paused;
     }
-    
-    @keyframes gentleFloat {
-        0%, 100% { transform: translateY(0) rotate(0deg); }
-        25% { transform: translateY(-3px) rotate(0.5deg); }
-        50% { transform: translateY(-6px) rotate(0deg); }
-        75% { transform: translateY(-3px) rotate(-0.5deg); }
+
+    /* Responsive Design */
+    @media (max-width: 640px) {
+        .customer-photo-card {
+            width: 160px !important;
+            height: 160px !important;
+        }
+        
+        .customer-photo-card:hover {
+            transform: translateY(-3px) scale(1.02);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .customer-photo-card {
+            width: 140px !important;
+            height: 140px !important;
+        }
     }
 </style>
 
@@ -970,3 +1023,4 @@
 </div>
 
 @endpush
+

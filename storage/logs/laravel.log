@@ -460,3 +460,267 @@
 [2025-10-13 00:13:37] local.INFO: Cart page accessed {"referer":"http://127.0.0.1:8000/brand-new-motherboard/msi-pro-b760m-e-ddr5-motherboard","user_agent":"Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Mobile Safari/537.36","query_params":[],"session_id":"H2HHX926R8fHwVLwf8IKM94dqTCBZ9ZtpNvLtgPv","user_id":null,"timestamp":"2025-10-13 00:13:37"} 
 [2025-10-13 00:13:37] local.INFO: FallbackController - Unknown URL: .well-known/appspecific/com.chrome.devtools.json  
 [2025-10-13 00:13:43] local.INFO: FallbackController - Unknown URL: .well-known/appspecific/com.chrome.devtools.json  
+[2025-10-19 12:49:47] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 12:49:47] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 12:49:58] local.INFO: FallbackController - Unknown URL: .well-known/appspecific/com.chrome.devtools.json  
+[2025-10-19 12:50:18] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 12:50:18] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:00:46] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:00:46] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:00:46] local.INFO: Product route binding - Value: amd-ryzen-5-4500-processor-without-box, Field: null  
+[2025-10-19 14:00:46] local.INFO: Product found via database slug: AMD RYZEN 5 4500 PROCESSOR ( WITHOUT BOX )  
+[2025-10-19 14:00:46] local.INFO: ProductController@show - Category: BRAND NEW PROCESSOR (ID: 412), Product: AMD RYZEN 5 4500 PROCESSOR ( WITHOUT BOX ) (ID: 3084, Category: 382)  
+[2025-10-19 14:01:20] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-19 14:01:20] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-19 14:01:22] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-19 14:01:22] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-19 14:01:22] local.INFO: Product route binding - Value: msi-a520m-a-pro-motherboard-pc-bulid-only, Field: null  
+[2025-10-19 14:01:22] local.INFO: Product found via database slug: MSI A520M-A PRO MOTHERBOARD   
+[2025-10-19 14:01:22] local.INFO: ProductController@show - Category: BRAND NEW MOTHERBOARD (ID: 413), Product: MSI A520M-A PRO MOTHERBOARD  (ID: 461, Category: 383)  
+[2025-10-19 14:06:57] local.INFO: Cart add request: {"product_id":3219,"quantity":1} 
+[2025-10-19 14:06:57] local.INFO: Product found: {"product":3219} 
+[2025-10-19 14:06:58] local.INFO: Category route binding - Value: pc-build, Field: null  
+[2025-10-19 14:06:58] local.INFO: Category slug lookup (stored) result: PC BUILD  
+[2025-10-19 14:06:58] local.INFO: Product route binding - Value: ryzen-9-9950x-x870-msi-mb-rtx-5080-16gb-mai-1000w-gold-psu, Field: null  
+[2025-10-19 14:06:58] local.INFO: Product slug lookup - searching for: ryzen 9 9950x x870 msi mb rtx 5080 16gb mai 1000w gold psu  
+[2025-10-19 14:06:58] local.INFO: Product slug lookup result: RYZEN 9 9950X | X870 MSI MB | RTX 5080 16GB | MAI 1000W GOLD PSU  
+[2025-10-19 14:06:58] local.INFO: ProductController@show - Category: PC BUILD (ID: 380), Product: RYZEN 9 9950X | X870 MSI MB | RTX 5080 16GB | MAI 1000W GOLD PSU (ID: 3219, Category: 380)  
+[2025-10-19 14:07:08] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:08] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:07:17] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:17] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:07:20] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:20] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:07:22] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:22] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:07:24] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:24] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:07:27] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:27] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:07:29] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:29] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:07:31] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:32] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:07:33] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:34] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:07:36] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:36] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:07:42] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:42] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:07:43] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:43] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:07:44] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:44] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:07:46] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:46] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:07:47] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:47] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 14:07:49] local.INFO: Category route binding - Value: brand-new-processor, Field: null  
+[2025-10-19 14:07:49] local.INFO: Category slug lookup (stored) result: BRAND NEW PROCESSOR  
+[2025-10-19 20:04:46] local.ERROR: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it (Connection: mysql, SQL: select * from `sessions` where `id` = i4pnM20qIBj1cjHKlPuhbdCZDotN8PQr1mHRM2AJ limit 1) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it (Connection: mysql, SQL: select * from `sessions` where `id` = i4pnM20qIBj1cjHKlPuhbdCZDotN8PQr1mHRM2AJ limit 1) at C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:824)
+[stacktrace]
+#0 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(978): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#1 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(957): Illuminate\\Database\\Connection->tryAgainIfCausedByLostConnection(Object(Illuminate\\Database\\QueryException), 'select * from `...', Array, Object(Closure))
+#2 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(780): Illuminate\\Database\\Connection->handleQueryException(Object(Illuminate\\Database\\QueryException), 'select * from `...', Array, Object(Closure))
+#3 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(397): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#4 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3188): Illuminate\\Database\\Connection->select('select * from `...', Array, false)
+#5 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3173): Illuminate\\Database\\Query\\Builder->runSelect()
+#6 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3763): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#7 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3172): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#8 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Concerns\\BuildsQueries.php(366): Illuminate\\Database\\Query\\Builder->get(Array)
+#9 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3095): Illuminate\\Database\\Query\\Builder->first(Array)
+#10 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\DatabaseSessionHandler.php(96): Illuminate\\Database\\Query\\Builder->find('i4pnM20qIBj1cjH...')
+#11 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Store.php(116): Illuminate\\Session\\DatabaseSessionHandler->read('i4pnM20qIBj1cjH...')
+#12 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Store.php(104): Illuminate\\Session\\Store->readFromHandler()
+#13 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Store.php(88): Illuminate\\Session\\Store->loadSession()
+#14 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(146): Illuminate\\Session\\Store->start()
+#15 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\helpers.php(390): Illuminate\\Session\\Middleware\\StartSession->Illuminate\\Session\\Middleware\\{closure}(Object(Illuminate\\Session\\Store))
+#16 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(143): tap(Object(Illuminate\\Session\\Store), Object(Closure))
+#17 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(115): Illuminate\\Session\\Middleware\\StartSession->startSession(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store))
+#18 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(63): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#19 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#20 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#21 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#22 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(74): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#23 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#24 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(137): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#25 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(821): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#26 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(800): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#27 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(764): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#28 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(753): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#29 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(200): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#30 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#31 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#32 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#35 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#36 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(109): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(48): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#43 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#44 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#45 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#46 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#47 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePathEncoding.php(26): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#48 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Http\\Middleware\\ValidatePathEncoding->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#49 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(137): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#50 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#51 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#52 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1220): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#53 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\public\\index.php(20): Illuminate\\Foundation\\Application->handleRequest(Object(Illuminate\\Http\\Request))
+#54 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('C:\\\\Users\\\\Dhanus...')
+#55 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it at C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php:66)
+[stacktrace]
+#0 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(66): PDO->__construct('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#1 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(85): Illuminate\\Database\\Connectors\\Connector->createPdoConnection('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#2 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(48): Illuminate\\Database\\Connectors\\Connector->tryAgainIfCausedByLostConnection(Object(PDOException), 'mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#3 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\MySqlConnector.php(24): Illuminate\\Database\\Connectors\\Connector->createConnection('mysql:host=127....', Array, Array)
+#4 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\ConnectionFactory.php(184): Illuminate\\Database\\Connectors\\MySqlConnector->connect(Array)
+#5 [internal function]: Illuminate\\Database\\Connectors\\ConnectionFactory->Illuminate\\Database\\Connectors\\{closure}()
+#6 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(1230): call_user_func(Object(Closure))
+#7 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(511): Illuminate\\Database\\Connection->getPdo()
+#8 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(406): Illuminate\\Database\\Connection->getPdoForSelect(false)
+#9 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(811): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('select * from `...', Array)
+#10 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(978): Illuminate\\Database\\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#11 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(957): Illuminate\\Database\\Connection->tryAgainIfCausedByLostConnection(Object(Illuminate\\Database\\QueryException), 'select * from `...', Array, Object(Closure))
+#12 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(780): Illuminate\\Database\\Connection->handleQueryException(Object(Illuminate\\Database\\QueryException), 'select * from `...', Array, Object(Closure))
+#13 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(397): Illuminate\\Database\\Connection->run('select * from `...', Array, Object(Closure))
+#14 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3188): Illuminate\\Database\\Connection->select('select * from `...', Array, false)
+#15 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3173): Illuminate\\Database\\Query\\Builder->runSelect()
+#16 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3763): Illuminate\\Database\\Query\\Builder->Illuminate\\Database\\Query\\{closure}()
+#17 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3172): Illuminate\\Database\\Query\\Builder->onceWithColumns(Array, Object(Closure))
+#18 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Concerns\\BuildsQueries.php(366): Illuminate\\Database\\Query\\Builder->get(Array)
+#19 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Query\\Builder.php(3095): Illuminate\\Database\\Query\\Builder->first(Array)
+#20 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\DatabaseSessionHandler.php(96): Illuminate\\Database\\Query\\Builder->find('i4pnM20qIBj1cjH...')
+#21 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Store.php(116): Illuminate\\Session\\DatabaseSessionHandler->read('i4pnM20qIBj1cjH...')
+#22 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Store.php(104): Illuminate\\Session\\Store->readFromHandler()
+#23 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Store.php(88): Illuminate\\Session\\Store->loadSession()
+#24 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(146): Illuminate\\Session\\Store->start()
+#25 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\helpers.php(390): Illuminate\\Session\\Middleware\\StartSession->Illuminate\\Session\\Middleware\\{closure}(Object(Illuminate\\Session\\Store))
+#26 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(143): tap(Object(Illuminate\\Session\\Store), Object(Closure))
+#27 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(115): Illuminate\\Session\\Middleware\\StartSession->startSession(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store))
+#28 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Session\\Middleware\\StartSession.php(63): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#29 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#30 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#31 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#32 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Cookie\\Middleware\\EncryptCookies.php(74): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#33 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#34 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(137): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#35 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(821): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#36 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(800): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#37 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(764): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#38 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(753): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#39 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(200): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#40 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(180): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#41 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php(31): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#43 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#44 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#45 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php(51): Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#46 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#47 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#48 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#49 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php(109): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#50 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#51 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php(48): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#52 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#53 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php(58): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#54 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#55 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#56 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Foundation\\Http\\Middleware\\InvokeDeferredCallbacks->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#57 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\ValidatePathEncoding.php(26): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#58 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(219): Illuminate\\Http\\Middleware\\ValidatePathEncoding->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#59 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php(137): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#60 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#61 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#62 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1220): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#63 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\public\\index.php(20): Illuminate\\Foundation\\Application->handleRequest(Object(Illuminate\\Http\\Request))
+#64 C:\\Users\\Dhanushka\\Desktop\\MSK\\MSKMSV3\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('C:\\\\Users\\\\Dhanus...')
+#65 {main}
+"} 
+[2025-10-19 20:12:50] local.INFO: Category route binding - Value: brand-new-motherboard, Field: null  
+[2025-10-19 20:12:50] local.INFO: Category slug lookup (stored) result: BRAND NEW MOTHERBOARD  
+[2025-10-19 20:12:53] local.INFO: Cart add request: {"product_id":3223,"quantity":1} 
+[2025-10-19 20:12:54] local.INFO: Product found: {"product":3223} 
+[2025-10-19 20:12:54] local.INFO: Cart page accessed {"referer":"http://127.0.0.1:8000/categories/brand-new-motherboard","user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36","query_params":[],"session_id":"Ho84Y1XL8d0sJ9IzFsxcMe0l5x0UQmWORulqU4kt","user_id":null,"timestamp":"2025-10-19 20:12:54"} 
+[2025-10-19 20:23:50] local.INFO: Checkout process started {"payment_method":"webxpay","customer_name":"Dhanushka Bandara","request_data":{"payment_method":"webxpay","first_name":"Dhanushka","last_name":"Bandara","customer_phone":"0714245192","customer_email":"olexto@gmail.com"}} 
+[2025-10-19 20:23:51] local.INFO: Checkout validation passed, proceeding with order creation  
+[2025-10-19 20:23:52] local.INFO: WebXPay payment route accessed {"order_param":"381","order_type":"string","is_order_instance":false} 
+[2025-10-19 20:23:52] local.INFO: Attempting to find order by ID {"order_id":"381"} 
+[2025-10-19 20:23:52] local.INFO: Order found {"order_id":381,"order_number":"MSK-2025-K6U3OGWY"} 
+[2025-10-19 20:23:52] local.INFO: WebXPay amount calculation {"order_number":"MSK-2025-K6U3OGWY","base_amount":"67500.00","transaction_fee":2025.0,"total_with_fee":69525.0,"plaintext":"MSK-2025-K6U3OGWY|69525.00"} 
+[2025-10-19 20:23:52] local.INFO: WebXPay encryption attempt {"plaintext":"MSK-2025-K6U3OGWY|69525.00","public_key_length":271,"secret_key_preview":"9187fa33-1..."} 
+[2025-10-19 20:23:52] local.INFO: WebXPay encryption successful {"payment_length":172,"payment_preview":"TPnKl9b7OStljPJAuzL3NQoT2KIS/+r8Hx5D4VniJwaajmkkPu..."} 
+[2025-10-19 20:23:52] local.INFO: WebXPay payment prepared {"order_number":"MSK-2025-K6U3OGWY","amount":"67500.00","transaction_fee":2025.0,"total_with_fee":69525.0,"plaintext":"MSK-2025-K6U3OGWY|69525.00","checkout_url":"https://webxpay.com/index.php?route=checkout/billing","environment":"live","currency":"LKR","return_urls":{"return_url":"https://mskcomputers.lk/pay/webxpayResponse","cancel_url":"https://mskcomputers.lk/payment/webxpay/cancel","notify_url":"https://mskcomputers.lk/payment/webxpay/notify"},"customer_data":{"first_name":"Dhanushka","last_name":"Bandara","email":"olexto@gmail.com","contact_number":"0714245192","address_line_one":"Gannoruwa","city":"Kandy","state":"Central","country":"Sri Lanka","process_currency":"LKR","cms":"Laravel"},"form_data_keys":["checkout_url","first_name","last_name","email","contact_number","address_line_one","address_line_two","city","state","postal_code","country","process_currency","cms","custom_fields","enc_method","secret_key","payment","return_url","cancel_url","notify_url"],"secret_key_preview":"9187fa33-1...","payment_data_length":172,"gateway_used":"webxpay","compliance_status":"fully_compliant"} 
+[2025-10-19 20:23:53] local.INFO: WebXPay payment initiated successfully {"order_number":"MSK-2025-K6U3OGWY","base_amount":"67500.00","transaction_fee":2025.0,"total_with_fee":69525.0,"discount_calculated":0.0,"amount_sent_to_webxpay":69525.0} 
+[2025-10-19 20:26:53] local.INFO: Category route binding - Value: keyboard-and-mouse, Field: null  
+[2025-10-19 20:26:53] local.INFO: Category slug lookup (stored) result: KEYBOARD & MOUSE  
+[2025-10-19 20:26:53] local.INFO: Product route binding - Value: 95551880, Field: null  
+[2025-10-19 20:26:53] local.INFO: Product ID lookup result: not found  
+[2025-10-19 20:27:03] local.INFO: Category route binding - Value: keyboard-and-mouse, Field: null  
+[2025-10-19 20:27:03] local.INFO: Category slug lookup (stored) result: KEYBOARD & MOUSE  
+[2025-10-19 20:27:03] local.INFO: Product route binding - Value: 95551880, Field: null  
+[2025-10-19 20:27:03] local.INFO: Product ID lookup result: not found  
+[2025-10-19 20:27:05] local.INFO: Cart page accessed {"referer":"http://127.0.0.1:8000/keyboard-and-mouse/95551880","user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36","query_params":[],"session_id":"Ho84Y1XL8d0sJ9IzFsxcMe0l5x0UQmWORulqU4kt","user_id":null,"timestamp":"2025-10-19 20:27:05"} 
+[2025-10-19 20:27:30] local.INFO: Category route binding - Value: chargers-and-adapters, Field: null  
+[2025-10-19 20:27:30] local.INFO: Category slug lookup (stored) result: CHARGERS & ADAPTERS  
+[2025-10-19 20:30:39] local.INFO: Category route binding - Value: keyboard, Field: null  
+[2025-10-19 20:30:39] local.INFO: Category slug lookup (stored) result: KEYBOARD  
+[2025-10-19 20:30:40] local.INFO: Category route binding - Value: mouse, Field: null  
+[2025-10-19 20:30:40] local.INFO: Category slug lookup (stored) result: MOUSE  
+[2025-10-19 20:30:41] local.INFO: Category route binding - Value: combo, Field: null  
+[2025-10-19 20:30:41] local.INFO: Category slug lookup (stored) result: COMBO  
+[2025-10-19 20:30:41] local.INFO: Category route binding - Value: mouse-pad, Field: null  
+[2025-10-19 20:30:41] local.INFO: Category slug lookup (stored) result: MOUSE PAD  
+[2025-10-19 20:30:47] local.INFO: Category route binding - Value: mouse-pad, Field: null  
+[2025-10-19 20:30:47] local.INFO: Category slug lookup (stored) result: MOUSE PAD  
+[2025-10-19 20:30:57] local.INFO: Category route binding - Value: keyboard, Field: null  
+[2025-10-19 20:30:57] local.INFO: Category slug lookup (stored) result: KEYBOARD  
+[2025-10-19 20:31:00] local.INFO: Category route binding - Value: keyboard, Field: null  
+[2025-10-19 20:31:00] local.INFO: Category slug lookup (stored) result: KEYBOARD  
+[2025-10-19 20:31:03] local.INFO: Category route binding - Value: keyboard, Field: null  
+[2025-10-19 20:31:03] local.INFO: Category slug lookup (stored) result: KEYBOARD  
+[2025-10-19 20:33:07] local.INFO: Category route binding - Value: monitors-and-accessories, Field: null  
+[2025-10-19 20:33:07] local.INFO: Category slug lookup (stored) result: MONITORS & ACCESSORIES  
+[2025-10-19 20:33:07] local.INFO: Product route binding - Value: msi-mag-275f-27inch-fhd-180hz-05ms-adaptive-sync-ips-ga, Field: null  
+[2025-10-19 20:33:07] local.INFO: Product found via database slug:  MSI MAG 275F 27Inch FHD 180HZ 0.5MS Adaptive Sync IPS Gaming Monitor  
+[2025-10-19 20:33:07] local.INFO: ProductController@show - Category: MONITORS & ACCESSORIES (ID: 391), Product:  MSI MAG 275F 27Inch FHD 180HZ 0.5MS Adaptive Sync IPS Gaming Monitor (ID: 1877, Category: 391)  
+[2025-10-19 20:34:02] local.INFO: Category route binding - Value: monitors-and-accessories, Field: null  
+[2025-10-19 20:34:02] local.INFO: Category slug lookup (stored) result: MONITORS & ACCESSORIES  
+[2025-10-19 20:34:02] local.INFO: Product route binding - Value: msi-mag-275f-27inch-fhd-180hz-05ms-adaptive-sync-ips-ga, Field: null  
+[2025-10-19 20:34:02] local.INFO: Product found via database slug:  MSI MAG 275F 27Inch FHD 180HZ 0.5MS Adaptive Sync IPS Gaming Monitor  
+[2025-10-19 20:34:02] local.INFO: ProductController@show - Category: MONITORS & ACCESSORIES (ID: 391), Product:  MSI MAG 275F 27Inch FHD 180HZ 0.5MS Adaptive Sync IPS Gaming Monitor (ID: 1877, Category: 391)  
+[2025-10-19 20:34:08] local.INFO: Cart add request: {"product_id":1877,"quantity":1} 
+[2025-10-19 20:34:08] local.INFO: Product found: {"product":1877} 
+[2025-10-19 20:34:09] local.INFO: Cart page accessed {"referer":"http://127.0.0.1:8000/monitors-and-accessories/msi-mag-275f-27inch-fhd-180hz-05ms-adaptive-sync-ips-ga","user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36","query_params":[],"session_id":"Ho84Y1XL8d0sJ9IzFsxcMe0l5x0UQmWORulqU4kt","user_id":null,"timestamp":"2025-10-19 20:34:09"} 
+[2025-10-19 20:34:21] local.INFO: Checkout process started {"payment_method":"kokopay","customer_name":"Dhanushka Bandara","request_data":{"payment_method":"kokopay","first_name":"Dhanushka","last_name":"Bandara","customer_phone":"0714245192","customer_email":"olexto@gmail.com"}} 
+[2025-10-19 20:34:21] local.INFO: Checkout validation passed, proceeding with order creation  
+[2025-10-19 20:34:22] local.INFO: Redirecting to Koko Pay payment {"order_id":382,"order_number":"MSK-2025-9IBUYYGP","payment_method":"kokopay","redirect_url":"http://127.0.0.1:8000/payment/kokopay/382"} 
+[2025-10-19 20:34:22] local.INFO: Generated Koko Pay redirect URL {"url":"http://127.0.0.1:8000/payment/kokopay/382"} 
+[2025-10-19 20:34:22] local.INFO: Initiating Koko Pay payment {"order_id":382,"order_number":"MSK-2025-9IBUYYGP","auth_check":false,"order_user_id":null} 
+[2025-10-19 20:34:22] local.INFO: Koko Pay customer data prepared {"order_id":382,"amount":11.0,"firstName":"Dhanushka","lastName":"Bandara","email":"olexto@gmail.com","contactNumber":"0714245192","description":"MSK Computers Order #382"} 
+[2025-10-19 20:34:22] local.INFO: Koko Pay payment data prepared {"order_id":382,"amount":"11.00","reference":"7d3f30056c643b23b9fef10aac9d6425591-382"} 
+[2025-10-19 20:34:22] local.INFO: Koko Pay payment initialized successfully {"order_id":382,"reference":"7d3f30056c643b23b9fef10aac9d6425591-382"} 
+[2025-10-19 21:21:29] local.INFO: Category route binding - Value: monitors-and-accessories, Field: null  
+[2025-10-19 21:21:29] local.INFO: Category slug lookup (stored) result: MONITORS & ACCESSORIES  
+[2025-10-19 21:21:29] local.INFO: Product route binding - Value: msi-mag-275f-27inch-fhd-180hz-05ms-adaptive-sync-ips-ga, Field: null  
+[2025-10-19 21:21:29] local.INFO: Product found via database slug:  MSI MAG 275F 27Inch FHD 180HZ 0.5MS Adaptive Sync IPS Gaming Monitor  
+[2025-10-19 21:21:29] local.INFO: ProductController@show - Category: MONITORS & ACCESSORIES (ID: 391), Product:  MSI MAG 275F 27Inch FHD 180HZ 0.5MS Adaptive Sync IPS Gaming Monitor (ID: 1877, Category: 391)  
+[2025-10-19 21:21:31] local.INFO: Cart add request: {"product_id":1877,"quantity":1} 
+[2025-10-19 21:21:31] local.INFO: Product found: {"product":1877} 
+[2025-10-19 21:21:32] local.INFO: Cart page accessed {"referer":"http://127.0.0.1:8000/monitors-and-accessories/msi-mag-275f-27inch-fhd-180hz-05ms-adaptive-sync-ips-ga","user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36","query_params":[],"session_id":"Ho84Y1XL8d0sJ9IzFsxcMe0l5x0UQmWORulqU4kt","user_id":null,"timestamp":"2025-10-19 21:21:32"} 
+[2025-10-19 21:21:42] local.INFO: Checkout process started {"payment_method":"kokopay","customer_name":"Dhanushka Bandara","request_data":{"payment_method":"kokopay","first_name":"Dhanushka","last_name":"Bandara","customer_phone":"0714245192","customer_email":"olexto@gmail.com"}} 
+[2025-10-19 21:21:42] local.INFO: Checkout validation passed, proceeding with order creation  
+[2025-10-19 21:21:42] local.INFO: Redirecting to Koko Pay payment {"order_id":383,"order_number":"MSK-2025-IGN4D6YT","payment_method":"kokopay","redirect_url":"http://127.0.0.1:8000/payment/kokopay/383"} 
+[2025-10-19 21:21:42] local.INFO: Generated Koko Pay redirect URL {"url":"http://127.0.0.1:8000/payment/kokopay/383"} 
+[2025-10-19 21:21:42] local.INFO: Initiating Koko Pay payment {"order_id":383,"order_number":"MSK-2025-IGN4D6YT","auth_check":false,"order_user_id":null} 
+[2025-10-19 21:21:42] local.INFO: Koko Pay customer data prepared {"order_id":383,"amount":11.0,"firstName":"Dhanushka","lastName":"Bandara","email":"olexto@gmail.com","contactNumber":"0714245192","description":"MSK Computers Order #383"} 
+[2025-10-19 21:21:42] local.INFO: Koko Pay payment data prepared {"order_id":383,"amount":"11.00","reference":"7d3f30056c643b23b9fef10aac9d6425845-383"} 
+[2025-10-19 21:21:42] local.INFO: Koko Pay payment initialized successfully {"order_id":383,"reference":"7d3f30056c643b23b9fef10aac9d6425845-383"} 

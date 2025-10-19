@@ -865,7 +865,7 @@
             }
             
             // Generate pagination HTML
-            let paginationHTML = '<nav class="flex items-center justify-center space-x-2 mt-8" role="navigation" aria-label="Pagination Navigation">';
+            let paginationHTML = '<nav class="flex flex-wrap items-center justify-center gap-1 sm:gap-2 mt-6 sm:mt-8 px-2" role="navigation" aria-label="Pagination Navigation">';
             
             // Previous page link
             if (pagination.current_page > 1) {
@@ -873,15 +873,15 @@
                 prevParams.set('page', pagination.current_page - 1);
                 paginationHTML += `
                     <a href="?${prevParams.toString()}" 
-                       class="px-3 py-2 text-sm leading-4 text-gray-300 bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-colors">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       class="px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm leading-4 text-gray-300 bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-colors flex-shrink-0">
+                        <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                         </svg>
                     </a>`;
             } else {
                 paginationHTML += `
-                    <span class="px-3 py-2 text-sm leading-4 text-gray-500 bg-gray-800 border border-gray-700 rounded-md cursor-not-allowed">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <span class="px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm leading-4 text-gray-500 bg-gray-800 border border-gray-700 rounded-md cursor-not-allowed flex-shrink-0">
+                        <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                         </svg>
                     </span>`;
@@ -895,31 +895,34 @@
             if (startPage > 1) {
                 const firstParams = new URLSearchParams(currentParams);
                 firstParams.set('page', 1);
-                paginationHTML += `<a href="?${firstParams.toString()}" class="px-3 py-2 text-sm leading-4 text-gray-300 bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-colors">1</a>`;
+                paginationHTML += `<a href="?${firstParams.toString()}" class="px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm leading-4 text-gray-300 bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-colors min-w-[32px] sm:min-w-[36px] text-center">1</a>`;
                 if (startPage > 2) {
-                    paginationHTML += `<span class="px-3 py-2 text-sm leading-4 text-gray-500 bg-gray-800 border border-gray-700 rounded-md">...</span>`;
+                    paginationHTML += `<span class="hidden sm:inline-flex px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm leading-4 text-gray-500 bg-gray-800 border border-gray-700 rounded-md">...</span>`;
                 }
             }
             
             // Page numbers around current page
             for (let page = startPage; page <= endPage; page++) {
                 if (page === pagination.current_page) {
-                    paginationHTML += `<span class="px-3 py-2 text-sm leading-4 text-white bg-[#f59e0b] border border-[#f59e0b] rounded-md font-medium">${page}</span>`;
+                    paginationHTML += `<span class="px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm leading-4 text-white bg-[#f59e0b] border border-[#f59e0b] rounded-md font-medium min-w-[32px] sm:min-w-[36px] text-center">${page}</span>`;
                 } else {
                     const pageParams = new URLSearchParams(currentParams);
                     pageParams.set('page', page);
-                    paginationHTML += `<a href="?${pageParams.toString()}" class="px-3 py-2 text-sm leading-4 text-gray-300 bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-colors">${page}</a>`;
+                    // Show only critical pages on mobile (current, first, last, and adjacent)
+                    const showOnMobile = (page === 1 || page === pagination.last_page || Math.abs(page - pagination.current_page) <= 1);
+                    const mobileClass = showOnMobile ? '' : 'hidden sm:inline-flex';
+                    paginationHTML += `<a href="?${pageParams.toString()}" class="px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm leading-4 text-gray-300 bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-colors min-w-[32px] sm:min-w-[36px] text-center ${mobileClass}">${page}</a>`;
                 }
             }
             
             // Show last page if we're not ending at the last page
             if (endPage < pagination.last_page) {
                 if (endPage < pagination.last_page - 1) {
-                    paginationHTML += `<span class="px-3 py-2 text-sm leading-4 text-gray-500 bg-gray-800 border border-gray-700 rounded-md">...</span>`;
+                    paginationHTML += `<span class="hidden sm:inline-flex px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm leading-4 text-gray-500 bg-gray-800 border border-gray-700 rounded-md">...</span>`;
                 }
                 const lastParams = new URLSearchParams(currentParams);
                 lastParams.set('page', pagination.last_page);
-                paginationHTML += `<a href="?${lastParams.toString()}" class="px-3 py-2 text-sm leading-4 text-gray-300 bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-colors">${pagination.last_page}</a>`;
+                paginationHTML += `<a href="?${lastParams.toString()}" class="px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm leading-4 text-gray-300 bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-colors min-w-[32px] sm:min-w-[36px] text-center">${pagination.last_page}</a>`;
             }
             
             // Next page link
@@ -928,15 +931,15 @@
                 nextParams.set('page', pagination.current_page + 1);
                 paginationHTML += `
                     <a href="?${nextParams.toString()}" 
-                       class="px-3 py-2 text-sm leading-4 text-gray-300 bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-colors">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       class="px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm leading-4 text-gray-300 bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 hover:text-white transition-colors flex-shrink-0">
+                        <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                         </svg>
                     </a>`;
             } else {
                 paginationHTML += `
-                    <span class="px-3 py-2 text-sm leading-4 text-gray-500 bg-gray-800 border border-gray-700 rounded-md cursor-not-allowed">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <span class="px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm leading-4 text-gray-500 bg-gray-800 border border-gray-700 rounded-md cursor-not-allowed flex-shrink-0">
+                        <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                         </svg>
                     </span>`;
