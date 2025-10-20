@@ -48,17 +48,6 @@
 
 ---
 
-### 🏦 **PAYHERE PAYMENT ENDPOINTS** (Legacy)
-
-#### **🔄 Return/Callback URLs:**
-| **Type** | **URL** | **Method** | **Purpose** |
-|----------|---------|------------|-------------|
-| **Return Handler** | `/payment/return` | GET | User redirected after payment |
-| **Cancel Handler** | `/payment/cancel` | GET | User cancelled payment |
-| **Notify Handler** | `/payment/notify` | POST | Server-to-server webhook |
-
----
-
 ### 🚨 **ERROR & FAILURE PAGES**
 
 #### **❌ Failure Redirects:**
@@ -66,7 +55,6 @@
 |--------------|-----------------|------------------|
 | **WebXPay Failed** | `/checkout` | Error flash message |
 | **KokoPay Failed** | `/checkout` | Error flash message |
-| **PayHere Failed** | `/checkout` | Error flash message |
 | **Order Not Found** | `/` (Home) | Error flash message |
 | **Session Expired** | `/` (Home) | Error flash message |
 | **Permission Denied** | `403 Error Page` | Access denied |
