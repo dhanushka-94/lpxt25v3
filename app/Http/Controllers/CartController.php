@@ -310,4 +310,82 @@ class CartController extends Controller
             'total_discount' => $totalDiscount
         ];
     }
+
+    /**
+     * Get cart summary for AJAX requests
+     */
+    public function summary()
+    {
+        try {
+            $sessionId = session()->getId();
+            $userId = Auth::id();
+
+            // Get cart items
+            $cartItems = Cart::where(function($query) use ($sessionId, $userId) {
+                $query->where('session_id', $sessionId);
+                if ($userId) {
+                    $query->orWhere('user_id', $userId);
+                }
+            })->with('product')->get();
+
+            $items = [];
+            $total = 0;
+            $originalTotal = 0;
+            $count = 0;
+
+            foreach ($cartItems as $item) {
+                if ($item->product) {
+                    $lineTotal = $item->quantity * $item->product->final_price;
+                    $originalLineTotal = $item->quantity * $item->product->price;
+                    
+                    $total += $lineTotal;
+                    $originalTotal += $originalLineTotal;
+                    $count += $item->quantity;
+                    
+                    $items[] = [
+                        'id' => $item->id,
+                        'name' => $item->product->name,
+                        'quantity' => $item->quantity,
+                        'unit_price' => $item->product->final_price,
+                        'original_unit_price' => $item->product->price,
+                        'total' => $lineTotal,
+                        'original_total' => $originalLineTotal
+                    ];
+                }
+            }
+
+            return response()->json([
+                'success' => true,
+                'items' => $items,
+                'total' => $total,
+                'original_total' => $originalTotal,
+                'total_discount' => $originalTotal - $total,
+                'count' => $count
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('Cart summary error: ' . $e->getMessage());
+            
+            return response()->json([
+                'success' => false,
+                'error' => 'Failed to load cart summary',
+                'items' => [],
+                'total' => 0,
+                'count' => 0
+            ]);
+        }
+    }
+
+    /**
+     * Get cart count for AJAX requests
+     */
+    public function count()
+    {
+        $cartItems = $this->getCartItems();
+        $count = $cartItems->sum('quantity');
+
+        return response()->json([
+            'success' => true,
+            'count' => $count
+        ]);
+    }
 }

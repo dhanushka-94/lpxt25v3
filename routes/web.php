@@ -26,6 +26,15 @@ Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->prefix
     Route::post('/orders/bulk-action', [App\Http\Controllers\Admin\AdminOrderController::class, 'bulkAction'])->name('orders.bulk-action');
     Route::get('/orders-statistics', [App\Http\Controllers\Admin\AdminOrderController::class, 'statistics'])->name('orders.statistics');
     
+    // Quotation Management
+    Route::get('/quotations', [App\Http\Controllers\Admin\AdminQuotationController::class, 'index'])->name('quotations.index');
+    Route::get('/quotations/{quotation}', [App\Http\Controllers\Admin\AdminQuotationController::class, 'show'])->name('quotations.show');
+    Route::put('/quotations/{quotation}/status', [App\Http\Controllers\Admin\AdminQuotationController::class, 'updateStatus'])->name('quotations.update-status');
+    Route::post('/quotations/{quotation}/notes', [App\Http\Controllers\Admin\AdminQuotationController::class, 'addNotes'])->name('quotations.add-notes');
+    Route::get('/quotations/{quotation}/download', [App\Http\Controllers\Admin\AdminQuotationController::class, 'downloadPdf'])->name('quotations.download');
+    Route::delete('/quotations/{quotation}', [App\Http\Controllers\Admin\AdminQuotationController::class, 'destroy'])->name('quotations.destroy');
+    Route::post('/quotations/bulk-action', [App\Http\Controllers\Admin\AdminQuotationController::class, 'bulkAction'])->name('quotations.bulk-action');
+    Route::get('/quotations-statistics', [App\Http\Controllers\Admin\AdminQuotationController::class, 'statistics'])->name('quotations.statistics');
 
     // User Management
     Route::get('/users', [App\Http\Controllers\Admin\AdminUserController::class, 'index'])->name('users.index');
@@ -287,23 +296,27 @@ Route::get('/uncategorized/{product}', function($product) {
     return view('products.show', ['product' => $productModel, 'relatedProducts' => collect()]);
 })->name('products.uncategorized');
 
-Route::get('/{category}/{product}', [ProductController::class, 'show'])->name('products.show');
-
-// Cart Routes
+// Cart Routes (MUST be before catch-all routes)
 Route::prefix('cart')->name('cart.')->group(function () {
     Route::get('/', [CartController::class, 'index'])->name('index');
     Route::post('/add', [CartController::class, 'add'])->name('add');
     Route::put('/update/{cart}', [CartController::class, 'update'])->name('update');
     Route::delete('/remove/{cart}', [CartController::class, 'remove'])->name('remove');
     Route::post('/clear', [CartController::class, 'clear'])->name('clear');
+    Route::get('/summary', [CartController::class, 'summary'])->name('summary');
+    Route::get('/count', [CartController::class, 'count'])->name('count');
 });
 
-// Checkout Routes (guest checkout allowed)
+// Checkout Routes (guest checkout allowed) - MUST be before catch-all routes
 Route::prefix('checkout')->name('checkout.')->group(function () {
-    Route::get('/', [CheckoutController::class, 'index'])->name('index');
+    Route::get('/', [CheckoutController::class, 'selectOption'])->name('index');
+    Route::get('/quotation', [CheckoutController::class, 'quotation'])->name('quotation');
+    Route::get('/payment', [CheckoutController::class, 'payment'])->name('payment');
     Route::post('/process', [CheckoutController::class, 'process'])->name('process');
     Route::get('/success/{order}', [CheckoutController::class, 'success'])->name('success');
 });
+
+Route::get('/{category}/{product}', [ProductController::class, 'show'])->name('products.show');
 
 // Authentication Routes
 Route::get('/login', [App\Http\Controllers\Auth\AuthController::class, 'showLogin'])->name('login');
@@ -316,16 +329,13 @@ Route::post('/logout', [App\Http\Controllers\Auth\AuthController::class, 'logout
 // Additional Checkout Routes (for backward compatibility)
 Route::post('/checkout/save-address', [App\Http\Controllers\CheckoutController::class, 'saveAddress'])->name('checkout.save-address');
 
-// Payment Routes
-Route::post('/payment/payhere/{order}', [App\Http\Controllers\PaymentController::class, 'initiatePayment'])->name('payment.payhere');
+// Quotation Routes
+Route::post('/quotation/generate', [App\Http\Controllers\QuotationController::class, 'generateQuotation'])->name('quotation.generate');
+
+// Payment Routes (PayHere routes removed)
 Route::post('/payment/card/{order}', [App\Http\Controllers\PaymentController::class, 'processCardPayment'])->name('payment.card');
 Route::post('/payment/mobile/{order}', [App\Http\Controllers\PaymentController::class, 'processMobilePayment'])->name('payment.mobile');
 Route::get('/payment/status/{order}', [App\Http\Controllers\PaymentController::class, 'checkPaymentStatus'])->name('payment.status');
-
-// PayHere Callback Routes
-Route::get('/payment/return', [App\Http\Controllers\PaymentController::class, 'handleReturn'])->name('payment.return');
-Route::get('/payment/cancel', [App\Http\Controllers\PaymentController::class, 'handleCancel'])->name('payment.cancel');
-Route::post('/payment/notify', [App\Http\Controllers\PaymentController::class, 'handleNotify'])->name('payment.notify');
 
 // WebXPay Payment Routes (specific routes first, then parameterized routes)
 Route::get('/payment/webxpay/test', [App\Http\Controllers\PaymentController::class, 'testWebXPay'])->name('payment.webxpay.test');

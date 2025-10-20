@@ -12,163 +12,7 @@ use Illuminate\Support\Facades\Log;
 
 class PaymentController extends Controller
 {
-    /**
-     * Initiate PayHere payment
-     */
-    public function initiatePayment(Request $request, Order $order)
-    {
-        // Validate that order belongs to authenticated user or is guest order
-        if ($order->user_id && $order->user_id !== auth()->id()) {
-            abort(403, 'Unauthorized access to order');
-        }
-
-        // PayHere configuration
-        $merchantId = config('payhere.merchant_id');
-        $merchantSecret = config('payhere.merchant_secret');
-        $currency = 'LKR';
-        $amount = number_format($order->total_amount, 2, '.', '');
-
-        // Generate hash for security
-        $hash = strtoupper(
-            md5(
-                $merchantId . 
-                $order->order_number . 
-                $amount . 
-                $currency . 
-                strtoupper(md5($merchantSecret))
-            )
-        );
-
-        $paymentData = [
-            'merchant_id' => $merchantId,
-            'return_url' => route('payment.return'),
-            'cancel_url' => route('payment.cancel'),
-            'notify_url' => route('payment.notify'),
-            'order_id' => $order->order_number,
-            'items' => 'Order #' . $order->order_number,
-            'amount' => $amount,
-            'currency' => $currency,
-            'hash' => $hash,
-            'first_name' => explode(' ', $order->customer_name)[0],
-            'last_name' => explode(' ', $order->customer_name)[1] ?? '',
-            'email' => $order->customer_email,
-            'phone' => $order->customer_phone,
-            'address' => $order->shipping_address_line_1,
-            'city' => $order->shipping_city,
-            'country' => 'Sri Lanka',
-        ];
-
-        return view('payment.payhere', compact('paymentData', 'order'));
-    }
-
-    /**
-     * Handle PayHere return
-     */
-    public function handleReturn(Request $request)
-    {
-        $orderNumber = $request->order_id;
-        $order = Order::where('order_number', $orderNumber)->first();
-
-        if (!$order) {
-            return redirect()->route('home')->with('error', 'Order not found');
-        }
-
-        // Check payment status
-        if ($request->payment_id && $request->payment_status == 2) {
-            // Payment successful
-            $order->update([
-                'payment_status' => 'paid',
-                'payment_reference' => $request->payment_id,
-            ]);
-
-            return redirect()->route('checkout.success', $order->order_number)
-                ->with('success', 'Payment completed successfully!');
-        } else {
-            // Payment failed
-            return redirect()->route('checkout.index')
-                ->with('error', 'Payment was not completed. Please try again.');
-        }
-    }
-
-    /**
-     * Handle PayHere cancel
-     */
-    public function handleCancel(Request $request)
-    {
-        $orderNumber = $request->order_id;
-        
-        return redirect()->route('checkout.index')
-            ->with('error', 'Payment was cancelled. You can try again or choose a different payment method.');
-    }
-
-    /**
-     * Handle PayHere notify (webhook)
-     */
-    public function handleNotify(Request $request)
-    {
-        // Verify the payment notification
-        $merchantId = config('payhere.merchant_id');
-        $merchantSecret = config('payhere.merchant_secret');
-        
-        $orderId = $request->order_id;
-        $paymentId = $request->payment_id;
-        $amount = $request->payhere_amount;
-        $currency = $request->payhere_currency;
-        $statusCode = $request->status_code;
-        
-        // Generate hash to verify authenticity
-        $localHash = strtoupper(
-            md5(
-                $merchantId . 
-                $orderId . 
-                $amount . 
-                $currency . 
-                $statusCode . 
-                strtoupper(md5($merchantSecret))
-            )
-        );
-
-        if ($localHash === $request->md5sig) {
-            // Valid notification
-            $order = Order::where('order_number', $orderId)->first();
-            
-            if ($order) {
-                if ($statusCode == 2) {
-                    // Payment success
-                    $order->update([
-                        'payment_status' => 'paid',
-                        'payment_reference' => $paymentId,
-                    ]);
-                    
-                    Log::info('PayHere payment successful', [
-                        'order_id' => $orderId,
-                        'payment_id' => $paymentId,
-                        'amount' => $amount
-                    ]);
-                } else {
-                    // Payment failed
-                    $order->update([
-                        'payment_status' => 'failed',
-                        'payment_reference' => $paymentId,
-                    ]);
-                    
-                    Log::warning('PayHere payment failed', [
-                        'order_id' => $orderId,
-                        'payment_id' => $paymentId,
-                        'status_code' => $statusCode
-                    ]);
-                }
-            }
-        } else {
-            Log::error('PayHere notification hash mismatch', [
-                'order_id' => $orderId,
-                'received_hash' => $request->md5sig,
-                'expected_hash' => $localHash
-            ]);
-        }
-
-        return response('OK', 200);
-    }
+    // PayHere payment methods removed
 
     /**
      * Process card payment
@@ -432,33 +276,43 @@ class PaymentController extends Controller
                 session()->forget('webxpay_data');
             }
 
-            // Log the incoming request for debugging
-            Log::info('WebXPay return handler called', [
+            // Enhanced logging for debugging WebXPay return issues
+            Log::info('🔄 WebXPay return handler called', [
+                'request_method' => $request->method(),
+                'request_url' => $request->fullUrl(),
                 'request_data' => $request->all(),
                 'has_payment' => $request->has('payment'),
                 'has_signature' => $request->has('signature'),
                 'from_cart_redirect' => !empty($webxpayData),
                 'referer' => $referer,
-                'loop_check_passed' => true
+                'user_agent' => $request->header('User-Agent'),
+                'ip_address' => $request->ip(),
+                'session_id' => session()->getId(),
+                'timestamp' => now()->toDateTimeString()
             ]);
 
-            // Validate required parameters
+            // Validate required parameters with enhanced error handling
             if (!$request->has(['payment', 'signature'])) {
-                Log::error('WebXPay return missing required parameters', [
+                Log::error('❌ WebXPay return missing required parameters', [
                     'available_keys' => array_keys($request->all()),
                     'missing_payment' => !$request->has('payment'),
                     'missing_signature' => !$request->has('signature'),
                     'url' => $request->fullUrl(),
-                    'referer' => $request->header('referer')
+                    'referer' => $request->header('referer'),
+                    'all_request_data' => $request->all()
                 ]);
                 
                 // If this is a test URL without signature, redirect to checkout with helpful message
                 if ($request->has('payment') && $request->get('payment') === 'success') {
+                    Log::warning('⚠️ WebXPay test URL detected - redirecting to checkout');
                     return redirect()->route('checkout.index')
                         ->with('error', 'Test URL detected. WebXPay requires both payment and signature parameters for security. Please use a real WebXPay transaction or test the success page directly at: /checkout/success/' . ($request->get('order', 'ORDER_NUMBER')));
                 }
                 
-                throw new \Exception('Missing required payment response data (payment and signature parameters required)');
+                // For missing parameters, redirect to checkout instead of throwing exception
+                Log::error('🚫 WebXPay missing parameters - redirecting to checkout');
+                return redirect()->route('checkout.index')
+                    ->with('error', 'Payment verification failed. Missing required payment data. Please try again or contact support if this issue persists.');
             }
 
             $webxpayService = new WebXPayService();
@@ -472,14 +326,20 @@ class PaymentController extends Controller
                 'payment_status' => $processedResponse['payment_status'] ?? 'not_set'
             ]);
             
-            // Find the order
-            $order = Order::where('order_number', $processedResponse['order_id'])->first();
+            // Find the order with enhanced error handling
+            $orderNumber = $processedResponse['order_id'] ?? 'unknown';
+            $order = Order::where('order_number', $orderNumber)->first();
             
             if (!$order) {
-                Log::error('WebXPay order not found', [
-                    'order_number' => $processedResponse['order_id']
+                Log::error('❌ WebXPay order not found', [
+                    'order_number' => $orderNumber,
+                    'processed_response' => $processedResponse,
+                    'available_orders' => Order::latest()->limit(5)->pluck('order_number')->toArray()
                 ]);
-                throw new \Exception('Order not found: ' . $processedResponse['order_id']);
+                
+                // Instead of throwing exception, redirect to checkout with error
+                return redirect()->route('checkout.index')
+                    ->with('error', "Order not found: {$orderNumber}. Please check your order details or contact support.");
             }
 
             Log::info('WebXPay order found', [
@@ -529,10 +389,13 @@ class PaymentController extends Controller
             }
 
         } catch (\Exception $e) {
-            Log::error('WebXPay return handling failed', [
+            Log::error('💥 WebXPay return handling failed', [
                 'error' => $e->getMessage(),
+                'error_line' => $e->getLine(),
+                'error_file' => $e->getFile(),
                 'request_data' => $request->all(),
-                'order_number' => $order->order_number ?? 'unknown'
+                'order_number' => $order->order_number ?? 'unknown',
+                'stack_trace' => $e->getTraceAsString()
             ]);
 
             // Check if this is a WebXPay specific error code
@@ -545,6 +408,8 @@ class PaymentController extends Controller
                 $errorMessage = $webxpayService->handleWebXPayError($errorCode, $errorMessage);
             }
 
+            // ENSURE we never redirect to homepage - always go to checkout
+            Log::warning('🔄 WebXPay error - redirecting to checkout (NOT homepage)');
             return redirect()->route('checkout.index')
                 ->with('error', 'Payment processing failed: ' . $errorMessage . ' Please try again or contact support.');
         }

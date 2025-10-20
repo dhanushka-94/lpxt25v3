@@ -55,8 +55,8 @@ oZuR+DvsDJg/KOfYUQIDAQAB
         '6' => 'expired',
     ],
     
-    // Return URL (will be dynamically set)
-    'return_url' => env('WEBXPAY_RETURN_URL', env('APP_URL') . '/payment/webxpay/return'),
+    // Return URLs (dynamically set based on environment)
+    'return_url' => env('WEBXPAY_RETURN_URL', env('APP_URL') . '/pay/webxpayResponse'), // Use legacy URL for compatibility
     'cancel_url' => env('WEBXPAY_CANCEL_URL', env('APP_URL') . '/payment/webxpay/cancel'),
     'notify_url' => env('WEBXPAY_NOTIFY_URL', env('APP_URL') . '/payment/webxpay/notify'),
 ];

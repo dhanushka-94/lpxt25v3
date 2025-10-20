@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\User;
 use App\Models\SmaProduct;
+use App\Models\Quotation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -51,6 +52,27 @@ class AdminDashboardController extends Controller
                 ->whereDate('created_at', $yesterday)->sum('total_amount'),
             'yesterday_pending' => Order::where('status', 'pending')
                 ->whereDate('created_at', $yesterday)->count(),
+            
+            // Quotation statistics
+            'total_quotations' => Quotation::count(),
+            'pending_quotations' => Quotation::where('status', 'pending')->count(),
+            'accepted_quotations' => Quotation::where('status', 'accepted')->count(),
+            'expired_quotations' => Quotation::expired()->count(),
+            'today_quotations' => Quotation::whereDate('created_at', $today)->count(),
+            'yesterday_quotations' => Quotation::whereDate('created_at', $yesterday)->count(),
+            'weekly_quotations' => Quotation::whereBetween('created_at', [
+                Carbon::now()->startOfWeek(),
+                Carbon::now()->endOfWeek()
+            ])->count(),
+            'monthly_quotations' => Quotation::whereBetween('created_at', [
+                Carbon::now()->startOfMonth(),
+                Carbon::now()->endOfMonth()
+            ])->count(),
+            'quotations_value' => Quotation::sum('total_amount'),
+            'monthly_quotations_value' => Quotation::whereBetween('created_at', [
+                Carbon::now()->startOfMonth(),
+                Carbon::now()->endOfMonth()
+            ])->sum('total_amount'),
         ];
 
         // Today's orders
@@ -104,6 +126,12 @@ class AdminDashboardController extends Controller
             ->take(5)
             ->get();
 
+        // Recent quotations
+        $recentQuotations = Quotation::with(['user'])
+            ->latest()
+            ->take(5)
+            ->get();
+
         return view('admin.dashboard', compact(
             'stats',
             'todayOrders',
@@ -112,7 +140,8 @@ class AdminDashboardController extends Controller
             'orderStatusData',
             'monthlySales',
             'topProducts',
-            'recentCustomers'
+            'recentCustomers',
+            'recentQuotations'
         ));
     }
 

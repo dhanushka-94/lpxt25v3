@@ -1084,12 +1084,59 @@
         
         // Initialize cart total on page load (no count needed)
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if we have cart total in localStorage
-            const savedTotal = localStorage.getItem('cartTotal') || '0.00';
-            
-            // Show saved total data
-            updateCartTotal(savedTotal);
+            // Load cart total from server instead of localStorage for accuracy
+            loadCartTotalFromServer();
         });
+        
+        // Refresh cart total when page becomes visible (handles tab switching)
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                // Page became visible, refresh cart total from server
+                loadCartTotalFromServer();
+            }
+        });
+        
+        // Refresh cart total when user returns to the page
+        window.addEventListener('focus', function() {
+            loadCartTotalFromServer();
+        });
+        
+        // Function to load cart total from server
+        function loadCartTotalFromServer() {
+            fetch('/cart/summary', {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                credentials: 'same-origin'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const total = data.total.toFixed(2);
+                    updateCartTotal(total);
+                    // Update localStorage for faster subsequent loads
+                    localStorage.setItem('cartTotal', total);
+                } else {
+                    // Fallback to localStorage if server request fails
+                    const savedTotal = localStorage.getItem('cartTotal') || '0.00';
+                    updateCartTotal(savedTotal);
+                }
+            })
+            .catch(error => {
+                console.log('Cart total fetch failed, using localStorage fallback');
+                // Fallback to localStorage if server request fails
+                const savedTotal = localStorage.getItem('cartTotal') || '0.00';
+                updateCartTotal(savedTotal);
+            });
+        }
+        
+        // Global function to refresh cart total (useful for debugging and manual refresh)
+        window.refreshCartTotal = function() {
+            console.log('🔄 Manually refreshing cart total from server...');
+            loadCartTotalFromServer();
+        };
         
         // Global fallback addToCart function for AJAX compatibility
         window.addToCart = function(productId) {

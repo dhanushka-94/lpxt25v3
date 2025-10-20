@@ -45,7 +45,7 @@
             </div>
         @endif
 
-        <form action="{{ route('checkout.process') }}" method="POST" id="checkout-form" enctype="multipart/form-data" novalidate>
+        <form action="{{ route('quotation.generate') }}" method="POST" id="checkout-form" enctype="multipart/form-data" novalidate>
             @csrf
             
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -115,14 +115,15 @@
                                 
                                 <div>
                                     <label for="customer_email" class="block text-sm font-medium text-gray-300 mb-2">
-                                        Email Address
-                                        <span class="text-gray-500 text-xs">(Optional - for order updates)</span>
+                                        Email Address *
+                                        <span class="text-red-400 text-xs">(Required)</span>
                                     </label>
                                     <input type="email" 
                                            id="customer_email" 
                                            name="customer_email" 
                                            value="{{ old('customer_email', Auth::user()->email ?? '') }}" 
-                                           placeholder="Enter your email address (optional)"
+                                           required
+                                           placeholder="Enter your email address"
                                        class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
                                     <div class="flex items-center mt-2 text-xs text-gray-400">
                                         <svg class="w-4 h-4 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -372,7 +373,7 @@
                         </div>
                     </div>
 
-                    <!-- Koko Pay BNPL Notice (shown only when Koko Pay is selected) -->
+                    <!-- Koko Pay KOKO Notice (shown only when Koko Pay is selected) -->
                     <div class="bg-purple-900/20 border border-purple-700/50 rounded-lg p-4 kokopay-notice" style="display: none;">
                         <div class="flex items-start space-x-3">
                             <svg class="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -406,20 +407,49 @@
                         </div>
                     </div>
 
-                    <!-- Payment Method -->
+                    <!-- Simple Checkout Options -->
                     <div class="bg-gradient-to-br from-[#1a1a1c] to-[#2a2a2c] rounded-xl border border-gray-800 p-6">
-                        <div class="bg-gradient-to-r from-primary-500/10 to-purple-500/10 border border-primary-500/30 rounded-lg p-4 mb-6">
-                            <div class="flex items-center space-x-2 mb-2">
-                                <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
-                                </svg>
-                                <h3 class="text-lg font-semibold text-white">Choose Your Payment Method</h3>
-                            </div>
-                            <p class="text-gray-300 text-sm">Select how you'd like to pay for your order. All payments are secured with SSL encryption.</p>
+                        <h3 class="text-lg font-semibold text-white mb-4">Choose an Option</h3>
+                        
+                        <!-- Simple Two Button Choice -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <!-- Get Quote Button -->
+                            <label class="block cursor-pointer checkout-option" data-type="quotation">
+                                <input type="radio" 
+                                       name="checkout_type" 
+                                       value="quotation"
+                                       class="sr-only checkout-radio">
+                                <div class="p-6 border-2 border-blue-500 bg-blue-500/10 rounded-lg hover:bg-blue-500/20 transition-all text-center option-card">
+                                    <svg class="w-8 h-8 text-blue-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    </svg>
+                                    <h4 class="text-xl font-bold text-white mb-2">Get Quote</h4>
+                                    <p class="text-gray-300 text-sm">Download PDF quotation</p>
+                                </div>
+                            </label>
+
+                            <!-- Buy Now Button -->
+                            <label class="block cursor-pointer checkout-option active" data-type="payment">
+                                <input type="radio" 
+                                       name="checkout_type" 
+                                       value="payment"
+                                       checked
+                                       class="sr-only checkout-radio">
+                                <div class="p-6 border-2 border-green-500 bg-green-500/10 rounded-lg hover:bg-green-500/20 transition-all text-center option-card">
+                                    <svg class="w-8 h-8 text-green-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                                    </svg>
+                                    <h4 class="text-xl font-bold text-white mb-2">Buy Now</h4>
+                                    <p class="text-gray-300 text-sm">Complete your order</p>
+                                </div>
+                            </label>
                         </div>
                         
-                        <div class="space-y-4">
-                            <!-- Bank Transfer - Now Primary/Default Option -->
+                        <!-- Payment Methods Section (shown when payment is selected) -->
+                        <div id="payment-methods-section" class="space-y-4">
+                            <h4 class="text-lg font-semibold text-white mb-4">Payment Methods</h4>
+                            
+                            <!-- Bank Transfer - Primary Option -->
                             <label class="flex items-center p-4 border-2 border-green-500 bg-gradient-to-r from-green-900/20 to-green-800/20 rounded-lg hover:border-green-400 transition-colors cursor-pointer relative">
                                 <input type="radio" 
                                        name="payment_method" 
@@ -467,7 +497,7 @@
                                 </div>
                             </label>
                             
-                            <!-- Koko Pay - BNPL Option -->
+                            <!-- Koko Pay - KOKO Option -->
                             <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-purple-400 transition-colors cursor-pointer">
                                 <input type="radio" 
                                        name="payment_method" 
@@ -486,7 +516,7 @@
                                     <img src="{{ asset('images/kokopay-logo.png') }}" alt="Koko Pay" class="h-6 w-auto">
                                 </div>
                             </label>
-                            
+
                             <!-- Bank Transfer Details (shown only when Bank Transfer is selected) -->
                             <div class="bg-green-900/20 border border-green-700/50 rounded-lg p-4 bank-transfer-notice" style="display: none;">
                                 <div class="flex items-start space-x-3">
@@ -528,64 +558,43 @@
                                                 <li>• Keep your payment receipt for tracking purposes</li>
                                             </ul>
                                         </div>
-                                        
-                                        <!-- Transfer Slip Upload -->
-                                        <div class="mt-4 p-4 bg-blue-900/20 border border-blue-700/50 rounded-lg">
-                                            <h5 class="text-blue-400 font-medium text-sm mb-3">📎 Upload Transfer Slip</h5>
-                                            <div class="space-y-3">
-                                                <div>
-                                                    <label for="transfer_slip" class="block text-sm font-medium text-blue-200 mb-2">
-                                                        Upload Payment Receipt/Slip <span class="text-gray-500">(Optional)</span>
-                                                        <span class="text-xs text-gray-400">(Max 2MB - JPG, PNG, PDF only)</span>
-                                                    </label>
-                                                    <input type="file" 
-                                                           id="transfer_slip" 
-                                                           name="transfer_slip" 
-                                                           accept=".jpg,.jpeg,.png,.pdf"
-                                                           class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-500 file:text-white hover:file:bg-blue-600 file:transition-colors border border-gray-700 rounded-lg bg-[#0f0f0f] focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                                    <div class="text-xs text-gray-500 mt-1">
-                                                        📋 Optionally upload a clear photo or scan of your bank transfer slip/receipt
-                                                        <br>💡 This helps us verify your payment faster (but not required)
-                                                    </div>
-                                                </div>
-                                                
-                                                <!-- Upload Status Display -->
-                                                <div id="upload-status" class="hidden">
-                                                    <!-- File info will be displayed here -->
-                                                </div>
-                                                
-                                                <!-- Upload Instructions -->
-                                                <div class="bg-gray-800/50 rounded-lg p-3 text-xs text-gray-400">
-                                                    <div class="flex items-start space-x-2">
-                                                        <svg class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                                        </svg>
-                                                        <div>
-                                                            <p class="font-medium text-blue-300 mb-1">Upload Requirements:</p>
-                                                            <ul class="space-y-0.5">
-                                                                <li>• Clear, readable image of transfer receipt</li>
-                                                                <li>• Include transaction reference number</li>
-                                                                <li>• Show transfer amount and date</li>
-                                                                <li>• Full Name and Phone Number must be filled</li>
-                                                                <li>• JPG, PNG, or PDF format only</li>
-                                                                <li>• Maximum file size: 2MB</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- WebXPay Notice (shown only when WebXPay is selected) -->
+                            <div class="bg-primary-900/20 border border-primary-700/50 rounded-lg p-4 webxpay-notice" style="display: none;">
+                                <div class="flex items-start space-x-3">
+                                    <svg class="w-5 h-5 text-primary-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                                    </svg>
+                                    <div>
+                                        <h4 class="text-primary-400 font-medium text-sm mb-2">Secure Card Payment with WebXPay</h4>
+                                        <p class="text-primary-300 text-sm mb-3">
+                                            You'll be redirected to our secure payment gateway to complete your card payment. 
+                                            A 3% transaction fee will be added to your total.
+                                        </p>
+                                        <div class="text-xs text-primary-200">
+                                            ✓ SSL Encrypted • ✓ PCI Compliant • ✓ Instant Processing
                                         </div>
-                                        
-                                        <div class="mt-4 p-3 bg-[#f59e0b]/10 border border-[#f59e0b]/20 rounded-lg">
-                                            <div class="flex items-center space-x-2">
-                                                <svg class="w-4 h-4 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                                </svg>
-                                                <div>
-                                                    <div class="text-[#f59e0b] text-xs font-medium">Need Help?</div>
-                                                    <div class="text-[#f59e0b] text-xs">Call: 0112 95 9005 | Email: info@mskcomputers.lk</div>
-                                                </div>
-                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Koko Pay KOKO Notice (shown only when Koko Pay is selected) -->
+                            <div class="bg-purple-900/20 border border-purple-700/50 rounded-lg p-4 kokopay-notice" style="display: none;">
+                                <div class="flex items-start space-x-3">
+                                    <svg class="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+                                    </svg>
+                                    <div>
+                                        <h4 class="text-purple-400 font-medium text-sm mb-2">Buy Now, Pay Later with Koko Pay</h4>
+                                        <p class="text-purple-300 text-sm mb-3">
+                                            Split your payment into 3 easy installments. Pay only 1/3 today, remaining in 30 & 60 days.
+                                            A 10% transaction fee will be added to your total.
+                                        </p>
+                                        <div class="text-xs text-purple-200">
+                                            ✓ Instant Approval • ✓ No Credit Check • ✓ Flexible Payments
                                         </div>
                                     </div>
                                 </div>
@@ -680,7 +689,7 @@
                             <div class="flex justify-between text-sm kokopay-fee" style="display: none;">
                                 <span class="text-gray-400">
                                     Transaction Fee (10%)
-                                    <span class="text-xs text-purple-400 block">BNPL processing</span>
+                                    <span class="text-xs text-purple-400 block">KOKO processing</span>
                                 </span>
                                 <span class="text-purple-400 kokopay-fee-amount">
                                     LKR 0.00
@@ -709,8 +718,12 @@
                             </label>
                             
                             <button type="submit" 
-                                    class="w-full py-4 px-6 border border-transparent text-lg font-medium rounded-lg text-black bg-gradient-to-r from-[#f59e0b] to-[#fbbf24] hover:from-[#d97706] hover:to-[#f59e0b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f59e0b] transition-all duration-300 transform hover:scale-105">
-                                Place Order
+                                    id="submit-button"
+                                    class="w-full py-4 px-6 border border-transparent text-lg font-medium rounded-lg text-black bg-gradient-to-r from-[#f59e0b] to-[#fbbf24] hover:from-[#d97706] hover:to-[#f59e0b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f59e0b] transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="submit-icon">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                                </svg>
+                                <span id="submit-text">Buy Now</span>
                             </button>
                         </div>
                     </div>
@@ -719,6 +732,17 @@
         </form>
     </div>
 </div>
+
+<style>
+.checkout-option.active .option-card {
+    border-width: 3px !important;
+    transform: scale(1.02);
+}
+
+.checkout-option:hover .option-card {
+    transform: scale(1.01);
+}
+</style>
 
 <script>
 console.log('Checkout JavaScript loaded - script is running');
@@ -752,6 +776,75 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if form exists
     const checkoutForm = document.getElementById('checkout-form');
     console.log('Checkout form found:', checkoutForm ? 'Yes' : 'No');
+
+    // Checkout type handling
+    const checkoutOptions = document.querySelectorAll('.checkout-option');
+    const checkoutTypeRadios = document.querySelectorAll('input[name="checkout_type"]');
+    const paymentMethodsSection = document.getElementById('payment-methods-section');
+    const submitButton = document.getElementById('submit-button');
+    const submitText = document.getElementById('submit-text');
+    const submitIcon = document.getElementById('submit-icon');
+
+    function updateCheckoutType() {
+        const selectedType = document.querySelector('input[name="checkout_type"]:checked');
+        console.log('🔄 Updating checkout type. Selected:', selectedType ? selectedType.value : 'none');
+        
+        if (selectedType && selectedType.value === 'quotation') {
+            // Quotation mode
+            console.log('✅ Switching to QUOTATION mode');
+            if (paymentMethodsSection) paymentMethodsSection.style.display = 'none';
+            if (checkoutForm) {
+                checkoutForm.action = '{{ route("quotation.generate") }}';
+                console.log('📝 Form action set to:', checkoutForm.action);
+            }
+            
+            // Update button for quotation
+            if (submitButton) {
+                submitButton.className = 'w-full py-4 px-6 border border-transparent text-lg font-medium rounded-lg text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2';
+            }
+            if (submitText) submitText.textContent = 'Download Quote';
+            if (submitIcon) {
+                submitIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>';
+            }
+        } else {
+            // Payment mode
+            console.log('💳 Switching to PAYMENT mode');
+            if (paymentMethodsSection) paymentMethodsSection.style.display = 'block';
+            if (checkoutForm) {
+                checkoutForm.action = '{{ route("checkout.process") }}';
+                console.log('📝 Form action set to:', checkoutForm.action);
+            }
+            
+            // Update button for payment
+            if (submitButton) {
+                submitButton.className = 'w-full py-4 px-6 border border-transparent text-lg font-medium rounded-lg text-black bg-gradient-to-r from-[#f59e0b] to-[#fbbf24] hover:from-[#d97706] hover:to-[#f59e0b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f59e0b] transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2';
+            }
+            if (submitText) submitText.textContent = 'Buy Now';
+            if (submitIcon) {
+                submitIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>';
+            }
+        }
+    }
+
+    // Initialize checkout type
+    updateCheckoutType();
+
+    // Add click event listeners to option cards
+    checkoutOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            console.log('Checkout option clicked:', this.dataset.type);
+            const radio = this.querySelector('input[type="radio"]');
+            if (radio) {
+                radio.checked = true;
+                updateCheckoutType();
+            }
+        });
+    });
+
+    // Add event listeners for checkout type change
+    checkoutTypeRadios.forEach(radio => {
+        radio.addEventListener('change', updateCheckoutType);
+    });
     
     // Add form submission logging
     if (checkoutForm) {
@@ -826,7 +919,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('WebXPay selected - Transaction Fee: ' + formatCurrency(transactionFee) + ', New Total: ' + formatCurrency(newTotal));
             
         } else if (kokopayRadio && kokopayRadio.checked) {
-            // Show Koko Pay BNPL notice and transaction fee row
+            // Show Koko Pay KOKO notice and transaction fee row
             if (kokopayNotice) kokopayNotice.style.display = 'block';
             if (kokopayFeeRow) kokopayFeeRow.style.display = 'flex';
             
@@ -1144,6 +1237,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const alwaysRequiredFields = [
             'first_name',
             'last_name',
+            'customer_email',
             'customer_phone', 
             'billing_address_line_1',
             'billing_city',
@@ -1156,15 +1250,20 @@ document.addEventListener('DOMContentLoaded', function() {
         // SIMPLIFIED: Disable complex validation temporarily for debugging
         console.log('🔥 SIMPLIFIED VALIDATION MODE - Checking basic requirements only');
         
+        // Check if we're in quotation mode
+        const isQuotationMode = document.querySelector('input[name="checkout_type"]:checked')?.value === 'quotation';
+        console.log('🔍 Is quotation mode?', isQuotationMode);
+        
         // Only check absolutely critical fields
         const criticalFieldsCheck = [
             {name: 'first_name', required: true},
             {name: 'last_name', required: true},
+            {name: 'customer_email', required: true},
             {name: 'customer_phone', required: true},
             {name: 'billing_address_line_1', required: true},
             {name: 'billing_city', required: true},
             {name: 'terms', required: true, type: 'checkbox'},
-            {name: 'payment_method', required: true, type: 'radio'}
+            {name: 'payment_method', required: !isQuotationMode, type: 'radio'} // Not required for quotation
         ];
         
         let criticalMissing = [];
@@ -1265,6 +1364,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         break;
                     case 'last_name':
                         errorMessage += '• Last Name\n';
+                        break;
+                    case 'customer_email':
+                        errorMessage += '• Email Address\n';
                         break;
                     case 'customer_phone':
                         errorMessage += '• Phone Number\n';

@@ -6,7 +6,7 @@ return [
     | Koko Pay Configuration
     |--------------------------------------------------------------------------
     |
-    | Configuration for Koko Pay BNPL (Buy Now, Pay Later) payment gateway
+    | Configuration for Koko Pay KOKO (Buy Now, Pay Later) payment gateway
     |
     */
 

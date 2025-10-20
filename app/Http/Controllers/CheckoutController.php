@@ -16,10 +16,11 @@ use Illuminate\Support\Facades\Validator;
 class CheckoutController extends Controller
 {
     /**
-     * Show checkout page
+     * Show option selection page
      */
-    public function index()
+    public function selectOption()
     {
+        // Check if cart has items
         $cartItems = Cart::where('session_id', session()->getId())
             ->orWhere(function($query) {
                 if (Auth::check()) {
@@ -32,53 +33,57 @@ class CheckoutController extends Controller
             return redirect()->route('cart.index')->with('error', 'Your cart is empty.');
         }
 
-        // Calculate totals
-        $subtotal = 0;
-        $originalSubtotal = 0;
-        $totalDiscount = 0;
-        $cartProducts = [];
+        return view('checkout.select-option');
+    }
 
-        foreach ($cartItems as $item) {
-            $product = SmaProduct::find($item->product_id);
-            if ($product) {
-                $lineTotal = $item->quantity * $product->final_price;
-                $originalLineTotal = $item->quantity * $product->price;
-                $lineDiscount = $originalLineTotal - $lineTotal;
-                
-                $subtotal += $lineTotal;
-                $originalSubtotal += $originalLineTotal;
-                $totalDiscount += $lineDiscount;
-                
-                $cartProducts[] = [
-                    'cart_item' => $item,
-                    'product' => $product,
-                    'line_total' => $lineTotal,
-                    'original_line_total' => $originalLineTotal,
-                    'line_discount' => $lineDiscount
-                ];
-            }
+    /**
+     * Show quotation form page
+     */
+    public function quotation()
+    {
+        // Check if cart has items
+        $cartItems = Cart::where('session_id', session()->getId())
+            ->orWhere(function($query) {
+                if (Auth::check()) {
+                    $query->where('user_id', Auth::id());
+                }
+            })
+            ->get();
+
+        if ($cartItems->isEmpty()) {
+            return redirect()->route('cart.index')->with('error', 'Your cart is empty.');
         }
 
-        $shippingCost = $this->calculateShippingCost($subtotal);
-        $taxAmount = $this->calculateTax($subtotal);
-        $total = $subtotal + $shippingCost + $taxAmount;
+        return view('checkout.quotation');
+    }
 
-        // Get user addresses if logged in
-        $addresses = [];
-        if (Auth::check()) {
-            $addresses = Auth::user()->addresses()->get();
+    /**
+     * Show payment checkout page
+     */
+    public function payment()
+    {
+        // Check if cart has items
+        $cartItems = Cart::where('session_id', session()->getId())
+            ->orWhere(function($query) {
+                if (Auth::check()) {
+                    $query->where('user_id', Auth::id());
+                }
+            })
+            ->get();
+
+        if ($cartItems->isEmpty()) {
+            return redirect()->route('cart.index')->with('error', 'Your cart is empty.');
         }
 
-        return view('checkout.index', compact(
-            'cartProducts', 
-            'subtotal', 
-            'originalSubtotal',
-            'totalDiscount',
-            'shippingCost', 
-            'taxAmount', 
-            'total',
-            'addresses'
-        ));
+        return view('checkout.payment');
+    }
+
+    /**
+     * Show checkout page (legacy method - kept for backward compatibility)
+     */
+    public function index()
+    {
+        return $this->selectOption();
     }
 
     /**
@@ -112,8 +117,9 @@ class CheckoutController extends Controller
             'billing_country' => 'nullable|string|max:100',
             
             // Conditional shipping address fields (required only if different from billing)
-            'shipping_address_line_1' => 'nullable|string|max:255',
-            'shipping_city' => 'nullable|string|max:100',
+            'different_shipping_address' => 'nullable|boolean',
+            'shipping_address_line_1' => 'required_if:different_shipping_address,1|nullable|string|max:255',
+            'shipping_city' => 'required_if:different_shipping_address,1|nullable|string|max:100',
             
             // Optional shipping address fields
             'shipping_address_line_2' => 'nullable|string|max:255',
@@ -185,13 +191,24 @@ class CheckoutController extends Controller
             $taxAmount = $this->calculateTax($subtotal);
             $totalAmount = $subtotal + $shippingCost + $taxAmount;
 
-            // Handle shipping address - use billing address if shipping is empty (Same as billing checkbox)
-            $shippingAddressLine1 = $request->shipping_address_line_1 ?: $request->billing_address_line_1;
-            $shippingAddressLine2 = $request->shipping_address_line_2 ?: $request->billing_address_line_2;
-            $shippingCity = $request->shipping_city ?: $request->billing_city;
-            $shippingState = $request->shipping_state ?: $request->billing_state;
-            $shippingPostalCode = $request->shipping_postal_code ?: $request->billing_postal_code;
-            $shippingCountry = $request->shipping_country ?: $request->billing_country ?: 'Sri Lanka';
+            // Handle shipping address - use billing address if not shipping to different address
+            if ($request->different_shipping_address) {
+                // Use separate shipping address
+                $shippingAddressLine1 = $request->shipping_address_line_1;
+                $shippingAddressLine2 = $request->shipping_address_line_2;
+                $shippingCity = $request->shipping_city;
+                $shippingState = $request->shipping_state;
+                $shippingPostalCode = $request->shipping_postal_code;
+                $shippingCountry = $request->shipping_country ?: 'Sri Lanka';
+            } else {
+                // Use billing address for shipping
+                $shippingAddressLine1 = $request->billing_address_line_1;
+                $shippingAddressLine2 = $request->billing_address_line_2;
+                $shippingCity = $request->billing_city;
+                $shippingState = $request->billing_state;
+                $shippingPostalCode = $request->billing_postal_code;
+                $shippingCountry = $request->billing_country ?: 'Sri Lanka';
+            }
 
             // Handle transfer slip upload for bank transfer
             $transferSlipPath = null;
@@ -267,21 +284,20 @@ class CheckoutController extends Controller
                 OrderItem::create(array_merge($itemData, ['order_id' => $order->id]));
             }
 
-            // Clear cart
-            Cart::where('session_id', session()->getId())
-                ->orWhere(function($query) {
-                    if (Auth::check()) {
-                        $query->where('user_id', Auth::id());
-                    }
-                })
-                ->delete();
-
             DB::commit();
 
             // Handle payment method redirection
             switch ($request->payment_method) {
                 case 'webxpay':
-                    // Redirect to WebXPay payment form
+                    // Log the order details for debugging
+                    \Log::info('Redirecting to WebXPay payment', [
+                        'order_id' => $order->id, 
+                        'order_number' => $order->order_number,
+                        'payment_method' => $order->payment_method,
+                        'redirect_url' => route('payment.webxpay', ['order' => $order->id])
+                    ]);
+                    
+                    // Redirect to WebXPay payment form (cart will be cleared after successful payment)
                     return redirect()->route('payment.webxpay', ['order' => $order->id])
                         ->with('info', 'Please complete your payment through WebXPay.');
 
@@ -294,7 +310,7 @@ class CheckoutController extends Controller
                         'redirect_url' => route('payment.kokopay', ['order' => $order->id])
                     ]);
                     
-                    // Redirect to Koko Pay payment form
+                    // Redirect to Koko Pay payment form (cart will be cleared after successful payment)
                     $redirectUrl = route('payment.kokopay', ['order' => $order->id]);
                     \Log::info('Generated Koko Pay redirect URL', ['url' => $redirectUrl]);
                     
@@ -303,6 +319,18 @@ class CheckoutController extends Controller
                         
                 case 'bank_transfer':
                 default:
+                    // Clear cart for bank transfer orders (immediate completion)
+                    Cart::where('session_id', session()->getId())
+                        ->orWhere(function($query) {
+                            if (Auth::check()) {
+                                $query->where('user_id', Auth::id());
+                            }
+                        })
+                        ->delete();
+                    
+                    // Store order number in session for access control
+                    session(['payment_success_order' => $order->order_number]);
+                    
                     // Direct to success page for bank transfer
                     return redirect()->route('checkout.success', $order->order_number)
                         ->with('success', 'Order placed successfully! Please check your email for bank transfer details.');

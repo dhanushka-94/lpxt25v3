@@ -264,6 +264,102 @@
             </div>
         </div>
 
+        <!-- Bank Transfer Instructions (only for bank transfer orders) -->
+        @if($order->payment_method === 'bank_transfer')
+        <div class="bg-gradient-to-br from-green-900/20 to-green-800/20 border border-green-700/50 rounded-xl p-6 mb-8">
+            <h3 class="text-lg font-semibold text-white mb-4 flex items-center space-x-2">
+                <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H9m11 0a2 2 0 01-2 2H7a2 2 0 01-2-2m14 0V9a2 2 0 00-2-2M9 7h6m-6 4h6m-6 4h6m-6 4h6"/>
+                </svg>
+                <span>Complete Your Bank Transfer</span>
+            </h3>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Bank Details -->
+                <div class="bg-[#0f0f0f] rounded-lg p-4">
+                    <h4 class="text-white font-medium mb-3">Bank Account Details</h4>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Bank Name:</span>
+                            <span class="text-white font-medium">Commercial Bank</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Account Name:</span>
+                            <span class="text-white font-medium">MSK Computers</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Account Number:</span>
+                            <span class="text-white font-medium">1000578810</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Branch:</span>
+                            <span class="text-white font-medium">Ragama Branch</span>
+                        </div>
+                        <div class="flex justify-between border-t border-gray-700 pt-2 mt-3">
+                            <span class="text-gray-400">Amount to Transfer:</span>
+                            <span class="text-green-400 font-bold">LKR {{ number_format($order->total_amount, 2) }}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Reference:</span>
+                            <span class="text-white font-medium">{{ $order->order_number }}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Instructions -->
+                <div class="space-y-4">
+                    <div class="bg-blue-900/20 border border-blue-700/50 rounded-lg p-4">
+                        <h5 class="text-blue-300 font-medium mb-2 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Important Instructions
+                        </h5>
+                        <ul class="text-sm text-blue-200 space-y-1">
+                            <li>• Transfer the exact amount: <strong>LKR {{ number_format($order->total_amount, 2) }}</strong></li>
+                            <li>• Use order number <strong>{{ $order->order_number }}</strong> as reference</li>
+                            <li>• Keep your transfer receipt for records</li>
+                            <li>• We'll confirm payment within 24 hours</li>
+                        </ul>
+                    </div>
+                    
+                    @if($order->transfer_slip_path)
+                    <div class="bg-green-900/20 border border-green-700/50 rounded-lg p-4">
+                        <h5 class="text-green-300 font-medium mb-2 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            Transfer Slip Uploaded
+                        </h5>
+                        <p class="text-sm text-green-200">
+                            ✅ Your transfer slip has been uploaded successfully. This will help us verify your payment faster.
+                        </p>
+                    </div>
+                    @else
+                    <div class="bg-yellow-900/20 border border-yellow-700/50 rounded-lg p-4">
+                        <h5 class="text-yellow-300 font-medium mb-2 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                            </svg>
+                            Upload Transfer Slip (Optional)
+                        </h5>
+                        <p class="text-sm text-yellow-200 mb-3">
+                            You can upload your transfer slip to help us verify your payment faster.
+                        </p>
+                        <a href="mailto:info@mskcomputers.lk?subject=Transfer Slip - Order {{ $order->order_number }}&body=Please find attached my bank transfer slip for order {{ $order->order_number }}." 
+                           class="inline-flex items-center px-3 py-2 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-medium rounded-lg transition-colors">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            Email Transfer Slip
+                        </a>
+                    </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+        @endif
+
         <!-- What's Next -->
         <div class="bg-gradient-to-br from-[#1a1a1c] to-[#2a2a2c] rounded-xl border border-gray-800 p-6 mb-8">
             <h3 class="text-lg font-medium text-white mb-4">What's Next?</h3>
