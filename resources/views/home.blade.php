@@ -597,6 +597,16 @@
             const currentSlide = this.slides[this.currentSlide];
             const nextSlide = this.slides[slideIndex];
             
+            // Determine slide direction for train effect
+            const isNextSlide = slideIndex > this.currentSlide || (slideIndex === 0 && this.currentSlide === this.totalSlides - 1);
+            
+            // Position the new slide before it enters
+            if (isNextSlide) {
+                nextSlide.style.transform = 'translateX(100%)'; // Slide in from right
+            } else {
+                nextSlide.style.transform = 'translateX(-100%)'; // Slide in from left
+            }
+            
             // Add prev class to current slide for smooth exit
             currentSlide.classList.add('prev');
             currentSlide.classList.remove('active');
@@ -614,6 +624,7 @@
                 // Activate new slide
                 nextSlide.classList.add('active');
                 nextSlide.classList.remove('prev');
+                nextSlide.style.transform = ''; // Reset to use CSS transform
                 
                 // Update dot
                 this.dots[this.currentSlide].classList.add('active');
@@ -762,98 +773,46 @@
 </script>
 
 <style>
-    /* Enhanced Hero Slider Animations - Fade Effect */
+    /* Train-like Sliding Hero Slider Animations */
     .hero-slide {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        opacity: 0;
-        transform: translateX(0);
-        transition: opacity 0.6s ease-in-out;
+        transform: translateX(100%);
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1;
     }
     
     .hero-slide.active {
-        opacity: 1;
         transform: translateX(0);
         z-index: 2;
     }
     
     .hero-slide.prev {
-        transform: translateX(0);
-        opacity: 0;
+        transform: translateX(-100%);
         z-index: 1;
     }
 
-    /* Smooth image animations */
+    /* Remove all zoom effects - train only moves */
     .hero-slide img {
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         transform: scale(1);
-    }
-
-    .hero-slide.active img {
-        transform: scale(1.03);
-        animation: smoothZoom 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-
-    .hero-slide:hover img {
-        transform: scale(1.05);
-    }
-
-    /* Smooth zoom animation */
-    @keyframes smoothZoom {
-        0% {
-            transform: scale(1.06);
-            opacity: 0.9;
-        }
-        100% {
-            transform: scale(1.03);
-            opacity: 1;
-        }
-    }
-
-    /* Fade transition variant */
-    .hero-slide.fade-transition {
-        transform: translateX(0);
-        transition: opacity 0.6s ease-in-out;
     }
 
     /* Mobile optimizations */
     @media (max-width: 640px) {
         .hero-slide {
-            transition: opacity 0.4s ease-in-out;
-        }
-        
-        .hero-slide img {
-            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .hero-slide.active img {
-            transform: scale(1.01);
-            animation: smoothZoomMobile 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-        
-        .hero-slide:hover img {
-            transform: scale(1.01); /* Minimal hover effect on mobile */
-        }
-        
-        @keyframes smoothZoomMobile {
-            0% {
-                transform: scale(1.03);
-                opacity: 0.95;
-            }
-            100% {
-                transform: scale(1.01);
-                opacity: 1;
-            }
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
     }
 
     /* Preload optimization */
     .hero-slide img {
-        will-change: transform, opacity;
+        will-change: transform;
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
     }
