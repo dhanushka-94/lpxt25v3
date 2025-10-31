@@ -97,6 +97,22 @@
     </style>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased {{ isset($isHalloweenActive) && $isHalloweenActive ? 'halloween-active' : '' }}">
+    <!-- 🎃 Halloween Decorations -->
+    @if(isset($isHalloweenActive) && $isHalloweenActive)
+        <div class="halloween-decorations">
+            <span class="halloween-pumpkin">🎃</span>
+            <span class="halloween-pumpkin">🎃</span>
+            <span class="halloween-pumpkin">🎃</span>
+            <span class="halloween-pumpkin">🎃</span>
+            <span class="halloween-pumpkin">🎃</span>
+            <span class="halloween-bat">🦇</span>
+            <span class="halloween-bat">🦇</span>
+            <span class="halloween-bat">🦇</span>
+            <span class="halloween-bat">🦇</span>
+            <span class="halloween-bat">🦇</span>
+        </div>
+    @endif
+    
     <!-- Top Contact Bar -->
     <div class="bg-black border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
