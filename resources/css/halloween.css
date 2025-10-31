@@ -186,23 +186,6 @@ body.halloween-active * {
 }
 
 /* 🎃 Halloween Decorations - Pumpkins and Bats */
-body.halloween-active::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-}
-
-/* Floating Pumpkins */
-body.halloween-active {
-    position: relative;
-}
-
 .halloween-decorations {
     position: fixed;
     top: 0;
@@ -210,7 +193,7 @@ body.halloween-active {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1;
+    z-index: 10;
     overflow: hidden;
 }
 
