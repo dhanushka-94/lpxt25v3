@@ -8,51 +8,172 @@
 @section('og_type', 'website')
 
 @section('content')
-<!-- Enhanced Hero Section -->
-<section class="relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#0f0f0f] to-[#1a1a1c] hero-section">
-    <!-- Background Animation -->
-    <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute w-96 h-96 rounded-full bg-gradient-to-r from-blue-500/20 to-blue-600/20 blur-3xl -top-48 -left-48 animate-pulse"></div>
-        <div class="absolute w-96 h-96 rounded-full bg-gradient-to-r from-[#3b82f6]/20 to-[#1d4ed8]/20 blur-3xl -bottom-48 -right-48 animate-pulse" style="animation-delay: 1s;"></div>
-    </div>
-    
-    <div class="hero-slider relative z-10 h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-lg" id="heroSlider">
+<!-- Hero Slider Section -->
+<section class="relative overflow-hidden w-full">
+    <div class="hero-slider relative z-10 h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden w-full" id="heroSlider">
         <!-- Image Slide 1 -->
-        <div class="hero-slide active overflow-hidden">
-            <img src="{{ asset('images/sliders/Slider 1.png') }}" 
+        <div class="hero-slide active overflow-hidden relative">
+            <img src="{{ asset('images/sliders/slider1 (1).jpg') }}" 
                  alt="Laptop Expert Slider 1" 
-                 class="w-full h-full object-cover object-center">
+                 class="hero-slide-image">
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent flex items-center">
+                <div class="px-6 sm:px-8 md:px-12 lg:px-16 py-8 max-w-2xl">
+                    <div class="inline-flex items-center px-3 py-1.5 bg-blue-500/20 border border-blue-500/40 rounded-lg text-blue-300 text-xs font-medium mb-4 backdrop-blur-sm">
+                        Premium Technology
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4 leading-tight">
+                        Latest Laptop <span class="text-blue-400">Collections</span>
+                    </h2>
+                    <p class="text-sm sm:text-base md:text-lg text-gray-200 mb-5 md:mb-6 leading-relaxed">
+                        Discover cutting-edge laptops with the latest processors, stunning displays, and powerful performance for work and play.
+                    </p>
+                    <a href="/categories/brand-new-laptop" class="inline-flex items-center px-5 py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105">
+                        Shop Now
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <!-- Image Slide 2 -->
-        <div class="hero-slide overflow-hidden">
-            <img src="{{ asset('images/sliders/Slider 2.png') }}" 
+        <div class="hero-slide overflow-hidden relative">
+            <img src="{{ asset('images/sliders/slider1 (2).jpg') }}" 
                  alt="Laptop Expert Slider 2" 
-                 class="w-full h-full object-cover object-center">
+                 class="hero-slide-image">
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-l from-black/80 via-black/60 to-transparent flex items-center justify-end">
+                <div class="px-6 sm:px-8 md:px-12 lg:px-16 py-8 max-w-2xl text-right">
+                    <div class="inline-flex items-center px-3 py-1.5 bg-green-500/20 border border-green-500/40 rounded-lg text-green-300 text-xs font-medium mb-4 backdrop-blur-sm">
+                        Expert Repairs
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4 leading-tight">
+                        Professional <span class="text-green-400">Repair Services</span>
+                    </h2>
+                    <p class="text-sm sm:text-base md:text-lg text-gray-200 mb-5 md:mb-6 leading-relaxed">
+                        Trust our certified technicians for fast, reliable laptop repairs. Screen replacement, motherboard fixes, and more.
+                    </p>
+                    <a href="/services" class="inline-flex items-center px-5 py-2.5 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105">
+                        Get Service
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <!-- Image Slide 3 -->
-        <div class="hero-slide overflow-hidden">
-            <img src="{{ asset('images/sliders/Slider 3.png') }}" 
+        <div class="hero-slide overflow-hidden relative">
+            <img src="{{ asset('images/sliders/slider1 (3).jpg') }}" 
                  alt="Laptop Expert Slider 3" 
-                 class="w-full h-full object-cover object-center">
+                 class="hero-slide-image">
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent flex items-center">
+                <div class="px-6 sm:px-8 md:px-12 lg:px-16 py-8 max-w-2xl">
+                    <div class="inline-flex items-center px-3 py-1.5 bg-purple-500/20 border border-purple-500/40 rounded-lg text-purple-300 text-xs font-medium mb-4 backdrop-blur-sm">
+                        Value Deals
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4 leading-tight">
+                        Quality <span class="text-purple-400">Used Laptops</span>
+                    </h2>
+                    <p class="text-sm sm:text-base md:text-lg text-gray-200 mb-5 md:mb-6 leading-relaxed">
+                        Pre-owned laptops tested and certified. Great performance at unbeatable prices with warranty options available.
+                    </p>
+                    <a href="/categories/used-laptop" class="inline-flex items-center px-5 py-2.5 bg-purple-500 hover:bg-purple-600 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105">
+                        Browse Used
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <!-- Image Slide 4 -->
-        <div class="hero-slide overflow-hidden">
-            <img src="{{ asset('images/sliders/Slider 4.png') }}" 
+        <div class="hero-slide overflow-hidden relative">
+            <img src="{{ asset('images/sliders/slider1 (4).jpg') }}" 
                  alt="Laptop Expert Slider 4" 
-                 class="w-full h-full object-cover object-center">
+                 class="hero-slide-image">
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-l from-black/80 via-black/60 to-transparent flex items-center justify-end">
+                <div class="px-6 sm:px-8 md:px-12 lg:px-16 py-8 max-w-2xl text-right">
+                    <div class="inline-flex items-center px-3 py-1.5 bg-yellow-500/20 border border-yellow-500/40 rounded-lg text-yellow-300 text-xs font-medium mb-4 backdrop-blur-sm">
+                        Complete Solutions
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4 leading-tight">
+                        All Laptop <span class="text-yellow-400">Accessories</span>
+                    </h2>
+                    <p class="text-sm sm:text-base md:text-lg text-gray-200 mb-5 md:mb-6 leading-relaxed">
+                        Everything you need in one place. Bags, chargers, batteries, keyboards, mice, and more laptop essentials.
+                    </p>
+                    <a href="/categories" class="inline-flex items-center px-5 py-2.5 bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-lg transition-all duration-300 hover:scale-105">
+                        Shop Accessories
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <!-- Image Slide 5 -->
-        <div class="hero-slide overflow-hidden">
-            <img src="{{ asset('images/sliders/Slider 5.png') }}" 
+        <div class="hero-slide overflow-hidden relative">
+            <img src="{{ asset('images/sliders/slider1 (5).jpg') }}" 
                  alt="Laptop Expert Slider 5" 
-                 class="w-full h-full object-cover object-center">
+                 class="hero-slide-image">
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent flex items-center">
+                <div class="px-6 sm:px-8 md:px-12 lg:px-16 py-8 max-w-2xl">
+                    <div class="inline-flex items-center px-3 py-1.5 bg-blue-500/20 border border-blue-500/40 rounded-lg text-blue-300 text-xs font-medium mb-4 backdrop-blur-sm">
+                        Trusted Service
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4 leading-tight">
+                        Island-wide <span class="text-blue-400">Delivery</span>
+                    </h2>
+                    <p class="text-sm sm:text-base md:text-lg text-gray-200 mb-5 md:mb-6 leading-relaxed">
+                        Fast and secure delivery across Sri Lanka. Get your orders delivered safely to your doorstep with tracking.
+                    </p>
+                    <a href="/about-us" class="inline-flex items-center px-5 py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105">
+                        Learn More
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <!-- Slider Navigation -->
+        <!-- Image Slide 6 -->
+        <div class="hero-slide overflow-hidden relative">
+            <img src="{{ asset('images/sliders/slider1 (6).jpg') }}" 
+                 alt="Laptop Expert Slider 6" 
+                 class="hero-slide-image">
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-l from-black/80 via-black/60 to-transparent flex items-center justify-end">
+                <div class="px-6 sm:px-8 md:px-12 lg:px-16 py-8 max-w-2xl text-right">
+                    <div class="inline-flex items-center px-3 py-1.5 bg-red-500/20 border border-red-500/40 rounded-lg text-red-300 text-xs font-medium mb-4 backdrop-blur-sm">
+                        Expert Support
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4 leading-tight">
+                        Warranty & <span class="text-red-400">After-Sales</span>
+                    </h2>
+                    <p class="text-sm sm:text-base md:text-lg text-gray-200 mb-5 md:mb-6 leading-relaxed">
+                        Comprehensive warranty coverage and dedicated customer support. Your satisfaction is our priority.
+                    </p>
+                    <a href="/contact-us" class="inline-flex items-center px-5 py-2.5 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105">
+                        Contact Us
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Navigation Dots -->
         <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
             <div class="flex space-x-2">
                 <button class="slider-dot active w-3 h-3 rounded-full bg-white/80 hover:bg-white transition-all duration-300" data-slide="0"></button>
@@ -60,6 +181,7 @@
                 <button class="slider-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="2"></button>
                 <button class="slider-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="3"></button>
                 <button class="slider-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="4"></button>
+                <button class="slider-dot w-3 h-3 rounded-full bg-white/40 hover:bg-white/80 transition-all duration-300" data-slide="5"></button>
             </div>
         </div>
 
@@ -75,7 +197,6 @@
             </svg>
         </button>
     </div>
-
 </section>
 
 <!-- Our Services & Solutions Section -->
@@ -270,8 +391,8 @@
     </div>
 </section>
 
-<!-- Happy Customer Photos Section -->
-<section class="py-16 bg-gradient-to-b from-[#0f0f0f] to-black relative overflow-hidden">
+{{-- TEMPORARILY HIDDEN: Happy Customer Photos Section --}}
+{{-- <section class="py-16 bg-gradient-to-b from-[#0f0f0f] to-black relative overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
         <div class="absolute w-64 h-64 rounded-full bg-blue-500/30 blur-3xl -top-32 -left-32"></div>
@@ -429,7 +550,7 @@
         </div>
 
     </div>
-</section>
+</section> --}}
 
 
 @endsection
@@ -476,65 +597,18 @@
         });
     }
 
-    // Image Slider Functionality
+    // Hero Slider Functionality
     class ImageSlider {
         constructor() {
-            this.currentSlide = 0; // Default: Always start on first slide (index 0)
+            this.currentSlide = 0;
             this.slides = document.querySelectorAll('.hero-slide');
             this.dots = document.querySelectorAll('.slider-dot');
             this.totalSlides = this.slides.length;
             this.autoPlayInterval = null;
-            
-            // Ensure default state before initialization
-            this.setDefaultSlide();
             this.init();
         }
         
-        setDefaultSlide() {
-            // Reset all slides to default state - ensure first slide is active
-            this.slides.forEach((slide, index) => {
-                if (index === 0) {
-                    // First slide is default/active
-                    slide.classList.add('active');
-                    slide.classList.remove('prev');
-                    slide.style.transform = 'translateX(0)';
-                    slide.style.opacity = '1';
-                    slide.style.zIndex = '2';
-                    slide.style.pointerEvents = 'auto';
-                } else {
-                    // All other slides are hidden and positioned off-screen
-                    slide.classList.remove('active');
-                    slide.classList.remove('prev');
-                    slide.style.transform = 'translateX(100%)';
-                    slide.style.opacity = '0';
-                    slide.style.zIndex = '0';
-                    slide.style.pointerEvents = 'none';
-                }
-            });
-            
-            // Reset all dots to default state
-            this.dots.forEach((dot, index) => {
-                if (index === 0) {
-                    // First dot is active
-                    dot.classList.add('active');
-                    dot.classList.remove('bg-white/40');
-                    dot.classList.add('bg-white/80');
-                } else {
-                    // All other dots are inactive
-                    dot.classList.remove('active');
-                    dot.classList.remove('bg-white/80');
-                    dot.classList.add('bg-white/40');
-                }
-            });
-            
-            // Ensure currentSlide is set to 0 (first slide)
-            this.currentSlide = 0;
-        }
-        
         init() {
-            // Ensure default state is maintained
-            this.setDefaultSlide();
-            
             // Add event listeners for navigation arrows
             const prevBtn = document.getElementById('prevSlide');
             const nextBtn = document.getElementById('nextSlide');
@@ -547,12 +621,12 @@
                 dot.addEventListener('click', () => this.goToSlide(index));
             });
             
-            // Start auto-play after a brief delay to ensure default slide is shown
+            // Start auto-play
             setTimeout(() => {
-            this.startAutoPlay();
-            }, 1000);
+                this.startAutoPlay();
+            }, 6000);
             
-            // Pause auto-play on hover for better UX
+            // Pause auto-play on hover
             const heroSlider = document.getElementById('heroSlider');
             if (heroSlider) {
                 heroSlider.addEventListener('mouseenter', () => this.stopAutoPlay());
@@ -564,10 +638,8 @@
         }
         
         goToSlide(slideIndex) {
-            // Stop current auto-play
             this.stopAutoPlay();
             
-            // Don't transition if already on the target slide
             if (slideIndex === this.currentSlide) {
                 this.startAutoPlay();
                 return;
@@ -576,43 +648,40 @@
             const currentSlide = this.slides[this.currentSlide];
             const nextSlide = this.slides[slideIndex];
             
-            // Determine slide direction for train effect
+            if (!currentSlide || !nextSlide) return;
+            
             const isNextSlide = slideIndex > this.currentSlide || (slideIndex === 0 && this.currentSlide === this.totalSlides - 1);
             
-            // CRITICAL: First, ensure all slides except current are properly hidden
-            // Hide all non-active slides with lower z-index to prevent overlap
+            // Hide all other slides
             this.slides.forEach((slide, idx) => {
                 if (idx !== this.currentSlide && idx !== slideIndex) {
                     slide.classList.remove('active', 'prev');
                     slide.style.transform = 'translateX(100%)';
                     slide.style.opacity = '0';
-                    slide.style.zIndex = '0';
+                    slide.style.zIndex = '1';
                     slide.style.pointerEvents = 'none';
                 }
             });
             
-            // Position the new slide before it enters (off-screen)
+            // Position the new slide
             if (isNextSlide) {
-                nextSlide.style.transform = 'translateX(100%)'; // Slide in from right
-                nextSlide.style.opacity = '0';
+                nextSlide.style.transform = 'translateX(100%)';
             } else {
-                nextSlide.style.transform = 'translateX(-100%)'; // Slide in from left
-                nextSlide.style.opacity = '0';
+                nextSlide.style.transform = 'translateX(-100%)';
             }
-            nextSlide.style.zIndex = '3'; // Higher z-index for incoming slide
+            nextSlide.style.opacity = '0';
+            nextSlide.style.zIndex = '10';
             nextSlide.style.pointerEvents = 'none';
             
             // Set current slide to exiting state
-            currentSlide.style.zIndex = '1'; // Lower z-index for exiting slide
+            currentSlide.style.zIndex = '5';
             currentSlide.style.pointerEvents = 'none';
             
-            // Use requestAnimationFrame for smooth transition
+            // Transition
             requestAnimationFrame(() => {
-                // Remove active class from current slide
-            currentSlide.classList.remove('active');
+                currentSlide.classList.remove('active');
                 currentSlide.classList.add('prev');
                 
-                // Position exiting slide
                 if (isNextSlide) {
                     currentSlide.style.transform = 'translateX(-100%)';
                 } else {
@@ -620,20 +689,17 @@
                 }
                 currentSlide.style.opacity = '0';
             
-                // Small delay to ensure CSS transitions work
-            setTimeout(() => {
-                // Update current slide index
-                this.currentSlide = slideIndex;
-                
-                    // Activate new slide - bring it to center
-                nextSlide.classList.add('active');
-                nextSlide.classList.remove('prev');
+                setTimeout(() => {
+                    this.currentSlide = slideIndex;
+                    
+                    nextSlide.classList.add('active');
+                    nextSlide.classList.remove('prev');
                     nextSlide.style.transform = 'translateX(0)';
                     nextSlide.style.opacity = '1';
-                    nextSlide.style.zIndex = '2'; // Active slide z-index
+                    nextSlide.style.zIndex = '15';
                     nextSlide.style.pointerEvents = 'auto';
                 
-                    // Update dot indicators
+                    // Update dots
                     this.dots.forEach((dot, idx) => {
                         if (idx === this.currentSlide) {
                             dot.classList.add('active');
@@ -646,20 +712,18 @@
                         }
                     });
                 
-                    // Clean up previous slide after transition completes
-                setTimeout(() => {
-                    currentSlide.classList.remove('prev');
+                    setTimeout(() => {
+                        currentSlide.classList.remove('prev');
                         currentSlide.style.transform = 'translateX(100%)';
                         currentSlide.style.opacity = '0';
-                        currentSlide.style.zIndex = '0';
-                    }, 650); // After transition duration (600ms + buffer)
+                        currentSlide.style.zIndex = '1';
+                    }, 1600);
                 
-                }, 10);
+                }, 50);
             
-            // Restart auto-play after transition
-            setTimeout(() => {
-                this.startAutoPlay();
-                }, 650);
+                setTimeout(() => {
+                    this.startAutoPlay();
+                }, 1700);
             });
         }
         
@@ -674,10 +738,9 @@
         }
         
         startAutoPlay() {
-            // Auto-advance slides every 2 seconds (faster, more dynamic experience)
             this.autoPlayInterval = setInterval(() => {
                 this.nextSlide();
-            }, 2000);
+            }, 8000);
         }
         
         stopAutoPlay() {
@@ -705,65 +768,34 @@
         }
 
         handleSwipe() {
-            const threshold = 50; // Minimum swipe distance
+            const threshold = 50;
             const diff = startX - endX;
             
             if (Math.abs(diff) > threshold) {
                 if (diff > 0) {
-                    // Swiped left - next slide
                     this.nextSlide();
                 } else {
-                    // Swiped right - previous slide
                     this.prevSlide();
                 }
             }
         }
     }
     
-    // Continuous Customer Carousel - No JavaScript needed, pure CSS animation
-
-    // Initialize slider when DOM is loaded with preloading
+    // Initialize slider when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
-        // Preload all slider images for smoother transitions
-        const preloadImages = () => {
-            const imageUrls = [
-                "{{ asset('images/sliders/Slider 1.png') }}",
-                "{{ asset('images/sliders/Slider 2.png') }}",
-                "{{ asset('images/sliders/Slider 3.png') }}",
-                "{{ asset('images/sliders/Slider 4.png') }}",
-                "{{ asset('images/sliders/Slider 5.png') }}"
-            ];
-            
-            imageUrls.forEach(url => {
-                const img = new Image();
-                img.src = url;
-            });
-        };
-        
-        // Start preloading
-        preloadImages();
-        
-        // Initialize slider with default first slide
-        // Small delay ensures DOM is fully ready
         setTimeout(() => {
             window.heroSlider = new ImageSlider();
-            
-            // Ensure slider resets to default (first slide) on page visibility change
-            document.addEventListener('visibilitychange', function() {
-                if (!document.hidden && window.heroSlider) {
-                    // Reset to first slide when page becomes visible again
-                    window.heroSlider.goToSlide(0);
-                }
-            });
         }, 100);
-        
-        // Customer carousel is now pure CSS - no JavaScript initialization needed
     });
 
 </script>
 
 <style>
-    /* Train-like Sliding Hero Slider Animations */
+    /* Hero Slider Styles */
+    .hero-slider {
+        position: relative;
+    }
+    
     .hero-slide {
         position: absolute;
         top: 0;
@@ -771,63 +803,167 @@
         width: 100%;
         height: 100%;
         transform: translateX(100%);
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-                    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 0;
+        transition: transform 1.5s ease-in-out, 
+                    opacity 1.5s ease-in-out;
+        z-index: 1;
         opacity: 0;
         pointer-events: none;
         will-change: transform, opacity;
     }
     
-    /* Default: First slide is always visible on load */
     .hero-slide:first-child {
         transform: translateX(0);
         opacity: 1;
-        z-index: 2;
+        z-index: 15;
         pointer-events: auto;
     }
     
     .hero-slide.active {
         transform: translateX(0) !important;
         opacity: 1 !important;
-        z-index: 2 !important;
+        z-index: 15 !important;
         pointer-events: auto !important;
     }
     
     .hero-slide.prev {
         transform: translateX(-100%) !important;
         opacity: 0 !important;
-        z-index: 1 !important;
+        z-index: 5 !important;
         pointer-events: none !important;
     }
     
-    /* Ensure all non-active slides are hidden and behind */
     .hero-slide:not(.active):not(.prev) {
-        z-index: 0 !important;
+        z-index: 1 !important;
         opacity: 0 !important;
         pointer-events: none !important;
     }
 
-    /* Remove all zoom effects - train only moves */
-    .hero-slide img {
+    /* Ensure images fully cover the container */
+    .hero-slide {
+        position: relative;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        overflow: hidden;
+    }
+    
+    .hero-slide-image,
+    .hero-slide > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        display: block;
+        margin: 0;
+        padding: 0;
+        border: none;
+        min-width: 100%;
+        min-height: 100%;
+        max-width: none;
+        max-height: none;
+    }
+    
+    .hero-slide.active .hero-slide-image,
+    .hero-slide.active > img {
         transform: scale(1);
     }
 
-    /* Mobile optimizations */
     @media (max-width: 640px) {
         .hero-slide {
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 1.2s ease-in-out;
+        }
+        
+        .hero-slide > img {
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+            height: 100%;
         }
     }
 
-    /* Preload optimization */
     .hero-slide img {
         will-change: transform;
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
+    }
+    
+    /* Force full coverage - no gaps */
+    .hero-slider {
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .hero-slider .hero-slide img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+    }
+    
+    /* Overlay text animations */
+    .hero-slide .absolute {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+        z-index: 20 !important;
+        pointer-events: auto;
+    }
+    
+    .hero-slide.active .absolute,
+    .hero-slide:first-child .absolute {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+    
+    /* Stagger animation for overlay content */
+    .hero-slide.active .absolute > div,
+    .hero-slide:first-child .absolute > div {
+        animation: fadeInUp 1.2s ease-out forwards;
+    }
+    
+    .hero-slide.active .absolute > div > div:first-child,
+    .hero-slide:first-child .absolute > div > div:first-child {
+        animation-delay: 0.3s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+        animation: fadeInUp 1.2s ease-out 0.3s forwards;
+    }
+    
+    .hero-slide.active .absolute > div > h2,
+    .hero-slide:first-child .absolute > div > h2 {
+        animation-delay: 0.5s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+        animation: fadeInUp 1.2s ease-out 0.5s forwards;
+    }
+    
+    .hero-slide.active .absolute > div > p,
+    .hero-slide:first-child .absolute > div > p {
+        animation-delay: 0.7s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+        animation: fadeInUp 1.2s ease-out 0.7s forwards;
+    }
+    
+    .hero-slide.active .absolute > div > a,
+    .hero-slide:first-child .absolute > div > a {
+        animation-delay: 0.9s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+        animation: fadeInUp 1.2s ease-out 0.9s forwards;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
     
     .animate-fade-in-up {
@@ -843,8 +979,8 @@
         }
     }
     
-    /* Continuous Customer Photo Carousel Styles */
-    .customer-carousel-container {
+    /* TEMPORARILY HIDDEN: Continuous Customer Photo Carousel Styles */
+    /* .customer-carousel-container {
         width: 100%;
         overflow: hidden;
         padding: 2rem 0;
@@ -902,7 +1038,7 @@
             width: 140px !important;
             height: 140px !important;
         }
-    }
+    } */
 </style>
 
 
