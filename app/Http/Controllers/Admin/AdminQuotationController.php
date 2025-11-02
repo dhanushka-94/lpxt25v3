@@ -176,7 +176,7 @@ class AdminQuotationController extends Controller
         ]);
 
         // Return PDF download
-        return $pdf->download('MSK-Quotation-' . $quotation->quotation_number . '.pdf');
+        return $pdf->download('LXT-Quotation-' . $quotation->quotation_number . '.pdf');
     }
 
     /**

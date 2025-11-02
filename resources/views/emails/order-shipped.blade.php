@@ -80,10 +80,10 @@ Track Your Package
 View Order Status
 @endcomponent
 
-Thank you for choosing MSK Computers!
+Thank you for choosing LAPTOP EXPERT!
 
 Best regards,  
-MSK Computers Shipping Team
+LAPTOP EXPERT Shipping Team
 
 @component('mail::subcopy')
 Shipped: {{ $order->shipped_at->format('F d, Y \a\t g:i A') }}  

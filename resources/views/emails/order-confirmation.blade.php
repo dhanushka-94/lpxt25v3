@@ -58,9 +58,12 @@ You selected Cash on Delivery. Please have the exact amount ready when your orde
 Please transfer the order amount to our bank account and send the payment slip to our WhatsApp number.
 
 **Bank Details:**
-- Bank: [Bank Name]
-- Account Number: [Account Number]
-- Account Name: MSK Computers (Pvt) Ltd
+- **Bank:** Commercial Bank
+- **Account Name:** LAPTOP EXPERT (PVT) LTD
+- **Account Number:** 1000926420
+- **Branch:** Ragama Branch
+- **Branch Code:** 221
+- **Swift Code:** CCEYLKLX
 
 Send payment confirmation to: +94 777 506 939
 @endcomponent
@@ -90,7 +93,7 @@ If you have any questions about your order:
 
 - **Phone:** 0112 95 9005
 - **WhatsApp:** +94 777 506 939 (24/7 Support)
-- **Email:** info@mskcomputers.lk
+- **Email:** info@laptopexpert.lk
 
 **Store Location:**  
 No.12, Maradana Road, Colombo 08
@@ -99,10 +102,10 @@ No.12, Maradana Road, Colombo 08
 Monday - Saturday: 9:00 AM - 7:00 PM  
 Sunday: 10:00 AM - 6:00 PM
 
-Thank you for choosing MSK Computers!
+Thank you for choosing LAPTOP EXPERT!
 
 Best regards,  
-MSK Computers Team
+LAPTOP EXPERT Team
 
 @component('mail::subcopy')
 This is an automated confirmation email. Please keep this email for your records.

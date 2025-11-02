@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', $category->name . ' - MSK COMPUTERS')
-@section('description', 'Shop ' . $category->name . ' at MSK Computers. Find the best deals on computer hardware and technology products in Sri Lanka.')
-@section('keywords', $category->name . ', computer hardware, MSK Computers, Sri Lanka, technology, ' . strtolower($category->name))
-@section('og_title', $category->name . ' - MSK COMPUTERS')
-@section('og_description', 'Discover premium ' . $category->name . ' products at MSK Computers. Quality computer hardware and technology solutions.')
+@section('title', $category->name . ' - Brand New & Used Laptops, Accessories | LAPTOP EXPERT')
+@section('description', 'Shop ' . $category->name . ' at Laptop Expert. Find brand new and used laptops, laptop accessories, parts, and professional repair services in Sri Lanka.')
+@section('keywords', $category->name . ', laptops, laptop accessories, laptop parts, brand new laptops, used laptops, laptop repair, Laptop Expert, Sri Lanka, ' . strtolower($category->name))
+@section('og_title', $category->name . ' - Laptops & Accessories | LAPTOP EXPERT')
+@section('og_description', 'Discover ' . $category->name . ' products at Laptop Expert. Brand new and used laptops, accessories, and professional repair services in Sri Lanka.')
 @section('og_type', 'product.group')
 
 @section('content')
@@ -14,22 +14,22 @@
         <!-- Breadcrumb -->
         <nav class="mb-3 md:mb-4">
             <ol class="flex items-center space-x-1 md:space-x-2 text-xs text-gray-500 overflow-x-auto">
-                <li><a href="{{ route('home') }}" class="hover:text-[#f59e0b] transition-colors whitespace-nowrap">Home</a></li>
+                <li><a href="{{ route('home') }}" class="hover:text-[blue-500] transition-colors whitespace-nowrap">Home</a></li>
                 <li><span class="mx-1">/</span></li>
-                <li><a href="{{ route('categories.index') }}" class="hover:text-[#f59e0b] transition-colors whitespace-nowrap">Categories</a></li>
+                <li><a href="{{ route('categories.index') }}" class="hover:text-[blue-500] transition-colors whitespace-nowrap">Categories</a></li>
                 <li><span class="mx-1">/</span></li>
-                <li class="text-[#f59e0b] font-medium truncate">{{ $category->name }}</li>
+                <li class="text-[blue-500] font-medium truncate">{{ $category->name }}</li>
             </ol>
         </nav>
         
         <!-- Laptop Expert Banner (Show only for laptop-related categories) -->
         @if(str_contains(strtolower($category->name), 'laptop'))
-        <div class="mb-3 md:mb-4 bg-gradient-to-r from-blue-600/15 via-blue-500/8 to-blue-600/15 border border-blue-500/25 rounded-lg p-3">
+        <div class="mb-3 md:mb-4 bg-gradient-to-r from-yellow-600/15 via-yellow-500/8 to-yellow-600/15 border border-yellow-500/25 rounded-lg p-3">
             <div class="flex items-center justify-between gap-3">
                 <div class="flex items-center gap-3 flex-1 min-w-0">
                     <!-- Compact Icon -->
-                    <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <div class="w-8 h-8 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg class="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M20,18C20.5,18 21,17.5 21,17V7C21,6.5 20.5,6 20,6H4C3.5,6 3,6.5 3,7V17C3,17.5 3.5,18 4,18H1V20H23V18M5,8H19V16H5V8Z"/>
                         </svg>
                     </div>
@@ -37,10 +37,11 @@
                     <!-- Compact Text -->
                     <div class="flex-1 min-w-0">
                         <div class="flex items-center gap-2 mb-1">
-                            <h3 class="text-sm md:text-base font-bold text-white truncate">Expert Laptop Service</h3>
+                            <h3 class="text-sm md:text-base font-bold text-yellow-400 truncate">LAPTOP EXPERT</h3>
                             <span class="bg-blue-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">PRO</span>
                         </div>
-                        <p class="text-xs text-gray-300 truncate">Professional repairs, upgrades & data recovery</p>
+                        <p class="text-xs text-gray-300 truncate">Your Trusted Partner for All Computer Needs</p>
+                        <p class="text-xs text-gray-400 truncate">Professional Repairs | Expert Upgrades | Reliable Service</p>
                     </div>
                 </div>
                 
@@ -49,19 +50,12 @@
                     <a href="https://www.laptopexpert.lk/" 
                        target="_blank" 
                        rel="noopener noreferrer"
-                       class="inline-flex items-center px-3 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-semibold rounded-md hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-sm hover:shadow-md">
+                       class="inline-flex items-center px-3 py-2 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black text-xs font-semibold rounded-md hover:from-yellow-600 hover:to-yellow-700 transition-all duration-200 shadow-sm hover:shadow-md">
                         <svg class="w-3 h-3 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                         </svg>
                         <span class="hidden sm:inline">Visit</span>
                         <span class="sm:hidden">Go</span>
-                    </a>
-                    <a href="tel:+94777506939" 
-                       class="inline-flex items-center px-3 py-2 border border-blue-500 text-blue-400 text-xs font-semibold rounded-md hover:bg-blue-500 hover:text-white transition-all duration-200">
-                        <svg class="w-3 h-3 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                        </svg>
-                        Call
                     </a>
                 </div>
             </div>
@@ -71,7 +65,7 @@
         <div class="flex items-center justify-between">
             <!-- Category Info -->
             <div class="flex items-center gap-3 md:gap-4 min-w-0 flex-1">
-                <div class="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[#f59e0b] to-[#d97706] rounded-lg flex items-center justify-center flex-shrink-0">
+                <div class="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-[blue-500] to-[blue-600] rounded-lg flex items-center justify-center flex-shrink-0">
                     <svg class="w-4 h-4 md:w-6 md:h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                     </svg>
@@ -93,7 +87,7 @@
         <div class="lg:hidden mb-4">
             <button id="mobile-filter-toggle" class="w-full bg-[#1c1c1e] border border-gray-800/30 rounded-lg px-4 py-3 flex items-center justify-between text-white hover:bg-[#2c2c2e] transition-colors">
                 <div class="flex items-center gap-2">
-                    <svg class="w-5 h-5 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 text-[blue-500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.414A1 1 0 013 6.707V4z"/>
                     </svg>
                     <span class="font-medium">Filters & Sort</span>
@@ -109,9 +103,9 @@
             <div class="w-full lg:w-72 lg:flex-shrink-0 hidden lg:block" id="filter-sidebar">
                 <div class="bg-[#1c1c1e] rounded-xl border border-gray-800/30 p-6 shadow-lg">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-2 h-2 bg-[#f59e0b] rounded-full"></div>
+                        <div class="w-2 h-2 bg-[blue-500] rounded-full"></div>
                         <h3 class="text-lg font-semibold text-white">Filters</h3>
-                        <button type="button" id="clear-filters" class="ml-auto text-xs text-gray-400 hover:text-[#f59e0b] transition-colors">Clear All</button>
+                        <button type="button" id="clear-filters" class="ml-auto text-xs text-gray-400 hover:text-[blue-500] transition-colors">Clear All</button>
                     </div>
                     
                     <form id="filter-form" class="space-y-6">
@@ -120,14 +114,14 @@
                             <label class="block text-sm font-medium text-gray-300 mb-2">Search Products</label>
                             <input type="text" name="search" id="search" value="{{ request('search') }}" 
                                    placeholder="Search by name, code..." 
-                                   class="w-full bg-[#2c2c2e] border border-gray-700 text-white rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#f59e0b] focus:border-[#f59e0b] transition-all">
+                                   class="w-full bg-[#2c2c2e] border border-gray-700 text-white rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[blue-500] focus:border-[blue-500] transition-all">
                         </div>
 
                         <!-- Price Range -->
                         <div>
                             <div class="flex items-center justify-between mb-4">
                                 <h4 class="text-sm font-semibold text-gray-200">Price Range</h4>
-                                <button type="button" id="reset-price" class="text-xs text-gray-500 hover:text-[#f59e0b] transition-colors">Reset</button>
+                                <button type="button" id="reset-price" class="text-xs text-gray-500 hover:text-[blue-500] transition-colors">Reset</button>
                             </div>
                             
                             <!-- Current Price Display -->
@@ -173,7 +167,7 @@
                                            max="{{ $priceRange['max'] ?? 100000 }}" 
                                            value="{{ request('min_price', $priceRange['min'] ?? 0) }}"
                                            placeholder="Min"
-                                           class="w-full bg-[#2c2c2e] border border-gray-700 text-white rounded-lg pl-8 pr-3 py-2.5 text-sm focus:ring-2 focus:ring-[#f59e0b]/50 focus:border-[#f59e0b] transition-all hover:border-gray-600">
+                                           class="w-full bg-[#2c2c2e] border border-gray-700 text-white rounded-lg pl-8 pr-3 py-2.5 text-sm focus:ring-2 focus:ring-[blue-500]/50 focus:border-[blue-500] transition-all hover:border-gray-600">
                                 </div>
                                 <div class="relative">
                                     <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-xs text-gray-500">Rs.</div>
@@ -182,7 +176,7 @@
                                            max="{{ $priceRange['max'] ?? 100000 }}" 
                                            value="{{ request('max_price', $priceRange['max'] ?? 100000) }}"
                                            placeholder="Max"
-                                           class="w-full bg-[#2c2c2e] border border-gray-700 text-white rounded-lg pl-8 pr-3 py-2.5 text-sm focus:ring-2 focus:ring-[#f59e0b]/50 focus:border-[#f59e0b] transition-all hover:border-gray-600">
+                                           class="w-full bg-[#2c2c2e] border border-gray-700 text-white rounded-lg pl-8 pr-3 py-2.5 text-sm focus:ring-2 focus:ring-[blue-500]/50 focus:border-[blue-500] transition-all hover:border-gray-600">
                                 </div>
                             </div>
                             
@@ -190,13 +184,13 @@
                             <div class="mt-4">
                                 <div class="text-xs text-gray-500 mb-2">Quick filters:</div>
                                 <div class="flex flex-wrap gap-2">
-                                    <button type="button" onclick="setQuickPrice(0, 50000)" class="quick-price-btn text-xs px-3 py-1.5 bg-[#2c2c2e] text-gray-400 rounded-lg hover:bg-[#f59e0b] hover:text-white transition-all border border-gray-700 hover:border-[#f59e0b]">
+                                    <button type="button" onclick="setQuickPrice(0, 50000)" class="quick-price-btn text-xs px-3 py-1.5 bg-[#2c2c2e] text-gray-400 rounded-lg hover:bg-[blue-500] hover:text-white transition-all border border-gray-700 hover:border-[blue-500]">
                                         Under 50k
                                     </button>
-                                    <button type="button" onclick="setQuickPrice(50000, 100000)" class="quick-price-btn text-xs px-3 py-1.5 bg-[#2c2c2e] text-gray-400 rounded-lg hover:bg-[#f59e0b] hover:text-white transition-all border border-gray-700 hover:border-[#f59e0b]">
+                                    <button type="button" onclick="setQuickPrice(50000, 100000)" class="quick-price-btn text-xs px-3 py-1.5 bg-[#2c2c2e] text-gray-400 rounded-lg hover:bg-[blue-500] hover:text-white transition-all border border-gray-700 hover:border-[blue-500]">
                                         50k - 100k
                                     </button>
-                                    <button type="button" onclick="setQuickPrice(100000, 300000)" class="quick-price-btn text-xs px-3 py-1.5 bg-[#2c2c2e] text-gray-400 rounded-lg hover:bg-[#f59e0b] hover:text-white transition-all border border-gray-700 hover:border-[#f59e0b]">
+                                    <button type="button" onclick="setQuickPrice(100000, 300000)" class="quick-price-btn text-xs px-3 py-1.5 bg-[#2c2c2e] text-gray-400 rounded-lg hover:bg-[blue-500] hover:text-white transition-all border border-gray-700 hover:border-[blue-500]">
                                         Above 100k
                                     </button>
                                 </div>
@@ -213,7 +207,7 @@
                                 <label class="flex items-center cursor-pointer hover:bg-[#2c2c2e] rounded p-2 transition-colors">
                                     <input type="checkbox" name="attributes[{{ $parentName }}][]" value="{{ $attribute['id'] }}" 
                                            {{ in_array($attribute['id'], request('attributes.'.$parentName, [])) ? 'checked' : '' }}
-                                           class="w-4 h-4 text-[#f59e0b] bg-[#2c2c2e] border-gray-600 rounded focus:ring-[#f59e0b] focus:ring-2">
+                                           class="w-4 h-4 text-[blue-500] bg-[#2c2c2e] border-gray-600 rounded focus:ring-[blue-500] focus:ring-2">
                                     <span class="ml-3 text-sm text-gray-300 flex-1">{{ $attribute['name'] }}</span>
                                     <span class="text-xs text-gray-500 bg-[#2c2c2e] px-2 py-0.5 rounded">{{ $attribute['count'] }}</span>
                                 </label>
@@ -245,7 +239,7 @@
                         <!-- Sort Options -->
                         <div class="flex items-center gap-2">
                             <label for="sort-select" class="text-xs text-gray-400 whitespace-nowrap">Sort:</label>
-                            <select name="sort" id="sort-select" class="bg-[#2c2c2e] border border-gray-700 text-white rounded px-2 md:px-3 py-1.5 text-xs md:text-sm focus:ring-1 focus:ring-[#f59e0b] focus:border-[#f59e0b] transition-all">
+                            <select name="sort" id="sort-select" class="bg-[#2c2c2e] border border-gray-700 text-white rounded px-2 md:px-3 py-1.5 text-xs md:text-sm focus:ring-1 focus:ring-[blue-500] focus:border-[blue-500] transition-all">
                                 <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Latest</option>
                                 <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }}>Price ↑</option>
                                 <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }}>Price ↓</option>
@@ -260,7 +254,7 @@
                     @if($products->count() > 0)
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-12" id="products-grid">
                 @foreach($products as $product)
-                    <a href="{{ route('products.show', ['category' => $category->slug ?: $category->id, 'product' => $product->slug]) }}" class="product-card block bg-[#1c1c1e] rounded-xl border border-gray-800/30 overflow-hidden hover:border-[#f59e0b]/30 transition-all duration-300 group shadow-lg hover:shadow-xl hover:shadow-[#f59e0b]/10 cursor-pointer">
+                    <a href="{{ route('products.show', ['category' => $category->slug ?: $category->id, 'product' => $product->slug]) }}" class="product-card block bg-[#1c1c1e] rounded-xl border border-gray-800/30 overflow-hidden hover:border-[blue-500]/30 transition-all duration-300 group shadow-lg hover:shadow-xl hover:shadow-[blue-500]/10 cursor-pointer">
                         <!-- Product Image -->
                         <div class="relative overflow-hidden bg-[#1a1a1c] aspect-[4/3]">
                             <img 
@@ -286,7 +280,7 @@
                             @endif
 
                             @if($product->is_on_sale)
-                                <div class="absolute top-3 right-3 bg-[#f59e0b] text-white text-xs font-bold px-2.5 py-1 rounded-lg backdrop-blur-sm">
+                                <div class="absolute top-3 right-3 bg-[blue-500] text-white text-xs font-bold px-2.5 py-1 rounded-lg backdrop-blur-sm">
                                     SALE
                                 </div>
                             @endif
@@ -295,9 +289,9 @@
                         <!-- Product Info -->
                         <div class="p-3 md:p-4">
                             <div class="mb-2">
-                                <span class="text-xs text-[#f59e0b] font-medium tracking-wide">{{ $product->category->name ?? 'Uncategorized' }}</span>
+                                <span class="text-xs text-[blue-500] font-medium tracking-wide">{{ $product->category->name ?? 'Uncategorized' }}</span>
                             </div>
-                            <h3 class="text-sm md:text-base font-semibold text-white mb-2 md:mb-3 line-clamp-2 group-hover:text-[#f59e0b] transition-colors leading-tight">
+                            <h3 class="text-sm md:text-base font-semibold text-white mb-2 md:mb-3 line-clamp-2 group-hover:text-[blue-500] transition-colors leading-tight">
                                 {{ $product->name }}
                             </h3>
                             
@@ -305,12 +299,12 @@
                                 <div class="flex flex-col">
                                     @if($product->is_on_sale)
                                         <span class="text-xs md:text-sm text-gray-500 line-through">LKR {{ number_format($product->price, 2) }}</span>
-                                        <span class="text-sm md:text-lg font-bold text-[#f59e0b]">LKR {{ number_format($product->final_price, 2) }}</span>
+                                        <span class="text-sm md:text-lg font-bold text-[blue-500]">LKR {{ number_format($product->final_price, 2) }}</span>
                                     @else
                                         @if($product->price > 0 && $product->final_price > 0)
                                             <span class="text-sm md:text-lg font-bold text-white">LKR {{ number_format($product->final_price, 2) }}</span>
                                         @else
-                                            <span class="text-sm md:text-lg font-bold text-[#f59e0b]">Contact for Price</span>
+                                            <span class="text-sm md:text-lg font-bold text-[blue-500]">Contact for Price</span>
                                         @endif
                                     @endif
                                 </div>
@@ -323,20 +317,14 @@
                                 </div>
                             @endif
                             
-                            <!-- Payment Method Badges -->
-                            @include('components.payment-badges')
+                            {{-- TEMPORARILY HIDDEN: Payment Method Badges (KOKO Pay & Installments) --}}
+                            {{-- @include('components.payment-badges') --}}
                             
                             <div class="mt-auto">
                                 @if($product->can_add_to_cart)
                                     <button onclick="event.preventDefault(); event.stopPropagation(); addToCartFromCategory({{ $product->id }})" 
-                                            class="w-full bg-gradient-to-r from-primary-500/15 to-amber-500/15 backdrop-blur-sm border border-primary-400/40 hover:from-primary-500/25 hover:to-amber-500/25 hover:border-primary-400/60 text-primary-200 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-primary-500/20 hover:-translate-y-0.5 tracking-wide">
+                                            class="w-full bg-gradient-to-r from-primary-500/15 to-blue-500/15 backdrop-blur-sm border border-primary-400/40 hover:from-primary-500/25 hover:to-blue-500/25 hover:border-primary-400/60 text-primary-200 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-primary-500/20 hover:-translate-y-0.5 tracking-wide">
                                         Add to Cart
-                                    </button>
-                                @else
-                                    @if($product->status && in_array($product->status->status_name, ['Coming Soon', 'Pre Order']))
-                                        <button onclick="event.preventDefault(); event.stopPropagation(); showSpecialOrderContact('{{ $product->status->status_name }}', '{{ addslashes($product->name) }}')" 
-                                                class="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-3 md:px-4 py-2 md:py-2.5 rounded-lg text-xs md:text-sm font-semibold transition-all">
-                                            Contact Us
                                         </button>
                                     @else
                                         <button disabled 
@@ -344,7 +332,6 @@
                                                 title="{{ $product->cart_restriction_reason }}">
                                             {{ $product->cart_restriction_reason ?: 'Unavailable' }}
                                         </button>
-                                    @endif
                                 @endif
                             </div>
                         </div>
@@ -369,7 +356,7 @@
                                 </div>
                                 <h3 class="text-xl font-semibold text-white mb-2">No products found</h3>
                                 <p class="text-gray-400 mb-6">Try adjusting your filters to see more results.</p>
-                                <button onclick="clearAllFilters()" class="bg-[#f59e0b] hover:bg-[#d97706] text-white px-6 py-3 rounded-lg font-semibold transition-all inline-block">
+                                <button onclick="clearAllFilters()" class="bg-[blue-500] hover:bg-[blue-600] text-white px-6 py-3 rounded-lg font-semibold transition-all inline-block">
                                     Clear Filters
                                 </button>
                             </div>
@@ -427,18 +414,18 @@
     }
     
     .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: #f59e0b;
+        background: blue-500;
         border-radius: 3px;
     }
     
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #d97706;
+        background: blue-600;
     }
 
     /* Loading spinner */
     .loading-spinner {
         border: 2px solid #2c2c2e;
-        border-top: 2px solid #f59e0b;
+        border-top: 2px solid blue-500;
         border-radius: 50%;
         width: 20px;
         height: 20px;
@@ -472,7 +459,7 @@
     .price-range-track-active {
         position: absolute;
         height: 6px;
-        background: linear-gradient(90deg, #f59e0b, #d97706);
+        background: linear-gradient(90deg, blue-500, blue-600);
         border-radius: 3px;
         transition: all 0.3s ease;
         top: 50%;
@@ -498,7 +485,7 @@
         height: 20px;
         width: 20px;
         border-radius: 50%;
-        background: #f59e0b;
+        background: blue-500;
         border: 3px solid #ffffff;
         cursor: pointer;
         pointer-events: all;
@@ -511,7 +498,7 @@
     }
 
     .price-range-input::-webkit-slider-thumb:hover {
-        background: #d97706;
+        background: blue-600;
         transform: scale(1.15);
         box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4), 0 4px 8px rgba(0, 0, 0, 0.3);
     }
@@ -525,7 +512,7 @@
         height: 20px;
         width: 20px;
         border-radius: 50%;
-        background: #f59e0b;
+        background: blue-500;
         border: 3px solid #ffffff;
         cursor: pointer;
         pointer-events: all;
@@ -536,7 +523,7 @@
     }
 
     .price-range-input::-moz-range-thumb:hover {
-        background: #d97706;
+        background: blue-600;
         transform: scale(1.15);
         box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4), 0 4px 8px rgba(0, 0, 0, 0.3);
     }
@@ -566,12 +553,12 @@
 
     /* Enhanced focus states for better accessibility */
     .price-range-input:focus::-webkit-slider-thumb {
-        outline: 2px solid #f59e0b;
+        outline: 2px solid blue-500;
         outline-offset: 2px;
     }
 
     .price-range-input:focus::-moz-range-thumb {
-        outline: 2px solid #f59e0b;
+        outline: 2px solid blue-500;
         outline-offset: 2px;
     }
 
@@ -592,9 +579,9 @@
     }
 
     .quick-price-btn.active {
-        background: #f59e0b !important;
+        background: blue-500 !important;
         color: white !important;
-        border-color: #f59e0b !important;
+        border-color: blue-500 !important;
     }
 </style>
 @endpush
@@ -739,7 +726,7 @@
                         </div>
                         <h3 class="text-xl font-semibold text-white mb-2">Error Loading Products</h3>
                         <p class="text-red-400 mb-6">${message}</p>
-                        <button onclick="location.reload()" class="bg-[#f59e0b] hover:bg-[#d97706] text-white px-6 py-3 rounded-lg font-semibold transition-all">
+                        <button onclick="location.reload()" class="bg-[blue-500] hover:bg-[blue-600] text-white px-6 py-3 rounded-lg font-semibold transition-all">
                             Reload Page
                         </button>
                     </div>
@@ -762,7 +749,7 @@
                             </div>
                             <h3 class="text-xl font-semibold text-white mb-2">No products found</h3>
                             <p class="text-gray-400 mb-6">Try adjusting your filters to see more results.</p>
-                            <button onclick="clearAllFilters()" class="bg-[#f59e0b] hover:bg-[#d97706] text-white px-6 py-3 rounded-lg font-semibold transition-all">
+                            <button onclick="clearAllFilters()" class="bg-[blue-500] hover:bg-[blue-600] text-white px-6 py-3 rounded-lg font-semibold transition-all">
                                 Clear Filters
                             </button>
                         </div>
@@ -781,17 +768,17 @@
                     stockBadge = '<div class="absolute top-3 left-3 bg-[#ef4444] text-white text-xs font-medium px-2.5 py-1 rounded-lg backdrop-blur-sm">OUT OF STOCK</div>';
                 }
 
-                let saleBadge = product.is_on_sale ? '<div class="absolute top-3 right-3 bg-[#f59e0b] text-white text-xs font-bold px-2.5 py-1 rounded-lg backdrop-blur-sm">SALE</div>' : '';
+                let saleBadge = product.is_on_sale ? '<div class="absolute top-3 right-3 bg-[blue-500] text-white text-xs font-bold px-2.5 py-1 rounded-lg backdrop-blur-sm">SALE</div>' : '';
                 
                 let priceHTML = '';
                 if (product.is_on_sale) {
                     priceHTML = `<span class="text-sm text-gray-500 line-through">LKR ${new Intl.NumberFormat().format(product.price)}</span>
-                                 <span class="text-lg font-bold text-[#f59e0b]">LKR ${new Intl.NumberFormat().format(product.final_price)}</span>`;
+                                 <span class="text-lg font-bold text-[blue-500]">LKR ${new Intl.NumberFormat().format(product.final_price)}</span>`;
                 } else {
                     if (product.final_price > 0) {
                         priceHTML = `<span class="text-lg font-bold text-white">LKR ${new Intl.NumberFormat().format(product.final_price)}</span>`;
                     } else {
-                        priceHTML = `<span class="text-lg font-bold text-[#f59e0b]">Contact for Price</span>`;
+                        priceHTML = `<span class="text-lg font-bold text-[blue-500]">Contact for Price</span>`;
                     }
                 }
 
@@ -801,7 +788,7 @@
                 const productUrl = `/${categorySlug}/${productSlug}`;
                 
                 gridHTML += `
-                    <a href="${productUrl}" class="product-card block bg-[#1c1c1e] rounded-xl border border-gray-800/30 overflow-hidden hover:border-[#f59e0b]/30 transition-all duration-300 group shadow-lg hover:shadow-xl hover:shadow-[#f59e0b]/10 cursor-pointer">
+                    <a href="${productUrl}" class="product-card block bg-[#1c1c1e] rounded-xl border border-gray-800/30 overflow-hidden hover:border-[blue-500]/30 transition-all duration-300 group shadow-lg hover:shadow-xl hover:shadow-[blue-500]/10 cursor-pointer">
                         <div class="relative overflow-hidden bg-[#1a1a1c] aspect-[4/3]">
                             <img src="${product.main_image}" alt="${product.name}" class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105 p-6 bg-white/5 rounded-lg" loading="lazy">
                             ${stockBadge}
@@ -809,9 +796,9 @@
                         </div>
                         <div class="p-4">
                             <div class="mb-2">
-                                <span class="text-xs text-[#f59e0b] font-medium tracking-wide">${product.category?.name || 'Uncategorized'}</span>
+                                <span class="text-xs text-[blue-500] font-medium tracking-wide">${product.category?.name || 'Uncategorized'}</span>
                             </div>
-                            <h3 class="text-base font-semibold text-white mb-3 line-clamp-2 group-hover:text-[#f59e0b] transition-colors leading-tight">
+                            <h3 class="text-base font-semibold text-white mb-3 line-clamp-2 group-hover:text-[blue-500] transition-colors leading-tight">
                                 ${product.name}
                             </h3>
                             <div class="flex items-center justify-between mb-4">
@@ -819,7 +806,7 @@
                             </div>
                             <div class="mt-auto">
                                 ${product.stock_quantity > 0 
-                                    ? `<button onclick="event.preventDefault(); event.stopPropagation(); addToCart(${product.id})" class="w-full bg-gradient-to-r from-primary-500/15 to-amber-500/15 backdrop-blur-sm border border-primary-400/40 hover:from-primary-500/25 hover:to-amber-500/25 hover:border-primary-400/60 text-primary-200 px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-primary-500/20 hover:-translate-y-0.5 tracking-wide">Add to Cart</button>`
+                                    ? `<button onclick="event.preventDefault(); event.stopPropagation(); addToCart(${product.id})" class="w-full bg-gradient-to-r from-primary-500/15 to-blue-500/15 backdrop-blur-sm border border-primary-400/40 hover:from-primary-500/25 hover:to-blue-500/25 hover:border-primary-400/60 text-primary-200 px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-primary-500/20 hover:-translate-y-0.5 tracking-wide">Add to Cart</button>`
                                     : `<button disabled class="w-full bg-[#2c2c2e] text-gray-500 px-4 py-2.5 rounded-lg text-sm font-medium cursor-not-allowed border border-gray-700">Out of Stock</button>`
                                 }
                             </div>
@@ -904,7 +891,7 @@
             // Page numbers around current page
             for (let page = startPage; page <= endPage; page++) {
                 if (page === pagination.current_page) {
-                    paginationHTML += `<span class="px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm leading-4 text-white bg-[#f59e0b] border border-[#f59e0b] rounded-md font-medium min-w-[32px] sm:min-w-[36px] text-center">${page}</span>`;
+                    paginationHTML += `<span class="px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm leading-4 text-white bg-[blue-500] border border-[blue-500] rounded-md font-medium min-w-[32px] sm:min-w-[36px] text-center">${page}</span>`;
                 } else {
                     const pageParams = new URLSearchParams(currentParams);
                     pageParams.set('page', page);
@@ -1267,132 +1254,6 @@
         }, 3000);
     }
 
-    // Special Order Contact Modal Functions
-    function showSpecialOrderContact(statusType, productName) {
-        // Update modal content with product-specific information
-        document.getElementById('specialOrderStatus').textContent = statusType;
-        document.getElementById('specialOrderProductName').textContent = productName;
-        
-        // Update contact links with product information
-        const whatsappMessage = `Hi MSK Computers! I'm interested in the ${statusType} product: "${productName}". Could you please provide more information about availability and ordering?`;
-        const emailSubject = `Inquiry about ${statusType} Product: ${productName}`;
-        const emailBody = `Dear MSK Computers Team,\n\nI am interested in the following ${statusType} product:\n\nProduct: ${productName}\n\nCould you please provide more information about:\n- Expected availability date\n- Pricing details\n- How to place an order\n- Any special requirements\n\nThank you for your assistance.\n\nBest regards`;
-        
-        // Update WhatsApp link
-        document.getElementById('specialOrderWhatsApp').href = `https://wa.me/94777506939?text=${encodeURIComponent(whatsappMessage)}`;
-        
-        // Update Email link
-        document.getElementById('specialOrderEmail').href = `mailto:info@mskcomputers.lk?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-        
-        // Show modal
-        document.getElementById('specialOrderContactModal').classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function hideSpecialOrderContact() {
-        document.getElementById('specialOrderContactModal').classList.add('hidden');
-        document.body.style.overflow = 'auto';
-    }
-
-    // Close modal when clicking outside
-    document.addEventListener('DOMContentLoaded', function() {
-        const modal = document.getElementById('specialOrderContactModal');
-        if (modal) {
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    hideSpecialOrderContact();
-                }
-            });
-        }
-    });
 </script>
 @endpush
 
-<!-- Special Order Contact Modal -->
-<div id="specialOrderContactModal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-    <div class="bg-gradient-to-br from-gray-900 to-black border border-gray-700 rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
-        <!-- Modal Header -->
-        <div class="text-center mb-6">
-            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                </svg>
-            </div>
-            <h3 class="text-2xl font-bold text-white mb-2">Contact Us</h3>
-            <p class="text-gray-400 text-sm">
-                <span id="specialOrderStatus" class="text-blue-400 font-semibold"></span> Product Inquiry
-            </p>
-            <p class="text-gray-300 text-sm mt-1 font-medium" id="specialOrderProductName"></p>
-        </div>
-
-        <!-- Contact Information -->
-        <div class="space-y-4 mb-6">
-            <!-- Shop Info -->
-            <div class="text-center border-b border-gray-700 pb-4">
-                <h4 class="text-lg font-bold text-white">MSK COMPUTERS</h4>
-                <p class="text-gray-400 text-sm">No.296/3D, Delpe Junction, Ragama</p>
-                <p class="text-gray-400 text-sm">Sri Lanka</p>
-            </div>
-
-            <!-- Phone Numbers -->
-            <div class="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center mr-3">
-                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="text-white font-semibold">0112 95 9005</p>
-                        <p class="text-white font-semibold">0777 50 69 39</p>
-                        <p class="text-gray-400 text-xs">Call us anytime</p>
-                    </div>
-                </div>
-                <a href="tel:0777506939" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                    Call Now
-                </a>
-            </div>
-
-            <!-- WhatsApp -->
-            <div class="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center mr-3">
-                        <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="text-white font-semibold">0777 50 69 39</p>
-                        <p class="text-gray-400 text-xs">Quick response available</p>
-                    </div>
-                </div>
-                <a id="specialOrderWhatsApp" href="#" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                    WhatsApp
-                </a>
-            </div>
-
-            <!-- Email -->
-            <div class="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center mr-3">
-                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="text-white font-semibold">info@mskcomputers.lk</p>
-                        <p class="text-gray-400 text-xs">Expert support</p>
-                    </div>
-                </div>
-                <a id="specialOrderEmail" href="#" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                    Email
-                </a>
-            </div>
-        </div>
-
-        <!-- Close Button -->
-        <button onclick="hideSpecialOrderContact()" class="w-full bg-gray-700 hover:bg-gray-600 text-white py-3 rounded-lg font-medium transition-colors">
-            Close
-        </button>
-    </div>
-</div>

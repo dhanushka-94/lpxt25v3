@@ -1,25 +1,25 @@
 @extends('layouts.app')
 
-@section('title', 'About Us - MSK COMPUTERS | Serving Sri Lanka Since 2008')
-@section('description', 'Learn about MSK COMPUTERS - Sri Lanka\'s trusted computer retailer since 2008. Quality products, expert service, and commitment to excellence.')
-@section('keywords', 'about MSK Computers, computer company Sri Lanka, warranty, delivery service, after sales service, computer retailer')
+@section('title', 'About Us - LAPTOP EXPERT | Brand New & Used Laptops, Repair & Service in Sri Lanka')
+@section('description', 'Learn about LAPTOP EXPERT - Sri Lanka\'s trusted destination for brand new and used laptops, professional laptop repair services, and all laptop accessories. Expert technicians, quality products, and commitment to excellence.')
+@section('keywords', 'about Laptop Expert, laptop store Sri Lanka, brand new laptops, used laptops, laptop repair service, laptop accessories, warranty, delivery service, after sales service, Colombo, Sri Lanka')
 
 @section('content')
 <!-- Hero Section -->
 <section class="py-16 bg-gradient-to-b from-black to-[#0f0f0f]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <div class="inline-flex items-center px-4 py-2 bg-[#f59e0b]/10 border border-[#f59e0b]/20 rounded-lg text-[#f59e0b] text-sm font-medium mb-6">
+            <div class="inline-flex items-center px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-500 text-sm font-medium mb-6">
                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
                 About Our Company
             </div>
             <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                About <span class="text-[#f59e0b]">MSK COMPUTERS</span>
+                About <span class="text-blue-500">LAPTOP EXPERT</span>
             </h1>
             <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                MSK COMPUTERS has been serving Sri Lanka's computer needs since 2008. We are committed to providing quality computers and exceptional service to all our customers.
+                LAPTOP EXPERT has been serving Sri Lanka's computer needs since 2008. We are committed to providing quality computers and exceptional service to all our customers.
             </p>
         </div>
     </div>
@@ -53,13 +53,13 @@
             <!-- Mission -->
             <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8">
                 <div class="flex items-center space-x-4 mb-6">
-                    <div class="w-16 h-16 bg-[#f59e0b]/20 rounded-lg flex items-center justify-center">
-                        <svg class="w-8 h-8 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-16 h-16 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                        <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-2xl font-bold text-[#f59e0b] mb-1">අපේ මෙහෙවර</h2>
+                        <h2 class="text-2xl font-bold text-blue-500 mb-1">අපේ මෙහෙවර</h2>
                         <h3 class="text-xl font-semibold text-white">Our Mission</h3>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">Our Story</h2>
         <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8">
             <p class="text-gray-300 text-lg leading-relaxed">
-                Founded in 2016, MSK COMPUTERS has grown from a small shop into one of Sri Lanka's most trusted computer retailers. We proudly serve students, professionals, businesses, and government institutions with quality products, competitive pricing, and exceptional customer service. Staying ahead with the latest technology, we remain committed to our core values of trust, quality, and customer satisfaction.
+                Founded in 2016, LAPTOP EXPERT has grown from a small shop into one of Sri Lanka's most trusted computer retailers. We proudly serve students, professionals, businesses, and government institutions with quality products, competitive pricing, and exceptional customer service. Staying ahead with the latest technology, we remain committed to our core values of trust, quality, and customer satisfaction.
             </p>
         </div>
     </div>
@@ -89,37 +89,37 @@
 <section class="py-16 bg-[#0f0f0f]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Why Choose MSK COMPUTERS</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Why Choose LAPTOP EXPERT</h2>
             <p class="text-lg text-gray-400">Trusted expertise and exceptional service that sets us apart</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <!-- 3000+ Products -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-[#f59e0b]/30 transition-all duration-300">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-blue-500/30 transition-all duration-300">
                 <div class="w-16 h-16 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
                     </svg>
                 </div>
-                <h3 class="text-2xl font-bold text-[#f59e0b] mb-2">3000+</h3>
+                <h3 class="text-2xl font-bold text-blue-500 mb-2">3000+</h3>
                 <h4 class="text-lg font-semibold text-white mb-2">Products Available</h4>
                 <p class="text-gray-400 text-sm">Trusted expertise in computer sales and service</p>
             </div>
 
             <!-- 10,000+ Customers -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-[#f59e0b]/30 transition-all duration-300">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-blue-500/30 transition-all duration-300">
                 <div class="w-16 h-16 bg-green-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                     </svg>
                 </div>
-                <h3 class="text-2xl font-bold text-[#f59e0b] mb-2">10,000+</h3>
+                <h3 class="text-2xl font-bold text-blue-500 mb-2">10,000+</h3>
                 <h4 class="text-lg font-semibold text-white mb-2">Customers</h4>
                 <p class="text-gray-400 text-sm">Serving satisfied customers across Sri Lanka</p>
             </div>
 
             <!-- Quality Products -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-[#f59e0b]/30 transition-all duration-300">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-blue-500/30 transition-all duration-300">
                 <div class="w-16 h-16 bg-purple-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -130,9 +130,9 @@
             </div>
 
             <!-- Expert Support -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-[#f59e0b]/30 transition-all duration-300">
-                <div class="w-16 h-16 bg-[#f59e0b]/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-blue-500/30 transition-all duration-300">
+                <div class="w-16 h-16 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
                     </svg>
                 </div>
@@ -168,14 +168,14 @@
             </div>
 
             <!-- Manufacturing Defects Only -->
-            <div class="bg-[#1a1a1c] border border-orange-500/30 rounded-xl p-6">
+            <div class="bg-[#1a1a1c] border border-blue-500/30 rounded-xl p-6">
                 <div class="flex items-center space-x-3 mb-4">
-                    <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center">
-                        <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.728-.833-2.498 0L4.316 16.5c-.77.833.192 2.5 1.732 2.5z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-semibold text-orange-400">Manufacturing Defects Only</h3>
+                    <h3 class="text-lg font-semibold text-blue-400">Manufacturing Defects Only</h3>
                 </div>
                 <p class="text-gray-300 text-sm mb-2">නිෂ්පාදිත දෝෂ සඳහා පමණක් වගකීම හිමි වේ</p>
                 <p class="text-gray-400 text-sm">Warranty covers manufacturing defects only</p>
@@ -199,15 +199,15 @@
         <!-- Warranty Periods -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center">
-                <h3 class="text-2xl font-bold text-[#f59e0b] mb-2">1 Year</h3>
+                <h3 class="text-2xl font-bold text-blue-500 mb-2">1 Year</h3>
                 <p class="text-gray-400">350 days</p>
             </div>
             <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center">
-                <h3 class="text-2xl font-bold text-[#f59e0b] mb-2">2 Years</h3>
+                <h3 class="text-2xl font-bold text-blue-500 mb-2">2 Years</h3>
                 <p class="text-gray-400">700 days</p>
             </div>
             <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center">
-                <h3 class="text-2xl font-bold text-[#f59e0b] mb-2">3 Years</h3>
+                <h3 class="text-2xl font-bold text-blue-500 mb-2">3 Years</h3>
                 <p class="text-gray-400">1050 days</p>
             </div>
         </div>
@@ -302,8 +302,8 @@
 
             <!-- Delivery Time -->
             <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center">
-                <div class="w-16 h-16 bg-[#f59e0b]/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-16 h-16 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                 </div>
@@ -345,18 +345,18 @@
             </div>
 
             <!-- Customer Paid -->
-            <div class="bg-[#1a1a1c] border border-orange-500/30 rounded-xl p-8">
-                <h3 class="text-xl font-bold text-orange-400 mb-2">Customer Paid</h3>
+            <div class="bg-[#1a1a1c] border border-blue-500/30 rounded-xl p-8">
+                <h3 class="text-xl font-bold text-blue-400 mb-2">Customer Paid</h3>
                 <h4 class="text-lg text-gray-300 mb-6">ඔබ විසින් ගෙවන්නේ නම්</h4>
                 
                 <div class="space-y-4">
                     <div class="flex justify-between items-center p-4 bg-gray-800/50 rounded-lg">
                         <span class="text-gray-300">First 1 kg:</span>
-                        <span class="text-orange-400 font-bold">Rs. 500</span>
+                        <span class="text-blue-400 font-bold">Rs. 500</span>
                     </div>
                     <div class="flex justify-between items-center p-4 bg-gray-800/50 rounded-lg">
                         <span class="text-gray-300">Additional per kg:</span>
-                        <span class="text-orange-400 font-bold">Rs. 170</span>
+                        <span class="text-blue-400 font-bold">Rs. 170</span>
                     </div>
                 </div>
             </div>
@@ -395,8 +395,8 @@
                     <p class="text-gray-300">ඔබ shop එකට පැමිණිය හැකි දුරකින් නම්, එය අප වෙත රැගෙන එමින් සේවාව ගත හැක</p>
                     <p class="text-gray-400 text-sm">If you are within distance to visit the shop, bring your device for service</p>
                     
-                    <div class="mt-6 p-4 bg-orange-500/10 border border-orange-500/30 rounded-lg">
-                        <p class="text-orange-400 font-medium text-sm">
+                    <div class="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                        <p class="text-blue-400 font-medium text-sm">
                             Warranty machines arriving after 4 PM cannot be serviced same day
                         </p>
                         <p class="text-orange-300 text-xs mt-1">
@@ -421,13 +421,13 @@
                     <div class="bg-gray-800/50 rounded-lg p-4">
                         <h4 class="text-white font-medium mb-2">Send to:</h4>
                         <div class="text-gray-300 text-sm space-y-1">
-                            <p><strong>MSK Computers</strong></p>
-                            <p>No.296/3B, Delpe Junction</p>
+                            <p><strong>Laptop Expert</strong></p>
+                            <p>296/3/C, Delpe Junction, Ragama</p>
                             <p>Ragama, Sri Lanka</p>
                             <div class="mt-3 space-y-1">
-                                <p>0112 95 9005</p>
-                                <p>0777 50 69 39</p>
-                                <p>071 53 21 750</p>
+                                <p>076 444 222 1</p>
+                                <p>011 296 066 0</p>
+                                <p>WhatsApp: 0764442221</p>
                             </div>
                         </div>
                     </div>
@@ -443,108 +443,161 @@
 </section>
 
 
-<!-- Awards & Recognition Section -->
+<!-- Our Achievements Section -->
 <section class="py-16 bg-gradient-to-b from-black to-[#0f0f0f]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
         <div class="text-center mb-12">
-            <div class="inline-flex items-center px-4 py-2 bg-[#f59e0b]/10 border border-[#f59e0b]/20 rounded-lg text-[#f59e0b] text-sm font-medium mb-6">
+            <div class="inline-flex items-center px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-500 text-sm font-medium mb-6">
                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
                 Awards & Recognition
             </div>
             <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
-                Our <span class="text-[#f59e0b]">Achievements</span>
+                Our <span class="text-blue-500">Achievements</span>
             </h2>
             <p class="text-lg text-gray-400 max-w-3xl mx-auto">
                 Recognition and certifications that demonstrate our commitment to excellence and quality service
             </p>
         </div>
 
+        <!-- Company Relationship Info -->
+        <div class="mb-12 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-blue-500/10 border border-blue-500/30 rounded-xl p-8">
+            <div class="flex flex-col md:flex-row items-center gap-6">
+                <div class="flex-shrink-0">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl flex items-center justify-center border border-blue-500/30">
+                        <svg class="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex-1 text-center md:text-left">
+                    <h3 class="text-2xl font-bold text-white mb-3">Proudly Part of MSK COMPUTERS</h3>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-3">
+                        LAPTOP EXPERT operates under the umbrella of <span class="text-blue-400 font-semibold">MSK COMPUTERS</span>, our mother company that has been a trusted name in Sri Lanka's computer industry. This relationship strengthens our foundation and enables us to deliver exceptional service, quality products, and industry-leading expertise to our customers.
+                    </p>
+                    <p class="text-gray-400">
+                        Together with MSK COMPUTERS, we continue to set new standards in computer sales, repairs, and customer service across the nation.
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <!-- Awards Gallery -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Award 1 -->
-            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-[#f59e0b]/50 transition-all duration-300">
+            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-blue-500/50 transition-all duration-300">
                 <div class="aspect-square bg-white/5 overflow-hidden">
                     <img src="{{ asset('images/awards/awards00 (1).JPG') }}" 
-                         alt="MSK Computers Award" 
+                         alt="Laptop Expert Award" 
                          class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-4">
                 </div>
             </div>
 
             <!-- Award 2 -->
-            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-[#f59e0b]/50 transition-all duration-300">
+            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-blue-500/50 transition-all duration-300">
                 <div class="aspect-square bg-white/5 overflow-hidden">
                     <img src="{{ asset('images/awards/awards00 (2).JPG') }}" 
-                         alt="MSK Computers Award" 
+                         alt="Laptop Expert Award" 
                          class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-4">
                 </div>
             </div>
 
             <!-- Award 3 -->
-            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-[#f59e0b]/50 transition-all duration-300">
+            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-blue-500/50 transition-all duration-300">
                 <div class="aspect-square bg-white/5 overflow-hidden">
                     <img src="{{ asset('images/awards/awards00 (3).JPG') }}" 
-                         alt="MSK Computers Award" 
+                         alt="Laptop Expert Award" 
                          class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-4">
                 </div>
             </div>
 
             <!-- Award 4 -->
-            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-[#f59e0b]/50 transition-all duration-300">
+            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-blue-500/50 transition-all duration-300">
                 <div class="aspect-square bg-white/5 overflow-hidden">
                     <img src="{{ asset('images/awards/awards00 (4).JPG') }}" 
-                         alt="MSK Computers Award" 
+                         alt="Laptop Expert Award" 
                          class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-4">
                 </div>
             </div>
 
             <!-- Award 5 -->
-            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-[#f59e0b]/50 transition-all duration-300">
+            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-blue-500/50 transition-all duration-300">
                 <div class="aspect-square bg-white/5 overflow-hidden">
                     <img src="{{ asset('images/awards/awards00 (5).JPG') }}" 
-                         alt="MSK Computers Award" 
+                         alt="Laptop Expert Award" 
                          class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-4">
                 </div>
             </div>
 
             <!-- Award 6 -->
-            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-[#f59e0b]/50 transition-all duration-300">
+            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-blue-500/50 transition-all duration-300">
                 <div class="aspect-square bg-white/5 overflow-hidden">
                     <img src="{{ asset('images/awards/awards00 (6).JPG') }}" 
-                         alt="MSK Computers Award" 
+                         alt="Laptop Expert Award" 
                          class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-4">
                 </div>
             </div>
 
             <!-- Award 7 -->
-            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-[#f59e0b]/50 transition-all duration-300">
+            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-blue-500/50 transition-all duration-300">
                 <div class="aspect-square bg-white/5 overflow-hidden">
                     <img src="{{ asset('images/awards/awards00 (7).JPG') }}" 
-                         alt="MSK Computers Award" 
+                         alt="Laptop Expert Award" 
                          class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-4">
                 </div>
             </div>
 
             <!-- Award 8 -->
-            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-[#f59e0b]/50 transition-all duration-300">
+            <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800 overflow-hidden hover:border-blue-500/50 transition-all duration-300">
                 <div class="aspect-square bg-white/5 overflow-hidden">
                     <img src="{{ asset('images/awards/awards00 (8).JPG') }}" 
-                         alt="MSK Computers Award" 
+                         alt="Laptop Expert Award" 
                          class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-4">
                 </div>
             </div>
         </div>
 
         <!-- Recognition Statement -->
-        <div class="mt-12 text-center bg-[#1a1a1c] border border-gray-800 rounded-xl p-8">
-            <h3 class="text-2xl font-bold text-white mb-4">Committed to Excellence</h3>
-            <p class="text-gray-400 max-w-3xl mx-auto">
-                These awards and recognitions reflect our dedication to providing exceptional service, 
-                quality products, and maintaining the highest standards in the computer industry. 
-                We continue to strive for excellence in everything we do.
-            </p>
+        <div class="mt-12 bg-[#1a1a1c] border border-gray-800 rounded-xl p-8">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-white mb-4">Committed to Excellence</h3>
+                <p class="text-gray-400 max-w-3xl mx-auto">
+                    These awards and recognitions reflect our dedication to providing exceptional service, 
+                    quality products, and maintaining the highest standards in the computer industry. 
+                    As part of the <span class="text-blue-400 font-semibold">MSK COMPUTERS</span> family, 
+                    we continue to strive for excellence in everything we do.
+                </p>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-700">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-blue-500/5 border border-blue-500/20 rounded-lg p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                            <h4 class="text-lg font-semibold text-white">Industry Leadership</h4>
+                        </div>
+                        <p class="text-gray-300 text-sm">
+                            Supported by MSK COMPUTERS' extensive experience and industry knowledge, we deliver cutting-edge solutions and trusted service.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-purple-500/5 border border-purple-500/20 rounded-lg p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                            <h4 class="text-lg font-semibold text-white">Trusted Network</h4>
+                        </div>
+                        <p class="text-gray-300 text-sm">
+                            Leveraging the MSK COMPUTERS network and reputation, we build lasting relationships with customers across Sri Lanka.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

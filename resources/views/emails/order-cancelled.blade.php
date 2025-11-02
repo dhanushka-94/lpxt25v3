@@ -71,17 +71,17 @@ Our team can help you find similar or better alternatives:
 
 - **Phone:** 0112 95 9005
 - **WhatsApp:** +94 777 506 939 (Chat with our experts)
-- **Email:** info@mskcomputers.lk
+- **Email:** info@laptopexpert.lk
 
 ### Visit Our Store
 Get hands-on experience with our products:
 
-**MSK Computers Showroom**  
+**LAPTOP EXPERT Showroom**  
 No.12, Maradana Road, Colombo 08  
 **Hours:** Monday-Saturday 9AM-7PM, Sunday 10AM-6PM
 
 @component('mail::panel')
-**Why Choose MSK Computers?**
+**Why Choose LAPTOP EXPERT?**
 
 ✅ **Best Prices** - Competitive pricing guaranteed  
 ✅ **Genuine Products** - 100% authentic items  
@@ -104,12 +104,12 @@ If you have any questions about this cancellation or need assistance:
 
 - **General Inquiries:** 0112 95 9005
 - **Refund Status:** +94 777 506 939
-- **Email Support:** info@mskcomputers.lk
+- **Email Support:** info@laptopexpert.lk
 
 We're sorry this order didn't work out, but we hope to serve you again soon!
 
 Best regards,  
-MSK Computers Customer Service Team
+LAPTOP EXPERT Customer Service Team
 
 @component('mail::subcopy')
 Order cancelled: {{ now()->format('F d, Y \a\t g:i A') }}  

@@ -9,7 +9,7 @@
     <div class="flex justify-between items-center">
         <div>
             <h1 class="text-3xl font-bold text-white mb-2">Dashboard</h1>
-            <p class="text-gray-400">Welcome to the MSK Computers admin panel</p>
+            <p class="text-gray-400">Welcome to the LAPTOP EXPERT admin panel</p>
         </div>
         <div class="text-right text-sm text-gray-400">
             <p>{{ \Carbon\Carbon::now()->setTimezone('Asia/Colombo')->format('l, F j, Y') }}</p>

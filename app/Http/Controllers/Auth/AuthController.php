@@ -125,7 +125,7 @@ class AuthController extends Controller
             ['email' => $user->email, 'phone' => $user->phone]
         );
 
-        return redirect()->route('user.dashboard')->with('success', 'Registration successful! Welcome to MSK Computers.');
+        return redirect()->route('user.dashboard')->with('success', 'Registration successful! Welcome to LAPTOP EXPERT.');
     }
 
     /**

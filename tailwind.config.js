@@ -9,18 +9,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        // MSK COMPUTERS Brand Colors - Dark & Yellow Theme
+        // LAPTOP EXPERT Brand Colors - Dark & Blue Theme
         primary: {
-          50: '#fffbeb',
-          100: '#fef3c7',
-          200: '#fde68a',
-          300: '#fcd34d',
-          400: '#fbbf24',
-          500: '#f59e0b', // Main yellow
-          600: '#d97706',
-          700: '#b45309',
-          800: '#92400e',
-          900: '#78350f',
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6', // Main blue
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
         },
         dark: {
           50: '#f7f7f7',
@@ -36,9 +36,9 @@ export default {
           950: '#0a0a0a', // Deepest dark
         },
         accent: {
-          yellow: '#fbbf24',
-          'yellow-light': '#fcd34d',
-          'yellow-dark': '#d97706',
+          blue: '#3b82f6',
+          'blue-light': '#60a5fa',
+          'blue-dark': '#2563eb',
         }
       },
       fontFamily: {
@@ -79,8 +79,8 @@ export default {
         xs: '2px',
       },
       boxShadow: {
-        'glow-yellow': '0 0 20px rgba(251, 191, 36, 0.3)',
-        'glow-yellow-lg': '0 0 40px rgba(251, 191, 36, 0.4)',
+        'glow-blue': '0 0 20px rgba(59, 130, 246, 0.3)',
+        'glow-blue-lg': '0 0 40px rgba(59, 130, 246, 0.4)',
         'dark-lg': '0 10px 30px rgba(0, 0, 0, 0.3)',
       },
     },

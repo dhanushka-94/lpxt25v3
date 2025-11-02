@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Warranty Certificate and Terms - MSK COMPUTERS')
-@section('description', 'Comprehensive warranty coverage with clear terms and conditions for your peace of mind at MSK COMPUTERS. වගකීම් සහතිකය හා අදාළ කොන්දේසි')
+@section('title', 'Warranty Certificate and Terms - LAPTOP EXPERT')
+@section('description', 'Comprehensive warranty coverage with clear terms and conditions for your peace of mind at LAPTOP EXPERT. වගකීම් සහතිකය හා අදාළ කොන්දේසි')
 
 @section('content')
 <!-- Page Header -->

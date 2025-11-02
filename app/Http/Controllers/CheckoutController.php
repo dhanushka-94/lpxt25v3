@@ -288,34 +288,14 @@ class CheckoutController extends Controller
 
             // Handle payment method redirection
             switch ($request->payment_method) {
+                // TEMPORARILY DISABLED: WebXPay and KokoPay payment methods
                 case 'webxpay':
-                    // Log the order details for debugging
-                    \Log::info('Redirecting to WebXPay payment', [
-                        'order_id' => $order->id, 
-                        'order_number' => $order->order_number,
-                        'payment_method' => $order->payment_method,
-                        'redirect_url' => route('payment.webxpay', ['order' => $order->id])
-                    ]);
-                    
-                    // Redirect to WebXPay payment form (cart will be cleared after successful payment)
-                    return redirect()->route('payment.webxpay', ['order' => $order->id])
-                        ->with('info', 'Please complete your payment through WebXPay.');
+                    DB::rollBack();
+                    return back()->withErrors(['payment_method' => 'WebXPay payment method is temporarily unavailable. Please use Bank Transfer.']);
 
                 case 'kokopay':
-                    // Log the order details for debugging
-                    \Log::info('Redirecting to Koko Pay payment', [
-                        'order_id' => $order->id, 
-                        'order_number' => $order->order_number,
-                        'payment_method' => $order->payment_method,
-                        'redirect_url' => route('payment.kokopay', ['order' => $order->id])
-                    ]);
-                    
-                    // Redirect to Koko Pay payment form (cart will be cleared after successful payment)
-                    $redirectUrl = route('payment.kokopay', ['order' => $order->id]);
-                    \Log::info('Generated Koko Pay redirect URL', ['url' => $redirectUrl]);
-                    
-                    return redirect()->route('payment.kokopay', ['order' => $order->id])
-                        ->with('info', 'Please complete your Buy Now, Pay Later payment through Koko Pay.');
+                    DB::rollBack();
+                    return back()->withErrors(['payment_method' => 'KokoPay payment method is temporarily unavailable. Please use Bank Transfer.']);
                         
                 case 'bank_transfer':
                 default:

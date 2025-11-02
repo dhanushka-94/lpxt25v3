@@ -67,12 +67,12 @@ Questions about your order processing?
 
 - **Phone:** 0112 95 9005
 - **WhatsApp:** +94 777 506 939
-- **Email:** info@mskcomputers.lk
+- **Email:** info@laptopexpert.lk
 
 We'll notify you as soon as your order ships!
 
 Best regards,  
-MSK Computers Fulfillment Team
+LAPTOP EXPERT Fulfillment Team
 
 @component('mail::subcopy')
 Processing started: {{ now()->format('F d, Y \a\t g:i A') }}  

@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'MSK COMPUTERS - Your Trusted Computer Store in Sri Lanka')
-@section('description', 'MSK Computers - Your trusted partner for computer hardware, gaming PCs, laptops, and technology solutions in Sri Lanka. Quality products, competitive prices, and expert service.')
-@section('keywords', 'MSK Computers, computer store Sri Lanka, gaming PC, laptops, computer hardware, graphics cards, processors, motherboards, technology solutions')
-@section('og_title', 'MSK COMPUTERS - Your Trusted Computer Store in Sri Lanka')
-@section('og_description', 'Discover premium computer hardware, gaming PCs, and technology solutions at MSK Computers. Quality products with warranty and expert service in Sri Lanka.')
+@section('title', 'LAPTOP EXPERT - Brand New & Used Laptops, Repair & Service, Accessories in Sri Lanka')
+@section('description', 'Laptop Expert - Your trusted destination for brand new and used laptops, professional laptop repair services, and all laptop accessories in Sri Lanka. Expert technicians, quality products, and affordable prices.')
+@section('keywords', 'laptops Sri Lanka, brand new laptops, used laptops, laptop repair Sri Lanka, laptop service, laptop accessories, laptop parts, laptop screen repair, laptop battery, laptop charger, laptop keyboard, laptop bag, laptop cooling pad, Laptop Expert, Colombo')
+@section('og_title', 'LAPTOP EXPERT - Brand New & Used Laptops, Repair & Service in Sri Lanka')
+@section('og_description', 'Discover brand new and used laptops, expert laptop repair services, and comprehensive laptop accessories at Laptop Expert. Quality products with warranty and expert service in Sri Lanka.')
 @section('og_type', 'website')
 
 @section('content')
@@ -12,7 +12,7 @@
 <section class="relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#0f0f0f] to-[#1a1a1c] hero-section">
     <!-- Background Animation -->
     <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute w-96 h-96 rounded-full bg-gradient-to-r from-[#f59e0b]/20 to-[#d97706]/20 blur-3xl -top-48 -left-48 animate-pulse"></div>
+        <div class="absolute w-96 h-96 rounded-full bg-gradient-to-r from-blue-500/20 to-blue-600/20 blur-3xl -top-48 -left-48 animate-pulse"></div>
         <div class="absolute w-96 h-96 rounded-full bg-gradient-to-r from-[#3b82f6]/20 to-[#1d4ed8]/20 blur-3xl -bottom-48 -right-48 animate-pulse" style="animation-delay: 1s;"></div>
     </div>
     
@@ -20,35 +20,35 @@
         <!-- Image Slide 1 -->
         <div class="hero-slide active overflow-hidden">
             <img src="{{ asset('images/sliders/Slider 1.png') }}" 
-                 alt="MSK Computers Slider 1" 
+                 alt="Laptop Expert Slider 1" 
                  class="w-full h-full object-cover object-center">
         </div>
 
         <!-- Image Slide 2 -->
         <div class="hero-slide overflow-hidden">
             <img src="{{ asset('images/sliders/Slider 2.png') }}" 
-                 alt="MSK Computers Slider 2" 
+                 alt="Laptop Expert Slider 2" 
                  class="w-full h-full object-cover object-center">
         </div>
 
         <!-- Image Slide 3 -->
         <div class="hero-slide overflow-hidden">
             <img src="{{ asset('images/sliders/Slider 3.png') }}" 
-                 alt="MSK Computers Slider 3" 
+                 alt="Laptop Expert Slider 3" 
                  class="w-full h-full object-cover object-center">
         </div>
 
         <!-- Image Slide 4 -->
         <div class="hero-slide overflow-hidden">
             <img src="{{ asset('images/sliders/Slider 4.png') }}" 
-                 alt="MSK Computers Slider 4" 
+                 alt="Laptop Expert Slider 4" 
                  class="w-full h-full object-cover object-center">
         </div>
 
         <!-- Image Slide 5 -->
         <div class="hero-slide overflow-hidden">
             <img src="{{ asset('images/sliders/Slider 5.png') }}" 
-                 alt="MSK Computers Slider 5" 
+                 alt="Laptop Expert Slider 5" 
                  class="w-full h-full object-cover object-center">
         </div>
 
@@ -78,263 +78,194 @@
 
 </section>
 
-<!-- Features Section -->
-<section class="py-8 md:py-16 bg-black">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-6 md:mb-12">
-            <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4">Why Choose MSK COMPUTERS?</h2>
-            <p class="text-sm sm:text-base md:text-xl text-gray-300 max-w-3xl mx-auto">Professional expertise, quality products, and exceptional service for all your computing needs.</p>
+<!-- Our Services & Solutions Section -->
+<section class="py-12 md:py-20 bg-gradient-to-b from-black via-[#0a0a0a] to-black relative overflow-hidden">
+    <!-- Background Decorative Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute w-96 h-96 rounded-full bg-blue-500/5 blur-3xl -top-48 -left-48"></div>
+        <div class="absolute w-96 h-96 rounded-full bg-blue-600/5 blur-3xl -bottom-48 -right-48"></div>
         </div>
         
-        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-            <!-- Gaming PCs -->
-            <a href="/categories/brand-new-pc-build" class="card card-hover p-3 md:p-6 text-center group block hover:scale-105 transition-transform duration-300">
-                <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-[#f59e0b] to-[#d97706] rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 group-hover:scale-110 transition-transform">
-                    <svg class="w-6 h-6 md:w-8 md:h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M21,16V4H3V16H21M21,2A2,2 0 0,1 23,4V16A2,2 0 0,1 21,18H14L16,21V22H8V21L10,18H3A2,2 0 0,1 1,16V4A2,2 0 0,1 3,2H21Z"/>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-12 md:mb-16">
+            <div class="inline-flex items-center px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-400 text-sm font-medium mb-4">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z"/>
                     </svg>
+                Comprehensive Solutions
                 </div>
-                <h3 class="text-sm sm:text-base md:text-xl font-semibold text-white mb-1 md:mb-2 group-hover:text-[#f59e0b] transition-colors">Gaming PCs</h3>
-                <p class="text-xs sm:text-sm md:text-base text-gray-400 group-hover:text-gray-300 transition-colors">High-performance gaming rigs</p>
-            </a>
-
-            <!-- Laptops -->
-            <a href="/categories/brand-new-laptop" class="card card-hover p-3 md:p-6 text-center group block hover:scale-105 transition-transform duration-300">
-                <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8] rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 group-hover:scale-110 transition-transform">
-                    <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M4,6H20V16H4M20,18A2,2 0 0,0 22,16V6C22,4.89 21.1,4 20,4H4C2.89,4 2,4.89 2,6V16A2,2 0 0,0 4,18H1V20H23V18H20Z"/>
-                    </svg>
-                </div>
-                <h3 class="text-sm sm:text-base md:text-xl font-semibold text-white mb-1 md:mb-2 group-hover:text-[#3b82f6] transition-colors">Laptops</h3>
-                <p class="text-xs sm:text-sm md:text-base text-gray-400 group-hover:text-gray-300 transition-colors">Gaming & Professional laptops</p>
-            </a>
-
-            <!-- Components -->
-            <a href="/categories/keyboard-and-mouse" class="card card-hover p-3 md:p-6 text-center group block hover:scale-105 transition-transform duration-300">
-                <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-[#10b981] to-[#059669] rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 group-hover:scale-110 transition-transform">
-                    <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17,17H7V7H17M21,11V9H19V7C19,5.89 18.1,5 17,5H15V3H13V5H11V3H9V5H7C5.89,5 5,5.89 5,7V9H3V11H5V13H3V15H5V17C5,18.1 5.89,19 7,19H9V21H11V19H13V21H15V19H17C18.1,19 19,18.1 19,17V15H21V13H19V11M15,15H9V9H15V15Z"/>
-                    </svg>
-                </div>
-                <h3 class="text-sm sm:text-base md:text-xl font-semibold text-white mb-1 md:mb-2 group-hover:text-[#10b981] transition-colors">Components</h3>
-                <p class="text-xs sm:text-sm md:text-base text-gray-400 group-hover:text-gray-300 transition-colors">Latest PC parts & upgrades</p>
-            </a>
-
-            <!-- Repair Services -->
-            <a href="/services" class="card card-hover p-3 md:p-6 text-center group block hover:scale-105 transition-transform duration-300">
-                <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-[#8b5cf6] to-[#7c3aed] rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 group-hover:scale-110 transition-transform">
-                    <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M22.7,19L13.6,9.9C14.5,7.6 14,4.9 12.1,3C10.1,1 7.1,0.6 4.7,1.7L9,6L6,9L1.6,4.7C0.4,7.1 0.9,10.1 2.9,12.1C4.8,14 7.5,14.5 9.8,13.6L18.9,22.7C19.3,23.1 19.9,23.1 20.3,22.7L22.6,20.4C23.1,20 23.1,19.3 22.7,19Z"/>
-                    </svg>
-                </div>
-                <h3 class="text-sm sm:text-base md:text-xl font-semibold text-white mb-1 md:mb-2 group-hover:text-[#8b5cf6] transition-colors">Repair</h3>
-                <p class="text-xs sm:text-sm md:text-base text-gray-400 group-hover:text-gray-300 transition-colors">Expert repair services</p>
-            </a>
-        </div>
-        
-        <!-- Additional Features Row -->
-        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mt-6 md:mt-8">
-            <!-- Best Warranty -->
-            <a href="/warranty" class="card card-hover p-3 md:p-6 text-center group block hover:scale-105 transition-transform duration-300">
-                <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-[#f59e0b] to-[#d97706] rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 group-hover:scale-110 transition-transform">
-                    <svg class="w-6 h-6 md:w-8 md:h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C15.4,11.5 16,12.1 16,12.7V16.7C16,17.4 15.4,18 14.8,18H9.2C8.6,18 8,17.4 8,16.8V12.8C8,12.1 8.6,11.5 9.2,11.5V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,10V11.5H13.5V10C13.5,8.7 12.8,8.2 12,8.2Z"/>
-                    </svg>
-                </div>
-                <h3 class="text-sm sm:text-base md:text-xl font-semibold text-white mb-1 md:mb-2 group-hover:text-[#f59e0b] transition-colors">Best Warranty Provider</h3>
-                <p class="text-xs sm:text-sm md:text-base text-gray-400 group-hover:text-gray-300 transition-colors">On all products</p>
-            </a>
-
-            <!-- Island-wide Delivery -->
-            <a href="/about-us" class="card card-hover p-3 md:p-6 text-center group block hover:scale-105 transition-transform duration-300">
-                <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-[#10b981] to-[#059669] rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 group-hover:scale-110 transition-transform">
-                    <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M3,4A2,2 0 0,0 1,6V17H3A3,3 0 0,0 6,20A3,3 0 0,0 9,17H15A3,3 0 0,0 18,20A3,3 0 0,0 21,17H23V12L20,8H17V4M10,6L14,10L10,14V11H4V9H10M17,9.5H19.5L21.46,12H17M6,15.5A1.5,1.5 0 0,1 7.5,17A1.5,1.5 0 0,1 6,18.5A1.5,1.5 0 0,1 4.5,17A1.5,1.5 0 0,1 6,15.5M18,15.5A1.5,1.5 0 0,1 19.5,17A1.5,1.5 0 0,1 18,18.5A1.5,1.5 0 0,1 16.5,17A1.5,1.5 0 0,1 18,15.5Z"/>
-                    </svg>
-                </div>
-                <h3 class="text-sm sm:text-base md:text-xl font-semibold text-white mb-1 md:mb-2 group-hover:text-[#10b981] transition-colors">Island-wide Delivery</h3>
-                <p class="text-xs sm:text-sm md:text-base text-gray-400 group-hover:text-gray-300 transition-colors">Islandwide delivery available</p>
-            </a>
-
-            <!-- Expert Service -->
-            <a href="/services" class="card card-hover p-3 md:p-6 text-center group block hover:scale-105 transition-transform duration-300">
-                <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8] rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 group-hover:scale-110 transition-transform">
-                    <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22A1,1 0 0,1 23,15V18A1,1 0 0,1 22,19H21V20A2,2 0 0,1 19,22H5A2,2 0 0,1 3,20V19H2A1,1 0 0,1 1,18V15A1,1 0 0,1 2,14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M7.5,13A2.5,2.5 0 0,0 5,15.5A2.5,2.5 0 0,0 7.5,18A2.5,2.5 0 0,0 10,15.5A2.5,2.5 0 0,0 7.5,13M16.5,13A2.5,2.5 0 0,0 14,15.5A2.5,2.5 0 0,0 16.5,18A2.5,2.5 0 0,0 19,15.5A2.5,2.5 0 0,0 16.5,13Z"/>
-                    </svg>
-                </div>
-                <h3 class="text-sm sm:text-base md:text-xl font-semibold text-white mb-1 md:mb-2 group-hover:text-[#3b82f6] transition-colors">Expert Service</h3>
-                <p class="text-xs sm:text-sm md:text-base text-gray-400 group-hover:text-gray-300 transition-colors">3000+ products available</p>
-            </a>
-
-            <!-- Trusted Customers -->
-            <a href="/about-us" class="card card-hover p-3 md:p-6 text-center group block hover:scale-105 transition-transform duration-300">
-                <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-[#8b5cf6] to-[#7c3aed] rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4 group-hover:scale-110 transition-transform">
-                    <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M16,4C18.11,4 20.11,4.89 21.39,6.39L22.5,5.5C20.86,3.85 18.64,3 16.39,3C14.14,3 11.92,3.85 10.28,5.5L11.39,6.39C12.67,4.89 14.67,4 16.89,4H16M16,7C17.38,7 18.63,7.56 19.54,8.46L20.5,7.5C19.33,6.33 17.72,5.7 16,5.7C14.28,5.7 12.67,6.33 11.5,7.5L12.46,8.46C13.37,7.56 14.62,7 16,7M16,10C16.69,10 17.32,10.28 17.78,10.78L16,12.5L14.22,10.78C14.68,10.28 15.31,10 16,10M7,4A3,3 0 0,1 10,7A3,3 0 0,1 7,10A3,3 0 0,1 4,7A3,3 0 0,1 7,4M7,11C8.11,11 9.17,11.25 10.12,11.68L9.5,12.5L8.5,11.5C8,11.34 7.5,11.25 7,11.25C5.5,11.25 4.1,11.95 3.21,13.15L2.25,12.19C3.46,10.65 5.16,10 7,10.75V11M1,17V20H4V17M6,17V20H9V17M11,17V20H14V17"/>
-                    </svg>
-                </div>
-                <h3 class="text-sm sm:text-base md:text-xl font-semibold text-white mb-1 md:mb-2 group-hover:text-[#8b5cf6] transition-colors">10,000+ Customers</h3>
-                <p class="text-xs sm:text-sm md:text-base text-gray-400 group-hover:text-gray-300 transition-colors">Trusted by thousands</p>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- Professional Latest Promotions Section -->
-<section class="py-12 md:py-16 bg-gradient-to-b from-black to-[#0f0f0f] relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Clean Section Header -->
-        <div class="text-center mb-8 md:mb-12">
-            <div class="inline-flex items-center px-3 md:px-4 py-2 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-xs md:text-sm font-medium mb-4 md:mb-6">
-                <svg class="w-3 h-3 md:w-4 md:h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12.79 21L3 11.21v2c0 .45.37.82.82.82h16.36c.45 0 .82-.37.82-.82v-2L12.79 21z"/>
-                    <path d="M11.83 1.73l8.17 8.17V8c0-.45-.37-.82-.82-.82H3.82c-.45 0-.82.37-.82.82v1.9l8.83-8.17z"/>
-                </svg>
-                Special Offers
-            </div>
-            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4">
-                Latest Promotions
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+                Your Complete Laptop <span class="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Solution Provider</span>
             </h2>
             <p class="text-base md:text-lg text-gray-400 max-w-3xl mx-auto">
-                Don't miss out on our latest deals and special offers on premium computer hardware
+                From brand new and used laptops to expert repair services and comprehensive accessories - we've got everything you need
             </p>
         </div>
 
-        @if($promotionProducts->count() > 0)
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                @foreach($promotionProducts as $product)
-                    <div class="group bg-[#1a1a1c] rounded-xl border border-gray-800/30 overflow-hidden hover:border-[#f59e0b]/30 transition-all duration-300 shadow-lg hover:shadow-xl">
-                        <div class="relative overflow-hidden">
-                            <a href="{{ route('products.show', ['category' => $product->category->slug ?: $product->category->id, 'product' => $product->slug]) }}">
-                                <div class="aspect-square bg-white/5 overflow-hidden">
-                                    <img src="{{ $product->main_image }}" 
-                                         alt="{{ $product->name }}" 
-                                         class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-4">
-                                </div>
-                            </a>
-                            
-                            <!-- Clean Sale Badge -->
-                            @if($product->is_on_sale)
-                                <div class="absolute top-4 left-4 z-10">
-                                    <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-md">
-                                        SALE
-                                    </span>
-                                </div>
-                            @endif
+        <!-- Main Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+            <!-- Brand New Laptops -->
+            <div class="group relative bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-gray-800/50 rounded-xl p-6 md:p-8 hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M4,6H20V16H4M20,18A2,2 0 0,0 22,16V6C22,4.89 21.1,4 20,4H4C2.89,4 2,4.89 2,6V16A2,2 0 0,0 4,18H1V20H23V18H20Z"/>
+                    </svg>
+                </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">Brand New Laptops</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Latest models from top brands with full warranty. Gaming laptops, professional workstations, and budget-friendly options.
+                    </p>
+                    <a href="/categories/brand-new-laptop" class="inline-flex items-center text-blue-400 hover:text-blue-500 font-medium group-hover:translate-x-2 transition-transform duration-300">
+                        Browse Collection
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+            </a>
+                </div>
+            </div>
 
-                            <!-- Stock Status -->
-                            <div class="absolute top-4 right-4 z-10">
-                                @if($product->status && in_array($product->status->status_name, ['Coming Soon', 'Pre Order']))
-                                    <span class="bg-blue-500 text-white text-xs font-medium px-2 py-1 rounded-md">
-                                        {{ $product->status->status_name }}
-                                    </span>
-                                @elseif($product->stock_quantity > 0)
-                                    <span class="bg-green-500 text-white text-xs font-medium px-2 py-1 rounded-md">
-                                        In Stock
-                                    </span>
-                                @else
-                                    <span class="bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-md">
-                                        Out of Stock
-                                    </span>
-                                @endif
+            <!-- Used Laptops -->
+            <div class="group relative bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-gray-800/50 rounded-xl p-6 md:p-8 hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z"/>
+                    </svg>
+                </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">Quality Used Laptops</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Carefully tested and certified pre-owned laptops. Great performance at affordable prices with warranty options.
+                    </p>
+                    <a href="/categories/used-laptop" class="inline-flex items-center text-blue-400 hover:text-blue-500 font-medium group-hover:translate-x-2 transition-transform duration-300">
+                        View Selection
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+            </a>
+                </div>
+            </div>
+
+            <!-- Repair Services -->
+            <div class="group relative bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-gray-800/50 rounded-xl p-6 md:p-8 hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-700 to-blue-800 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M22.7,19L13.6,9.9C14.5,7.6 14,4.9 12.1,3C10.1,1 7.1,0.6 4.7,1.7L9,6L6,9L1.6,4.7C0.4,7.1 0.9,10.1 2.9,12.1C4.8,14 7.5,14.5 9.8,13.6L18.9,22.7C19.3,23.1 19.9,23.1 20.3,22.7L22.6,20.4C23.1,20 23.1,19.3 22.7,19Z"/>
+                    </svg>
+                </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">Expert Repair Services</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Professional laptop repair for all brands. Screen replacement, motherboard repair, battery services, and more.
+                    </p>
+                    <a href="/services" class="inline-flex items-center text-blue-400 hover:text-blue-500 font-medium group-hover:translate-x-2 transition-transform duration-300">
+                        Learn More
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+            </a>
+        </div>
+                </div>
+        
+            <!-- Laptop Accessories -->
+            <div class="group relative bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-gray-800/50 rounded-xl p-6 md:p-8 hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
+                    </svg>
+                </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">Complete Accessories</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Everything you need: bags, chargers, batteries, keyboards, mice, cooling pads, and more laptop essentials.
+                    </p>
+                    <a href="/categories" class="inline-flex items-center text-blue-400 hover:text-blue-500 font-medium group-hover:translate-x-2 transition-transform duration-300">
+                        Shop Accessories
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    </a>
+                </div>
+        </div>
+
+            <!-- Warranty & Support -->
+            <div class="group relative bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-gray-800/50 rounded-xl p-6 md:p-8 hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C15.4,11.5 16,12.1 16,12.7V16.7C16,17.4 15.4,18 14.8,18H9.2C8.6,18 8,17.4 8,16.8V12.8C8,12.1 8.6,11.5 9.2,11.5V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,10V11.5H13.5V10C13.5,8.7 12.8,8.2 12,8.2Z"/>
+                </svg>
+            </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">Warranty & Support</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Comprehensive warranty on all products. Dedicated customer support and after-sales service you can trust.
+                    </p>
+                    <a href="/about-us" class="inline-flex items-center text-blue-400 hover:text-blue-500 font-medium group-hover:translate-x-2 transition-transform duration-300">
+                        Know More
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+            </a>
+                                </div>
                             </div>
 
-                            <!-- Enhanced Quick View Overlay -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
-                                <div class="transform translate-y-8 group-hover:translate-y-0 transition-all duration-500 space-y-3">
-                                    <a href="{{ route('products.show', ['category' => $product->category->slug ?: $product->category->id, 'product' => $product->slug]) }}" 
-                                       class="block bg-gradient-to-r from-[#f59e0b] to-[#fbbf24] text-black px-6 py-3 rounded-xl font-bold text-sm shadow-xl hover:shadow-2xl transition-all duration-300 text-center">
-                                        VIEW DETAILS
-                                    </a>
-                                    @if($product->stock_quantity > 0)
-                                        <button onclick="addToCartFromHome({{ $product->id }}, '{{ addslashes($product->name) }}')" 
-                                                class="block w-full bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded-xl font-semibold text-sm border border-white/20 hover:bg-white/20 transition-all duration-300">
-                                            QUICK ADD
-                                        </button>
-                                    @endif
+            <!-- Island-wide Delivery -->
+            <div class="group relative bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-gray-800/50 rounded-xl p-6 md:p-8 hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-700 to-blue-800 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M3,4A2,2 0 0,0 1,6V17H3A3,3 0 0,0 6,20A3,3 0 0,0 9,17H15A3,3 0 0,0 18,20A3,3 0 0,0 21,17H23V12L20,8H17V4M10,6L14,10L10,14V11H4V9H10M17,9.5H19.5L21.46,12H17M6,15.5A1.5,1.5 0 0,1 7.5,17A1.5,1.5 0 0,1 6,18.5A1.5,1.5 0 0,1 4.5,17A1.5,1.5 0 0,1 6,15.5M18,15.5A1.5,1.5 0 0,1 19.5,17A1.5,1.5 0 0,1 18,18.5A1.5,1.5 0 0,1 16.5,17A1.5,1.5 0 0,1 18,15.5Z"/>
+                    </svg>
+                                </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">Island-wide Delivery</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Fast and reliable delivery service across Sri Lanka. Get your orders delivered safely to your doorstep.
+                    </p>
+                    <a href="/about-us" class="inline-flex items-center text-blue-400 hover:text-blue-500 font-medium group-hover:translate-x-2 transition-transform duration-300">
+                        Check Delivery
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+            </a>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <!-- Product Info -->
-                        <div class="p-6">
-                            <div class="mb-2">
-                                <span class="text-xs text-[#f59e0b] font-medium">{{ $product->category->name }}</span>
-                            </div>
-                            
-                            <h3 class="text-lg font-semibold text-white mb-3 leading-tight">
-                                <a href="{{ route('products.show', ['category' => $product->category->slug ?: $product->category->id, 'product' => $product->slug]) }}" class="hover:text-[#f59e0b] transition-colors">
-                                    {{ Str::limit($product->name, 60) }}
-                                </a>
-                            </h3>
-                            
-                            <!-- Pricing -->
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="flex flex-col">
-                                    @if($product->is_on_sale)
-                                        <span class="text-sm text-gray-500 line-through">LKR {{ number_format($product->price, 2) }}</span>
-                                        <span class="text-xl font-bold text-[#f59e0b]">LKR {{ number_format($product->promo_price, 2) }}</span>
-                                    @else
-                                        @if($product->price > 0)
-                                            <span class="text-xl font-bold text-white">LKR {{ number_format($product->price, 2) }}</span>
-                                        @else
-                                            <span class="text-lg font-bold text-[#f59e0b]">Contact for Price</span>
-                                        @endif
-                                    @endif
                                 </div>
-                            </div>
 
-                            <!-- Product Status Badge -->
-                            @if($product->status)
-                                <div class="mb-3">
-                                    @include('components.product-status-badge', ['product' => $product])
-                                </div>
-                            @endif
-                            
-                            <!-- Payment Method Badges -->
-                            @include('components.payment-badges')
-                            
-                            <!-- Action Buttons -->
-                            <div class="flex space-x-2">
-                                @if($product->can_add_to_cart)
-                                    <button onclick="addToCartFromHome({{ $product->id }}, '{{ addslashes($product->name) }}')" 
-                                            class="flex-1 bg-gradient-to-r from-primary-500/15 to-amber-500/15 backdrop-blur-sm border border-primary-400/40 hover:from-primary-500/25 hover:to-amber-500/25 hover:border-primary-400/60 text-primary-200 px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-primary-500/20 hover:-translate-y-0.5 tracking-wide">
-                                        Add to Cart
-                                    </button>
-                                @else
-                                    @if($product->status && in_array($product->status->status_name, ['Coming Soon', 'Pre Order']))
-                                        <button onclick="showSpecialOrderContact('{{ $product->status->status_name }}', '{{ addslashes($product->name) }}')" 
-                                                class="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-all">
+        <!-- Call to Action Banner -->
+        <div class="relative bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 rounded-2xl p-8 md:p-12 overflow-hidden">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full -ml-32 -mb-32"></div>
+            
+            <div class="relative z-10 text-center">
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">
+                    Need Help Choosing the Right Laptop?
+                </h3>
+                <p class="text-blue-100 mb-6 max-w-2xl mx-auto text-lg">
+                    Our expert team is here to help you find the perfect laptop for your needs. Get personalized recommendations and expert advice.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/contact-us" class="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-700 font-semibold rounded-lg hover:bg-blue-50 transition-all duration-300 hover:scale-105">
                                             Contact Us
-                                        </button>
-                                    @else
-                                        <button class="flex-1 bg-gray-600 text-gray-400 px-4 py-2.5 rounded-lg text-sm font-medium cursor-not-allowed" 
-                                                disabled title="{{ $product->cart_restriction_reason }}">
-                                            {{ $product->cart_restriction_reason ?: 'Unavailable' }}
-                                        </button>
-                                    @endif
-                                @endif
-                                <button class="px-3 py-2.5 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
                                     </svg>
-                                </button>
+                    </a>
+                    <a href="/categories" class="inline-flex items-center justify-center px-6 py-3 bg-blue-500/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-lg hover:bg-blue-500/30 transition-all duration-300 hover:scale-105">
+                        Browse All Products
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+            </a>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
-        @else
-            <div class="text-center py-16">
-                <h3 class="text-sm sm:text-base md:text-xl font-semibold text-white mb-1 md:mb-2">No Promotions Available</h3>
-                <p class="text-gray-400 mb-6">Check back soon for special offers and promotions!</p>
-                <a href="{{ route('products.index') }}" class="btn-primary">Browse All Products</a>
-            </div>
-        @endif
-
-        <div class="text-center mt-12">
-            <a href="{{ route('products.index') }}" class="btn-outline text-lg px-8 py-4">View All Products</a>
         </div>
     </div>
 </section>
@@ -343,14 +274,14 @@
 <section class="py-16 bg-gradient-to-b from-[#0f0f0f] to-black relative overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
-        <div class="absolute w-64 h-64 rounded-full bg-[#f59e0b] blur-3xl -top-32 -left-32"></div>
+        <div class="absolute w-64 h-64 rounded-full bg-blue-500/30 blur-3xl -top-32 -left-32"></div>
         <div class="absolute w-64 h-64 rounded-full bg-[#3b82f6] blur-3xl -bottom-32 -right-32"></div>
     </div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Section Header -->
         <div class="text-center mb-12">
-            <div class="inline-flex items-center px-4 py-2 bg-[#f59e0b]/10 border border-[#f59e0b]/20 rounded-lg text-[#f59e0b] text-sm font-medium mb-6">
+            <div class="inline-flex items-center px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-500 text-sm font-medium mb-6">
                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7V9C15 10.1 15.9 11 17 11S19 10.1 19 11V9H21ZM17 13C15.9 13 15 12.1 15 11V9L12 9L9 9V11C9 12.1 8.1 13 7 13S5 12.1 5 11V9H3V11C3 12.1 3.9 13 5 13S7 12.1 7 13V21H9V13C9 12.1 9.9 11 11 11S13 12.1 13 11V21H15V13C15 12.1 15.9 11 17 11S19 12.1 19 11V9H21V11C21 12.1 20.1 13 19 13S17 12.1 17 13Z"/>
                 </svg>
@@ -360,7 +291,7 @@
                 Customer Experiences
             </h2>
             <p class="text-lg text-gray-400 max-w-2xl mx-auto">
-                Join thousands of satisfied customers who trust MSK Computers for their technology needs
+                Join thousands of satisfied customers who trust Laptop Expert for their technology needs
             </p>
         </div>
 
@@ -371,126 +302,126 @@
                 <!-- Continuous Scrolling Track -->
                 <div class="carousel-track-continuous flex animate-scroll-right" id="carouselTrackContinuous">
                     <!-- First Set of Photos -->
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (1).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (2).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (3).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (4).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (5).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (6).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (7).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (8).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (9).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (10).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (11).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (12).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
 
                     <!-- Duplicate Set for Seamless Loop -->
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (1).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (2).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (3).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (4).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (5).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (6).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (7).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (8).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (9).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (10).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (11).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-[#f59e0b] transition-all duration-300 group mx-3">
+                    <div class="customer-photo-card flex-shrink-0 w-48 h-48 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-blue-500 transition-all duration-300 group mx-3">
                         <img src="{{ asset('images/happy-customers/hc00 (12).jpg') }}" 
-                             alt="Happy MSK Customer" 
+                             alt="Happy Laptop Expert Customer" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                 </div>
@@ -548,16 +479,62 @@
     // Image Slider Functionality
     class ImageSlider {
         constructor() {
-            this.currentSlide = 0;
+            this.currentSlide = 0; // Default: Always start on first slide (index 0)
             this.slides = document.querySelectorAll('.hero-slide');
             this.dots = document.querySelectorAll('.slider-dot');
             this.totalSlides = this.slides.length;
             this.autoPlayInterval = null;
             
+            // Ensure default state before initialization
+            this.setDefaultSlide();
             this.init();
         }
         
+        setDefaultSlide() {
+            // Reset all slides to default state - ensure first slide is active
+            this.slides.forEach((slide, index) => {
+                if (index === 0) {
+                    // First slide is default/active
+                    slide.classList.add('active');
+                    slide.classList.remove('prev');
+                    slide.style.transform = 'translateX(0)';
+                    slide.style.opacity = '1';
+                    slide.style.zIndex = '2';
+                    slide.style.pointerEvents = 'auto';
+                } else {
+                    // All other slides are hidden and positioned off-screen
+                    slide.classList.remove('active');
+                    slide.classList.remove('prev');
+                    slide.style.transform = 'translateX(100%)';
+                    slide.style.opacity = '0';
+                    slide.style.zIndex = '0';
+                    slide.style.pointerEvents = 'none';
+                }
+            });
+            
+            // Reset all dots to default state
+            this.dots.forEach((dot, index) => {
+                if (index === 0) {
+                    // First dot is active
+                    dot.classList.add('active');
+                    dot.classList.remove('bg-white/40');
+                    dot.classList.add('bg-white/80');
+                } else {
+                    // All other dots are inactive
+                    dot.classList.remove('active');
+                    dot.classList.remove('bg-white/80');
+                    dot.classList.add('bg-white/40');
+                }
+            });
+            
+            // Ensure currentSlide is set to 0 (first slide)
+            this.currentSlide = 0;
+        }
+        
         init() {
+            // Ensure default state is maintained
+            this.setDefaultSlide();
+            
             // Add event listeners for navigation arrows
             const prevBtn = document.getElementById('prevSlide');
             const nextBtn = document.getElementById('nextSlide');
@@ -570,8 +547,10 @@
                 dot.addEventListener('click', () => this.goToSlide(index));
             });
             
-            // Start auto-play
+            // Start auto-play after a brief delay to ensure default slide is shown
+            setTimeout(() => {
             this.startAutoPlay();
+            }, 1000);
             
             // Pause auto-play on hover for better UX
             const heroSlider = document.getElementById('heroSlider');
@@ -600,48 +579,88 @@
             // Determine slide direction for train effect
             const isNextSlide = slideIndex > this.currentSlide || (slideIndex === 0 && this.currentSlide === this.totalSlides - 1);
             
-            // Position the new slide before it enters
+            // CRITICAL: First, ensure all slides except current are properly hidden
+            // Hide all non-active slides with lower z-index to prevent overlap
+            this.slides.forEach((slide, idx) => {
+                if (idx !== this.currentSlide && idx !== slideIndex) {
+                    slide.classList.remove('active', 'prev');
+                    slide.style.transform = 'translateX(100%)';
+                    slide.style.opacity = '0';
+                    slide.style.zIndex = '0';
+                    slide.style.pointerEvents = 'none';
+                }
+            });
+            
+            // Position the new slide before it enters (off-screen)
             if (isNextSlide) {
                 nextSlide.style.transform = 'translateX(100%)'; // Slide in from right
+                nextSlide.style.opacity = '0';
             } else {
                 nextSlide.style.transform = 'translateX(-100%)'; // Slide in from left
+                nextSlide.style.opacity = '0';
             }
+            nextSlide.style.zIndex = '3'; // Higher z-index for incoming slide
+            nextSlide.style.pointerEvents = 'none';
             
-            // Add prev class to current slide for smooth exit
-            currentSlide.classList.add('prev');
+            // Set current slide to exiting state
+            currentSlide.style.zIndex = '1'; // Lower z-index for exiting slide
+            currentSlide.style.pointerEvents = 'none';
+            
+            // Use requestAnimationFrame for smooth transition
+            requestAnimationFrame(() => {
+                // Remove active class from current slide
             currentSlide.classList.remove('active');
+                currentSlide.classList.add('prev');
+                
+                // Position exiting slide
+                if (isNextSlide) {
+                    currentSlide.style.transform = 'translateX(-100%)';
+                } else {
+                    currentSlide.style.transform = 'translateX(100%)';
+                }
+                currentSlide.style.opacity = '0';
             
-            // Update dots
-            this.dots[this.currentSlide].classList.remove('active');
-            this.dots[this.currentSlide].classList.remove('bg-white/80');
-            this.dots[this.currentSlide].classList.add('bg-white/40');
-            
-            // Small delay to ensure smooth transition
+                // Small delay to ensure CSS transitions work
             setTimeout(() => {
                 // Update current slide index
                 this.currentSlide = slideIndex;
                 
-                // Activate new slide
+                    // Activate new slide - bring it to center
                 nextSlide.classList.add('active');
                 nextSlide.classList.remove('prev');
-                nextSlide.style.transform = ''; // Reset to use CSS transform
+                    nextSlide.style.transform = 'translateX(0)';
+                    nextSlide.style.opacity = '1';
+                    nextSlide.style.zIndex = '2'; // Active slide z-index
+                    nextSlide.style.pointerEvents = 'auto';
                 
-                // Update dot
-                this.dots[this.currentSlide].classList.add('active');
-                this.dots[this.currentSlide].classList.remove('bg-white/40');
-                this.dots[this.currentSlide].classList.add('bg-white/80');
+                    // Update dot indicators
+                    this.dots.forEach((dot, idx) => {
+                        if (idx === this.currentSlide) {
+                            dot.classList.add('active');
+                            dot.classList.remove('bg-white/40');
+                            dot.classList.add('bg-white/80');
+                        } else {
+                            dot.classList.remove('active');
+                            dot.classList.remove('bg-white/80');
+                            dot.classList.add('bg-white/40');
+                        }
+                    });
                 
-                // Clean up previous slide after transition
+                    // Clean up previous slide after transition completes
                 setTimeout(() => {
                     currentSlide.classList.remove('prev');
-                }, 50);
+                        currentSlide.style.transform = 'translateX(100%)';
+                        currentSlide.style.opacity = '0';
+                        currentSlide.style.zIndex = '0';
+                    }, 650); // After transition duration (600ms + buffer)
                 
-            }, 50);
+                }, 10);
             
             // Restart auto-play after transition
             setTimeout(() => {
                 this.startAutoPlay();
-            }, 400);
+                }, 650);
+            });
         }
         
         nextSlide() {
@@ -724,52 +743,23 @@
         // Start preloading
         preloadImages();
         
-        // Initialize slider after a small delay to ensure images start loading
+        // Initialize slider with default first slide
+        // Small delay ensures DOM is fully ready
         setTimeout(() => {
-            new ImageSlider();
+            window.heroSlider = new ImageSlider();
+            
+            // Ensure slider resets to default (first slide) on page visibility change
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden && window.heroSlider) {
+                    // Reset to first slide when page becomes visible again
+                    window.heroSlider.goToSlide(0);
+                }
+            });
         }, 100);
         
         // Customer carousel is now pure CSS - no JavaScript initialization needed
     });
 
-    // Special Order Contact Modal Functions
-    function showSpecialOrderContact(statusType, productName) {
-        // Update modal content with product-specific information
-        document.getElementById('specialOrderStatus').textContent = statusType;
-        document.getElementById('specialOrderProductName').textContent = productName;
-        
-        // Update contact links with product information
-        const whatsappMessage = `Hi MSK Computers! I'm interested in the ${statusType} product: "${productName}". Could you please provide more information about availability and ordering?`;
-        const emailSubject = `Inquiry about ${statusType} Product: ${productName}`;
-        const emailBody = `Dear MSK Computers Team,\n\nI am interested in the following ${statusType} product:\n\nProduct: ${productName}\n\nCould you please provide more information about:\n- Expected availability date\n- Pricing details\n- How to place an order\n- Any special requirements\n\nThank you for your assistance.\n\nBest regards`;
-        
-        // Update WhatsApp link
-        document.getElementById('specialOrderWhatsApp').href = `https://wa.me/94777506939?text=${encodeURIComponent(whatsappMessage)}`;
-        
-        // Update Email link
-        document.getElementById('specialOrderEmail').href = `mailto:info@mskcomputers.lk?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-        
-        // Show modal
-        document.getElementById('specialOrderContactModal').classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function hideSpecialOrderContact() {
-        document.getElementById('specialOrderContactModal').classList.add('hidden');
-        document.body.style.overflow = 'auto';
-    }
-
-    // Close modal when clicking outside
-    document.addEventListener('DOMContentLoaded', function() {
-        const modal = document.getElementById('specialOrderContactModal');
-        if (modal) {
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    hideSpecialOrderContact();
-                }
-            });
-        }
-    });
 </script>
 
 <style>
@@ -781,18 +771,41 @@
         width: 100%;
         height: 100%;
         transform: translateX(100%);
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 0;
+        opacity: 0;
+        pointer-events: none;
+        will-change: transform, opacity;
+    }
+    
+    /* Default: First slide is always visible on load */
+    .hero-slide:first-child {
+        transform: translateX(0);
+        opacity: 1;
+        z-index: 2;
+        pointer-events: auto;
     }
     
     .hero-slide.active {
-        transform: translateX(0);
-        z-index: 2;
+        transform: translateX(0) !important;
+        opacity: 1 !important;
+        z-index: 2 !important;
+        pointer-events: auto !important;
     }
     
     .hero-slide.prev {
-        transform: translateX(-100%);
-        z-index: 1;
+        transform: translateX(-100%) !important;
+        opacity: 0 !important;
+        z-index: 1 !important;
+        pointer-events: none !important;
+    }
+    
+    /* Ensure all non-active slides are hidden and behind */
+    .hero-slide:not(.active):not(.prev) {
+        z-index: 0 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
     }
 
     /* Remove all zoom effects - train only moves */
@@ -892,94 +905,6 @@
     }
 </style>
 
-<!-- Special Order Contact Modal -->
-<div id="specialOrderContactModal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-    <div class="bg-gradient-to-br from-gray-900 to-black border border-gray-700 rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
-        <!-- Modal Header -->
-        <div class="text-center mb-6">
-            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                </svg>
-            </div>
-            <h3 class="text-2xl font-bold text-white mb-2">Contact Us</h3>
-            <p class="text-gray-400 text-sm">
-                <span id="specialOrderStatus" class="text-blue-400 font-semibold"></span> Product Inquiry
-            </p>
-            <p class="text-gray-300 text-sm mt-1 font-medium" id="specialOrderProductName"></p>
-        </div>
-
-        <!-- Contact Information -->
-        <div class="space-y-4 mb-6">
-            <!-- Shop Info -->
-            <div class="text-center border-b border-gray-700 pb-4">
-                <h4 class="text-lg font-bold text-white">MSK COMPUTERS</h4>
-                <p class="text-gray-400 text-sm">No.296/3D, Delpe Junction, Ragama</p>
-                <p class="text-gray-400 text-sm">Sri Lanka</p>
-            </div>
-
-            <!-- Phone Numbers -->
-            <div class="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center mr-3">
-                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="text-white font-semibold">0112 95 9005</p>
-                        <p class="text-white font-semibold">0777 50 69 39</p>
-                        <p class="text-gray-400 text-xs">Call us anytime</p>
-                    </div>
-                </div>
-                <a href="tel:0777506939" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                    Call Now
-                </a>
-            </div>
-
-            <!-- WhatsApp -->
-            <div class="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center mr-3">
-                        <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="text-white font-semibold">0777 50 69 39</p>
-                        <p class="text-gray-400 text-xs">Quick response available</p>
-                    </div>
-                </div>
-                <a id="specialOrderWhatsApp" href="#" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                    WhatsApp
-                </a>
-            </div>
-
-            <!-- Email -->
-            <div class="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center mr-3">
-                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="text-white font-semibold">info@mskcomputers.lk</p>
-                        <p class="text-gray-400 text-xs">Expert support</p>
-                    </div>
-                </div>
-                <a id="specialOrderEmail" href="#" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                    Email
-                </a>
-            </div>
-        </div>
-
-        <!-- Close Button -->
-        <button onclick="hideSpecialOrderContact()" class="w-full bg-gray-700 hover:bg-gray-600 text-white py-3 rounded-lg font-medium transition-colors">
-            Close
-        </button>
-    </div>
-</div>
 
 @endpush
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Order Details - ' . $order->order_number . ' - MSK COMPUTERS')
-@section('description', 'View detailed information about your MSK Computers order including items, shipping, and payment details.')
+@section('title', 'Order Details - ' . $order->order_number . ' - LAPTOP EXPERT')
+@section('description', 'View detailed information about your LAPTOP EXPERT order including items, shipping, and payment details.')
 
 @section('content')
 <div class="min-h-screen bg-[#0f0f0f] py-8">
@@ -14,7 +14,7 @@
                 <p class="text-gray-400">Order #{{ $order->order_number }}</p>
             </div>
             <a href="{{ route('user.orders') }}" 
-               class="inline-flex items-center text-[#f59e0b] hover:text-[#d97706] transition-colors">
+               class="inline-flex items-center text-blue-500 hover:text-blue-600 transition-colors">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                 </svg>
@@ -180,7 +180,7 @@
                                             <div class="text-sm">
                                                 <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium
                                                     {{ $transaction->status === 'completed' ? 'bg-green-100 text-green-800' : 
-                                                       ($transaction->status === 'pending' ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800') }}">
+                                                       ($transaction->status === 'pending' ? 'bg-blue-100 text-blue-800' : 'bg-red-100 text-red-800') }}">
                                                     {{ ucfirst($transaction->status) }}
                                                 </span>
                                             </div>
@@ -261,7 +261,7 @@
                     </div>
                     <div class="p-6 space-y-3">
                         <a href="{{ route('orders.invoice', $order->order_number) }}" 
-                           class="w-full inline-flex items-center justify-center px-4 py-2 bg-[#f59e0b] text-black rounded-lg hover:bg-[#d97706] transition-colors font-medium">
+                           class="w-full inline-flex items-center justify-center px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                             </svg>
@@ -330,11 +330,11 @@
             </div>
             
             <!-- Shop Information -->
-            <div class="mb-6 p-4 bg-[#f59e0b]/10 border border-[#f59e0b]/20 rounded-lg">
+            <div class="mb-6 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
                 <div class="text-center">
-                    <h4 class="font-bold text-white text-lg mb-2">MSK COMPUTERS</h4>
+                    <h4 class="font-bold text-white text-lg mb-2">LAPTOP EXPERT</h4>
                     <div class="text-sm text-gray-300 space-y-1">
-                        <div>No.296/3D, Delpe Junction, Ragama</div>
+                        <div>296/3/C, Delpe Junction, Ragama</div>
                         <div>Sri Lanka</div>
                     </div>
                 </div>
@@ -343,7 +343,7 @@
             <div class="space-y-4">
                 <!-- Phone Contact -->
                 <div class="flex items-center space-x-3 p-3 bg-gray-800/30 rounded-lg">
-                    <div class="w-10 h-10 bg-[#f59e0b] rounded-full flex items-center justify-center">
+                    <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
                         <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                         </svg>
@@ -351,8 +351,8 @@
                     <div>
                         <div class="font-medium text-white">Call Us</div>
                         <div class="space-y-1">
-                            <div><a href="tel:+94112959005" class="text-[#f59e0b] hover:text-[#d97706] text-sm">0112 95 9005</a></div>
-                            <div><a href="tel:+94777506939" class="text-[#f59e0b] hover:text-[#d97706] text-sm">0777 50 69 39</a></div>
+                            <div><a href="tel:+94112959005" class="text-blue-500 hover:text-blue-600 text-sm">0112 95 9005</a></div>
+                            <div><a href="tel:+94777506939" class="text-blue-500 hover:text-blue-600 text-sm">0777 50 69 39</a></div>
                         </div>
                         <div class="text-xs text-gray-400">Call us anytime</div>
                     </div>
@@ -383,19 +383,19 @@
                     </div>
                     <div>
                         <div class="font-medium text-white">Email Us</div>
-                        <a href="mailto:info@mskcomputers.lk?subject=Order Cancellation Request - {{ $order->order_number }}&body=Hi, I would like to cancel my order {{ $order->order_number }}. Please process this request and confirm." 
-                           class="text-blue-400 hover:text-blue-300 text-sm">info@mskcomputers.lk</a>
+                        <a href="mailto:info@laptopexpert.lk?subject=Order Cancellation Request - {{ $order->order_number }}&body=Hi, I would like to cancel my order {{ $order->order_number }}. Please process this request and confirm." 
+                           class="text-blue-400 hover:text-blue-300 text-sm">info@laptopexpert.lk</a>
                         <div class="text-xs text-gray-400">Expert support</div>
                     </div>
                 </div>
             </div>
 
-            <div class="mt-6 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+            <div class="mt-6 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
                 <div class="flex items-start space-x-2">
-                    <svg class="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z"/>
                     </svg>
-                    <div class="text-sm text-yellow-300">
+                    <div class="text-sm text-blue-300">
                         <strong>Important:</strong> Please include your order number <strong>{{ $order->order_number }}</strong> when contacting us for faster processing.
                     </div>
                 </div>

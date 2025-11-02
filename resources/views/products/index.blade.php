@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Products - MSK COMPUTERS')
-@section('description', 'Browse our extensive collection of computer hardware, gaming PCs, laptops, and accessories at MSK COMPUTERS.')
+@section('title', 'Laptops & Accessories - Brand New & Used Laptops in Sri Lanka | LAPTOP EXPERT')
+@section('description', 'Browse our extensive collection of brand new and used laptops, laptop accessories, parts, and services at Laptop Expert. Professional laptop repair and quality products in Sri Lanka.')
 
 @section('content')
 <!-- Page Header -->

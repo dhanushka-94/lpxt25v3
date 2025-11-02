@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Shopping Cart - MSK Computers')
+@section('title', 'Shopping Cart - LAPTOP EXPERT')
 
 @section('content')
 <div class="min-h-screen bg-black py-8">
@@ -22,7 +22,7 @@
                 <h3 class="text-xl font-semibold text-white mb-2">Your cart is empty</h3>
                 <p class="text-gray-400 mb-6">Looks like you haven't added any items to your cart yet.</p>
                 <a href="{{ route('categories.index') }}" 
-                   class="inline-flex items-center px-6 py-3 bg-[#f59e0b] text-black font-semibold rounded-lg hover:bg-[#d97706] transition-colors">
+                   class="inline-flex items-center px-6 py-3 bg-blue-500 text-black font-semibold rounded-lg hover:bg-blue-600 transition-colors">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                     </svg>
@@ -60,11 +60,11 @@
                                                 
                                                 @if($item->product->is_on_sale)
                                                     <div class="flex items-center space-x-2 mt-2">
-                                                        <span class="text-[#f59e0b] font-semibold text-sm sm:text-base">LKR {{ number_format($item->product->final_price, 2) }}</span>
+                                                        <span class="text-blue-500 font-semibold text-sm sm:text-base">LKR {{ number_format($item->product->final_price, 2) }}</span>
                                                         <span class="text-gray-500 line-through text-xs sm:text-sm">LKR {{ number_format($item->product->price, 2) }}</span>
                                                     </div>
                                                 @else
-                                                    <p class="text-[#f59e0b] font-semibold mt-2 text-sm sm:text-base">LKR {{ number_format($item->product->final_price, 2) }}</p>
+                                                    <p class="text-blue-500 font-semibold mt-2 text-sm sm:text-base">LKR {{ number_format($item->product->final_price, 2) }}</p>
                                                 @endif
                                             </div>
                                         </div>
@@ -93,7 +93,7 @@
                                                            value="{{ $item->quantity }}" 
                                                            min="1" 
                                                            max="{{ $item->product->stock_quantity }}"
-                                                           class="quantity-input w-16 h-10 sm:w-16 sm:h-8 bg-[#2c2c2e] border border-gray-700 text-white text-center text-sm rounded focus:ring-1 focus:ring-[#f59e0b] focus:border-[#f59e0b]"
+                                                           class="quantity-input w-16 h-10 sm:w-16 sm:h-8 bg-[#2c2c2e] border border-gray-700 text-white text-center text-sm rounded focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
                                                            data-item-id="{{ $item->id }}"
                                                            data-max-stock="{{ $item->product->stock_quantity }}">
                                                     <button type="button" 
@@ -121,7 +121,7 @@
                     <!-- Continue Shopping -->
                     <div class="mt-6">
                         <a href="{{ route('categories.index') }}" 
-                           class="inline-flex items-center text-[#f59e0b] hover:text-[#d97706] transition-colors">
+                           class="inline-flex items-center text-blue-500 hover:text-blue-600 transition-colors">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                             </svg>
@@ -155,7 +155,7 @@
                             
                             <div class="flex justify-between text-gray-300">
                                 <span>Shipping</span>
-                                <span class="text-amber-400 text-xs">
+                                <span class="text-blue-400 text-xs">
                                     Pay on delivery
                                 </span>
                             </div>
@@ -164,7 +164,7 @@
                             <div class="border-t border-gray-700 pt-4">
                                 <div class="flex justify-between items-center text-white font-bold text-xl mb-2">
                                     <span>Grand Total</span>
-                                    <span class="cart-total cart-page-total text-[#f59e0b]">LKR {{ number_format($cartTotal, 2) }}</span>
+                                    <span class="cart-total cart-page-total text-blue-500">LKR {{ number_format($cartTotal, 2) }}</span>
                             </div>
                                 <div class="flex justify-between text-gray-400 text-sm">
                                     <span>Final amount to pay</span>
@@ -175,7 +175,7 @@
                         
                         <div class="mt-6 space-y-3">
                             <a href="{{ route('checkout.index') }}" 
-                               class="w-full bg-[#f59e0b] text-black font-semibold py-3 px-4 rounded-lg hover:bg-[#d97706] transition-colors text-center block">
+                               class="w-full bg-blue-500 text-black font-semibold py-3 px-4 rounded-lg hover:bg-blue-600 transition-colors text-center block">
                                 Proceed to Checkout
                             </a>
                             <button type="button" 
@@ -195,17 +195,17 @@
                             <h3 class="text-base sm:text-lg font-medium text-white">Shipping Information</h3>
                         </div>
                         
-                        <div class="bg-amber-900/20 border border-amber-700/50 rounded-lg p-3 sm:p-4">
+                        <div class="bg-blue-900/20 border border-blue-700/50 rounded-lg p-3 sm:p-4">
                             <div class="flex items-start space-x-3">
-                                <svg class="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
                                 <div>
-                                    <h4 class="text-amber-400 font-medium text-sm mb-2">Delivery Charges</h4>
-                                    <p class="text-amber-300 text-xs sm:text-sm mb-3 leading-relaxed">
+                                    <h4 class="text-blue-400 font-medium text-sm mb-2">Delivery Charges</h4>
+                                    <p class="text-blue-300 text-xs sm:text-sm mb-3 leading-relaxed">
                                         Kindly note that delivery charges are due at the time of parcel receipt.
                                     </p>
-                                    <p class="text-amber-300 text-xs sm:text-sm font-medium leading-relaxed">
+                                    <p class="text-blue-300 text-xs sm:text-sm font-medium leading-relaxed">
                                         පාර්සලය ලැබුණු අවස්ථාවේදී බෙදා හැරීමේ ගාස්තු ගෙවිය යුතු බව කරුණාවෙන් සලකන්න.
                                     </p>
                                 </div>
@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cartTotalElement.style.color = '#000000';
             setTimeout(() => {
                 cartTotalElement.style.backgroundColor = '';
-                cartTotalElement.style.color = '#f59e0b';
+                cartTotalElement.style.color = '#3b82f6';
             }, 300);
             
             console.log('Text after update:', cartTotalElement.textContent);

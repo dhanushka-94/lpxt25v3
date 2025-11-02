@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Categories - MSK COMPUTERS')
-@section('description', 'Browse our computer hardware categories including gaming PCs, laptops, monitors, and components at MSK COMPUTERS.')
+@section('title', 'Categories - LAPTOP EXPERT')
+@section('description', 'Browse our computer hardware categories including gaming PCs, laptops, monitors, and components at LAPTOP EXPERT.')
 
 @section('content')
 <!-- Compact Header -->

@@ -260,7 +260,7 @@ class PaymentController extends Controller
         try {
             // CRITICAL: Prevent redirect loops by checking referer
             $referer = $request->header('referer', '');
-            if (str_contains($referer, '/cart') && str_contains($referer, 'mskcomputers.lk')) {
+            if (str_contains($referer, '/cart') && str_contains($referer, 'laptopexpert.lk')) {
                 Log::warning('🛡️ POTENTIAL REDIRECT LOOP DETECTED - WebXPay return called from cart page', [
                     'referer' => $referer,
                     'request_url' => $request->fullUrl(),
@@ -539,9 +539,9 @@ class PaymentController extends Controller
                 'amount' => $totalWithFee,
                 'firstName' => $firstName,
                 'lastName' => $lastName,
-                'email' => $order->customer_email ?: 'customer@mskcomputers.lk',
+                'email' => $order->customer_email ?: 'customer@laptopexpert.lk',
                 'contactNumber' => $order->customer_phone,
-                'description' => 'MSK Computers Order #' . $order->id,
+                'description' => 'Laptop Expert Order #' . $order->id,
             ];
 
             Log::info('Koko Pay customer data prepared', $customerData);

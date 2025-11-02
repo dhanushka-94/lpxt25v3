@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Checkout - MSK COMPUTERS')
-@section('description', 'Complete your purchase at MSK Computers with secure checkout and multiple payment options.')
+@section('title', 'Checkout - LAPTOP EXPERT')
+@section('description', 'Complete your purchase at Laptop Expert with secure checkout and multiple payment options.')
 
 @section('content')
 <div class="min-h-screen bg-[#0f0f0f] py-8">
@@ -71,7 +71,7 @@
                                            value="{{ old('first_name', Auth::user() ? explode(' ', Auth::user()->name)[0] : '') }}" 
                                        required
                                            placeholder="Enter your first name"
-                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                             </div>
                             
                             <div>
@@ -85,7 +85,7 @@
                                            value="{{ old('last_name', Auth::user() && str_contains(Auth::user()->name, ' ') ? substr(Auth::user()->name, strpos(Auth::user()->name, ' ') + 1) : '') }}" 
                                        required
                                            placeholder="Enter your last name"
-                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                                 </div>
                             </div>
                             
@@ -104,7 +104,7 @@
                                            placeholder="Enter your phone number (e.g., 0771234567)"
                                            pattern="^0[1-9][0-9]{8}$"
                                            title="Please enter a valid Sri Lankan phone number (10 digits starting with 0)"
-                                           class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                           class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                                     <div class="flex items-center mt-2 text-xs text-gray-400">
                                         <svg class="w-4 h-4 mr-1 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
@@ -124,7 +124,7 @@
                                            value="{{ old('customer_email', Auth::user()->email ?? '') }}" 
                                            required
                                            placeholder="Enter your email address"
-                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                                     <div class="flex items-center mt-2 text-xs text-gray-400">
                                         <svg class="w-4 h-4 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
@@ -152,7 +152,7 @@
                                        value="{{ old('billing_address_line_1') }}" 
                                        required
                                        placeholder="Enter your street address, house number"
-                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                             </div>
                             
                             <div class="md:col-span-2">
@@ -165,7 +165,7 @@
                                        name="billing_address_line_2" 
                                        value="{{ old('billing_address_line_2') }}"
                                        placeholder="Apartment, suite, building (optional)"
-                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                             </div>
                             
                             <div>
@@ -179,7 +179,7 @@
                                        value="{{ old('billing_city') }}" 
                                        required
                                        placeholder="Enter your city"
-                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                             </div>
                             
                             <div>
@@ -192,7 +192,7 @@
                                        name="billing_state" 
                                        value="{{ old('billing_state') }}" 
                                        placeholder="State or province (optional)"
-                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                             </div>
                             
                             <div>
@@ -205,7 +205,7 @@
                                        name="billing_postal_code" 
                                        value="{{ old('billing_postal_code') }}" 
                                        placeholder="Postal code (optional)"
-                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                             </div>
                             
                             <div>
@@ -218,7 +218,7 @@
                                        name="billing_country" 
                                        value="{{ old('billing_country', 'Sri Lanka') }}"
                                        placeholder="Country (optional)"
-                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                             </div>
                         </div>
                     </div>
@@ -230,7 +230,7 @@
                             <label class="flex items-center">
                                 <input type="checkbox" 
                                        id="different_shipping_address" 
-                                       class="h-4 w-4 text-[#f59e0b] focus:ring-[#f59e0b] border-gray-700 rounded bg-[#0f0f0f]">
+                                       class="h-4 w-4 text-[blue-500] focus:ring-[blue-500] border-gray-700 rounded bg-[#0f0f0f]">
                                 <span class="ml-2 text-sm text-gray-300">📦 Deliver to different address</span>
                             </label>
                         </div>
@@ -258,7 +258,7 @@
                                        name="shipping_address_line_1" 
                                        value="{{ old('shipping_address_line_1') }}" 
                                        placeholder="Enter delivery street address, house number"
-                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                             </div>
                             
                             <div class="md:col-span-2">
@@ -271,7 +271,7 @@
                                        name="shipping_address_line_2" 
                                        value="{{ old('shipping_address_line_2') }}"
                                        placeholder="Apartment, suite, building (optional)"
-                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                             </div>
                             
                             <div>
@@ -284,7 +284,7 @@
                                        name="shipping_city" 
                                        value="{{ old('shipping_city') }}" 
                                        placeholder="Enter delivery city"
-                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                             </div>
                             
                             <div>
@@ -297,7 +297,7 @@
                                        name="shipping_state" 
                                        value="{{ old('shipping_state') }}" 
                                        placeholder="State or province (optional)"
-                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                             </div>
                             
                             <div>
@@ -310,7 +310,7 @@
                                        name="shipping_postal_code" 
                                        value="{{ old('shipping_postal_code') }}" 
                                        placeholder="Postal code (optional)"
-                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                             </div>
                             
                             <div>
@@ -323,7 +323,7 @@
                                        name="shipping_country" 
                                        value="{{ old('shipping_country', 'Sri Lanka') }}"
                                        placeholder="Country (optional)"
-                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">
+                                       class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">
                             </div>
                         </div>
                     </div>
@@ -337,17 +337,17 @@
                             <h3 class="text-lg font-medium text-white">Shipping/Delivery Information</h3>
                         </div>
                         
-                        <div class="bg-amber-900/20 border border-amber-700/50 rounded-lg p-4">
+                        <div class="bg-blue-900/20 border border-blue-700/50 rounded-lg p-4">
                             <div class="flex items-start space-x-3">
-                                <svg class="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
                                 <div>
-                                    <h4 class="text-amber-400 font-medium text-sm mb-2">Important Notice - Delivery Charges</h4>
-                                    <p class="text-amber-300 text-sm mb-3">
+                                    <h4 class="text-blue-400 font-medium text-sm mb-2">Important Notice - Delivery Charges</h4>
+                                    <p class="text-blue-300 text-sm mb-3">
                                         Kindly note that delivery charges are due at the time of parcel receipt.
                                     </p>
-                                    <p class="text-amber-300 text-sm font-medium">
+                                    <p class="text-blue-300 text-sm font-medium">
                                         පාර්සලය ලැබුණු අවස්ථාවේදී බෙදා හැරීමේ ගාස්තු ගෙවිය යුතු බව කරුණාවෙන් සලකන්න.
                                     </p>
                                 </div>
@@ -475,8 +475,8 @@
                                 </div>
                             </label>
                             
-                            <!-- Credit/Debit Card Payment -->
-                            <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-primary-400 transition-colors cursor-pointer">
+                            {{-- TEMPORARILY HIDDEN: Credit/Debit Card Payment (WebXPay) --}}
+                            {{-- <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-primary-400 transition-colors cursor-pointer">
                                 <input type="radio" 
                                        name="payment_method" 
                                        value="webxpay" 
@@ -495,10 +495,10 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
                                     </svg>
                                 </div>
-                            </label>
+                            </label> --}}
                             
-                            <!-- Koko Pay - KOKO Option -->
-                            <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-purple-400 transition-colors cursor-pointer">
+                            {{-- TEMPORARILY HIDDEN: Koko Pay - KOKO Option --}}
+                            {{-- <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-purple-400 transition-colors cursor-pointer">
                                 <input type="radio" 
                                        name="payment_method" 
                                        value="kokopay"
@@ -515,7 +515,7 @@
                                 <div class="flex items-center space-x-2 text-purple-400">
                                     <img src="{{ asset('images/kokopay-logo.png') }}" alt="Koko Pay" class="h-6 w-auto">
                                 </div>
-                            </label>
+                            </label> --}}
 
                             <!-- Bank Transfer Details (shown only when Bank Transfer is selected) -->
                             <div class="bg-green-900/20 border border-green-700/50 rounded-lg p-4 bank-transfer-notice" style="display: none;">
@@ -534,15 +534,23 @@
                                                 </div>
                                                 <div>
                                                     <div class="text-gray-400 mb-1">Account Name:</div>
-                                                    <div class="text-white font-medium">MSK Computers</div>
+                                                    <div class="text-white font-medium">LAPTOP EXPERT (PVT) LTD</div>
                                                 </div>
                                                 <div>
                                                     <div class="text-gray-400 mb-1">Account Number:</div>
-                                                    <div class="text-white font-medium">1000578810</div>
+                                                    <div class="text-white font-medium">1000926420</div>
                                                 </div>
                                                 <div>
                                                     <div class="text-gray-400 mb-1">Branch:</div>
                                                     <div class="text-white font-medium">Ragama Branch</div>
+                                                </div>
+                                                <div>
+                                                    <div class="text-gray-400 mb-1">Branch Code:</div>
+                                                    <div class="text-white font-medium">221</div>
+                                                </div>
+                                                <div>
+                                                    <div class="text-gray-400 mb-1">Swift Code:</div>
+                                                    <div class="text-white font-medium">CCEYLKLX</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -553,7 +561,7 @@
                                             </p>
                                             <ul class="text-green-200 space-y-1 text-xs ml-4">
                                                 <li>• Please include your <strong>Order Number</strong> in the transfer reference</li>
-                                                <li>• Send the payment slip/screenshot to <strong>payments@mskcomputers.lk</strong></li>
+                                                <li>• Send the payment slip/screenshot to <strong>payments@laptopexpert.lk</strong></li>
                                                 <li>• Your order will be processed within 1-2 business days after payment confirmation</li>
                                                 <li>• Keep your payment receipt for tracking purposes</li>
                                             </ul>
@@ -609,7 +617,7 @@
                                   name="notes" 
                                   rows="3" 
                                   placeholder="Any special instructions for your order..."
-                                  class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#f59e0b] focus:border-transparent">{{ old('notes') }}</textarea>
+                                  class="w-full px-4 py-3 bg-[#0f0f0f] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[blue-500] focus:border-transparent">{{ old('notes') }}</textarea>
                     </div>
                 </div>
 
@@ -662,7 +670,7 @@
                             
                             <div class="flex justify-between text-sm">
                                 <span class="text-gray-400">Shipping</span>
-                                <span class="text-amber-400 text-xs">
+                                <span class="text-blue-400 text-xs">
                                     Pay on delivery
                                 </span>
                             </div>
@@ -699,7 +707,7 @@
                             <div class="border-t border-gray-700 pt-2">
                                 <div class="flex justify-between">
                                     <span class="text-lg font-medium text-white">Order Total</span>
-                                    <span class="text-lg font-bold text-[#f59e0b] order-total">LKR {{ number_format($total, 2) }}</span>
+                                    <span class="text-lg font-bold text-[blue-500] order-total">LKR {{ number_format($total, 2) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -710,16 +718,16 @@
                                 <input type="checkbox" 
                                        name="terms" 
                                        required
-                                       class="h-4 w-4 text-[#f59e0b] focus:ring-[#f59e0b] border-gray-700 rounded bg-[#0f0f0f] mt-0.5">
+                                       class="h-4 w-4 text-[blue-500] focus:ring-[blue-500] border-gray-700 rounded bg-[#0f0f0f] mt-0.5">
                                 <span class="ml-3 text-sm text-gray-300">
-                                    I agree to the <a href="{{ route('terms-of-service') }}" target="_blank" class="text-[#f59e0b] hover:text-[#d97706] underline">Terms of Service</a> and 
-                                    <a href="{{ route('privacy-policy') }}" target="_blank" class="text-[#f59e0b] hover:text-[#d97706] underline">Privacy Policy</a>
+                                    I agree to the <a href="{{ route('terms-of-service') }}" target="_blank" class="text-[blue-500] hover:text-[blue-600] underline">Terms of Service</a> and 
+                                    <a href="{{ route('privacy-policy') }}" target="_blank" class="text-[blue-500] hover:text-[blue-600] underline">Privacy Policy</a>
                                 </span>
                             </label>
                             
                             <button type="submit" 
                                     id="submit-button"
-                                    class="w-full py-4 px-6 border border-transparent text-lg font-medium rounded-lg text-black bg-gradient-to-r from-[#f59e0b] to-[#fbbf24] hover:from-[#d97706] hover:to-[#f59e0b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f59e0b] transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2">
+                                    class="w-full py-4 px-6 border border-transparent text-lg font-medium rounded-lg text-black bg-gradient-to-r from-[blue-500] to-[blue-400] hover:from-[blue-600] hover:to-[blue-500] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[blue-500] transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="submit-icon">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
                                 </svg>
@@ -817,7 +825,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Update button for payment
             if (submitButton) {
-                submitButton.className = 'w-full py-4 px-6 border border-transparent text-lg font-medium rounded-lg text-black bg-gradient-to-r from-[#f59e0b] to-[#fbbf24] hover:from-[#d97706] hover:to-[#f59e0b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f59e0b] transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2';
+                submitButton.className = 'w-full py-4 px-6 border border-transparent text-lg font-medium rounded-lg text-black bg-gradient-to-r from-[blue-500] to-[blue-400] hover:from-[blue-600] hover:to-[blue-500] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[blue-500] transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2';
             }
             if (submitText) submitText.textContent = 'Buy Now';
             if (submitIcon) {
@@ -1378,7 +1386,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         errorMessage += '• Billing City\n';
                         break;
                     case 'payment_method':
-                        errorMessage += '• Payment Method (select Credit/Debit Card, Koko Pay, or Bank Transfer)\n';
+                        errorMessage += '• Payment Method (select Bank Transfer)\n';
                         break;
                     case 'terms':
                         errorMessage += '• Terms of Service agreement (check the checkbox)\n';

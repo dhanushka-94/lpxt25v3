@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Checkout Payment - MSK Computers')
+@section('title', 'Checkout Payment - LAPTOP EXPERT')
 
 @section('content')
 <div class="min-h-screen bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1c] to-[#0f0f0f] py-12">
@@ -290,8 +290,8 @@
                                 </div>
                             </label>
 
-                            <!-- WebXPay -->
-                            <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-primary-400 transition-colors cursor-pointer">
+                            {{-- TEMPORARILY HIDDEN: WebXPay --}}
+                            {{-- <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-primary-400 transition-colors cursor-pointer">
                                 <input type="radio" 
                                        name="payment_method" 
                                        value="webxpay"
@@ -310,10 +310,10 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
                                     </svg>
                                 </div>
-                            </label>
+                            </label> --}}
 
-                            <!-- KokoPay -->
-                            <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-purple-400 transition-colors cursor-pointer">
+                            {{-- TEMPORARILY HIDDEN: KokoPay --}}
+                            {{-- <label class="flex items-center p-4 border border-gray-700 rounded-lg hover:border-purple-400 transition-colors cursor-pointer">
                                 <input type="radio" 
                                        name="payment_method" 
                                        value="kokopay"
@@ -328,9 +328,9 @@
                                     <div class="text-sm text-gray-400">Split into 3 easy payments • 10% transaction fee</div>
                                 </div>
                                 <div class="flex items-center space-x-2 text-purple-400">
-                                    <img src="{{ asset('images/kokopay-logo.png') }}" alt="Koko Pay" class="h-6 w-auto">
+                                    <img src="/images/kokopay-logo.png" alt="Koko Pay" class="h-6 w-auto">
                                 </div>
-                            </label>
+                            </label> --}}
                         </div>
                         
                         <!-- Bank Transfer Details (shown when bank transfer is selected) -->
@@ -351,7 +351,7 @@
                                         </div>
                                         <div>
                                             <div class="text-gray-400 mb-1">Account Name:</div>
-                                            <div class="text-white font-medium">MSK Computers</div>
+                                            <div class="text-white font-medium">LAPTOP EXPERT (PVT) LTD</div>
                                         </div>
                                     </div>
                                 </div>
@@ -359,11 +359,23 @@
                                     <div class="space-y-3">
                                         <div>
                                             <div class="text-gray-400 mb-1">Account Number:</div>
-                                            <div class="text-white font-medium">1000578810</div>
+                                            <div class="text-white font-medium">1000926420</div>
                                         </div>
                                         <div>
                                             <div class="text-gray-400 mb-1">Branch:</div>
                                             <div class="text-white font-medium">Ragama Branch</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-[#0f0f0f] rounded-lg p-4">
+                                    <div class="space-y-3">
+                                        <div>
+                                            <div class="text-gray-400 mb-1">Branch Code:</div>
+                                            <div class="text-white font-medium">221</div>
+                                        </div>
+                                        <div>
+                                            <div class="text-gray-400 mb-1">Swift Code:</div>
+                                            <div class="text-white font-medium">CCEYLKLX</div>
                                         </div>
                                     </div>
                                 </div>
@@ -444,13 +456,13 @@
                             <!-- Shipping -->
                             <div class="flex justify-between text-sm">
                                 <span class="text-gray-400">Shipping:</span>
-                                <span class="text-amber-400 text-xs">Pay on delivery</span>
+                                <span class="text-blue-400 text-xs">Pay on delivery</span>
                             </div>
                             
                             <!-- Transaction Fee (dynamic based on payment method) -->
                             <div class="flex justify-between text-sm" id="transaction-fee-row" style="display: none;">
-                                <span class="text-yellow-400" id="transaction-fee-label">Transaction Fee:</span>
-                                <span class="text-yellow-400" id="transaction-fee-amount">+LKR 0.00</span>
+                                <span class="text-blue-400" id="transaction-fee-label">Transaction Fee:</span>
+                                <span class="text-blue-400" id="transaction-fee-amount">+LKR 0.00</span>
                             </div>
                             
                             <!-- Order Total -->

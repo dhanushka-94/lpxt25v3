@@ -33,7 +33,7 @@
         }
         
         .header {
-            border-bottom: 3px solid #f59e0b;
+            border-bottom: 3px solid #3b82f6;
             padding-bottom: 20px;
             margin-bottom: 30px;
         }
@@ -59,7 +59,7 @@
         
         .company-tagline {
             font-size: 16px;
-            color: #f59e0b;
+            color: #3b82f6;
             margin-bottom: 15px;
             font-style: italic;
             font-weight: 500;
@@ -283,12 +283,12 @@
         <div class="header">
             <div class="company-info">
                 <div class="company-logo">
-                    <div class="company-name">MSK COMPUTERS</div>
+                    <div class="company-name">LAPTOP EXPERT</div>
                     <div class="company-tagline">Empowering Tech Solutions, Every Day.</div>
                     <div class="company-details">
-                        <div>No.296/3D, Delpe Junction, Ragama, Sri Lanka</div>
-                        <div>0112 95 9005 / 0777 50 69 39</div>
-                        <div>info@mskcomputers.lk</div>
+                        <div>296/3/C, Delpe Junction, Ragama, Sri Lanka</div>
+                        <div>076 444 222 1 / 011 296 066 0</div>
+                        <div>info@laptopexpert.lk</div>
                     </div>
                 </div>
                 <div class="quotation-info">
@@ -428,7 +428,7 @@
 
         <!-- Footer -->
         <div class="footer">
-            <p>Thank you for considering <span class="highlight">MSK COMPUTERS</span> for your technology needs.</p>
+            <p>Thank you for considering <span class="highlight">LAPTOP EXPERT</span> for your technology needs.</p>
             <p>This is a computer-generated quotation and does not require a signature.</p>
         </div>
     </div>

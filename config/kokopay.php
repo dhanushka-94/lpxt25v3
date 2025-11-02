@@ -18,7 +18,7 @@ return [
     'private_key' => env('KOKOPAY_PRIVATE_KEY'),
     'public_key' => env('KOKOPAY_PUBLIC_KEY'),
     
-    'plugin_name' => env('KOKOPAY_PLUGIN_NAME', 'MSK_Computers'),
+    'plugin_name' => env('KOKOPAY_PLUGIN_NAME', 'Laptop_Expert'),
     'plugin_version' => env('KOKOPAY_PLUGIN_VERSION', '1'),
     
     'currency' => env('KOKOPAY_CURRENCY', 'LKR'),

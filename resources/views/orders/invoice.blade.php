@@ -1,22 +1,22 @@
 @extends('layouts.invoice')
 
-@section('title', 'Invoice #' . $order->order_number . ' - MSK COMPUTERS')
+@section('title', 'Invoice #' . $order->order_number . ' - LAPTOP EXPERT')
 
 @section('content')
 <!-- Invoice Document -->
 <div class="bg-white rounded-xl shadow-lg overflow-hidden print-break-inside-avoid">
             <!-- Header Section -->
-            <div class="bg-gradient-to-r from-[#f59e0b] to-[#d97706] p-8">
+            <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-8">
                 <div class="flex justify-between items-start">
                     <div>
-                        <img src="{{ asset('msk-computers-logo-color.png') }}" alt="MSK Computers" class="h-12 mb-4">
+                        <img src="{{ asset('laptop-expert.webp') }}" alt="Laptop Expert" class="h-20 mb-4">
                         <h1 class="text-3xl font-bold text-white">INVOICE</h1>
-                        <p class="text-orange-100">Invoice #{{ $order->order_number }}</p>
+                        <p class="text-blue-100">Invoice #{{ $order->order_number }}</p>
                     </div>
                     <div class="text-right text-white">
-                        <h2 class="text-xl font-semibold mb-2">MSK COMPUTERS</h2>
-                        <p class="text-orange-100">Your Trusted IT Partner</p>
-                        <p class="text-orange-100">Sri Lanka's Leading Computer Store</p>
+                        <h2 class="text-xl font-semibold mb-2">LAPTOP EXPERT</h2>
+                        <p class="text-blue-100">Your Trusted IT Partner</p>
+                        <p class="text-blue-100">Sri Lanka's Leading Computer Store</p>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                                 <span class="text-gray-800">Payment Status:</span>
                                 <span class="font-medium capitalize
                                     {{ $order->payment_status === 'paid' ? 'text-green-600' : 
-                                       ($order->payment_status === 'failed' ? 'text-red-600' : 'text-yellow-600') }}">
+                                       ($order->payment_status === 'failed' ? 'text-red-600' : 'text-blue-600') }}">
                                     {{ ucfirst(str_replace('_', ' ', $order->payment_status)) }}
                                 </span>
                             </div>
@@ -186,28 +186,28 @@
                             <h4 class="font-semibold text-gray-900 mb-4">Company Information:</h4>
                             <div class="text-sm text-gray-800 space-y-2">
                                 <div class="flex items-start space-x-2">
-                                    <svg class="w-4 h-4 text-[#f59e0b] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-6m-2 0h6m-6 0H5m14 0v-5H9v5"/>
                                     </svg>
                                     <div>
-                                        <p class="font-medium text-gray-900">MSK COMPUTERS</p>
+                                        <p class="font-medium text-gray-900">LAPTOP EXPERT</p>
                                         <p class="text-gray-700">Your Trusted IT Partner</p>
                                     </div>
                                 </div>
                                 
                                 <div class="flex items-start space-x-2">
-                                    <svg class="w-4 h-4 text-[#f59e0b] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                                     </svg>
                                     <div>
-                                        <p class="text-gray-800">No.296/3D, Delpe Junction</p>
+                                        <p class="text-gray-800">296/3/C, Delpe Junction, Ragama</p>
                                         <p class="text-gray-800">Ragama, Sri Lanka</p>
                                     </div>
                                 </div>
                                 
                                 <div class="flex items-start space-x-2">
-                                    <svg class="w-4 h-4 text-[#f59e0b] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                                     </svg>
                                     <div>
@@ -217,14 +217,14 @@
                                 </div>
                                 
                                 <div class="flex items-start space-x-2">
-                                    <svg class="w-4 h-4 text-[#f59e0b] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                                     </svg>
-                                    <p class="text-gray-800">info@mskcomputers.lk</p>
+                                    <p class="text-gray-800">info@laptopexpert.lk</p>
                                 </div>
                                 
                                 <div class="flex items-start space-x-2">
-                                    <svg class="w-4 h-4 text-[#f59e0b] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"/>
                                     </svg>
                                     <p class="text-gray-800">www.mskcomputers.lk</p>
@@ -234,7 +234,7 @@
                         <div>
                             <h4 class="font-semibold text-gray-900 mb-4">Terms & Conditions:</h4>
                             <div class="text-xs text-gray-700 space-y-2">
-                                <p>• Thank you for choosing MSK Computers - Your Trusted IT Partner</p>
+                                <p>• Thank you for choosing LAPTOP EXPERT - Your Trusted IT Partner</p>
                                 <p>• All sales are final unless otherwise specified</p>
                                 <p>• Products come with manufacturer warranty</p>
                                 <p>• For technical support and inquiries, please contact us</p>
@@ -252,7 +252,7 @@
 <!-- Action Buttons (Hidden in print) -->
 <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center no-print">
     <button onclick="window.print()" 
-            class="inline-flex items-center px-8 py-4 bg-[#f59e0b] text-white rounded-lg hover:bg-[#d97706] transition-colors font-bold shadow-lg text-lg">
+            class="inline-flex items-center px-8 py-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-bold shadow-lg text-lg">
         <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
         </svg>

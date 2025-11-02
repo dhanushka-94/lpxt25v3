@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Complete Card Payment - MSK Computers')
+@section('title', 'Complete Card Payment - LAPTOP EXPERT')
 
 @section('content')
 <div class="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] py-8">
@@ -9,7 +9,7 @@
         <!-- Header -->
         <div class="text-center mb-8">
             <div class="flex items-center justify-center space-x-4 mb-6">
-                <img src="{{ asset('msk-computers-logo-color.png') }}" alt="MSK Computers" class="w-16 h-16">
+                <img src="{{ asset('laptop-expert.webp') }}" alt="Laptop Expert" class="w-24 h-24">
                 <div class="text-4xl text-gray-400">→</div>
                 <div class="bg-white p-3 rounded-lg shadow-lg">
                     <img src="{{ asset('images/webxpay-logo.webp') }}" alt="WebXPay" class="h-10">
@@ -76,12 +76,12 @@
                     
                     <div class="flex justify-between text-sm">
                         <span class="text-gray-400">Shipping:</span>
-                        <span class="text-amber-400 text-xs">Pay on delivery</span>
+                        <span class="text-blue-400 text-xs">Pay on delivery</span>
                     </div>
                     
                     <div class="flex justify-between text-sm">
-                        <span class="text-yellow-400">Transaction Fee (3%):</span>
-                        <span class="text-yellow-400">+LKR {{ number_format($transactionFee, 2) }}</span>
+                        <span class="text-blue-400">Transaction Fee (3%):</span>
+                        <span class="text-blue-400">+LKR {{ number_format($transactionFee, 2) }}</span>
                     </div>
                     
                     <div class="border-t border-gray-600 pt-3">

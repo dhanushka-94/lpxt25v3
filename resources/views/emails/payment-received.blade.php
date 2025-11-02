@@ -115,10 +115,10 @@ My Account Dashboard
 
 ## Thank You!
 
-Thank you for your payment and for choosing MSK Computers. We appreciate your business and look forward to delivering your order soon!
+Thank you for your payment and for choosing LAPTOP EXPERT. We appreciate your business and look forward to delivering your order soon!
 
 Best regards,  
-MSK Computers Payments Team
+LAPTOP EXPERT Payments Team
 
 @component('mail::subcopy')
 Payment confirmed: {{ now()->format('F d, Y \a\t g:i A') }}  

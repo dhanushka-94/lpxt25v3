@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'My Orders - MSK COMPUTERS')
-@section('description', 'View and track your MSK Computers orders, download invoices, and manage your purchase history.')
+@section('title', 'My Orders - LAPTOP EXPERT')
+@section('description', 'View and track your LAPTOP EXPERT orders, download invoices, and manage your purchase history.')
 
 @section('content')
 <div class="min-h-screen bg-[#0f0f0f] py-8">
@@ -213,9 +213,9 @@
             <!-- Shop Information -->
             <div class="mb-6 p-4 bg-[#f59e0b]/10 border border-[#f59e0b]/20 rounded-lg">
                 <div class="text-center">
-                    <h4 class="font-bold text-white text-lg mb-2">MSK COMPUTERS</h4>
+                    <h4 class="font-bold text-white text-lg mb-2">LAPTOP EXPERT</h4>
                     <div class="text-sm text-gray-300 space-y-1">
-                        <div>No.296/3D, Delpe Junction, Ragama</div>
+                        <div>296/3/C, Delpe Junction, Ragama</div>
                         <div>Sri Lanka</div>
                     </div>
                 </div>
@@ -262,18 +262,18 @@
                     </div>
                     <div>
                         <div class="font-medium text-white">Email Us</div>
-                        <a href="#" id="emailLink" class="text-blue-400 hover:text-blue-300 text-sm">info@mskcomputers.lk</a>
+                        <a href="#" id="emailLink" class="text-blue-400 hover:text-blue-300 text-sm">info@laptopexpert.lk</a>
                         <div class="text-xs text-gray-400">Expert support</div>
                     </div>
                 </div>
             </div>
 
-            <div class="mt-6 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+            <div class="mt-6 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
                 <div class="flex items-start space-x-2">
-                    <svg class="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z"/>
                     </svg>
-                    <div class="text-sm text-yellow-300">
+                    <div class="text-sm text-blue-300">
                         <strong>Important:</strong> Please include your order number <strong id="warningOrderNumber"></strong> when contacting us for faster processing.
                     </div>
                 </div>
@@ -311,7 +311,7 @@ function showCancelContactInfo(orderNumber) {
     // Update email link
     const emailSubject = `Order Cancellation Request - ${orderNumber}`;
     const emailBody = `Hi, I would like to cancel my order ${orderNumber}. Please process this request and confirm.`;
-    const emailUrl = `mailto:info@mskcomputers.lk?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    const emailUrl = `mailto:info@laptopexpert.lk?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
     document.getElementById('emailLink').href = emailUrl;
     
     // Show modal

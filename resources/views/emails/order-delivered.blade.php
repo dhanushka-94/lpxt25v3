@@ -65,7 +65,7 @@ Register Products
 @component('mail::panel')
 **Feedback Request** ⭐
 
-How was your experience with MSK Computers?  
+How was your experience with LAPTOP EXPERT?  
 Your feedback helps us improve our service!
 
 **Rate Your Experience:**
@@ -86,15 +86,15 @@ Reorder Items
 
 Stay updated with our latest products and offers:
 
-- **Facebook:** MSK Computers
-- **Instagram:** @mskcomputers  
-- **YouTube:** MSK Computers Sri Lanka
+- **Facebook:** LAPTOP EXPERT
+- **Instagram:** @laptopexpert
+- **YouTube:** LAPTOP EXPERT Sri Lanka
 - **Website:** www.mskcomputers.lk
 
-Thank you for choosing MSK Computers! We hope you love your new products.
+Thank you for choosing LAPTOP EXPERT! We hope you love your new products.
 
 Best regards,  
-The MSK Computers Team
+The LAPTOP EXPERT Team
 
 @component('mail::subcopy')
 Order completed: {{ $order->delivered_at->format('F d, Y \a\t g:i A') }}  

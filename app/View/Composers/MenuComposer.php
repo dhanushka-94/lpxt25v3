@@ -4,6 +4,7 @@ namespace App\View\Composers;
 
 use App\Models\SmaCategory;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Cache;
 
 class MenuComposer
 {
@@ -12,20 +13,35 @@ class MenuComposer
      */
     public function compose(View $view): void
     {
-        $menuCategories = SmaCategory::mainCategories()
-            ->with(['subcategories' => function($query) {
-                $query->withCount(['subcategoryProducts as subcategory_products_count' => function($q) {
-                    $q->where('hide', 0);
-                }]);
-            }])
-            ->withCount(['products as products_count' => function($query) {
-                $query->where('hide', 0);
-            }])
-            ->get();
+        try {
+            // Use cached menu categories to avoid database queries on every page load
+            $menuCategories = Cache::remember('menu_categories_with_subcategories', 60, function () {
+                $categories = SmaCategory::mainCategories()
+                    ->with(['subcategories' => function($query) {
+                        $query->withCount(['subcategoryProducts as subcategory_products_count' => function($q) {
+                            $q->where('hide', 0);
+                        }]);
+                    }])
+                    ->withCount(['products as products_count' => function($query) {
+                        $query->where('hide', 0);
+                    }])
+                    ->get();
 
-        // Apply config-based ordering without touching database
-        $menuCategories = \App\Services\CategoryOrderingService::sortCategoriesWithSubcategories($menuCategories);
+                // Apply config-based ordering without touching database
+                try {
+                    return \App\Services\CategoryOrderingService::sortCategoriesWithSubcategories($categories);
+                } catch (\Exception $e) {
+                    // If sorting fails, return categories as-is
+                    \Log::error('MenuComposer sorting error: ' . $e->getMessage());
+                    return $categories;
+                }
+            });
 
-        $view->with('menuCategories', $menuCategories);
+            $view->with('menuCategories', $menuCategories);
+        } catch (\Exception $e) {
+            // If everything fails, provide empty collection to prevent 500 error
+            \Log::error('MenuComposer error: ' . $e->getMessage());
+            $view->with('menuCategories', collect([]));
+        }
     }
 }

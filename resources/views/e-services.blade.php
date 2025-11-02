@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
-@section('title', 'E-Services - Premium Web & Radio Hosting | MSK COMPUTERS')
-@section('description', 'Premium hosting solutions with enterprise-grade infrastructure. Web hosting, radio streaming, VPS servers, and comprehensive digital services with 24/7 support.')
-@section('keywords', 'web hosting Sri Lanka, radio hosting, VPS servers, cloud hosting, MSK Computers hosting, premium hosting solutions')
+@section('title', 'E-Services - LAPTOP EXPERT | Laptop Sales, Repair & Service Online')
+@section('description', 'Laptop Expert E-Services - Online platform for brand new and used laptops, laptop repair services, and laptop accessories in Sri Lanka. Book services and shop online.')
+@section('keywords', 'laptop services online, laptop repair booking, laptop accessories online, brand new laptops, used laptops, Laptop Expert, Sri Lanka')
 
 @section('content')
 <!-- Hero Section -->
 <section class="py-16 bg-gradient-to-b from-black to-[#0f0f0f] relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-[#f59e0b]/5 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[blue-500]/5 to-transparent"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div class="text-center mb-12">
-            <div class="inline-flex items-center px-4 py-2 bg-[#f59e0b]/10 border border-[#f59e0b]/20 rounded-lg text-[#f59e0b] text-sm font-medium mb-6">
+            <div class="inline-flex items-center px-4 py-2 bg-[blue-500]/10 border border-[blue-500]/20 rounded-lg text-[blue-500] text-sm font-medium mb-6">
                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
                 </svg>
                 Premium E-Services
             </div>
             <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                Premium Web & <span class="text-[#f59e0b]">Radio Hosting</span>
+                Premium Web & <span class="text-[blue-500]">Radio Hosting</span>
             </h1>
             <h2 class="text-2xl md:text-3xl font-semibold text-gray-300 mb-8">For Your Success</h2>
             <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
@@ -25,18 +25,41 @@
             </p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://e-services.mskcomputers.lk/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 bg-[#f59e0b] text-black font-bold rounded-lg hover:bg-[#d97706] transition-colors transform hover:scale-105">
+                <a href="https://e-services.mskcomputers.lk/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
                     Visit E-Services Portal
                 </a>
-                <a href="tel:0112959005" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-bold rounded-lg border border-white/20 hover:border-[#f59e0b]/50 hover:text-[#f59e0b] transition-colors">
+                <a href="tel:0764442221" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-bold rounded-lg border border-white/20 hover:border-[blue-500]/50 hover:text-[blue-500] transition-colors">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                     </svg>
-                    Call Now: 0112 95 9005
+                    Call Now: 076 444 222 1
                 </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Company Relationship Banner -->
+<section class="py-12 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-blue-500/10 border-y border-blue-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-[#1a1a1c]/50 border border-blue-500/30 rounded-xl p-6 md:p-8">
+            <div class="flex flex-col md:flex-row items-center gap-6">
+                <div class="flex-shrink-0">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl flex items-center justify-center border border-blue-500/30">
+                        <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex-1 text-center md:text-left">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-2">Powered by MSK COMPUTERS</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        LAPTOP EXPERT's Premium Web & Radio Hosting services are proudly delivered under the trusted umbrella of <span class="text-blue-400 font-semibold">MSK COMPUTERS</span>, our mother company. With decades of industry experience and expertise, MSK COMPUTERS provides the robust infrastructure and technical excellence that powers our hosting solutions, ensuring enterprise-grade reliability and performance for all our clients.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -47,42 +70,42 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <!-- 99.9% Uptime -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8 text-center hover:border-[#f59e0b]/30 transition-all duration-300">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8 text-center hover:border-[blue-500]/30 transition-all duration-300">
                 <div class="w-16 h-16 bg-green-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                 </div>
-                <h3 class="text-3xl font-bold text-[#f59e0b] mb-2">99.9%</h3>
+                <h3 class="text-3xl font-bold text-[blue-500] mb-2">99.9%</h3>
                 <p class="text-white font-semibold">Uptime Guarantee</p>
             </div>
 
             <!-- 500+ Clients -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8 text-center hover:border-[#f59e0b]/30 transition-all duration-300">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8 text-center hover:border-[blue-500]/30 transition-all duration-300">
                 <div class="w-16 h-16 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                     </svg>
                 </div>
-                <h3 class="text-3xl font-bold text-[#f59e0b] mb-2">500+</h3>
+                <h3 class="text-3xl font-bold text-[blue-500] mb-2">500+</h3>
                 <p class="text-white font-semibold">Satisfied Clients</p>
             </div>
 
             <!-- 24/7 Support -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8 text-center hover:border-[#f59e0b]/30 transition-all duration-300">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8 text-center hover:border-[blue-500]/30 transition-all duration-300">
                 <div class="w-16 h-16 bg-purple-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
                     </svg>
                 </div>
-                <h3 class="text-3xl font-bold text-[#f59e0b] mb-2">24/7</h3>
+                <h3 class="text-3xl font-bold text-[blue-500] mb-2">24/7</h3>
                 <p class="text-white font-semibold">Support Available</p>
             </div>
 
             <!-- SSD Performance -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8 text-center hover:border-[#f59e0b]/30 transition-all duration-300">
-                <div class="w-16 h-16 bg-[#f59e0b]/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8 text-center hover:border-[blue-500]/30 transition-all duration-300">
+                <div class="w-16 h-16 bg-[blue-500]/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-[blue-500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                     </svg>
                 </div>
@@ -103,7 +126,7 @@
         
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- Premium Web Hosting -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8 relative hover:border-[#f59e0b]/30 transition-all duration-300">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8 relative hover:border-[blue-500]/30 transition-all duration-300">
                 <div class="absolute top-4 right-4">
                     <span class="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">Popular</span>
                 </div>
@@ -123,37 +146,55 @@
                         <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        99.9% Uptime Guarantee
+                        99.9% Uptime SLA Guarantee
                     </div>
                     <div class="flex items-center text-gray-300">
                         <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        SSL Certificates Included
+                        Free SSL Certificates (Let's Encrypt)
                     </div>
                     <div class="flex items-center text-gray-300">
                         <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        Daily Backups
+                        Automated Daily Backups (30-day retention)
                     </div>
                     <div class="flex items-center text-gray-300">
                         <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        24/7 Technical Support
+                        24/7 Technical Support (Phone, Email, Ticket)
                     </div>
                     <div class="flex items-center text-gray-300">
                         <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        cPanel Control Panel
+                        cPanel/WHM Control Panel (Latest Version)
                     </div>
                     <div class="flex items-center text-gray-300">
                         <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        Email Hosting Included
+                        Unlimited Email Accounts & Forwarding
+                    </div>
+                    <div class="flex items-center text-gray-300">
+                        <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        Unlimited Bandwidth & Storage
+                    </div>
+                    <div class="flex items-center text-gray-300">
+                        <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        One-Click Install (WordPress, Joomla, etc.)
+                    </div>
+                    <div class="flex items-center text-gray-300">
+                        <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        PHP 7.4, 8.0, 8.1, 8.2 Support
                     </div>
                 </div>
                 
@@ -162,68 +203,80 @@
                 </a>
             </div>
 
-            <!-- Radio Hosting Solutions -->
-            <div class="bg-[#1a1a1c] border border-[#f59e0b]/50 rounded-xl p-8 relative hover:border-[#f59e0b]/70 transition-all duration-300 transform scale-105">
+            <!-- Premium Radio Hosting Solutions -->
+            <div class="bg-[#1a1a1c] border border-[blue-500]/50 rounded-xl p-8 relative hover:border-[blue-500]/70 transition-all duration-300 transform scale-105">
                 <div class="absolute top-4 right-4">
-                    <span class="bg-[#f59e0b] text-black text-xs font-bold px-3 py-1 rounded-full">Premium</span>
+                    <span class="bg-[blue-500] text-black text-xs font-bold px-3 py-1 rounded-full">Premium</span>
                 </div>
                 
                 <div class="mb-6">
-                    <div class="w-16 h-16 bg-[#f59e0b]/20 rounded-lg flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-16 h-16 bg-[blue-500]/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-[blue-500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-2">Radio Hosting Solutions</h3>
-                    <p class="text-gray-400">Professional radio streaming and broadcasting services</p>
+                    <h3 class="text-2xl font-bold text-white mb-2">Premium Radio Hosting</h3>
+                    <p class="text-gray-400">Professional internet radio streaming & broadcasting services</p>
                 </div>
                 
                 <div class="space-y-3 mb-8">
                     <div class="flex items-center text-gray-300">
-                        <svg class="w-5 h-5 text-[#f59e0b] mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <svg class="w-5 h-5 text-[blue-500] mr-3" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        High-Quality Streaming
+                        High-Quality Audio Streaming (128kbps to 320kbps)
                     </div>
                     <div class="flex items-center text-gray-300">
-                        <svg class="w-5 h-5 text-[#f59e0b] mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <svg class="w-5 h-5 text-[blue-500] mr-3" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        Global CDN Network
+                        Global CDN Network for Low Latency
                     </div>
                     <div class="flex items-center text-gray-300">
-                        <svg class="w-5 h-5 text-[#f59e0b] mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <svg class="w-5 h-5 text-[blue-500] mr-3" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        Real-time Analytics
+                        Real-time Listener Analytics Dashboard
                     </div>
                     <div class="flex items-center text-gray-300">
-                        <svg class="w-5 h-5 text-[#f59e0b] mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <svg class="w-5 h-5 text-[blue-500] mr-3" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        Mobile App Support
+                        Mobile Apps (iOS & Android Compatible)
                     </div>
                     <div class="flex items-center text-gray-300">
-                        <svg class="w-5 h-5 text-[#f59e0b] mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <svg class="w-5 h-5 text-[blue-500] mr-3" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        Auto DJ Features
+                        Auto DJ with Playlist Management
                     </div>
                     <div class="flex items-center text-gray-300">
-                        <svg class="w-5 h-5 text-[#f59e0b] mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <svg class="w-5 h-5 text-[blue-500] mr-3" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                         </svg>
-                        Unlimited Listeners
+                        Unlimited Concurrent Listeners
+                    </div>
+                    <div class="flex items-center text-gray-300">
+                        <svg class="w-5 h-5 text-[blue-500] mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        Custom Radio Player Widget
+                    </div>
+                    <div class="flex items-center text-gray-300">
+                        <svg class="w-5 h-5 text-[blue-500] mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        Shoutcast/Icecast Support
                     </div>
                 </div>
                 
-                <a href="https://e-services.mskcomputers.lk/" target="_blank" rel="noopener noreferrer" class="block w-full bg-[#f59e0b] text-black font-bold py-3 px-6 rounded-lg text-center hover:bg-[#d97706] transition-colors">
+                <a href="https://e-services.mskcomputers.lk/" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 px-6 rounded-lg text-center hover:from-blue-600 hover:to-blue-700 transition-all shadow-lg shadow-blue-500/20">
                     Learn More
                 </a>
             </div>
 
             <!-- VPS & Dedicated Servers -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8 relative hover:border-[#f59e0b]/30 transition-all duration-300">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-8 relative hover:border-[blue-500]/30 transition-all duration-300">
                 <div class="absolute top-4 right-4">
                     <span class="bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full">Enterprise</span>
                 </div>
@@ -295,7 +348,7 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <!-- Remote Support -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 hover:border-[#f59e0b]/30 transition-all duration-300 group">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 hover:border-[blue-500]/30 transition-all duration-300 group">
                 <div class="w-16 h-16 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
@@ -325,7 +378,7 @@
             </div>
 
             <!-- Warranty Management -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 hover:border-[#f59e0b]/30 transition-all duration-300 group">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 hover:border-[blue-500]/30 transition-all duration-300 group">
                 <div class="w-16 h-16 bg-green-500/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
@@ -355,7 +408,7 @@
             </div>
 
             <!-- Pickup & Delivery -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 hover:border-[#f59e0b]/30 transition-all duration-300 group">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 hover:border-[blue-500]/30 transition-all duration-300 group">
                 <div class="w-16 h-16 bg-purple-500/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
@@ -385,9 +438,9 @@
             </div>
 
             <!-- 24/7 Support -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 hover:border-[#f59e0b]/30 transition-all duration-300 group">
-                <div class="w-16 h-16 bg-[#f59e0b]/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <svg class="w-8 h-8 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 hover:border-[blue-500]/30 transition-all duration-300 group">
+                <div class="w-16 h-16 bg-[blue-500]/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-8 h-8 text-[blue-500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
                     </svg>
                 </div>
@@ -427,7 +480,7 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <!-- Data Backup & Recovery -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-[#f59e0b]/30 transition-all duration-300 group">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-[blue-500]/30 transition-all duration-300 group">
                 <div class="w-16 h-16 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
@@ -438,7 +491,7 @@
             </div>
 
             <!-- Cloud Solutions -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-[#f59e0b]/30 transition-all duration-300 group">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-[blue-500]/30 transition-all duration-300 group">
                 <div class="w-16 h-16 bg-green-500/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
@@ -449,7 +502,7 @@
             </div>
 
             <!-- Website Analytics -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-[#f59e0b]/30 transition-all duration-300 group">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-[blue-500]/30 transition-all duration-300 group">
                 <div class="w-16 h-16 bg-purple-500/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
@@ -460,9 +513,9 @@
             </div>
 
             <!-- Domain Management -->
-            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-[#f59e0b]/30 transition-all duration-300 group">
-                <div class="w-16 h-16 bg-[#f59e0b]/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <svg class="w-8 h-8 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6 text-center hover:border-[blue-500]/30 transition-all duration-300 group">
+                <div class="w-16 h-16 bg-[blue-500]/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-8 h-8 text-[blue-500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
                     </svg>
                 </div>
@@ -477,21 +530,21 @@
 <section class="py-16 bg-gradient-to-b from-[#0f0f0f] to-black">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Elevate Your Digital Presence?</h2>
-        <p class="text-lg text-gray-400 mb-8">Join hundreds of satisfied customers who trust MSK Computers for their hosting and digital service needs.</p>
+        <p class="text-lg text-gray-400 mb-8">Join hundreds of satisfied customers who trust <span class="text-blue-400 font-semibold">LAPTOP EXPERT</span> and <span class="text-blue-400 font-semibold">MSK COMPUTERS</span> for their hosting and digital service needs. Experience enterprise-grade hosting backed by decades of industry expertise.</p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <a href="https://e-services.mskcomputers.lk/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 bg-[#f59e0b] text-black font-bold rounded-lg hover:bg-[#d97706] transition-colors transform hover:scale-105">
+            <a href="https://e-services.mskcomputers.lk/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                 </svg>
                 Access E-Services Portal
             </a>
-            <a href="tel:0112959005" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-bold rounded-lg border border-white/20 hover:border-[#f59e0b]/50 hover:text-[#f59e0b] transition-colors">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                </svg>
-                Get Support: 0112 95 9005
-            </a>
+            <a href="tel:0764442221" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-bold rounded-lg border border-white/20 hover:border-[blue-500]/50 hover:text-[blue-500] transition-colors">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                    Get Support: 076 444 222 1
+                </a>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -516,8 +569,8 @@
             </div>
             
             <div class="bg-[#1a1a1c] border border-gray-800 rounded-xl p-6">
-                <div class="w-12 h-12 bg-[#f59e0b]/20 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <svg class="w-6 h-6 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-12 h-12 bg-[blue-500]/20 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <svg class="w-6 h-6 text-[blue-500]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                     </svg>
                 </div>

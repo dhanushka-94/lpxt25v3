@@ -45,10 +45,12 @@ Retry Payment
 
 ### Option 2: Bank Transfer
 **Bank Details:**
-- **Bank:** People's Bank
-- **Account Name:** MSK Computers (Pvt) Ltd
-- **Account Number:** 0123456789
-- **Branch:** Maradana
+- **Bank:** Commercial Bank
+- **Account Name:** LAPTOP EXPERT (PVT) LTD
+- **Account Number:** 1000926420
+- **Branch:** Ragama Branch
+- **Branch Code:** 221
+- **Swift Code:** CCEYLKLX
 
 **Instructions:**
 1. Transfer LKR {{ number_format($order->total_amount, 2) }}
@@ -56,7 +58,7 @@ Retry Payment
 3. Include order number: {{ $order->order_number }}
 
 ### Option 3: Visit Our Store
-**MSK Computers Showroom**  
+**LAPTOP EXPERT Showroom**  
 No.12, Maradana Road, Colombo 08  
 **Hours:** Monday-Saturday 9AM-7PM
 
@@ -123,7 +125,7 @@ Don't let a payment issue stop you from getting the products you need. Our team 
 **Contact us now:** +94 777 506 939
 
 Best regards,  
-MSK Computers Payment Support Team
+LAPTOP EXPERT Payment Support Team
 
 @component('mail::subcopy')
 Payment failed: {{ now()->format('F d, Y \a\t g:i A') }}  

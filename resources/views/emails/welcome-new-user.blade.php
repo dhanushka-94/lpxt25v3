@@ -1,9 +1,9 @@
 @component('mail::message')
-# Welcome to MSK Computers!
+# Welcome to LAPTOP EXPERT!
 
 Hello {{ $user->name }},
 
-Welcome to MSK Computers! We're excited to have you as part of our community.
+Welcome to LAPTOP EXPERT! We're excited to have you as part of our community.
 
 ## What's Next?
 
@@ -39,22 +39,22 @@ Our customer support team is here to help:
 
 - **Phone:** 0112 95 9005
 - **WhatsApp:** +94 777 506 939
-- **Email:** info@mskcomputers.lk
+- **Email:** info@laptopexpert.lk
 - **Visit Us:** No.12, Maradana Road, Colombo 08
 
 @component('mail::button', ['url' => route('home')])
 Start Shopping
 @endcomponent
 
-Thank you for choosing MSK Computers!
+Thank you for choosing LAPTOP EXPERT!
 
 Best regards,  
-The MSK Computers Team
+The LAPTOP EXPERT Team
 
 @component('mail::subcopy')
 Follow us on social media for the latest updates:
-- Facebook: MSK Computers
-- Instagram: @mskcomputers
-- YouTube: MSK Computers Sri Lanka
+- Facebook: LAPTOP EXPERT
+- Instagram: @laptopexpert
+- YouTube: LAPTOP EXPERT Sri Lanka
 @endcomponent
 @endcomponent

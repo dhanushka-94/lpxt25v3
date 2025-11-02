@@ -6,17 +6,17 @@
 @source '../**/*.js';
 
 @theme {
-    /* MSK COMPUTERS Brand Colors - Dark & Yellow Theme */
-    --color-primary-50: #fffbeb;
-    --color-primary-100: #fef3c7;
-    --color-primary-200: #fde68a;
-    --color-primary-300: #fcd34d;
-    --color-primary-400: #fbbf24;
-    --color-primary-500: #f59e0b;
-    --color-primary-600: #d97706;
-    --color-primary-700: #b45309;
-    --color-primary-800: #92400e;
-    --color-primary-900: #78350f;
+    /* LAPTOP EXPERT Brand Colors - Dark & Blue Theme */
+    --color-primary-50: #eff6ff;
+    --color-primary-100: #dbeafe;
+    --color-primary-200: #bfdbfe;
+    --color-primary-300: #93c5fd;
+    --color-primary-400: #60a5fa;
+    --color-primary-500: #3b82f6;
+    --color-primary-600: #2563eb;
+    --color-primary-700: #1d4ed8;
+    --color-primary-800: #1e40af;
+    --color-primary-900: #1e3a8a;
     
     --color-dark-50: #f7f7f7;
     --color-dark-100: #e3e3e3;
@@ -41,8 +41,8 @@
     --font-tech: 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
     
     /* Custom shadows */
-    --shadow-glow-yellow: 0 0 20px rgba(251, 191, 36, 0.3);
-    --shadow-glow-yellow-lg: 0 0 40px rgba(251, 191, 36, 0.4);
+    --shadow-glow-blue: 0 0 20px rgba(59, 130, 246, 0.3);
+    --shadow-glow-blue-lg: 0 0 40px rgba(59, 130, 246, 0.4);
     --shadow-dark-lg: 0 10px 30px rgba(0, 0, 0, 0.3);
     
     /* Custom spacing */
@@ -51,7 +51,7 @@
     --spacing-128: 32rem;
 }
 
-/* MSK COMPUTERS Custom Styles */
+/* LAPTOP EXPERT Custom Styles */
 @layer base {
     html {
         scroll-behavior: smooth;
@@ -85,22 +85,22 @@
 @layer components {
     /* Button Components */
     .btn-primary {
-        background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(251, 191, 36, 0.15) 100%);
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(96, 165, 250, 0.15) 100%);
         backdrop-filter: blur(10px);
         color: theme('colors.primary.200');
         font-weight: 700;
         padding: 0.75rem 1.5rem;
         border-radius: 0.75rem;
-        border: 1px solid rgba(245, 158, 11, 0.4);
+        border: 1px solid rgba(59, 130, 246, 0.4);
         transition: all 0.3s ease;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         letter-spacing: 0.025em;
     }
     
     .btn-primary:hover {
-        background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(251, 191, 36, 0.25) 100%);
-        border-color: rgba(245, 158, 11, 0.6);
-        box-shadow: 0 8px 25px rgba(245, 158, 11, 0.2);
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.25) 0%, rgba(96, 165, 250, 0.25) 100%);
+        border-color: rgba(59, 130, 246, 0.6);
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
         transform: translateY(-1px);
     }
     
@@ -146,7 +146,7 @@
     }
     
     .card-hover:hover {
-        box-shadow: var(--shadow-glow-yellow-lg);
+        box-shadow: var(--shadow-glow-blue-lg);
         border-color: theme('colors.primary.500');
         transform: translateY(-0.25rem);
     }
@@ -164,7 +164,7 @@
     .input-field:focus {
         outline: none;
         border-color: theme('colors.primary.500');
-        box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
     }
     
     /* Navigation */

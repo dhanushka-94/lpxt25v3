@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Privacy Policy - MSK Computers')
+@section('title', 'Privacy Policy - LAPTOP EXPERT')
 
 @section('content')
 <div class="min-h-screen bg-dark-900 py-8">
@@ -17,7 +17,7 @@
                 
                 <h2 class="text-2xl font-semibold text-white mb-4">1. Introduction</h2>
                 <p class="text-gray-300 mb-6">
-                    At MSK Computers, we are committed to protecting your privacy and ensuring the security of your personal information. 
+                    At LAPTOP EXPERT, we are committed to protecting your privacy and ensuring the security of your personal information. 
                     This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website 
                     or use our services.
                 </p>
@@ -225,10 +225,10 @@
                 <div class="text-gray-300 mb-6">
                     <p class="mb-4">If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
                     <div class="bg-dark-800 rounded-lg p-4">
-                        <p class="font-medium text-white mb-2">MSK Computers - Privacy Team</p>
+                        <p class="font-medium text-white mb-2">LAPTOP EXPERT - Privacy Team</p>
                         <p>Email: <a href="mailto:privacy@mskcomputers.lk" class="text-primary-400 hover:text-primary-300">privacy@mskcomputers.lk</a></p>
                         <p>Phone: <a href="tel:+94112345678" class="text-primary-400 hover:text-primary-300">+94 11 234 5678</a></p>
-                        <p>Address: MSK Computers, Colombo, Sri Lanka</p>
+                        <p>Address: LAPTOP EXPERT, Colombo, Sri Lanka</p>
                     </div>
                 </div>
 

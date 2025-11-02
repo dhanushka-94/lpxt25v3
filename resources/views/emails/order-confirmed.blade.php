@@ -48,12 +48,12 @@ If you need to modify or cancel your order, please contact us **within 2 hours**
 
 - **Phone:** 0112 95 9005
 - **WhatsApp:** +94 777 506 939 (Immediate Response)
-- **Email:** info@mskcomputers.lk
+- **Email:** info@laptopexpert.lk
 
-Thank you for choosing MSK Computers!
+Thank you for choosing LAPTOP EXPERT!
 
 Best regards,  
-MSK Computers Team
+LAPTOP EXPERT Team
 
 @component('mail::subcopy')
 Order confirmed at {{ now()->format('F d, Y \a\t g:i A') }}  

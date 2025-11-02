@@ -30,6 +30,6 @@ class SmaProductPhoto extends Model
      */
     public function getPhotoUrlAttribute()
     {
-        return 'https://mskcomputers.lk/assets/uploads/' . $this->photo;
+        return 'https://erpsys.laptopexpert.lk/assets/uploads/' . $this->photo;
     }
 }

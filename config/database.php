@@ -31,7 +31,7 @@ return [
 
     'connections' => [
 
-        // SQLite configuration removed - MSK Computers uses MySQL exclusively
+        // SQLite configuration removed - LAPTOP EXPERT uses MySQL exclusively
 
         'mysql' => [
             'driver' => 'mysql',

@@ -71,11 +71,8 @@ class ProductController extends Controller
 
     public function show(SmaCategory $category, SmaProduct $product)
     {
-        \Log::info("ProductController@show - Category: {$category->name} (ID: {$category->id}), Product: {$product->name} (ID: {$product->id}, Category: {$product->category_id})");
-        
         // Verify product belongs to this category
         if ($product->category_id !== $category->id && $product->subcategory_id !== $category->id) {
-            \Log::error("Product {$product->id} does not belong to category {$category->id}. Product category: {$product->category_id}, subcategory: {$product->subcategory_id}");
             abort(404, 'Product not found in this category');
         }
         

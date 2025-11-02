@@ -1,21 +1,21 @@
 @extends('layouts.app')
 
-@section('title', 'Promotions & Deals - MSK Computers')
-@section('description', 'Discover amazing deals and promotions on computer hardware, gaming accessories, and tech products at MSK Computers. Limited time offers!')
-@section('keywords', 'promotions, deals, discounts, sales, computer hardware deals, gaming deals, MSK Computers')
+@section('title', 'Laptop Promotions & Deals - Brand New & Used Laptops Discounts | LAPTOP EXPERT')
+@section('description', 'Discover amazing deals and promotions on brand new and used laptops, laptop accessories, and repair services at Laptop Expert. Limited time offers on laptops in Sri Lanka!')
+@section('keywords', 'laptop promotions, laptop deals, laptop discounts, laptop sales, brand new laptop deals, used laptop deals, laptop accessories deals, Laptop Expert, Sri Lanka')
 
 @push('head')
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="Promotions & Deals - MSK Computers">
-    <meta property="og:description" content="Discover amazing deals and promotions on computer hardware, gaming accessories, and tech products.">
+    <meta property="og:title" content="Laptop Promotions & Deals - Brand New & Used Laptops | LAPTOP EXPERT">
+    <meta property="og:description" content="Discover amazing deals and promotions on brand new and used laptops, laptop accessories, and repair services at Laptop Expert in Sri Lanka.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:image" content="{{ asset('images/promotions-banner.jpg') }}">
     
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Promotions & Deals - MSK Computers">
-    <meta name="twitter:description" content="Discover amazing deals and promotions on computer hardware, gaming accessories, and tech products.">
+    <meta name="twitter:title" content="Laptop Promotions & Deals - Brand New & Used Laptops | LAPTOP EXPERT">
+    <meta name="twitter:description" content="Discover amazing deals and promotions on brand new and used laptops, laptop accessories, and repair services at Laptop Expert in Sri Lanka.">
     <meta name="twitter:image" content="{{ asset('images/promotions-banner.jpg') }}">
 @endpush
 
@@ -23,18 +23,18 @@
 <div class="min-h-screen bg-[#0f0f0f]">
     <!-- Compact Header Section -->
     <section class="relative bg-gradient-to-r from-[#0f0f0f] to-[#1a1a1c] border-b border-gray-800/30 py-8">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#f59e0b]/5 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
-                    <div class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#f59e0b] to-[#d97706] rounded-xl">
+                    <div class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl">
                         <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
                     </div>
                     <div>
                         <h1 class="text-2xl md:text-3xl font-bold text-white">
-                            Promotions & <span class="text-[#f59e0b]">Deals</span>
+                            Promotions & <span class="text-blue-500">Deals</span>
                         </h1>
                         <p class="text-sm text-gray-400 mt-1">
                             Discover amazing deals with up to 50% off!
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="hidden md:block">
-                    <span class="inline-flex items-center px-4 py-2 bg-[#f59e0b]/10 border border-[#f59e0b]/20 rounded-lg text-[#f59e0b] text-sm font-medium">
+                    <span class="inline-flex items-center px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-500 text-sm font-medium">
                         {{ $products->total() }} Products on Sale
                     </span>
                 </div>
@@ -59,7 +59,7 @@
                 <div class="lg:w-64 flex-shrink-0">
                     <div class="bg-[#1a1a1c] rounded-xl border border-gray-800/30 p-6 sticky top-6">
                         <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.414A1 1 0 013 6.707V4z"/>
                             </svg>
                             Categories
@@ -67,7 +67,7 @@
                         
                         <div class="space-y-2">
                             <a href="{{ route('promotions.index') }}" 
-                               class="flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-all {{ !request('category') ? 'bg-[#f59e0b] text-black' : 'text-gray-300 hover:bg-[#f59e0b]/10 hover:text-[#f59e0b]' }}">
+                               class="flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-all {{ !request('category') ? 'bg-blue-500 text-black' : 'text-gray-300 hover:bg-blue-500/10 hover:text-blue-500' }}">
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
                                 </svg>
@@ -79,7 +79,7 @@
                             
                             @foreach($categories as $category)
                                 <a href="{{ route('promotions.index', ['category' => $category->slug ?: $category->id]) }}" 
-                                   class="flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-all group {{ request('category') == ($category->slug ?: $category->id) ? 'bg-[#f59e0b] text-black' : 'text-gray-300 hover:bg-[#f59e0b]/10 hover:text-[#f59e0b]' }}">
+                                   class="flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-all group {{ request('category') == ($category->slug ?: $category->id) ? 'bg-blue-500 text-black' : 'text-gray-300 hover:bg-blue-500/10 hover:text-blue-500' }}">
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
                                     </svg>
@@ -93,7 +93,7 @@
 
                         <!-- Mobile Category Count -->
                         <div class="block md:hidden mt-4 pt-4 border-t border-gray-700">
-                            <span class="inline-flex items-center px-3 py-1.5 bg-[#f59e0b]/10 border border-[#f59e0b]/20 rounded-lg text-[#f59e0b] text-xs font-medium">
+                            <span class="inline-flex items-center px-3 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-500 text-xs font-medium">
                                 {{ $products->total() }} Products on Sale
                             </span>
                         </div>
@@ -107,7 +107,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
                     @foreach($products as $product)
                         <a href="{{ route('products.show', ['category' => $product->category->slug ?: $product->category->id, 'product' => $product->slug]) }}" 
-                           class="group bg-[#1c1c1e] rounded-xl border border-gray-800/30 overflow-hidden hover:border-[#f59e0b]/30 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#f59e0b]/10">
+                           class="group bg-[#1c1c1e] rounded-xl border border-gray-800/30 overflow-hidden hover:border-blue-500/30 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/10">
                             
                             <!-- Product Image -->
                             <div class="relative overflow-hidden bg-[#1a1a1c] aspect-square">
@@ -136,17 +136,17 @@
                             <!-- Product Info -->
                             <div class="p-4">
                                 <div class="mb-2">
-                                    <span class="text-xs text-[#f59e0b] font-medium">{{ $product->category->name }}</span>
+                                    <span class="text-xs text-blue-500 font-medium">{{ $product->category->name }}</span>
                                 </div>
                                 
-                                <h3 class="text-sm font-semibold text-white mb-3 line-clamp-2 group-hover:text-[#f59e0b] transition-colors">
+                                <h3 class="text-sm font-semibold text-white mb-3 line-clamp-2 group-hover:text-blue-500 transition-colors">
                                     {{ $product->name }}
                                 </h3>
 
                                 <!-- Pricing -->
                                 <div class="mb-4">
                                     <div class="flex items-baseline gap-2">
-                                        <span class="text-lg font-bold text-[#f59e0b]">
+                                        <span class="text-lg font-bold text-blue-500">
                                             LKR {{ number_format($product->promo_price, 2) }}
                                         </span>
                                         <span class="text-sm text-gray-500 line-through">
@@ -165,14 +165,14 @@
                                     </div>
                                 @endif
                                 
-                                <!-- Payment Method Badges -->
-                                @include('components.payment-badges')
+                                {{-- TEMPORARILY HIDDEN: Payment Method Badges (KOKO Pay & Installments) --}}
+                                {{-- @include('components.payment-badges') --}}
 
                                 <!-- Add to Cart Button -->
                                 <div class="mt-auto">
                                     @if($product->can_add_to_cart)
                                         <button onclick="event.preventDefault(); event.stopPropagation(); addToCartFromPromo({{ $product->id }}, '{{ addslashes($product->name) }}')" 
-                                                class="w-full bg-[#f59e0b] hover:bg-[#d97706] text-black px-4 py-2.5 rounded-lg text-sm font-semibold transition-all">
+                                                class="w-full bg-blue-500 hover:bg-blue-600 text-black px-4 py-2.5 rounded-lg text-sm font-semibold transition-all">
                                             Add to Cart
                                         </button>
                                     @else
@@ -203,7 +203,7 @@
                             <h3 class="text-xl font-semibold text-white mb-2">No Active Promotions</h3>
                             <p class="text-gray-400 mb-6">There are currently no promotional products available in this category. Check back soon for amazing deals!</p>
                             <a href="{{ route('products.index') }}" 
-                               class="inline-flex items-center px-6 py-3 bg-[#f59e0b] hover:bg-[#d97706] text-black font-semibold rounded-lg transition-all">
+                               class="inline-flex items-center px-6 py-3 bg-blue-500 hover:bg-blue-600 text-black font-semibold rounded-lg transition-all">
                                 Browse All Products
                             </a>
                         </div>

@@ -134,7 +134,7 @@ class QuotationController extends Controller
         ]);
 
         // Return PDF download
-        return $pdf->download('MSK-Quotation-' . $quotationNumber . '.pdf');
+        return $pdf->download('LXT-Quotation-' . $quotationNumber . '.pdf');
     }
 }
 
