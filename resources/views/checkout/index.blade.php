@@ -633,6 +633,7 @@
                                     <div class="flex-shrink-0 w-12 h-12 bg-gray-800 rounded-lg overflow-hidden">
                                         <img src="{{ $cartProduct['product']->main_image }}" 
                                              alt="{{ $cartProduct['product']->name }}" 
+                                             loading="lazy"
                                              class="w-full h-full object-cover">
                                     </div>
                                     <div class="flex-1 min-w-0">

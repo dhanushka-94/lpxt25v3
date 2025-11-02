@@ -62,6 +62,7 @@
                                 <div class="aspect-square bg-white/5 rounded-lg p-2 overflow-hidden">
                                 <img src="{{ $image }}" 
                                      alt="{{ $product->name }} - Image {{ $index + 1 }}"
+                                     loading="lazy"
                                          class="w-full h-full object-contain rounded group-hover:opacity-80 transition-opacity">
                             </div>
                                 @if($index === 0)
@@ -482,6 +483,7 @@
                                 <div class="aspect-square">
                                     <img src="{{ $relatedProduct->main_image ?? 'https://via.placeholder.com/400x400?text=No+Image' }}" 
                                          alt="{{ $relatedProduct->name }}" 
+                                         loading="lazy"
                                          class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300">
                                 </div>
                             </a>

@@ -61,6 +61,7 @@
                             <div class="flex-shrink-0 w-16 h-16 bg-gray-800 rounded-lg overflow-hidden">
                                 <img src="{{ $item->product_image_url }}" 
                                      alt="{{ $item->product_name }}" 
+                                     loading="lazy"
                                      class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1">

@@ -86,6 +86,7 @@
                                     <a href="{{ route('products.show', ['category' => $product->category->slug ?: $product->category->id, 'product' => $product->slug]) }}">
                                         <img src="{{ $product->images[0] ?? 'https://via.placeholder.com/400x300?text=No+Image' }}" 
                                              alt="{{ $product->name }}" 
+                                             loading="lazy"
                                              class="w-full h-48 object-cover">
                                     </a>
                                     

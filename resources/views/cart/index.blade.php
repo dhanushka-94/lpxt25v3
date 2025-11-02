@@ -49,6 +49,7 @@
                                                 <div class="w-16 h-16 sm:w-20 sm:h-20 bg-[#2c2c2e] rounded-lg overflow-hidden">
                                                     <img src="{{ $item->product->main_image }}" 
                                                          alt="{{ $item->product->name }}"
+                                                         loading="lazy"
                                                          class="w-full h-full object-cover">
                                                 </div>
                                             </div>
