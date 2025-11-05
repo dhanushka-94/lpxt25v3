@@ -93,7 +93,7 @@
 
                 <!-- Product Title -->
                 <div>
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+                    <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
                         {{ $product->name }}
                     </h1>
                     
@@ -134,12 +134,12 @@
                 </div>
 
                 <!-- Price Display - Premium Design -->
-                <div class="bg-gradient-to-br from-[#0a0a0a] via-black to-[#0a0a0a] border-2 border-blue-500/30 rounded-2xl p-6 shadow-xl shadow-blue-500/10">
+                <div class="bg-gradient-to-br from-[#0a0a0a] via-black to-[#0a0a0a] border-2 border-blue-500/30 rounded-2xl p-4 sm:p-6 shadow-xl shadow-blue-500/10">
                     @if($product->is_on_sale)
                         <div class="mb-4">
                             <div class="flex flex-col sm:flex-row sm:items-baseline gap-3 mb-3">
-                                <span class="text-4xl sm:text-5xl font-bold text-blue-400">LKR {{ number_format($product->promo_price, 2) }}</span>
-                                <span class="text-xl sm:text-2xl text-gray-500 line-through">LKR {{ number_format($product->price, 2) }}</span>
+                                <span class="text-2xl sm:text-3xl font-bold text-blue-400">LKR {{ number_format($product->promo_price, 2) }}</span>
+                                <span class="text-base sm:text-lg text-gray-500 line-through">LKR {{ number_format($product->price, 2) }}</span>
                             </div>
                             <div class="flex flex-wrap items-center gap-2">
                                 <span class="inline-flex items-center px-3 py-1 bg-green-500/20 border border-green-500/40 rounded-lg text-green-400 text-sm font-semibold">
@@ -156,9 +156,9 @@
                     @else
                         <div>
                             @if($product->price > 0)
-                                <span class="text-4xl sm:text-5xl font-bold text-blue-400">LKR {{ number_format($product->price, 2) }}</span>
+                                <span class="text-2xl sm:text-3xl font-bold text-blue-400">LKR {{ number_format($product->price, 2) }}</span>
                             @else
-                                <span class="text-3xl sm:text-4xl font-bold text-blue-400">Contact for Price</span>
+                                <span class="text-xl sm:text-2xl font-bold text-blue-400">Contact for Price</span>
                             @endif
                         </div>
                     @endif
@@ -166,27 +166,27 @@
 
                 <!-- Add to Cart Section - Enhanced -->
                 @if($product->can_add_to_cart)
-                    <div class="bg-gradient-to-br from-[#0a0a0a] to-black border-2 border-blue-500/30 rounded-2xl p-6 shadow-xl">
-                        @if($product->is_on_sale)
-                            <div class="mb-4 p-3 bg-gradient-to-r from-red-500/10 to-pink-500/10 border border-red-500/30 rounded-lg">
+                    <div class="bg-gradient-to-br from-[#0a0a0a] to-black border-2 border-blue-500/30 rounded-2xl p-4 sm:p-6 shadow-xl">
+                            @if($product->is_on_sale)
+                            <div class="mb-4 p-2.5 sm:p-3 bg-gradient-to-r from-red-500/10 to-pink-500/10 border border-red-500/30 rounded-lg">
                                 <div class="flex items-center gap-2">
-                                    <svg class="w-5 h-5 text-red-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-red-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                                     </svg>
-                                    <span class="text-red-400 font-semibold text-sm">⚡ Limited Time Offer - Act Fast!</span>
+                                    <span class="text-red-400 font-semibold text-xs sm:text-sm">⚡ Limited Time Offer - Act Fast!</span>
                         </div>
                     </div>
                 @endif
 
                         <div class="space-y-4">
                             <!-- Quantity Selector -->
-                            <div class="flex items-center gap-4">
-                                <label class="text-gray-400 font-medium">Quantity:</label>
+                            <div class="flex items-center gap-3 sm:gap-4">
+                                <label class="text-gray-400 font-medium text-sm sm:text-base">Quantity:</label>
                                 <div class="flex items-center border-2 border-gray-700/50 rounded-xl overflow-hidden bg-black/50">
                                     <button type="button" 
-                                            class="px-4 py-3 text-white hover:text-blue-400 hover:bg-blue-500/10 transition-all" 
+                                            class="px-3 sm:px-4 py-2 sm:py-3 text-white hover:text-blue-400 hover:bg-blue-500/10 transition-all" 
                                             onclick="decreaseQuantity()">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
                                         </svg>
                                     </button>
@@ -195,11 +195,11 @@
                                            value="1" 
                                            min="1" 
                                            max="99" 
-                                           class="w-20 py-3 text-center bg-transparent text-white font-semibold border-x-2 border-gray-700/50 focus:outline-none focus:border-blue-500">
+                                           class="w-16 sm:w-20 py-2 sm:py-3 text-sm sm:text-base text-center bg-transparent text-white font-semibold border-x-2 border-gray-700/50 focus:outline-none focus:border-blue-500">
                                     <button type="button" 
-                                            class="px-4 py-3 text-white hover:text-blue-400 hover:bg-blue-500/10 transition-all" 
+                                            class="px-3 sm:px-4 py-2 sm:py-3 text-white hover:text-blue-400 hover:bg-blue-500/10 transition-all" 
                                             onclick="increaseQuantity()">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
                                         </svg>
                                     </button>
@@ -208,16 +208,16 @@
                             
                             <!-- Action Buttons -->
                             <div class="flex flex-col sm:flex-row gap-3">
-                                <button class="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 flex items-center justify-center gap-2" 
+                                <button class="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-3 px-4 sm:py-3.5 sm:px-5 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 flex items-center justify-center gap-2 text-sm sm:text-base" 
                                         onclick="addToCart({{ $product->id }})">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
                                     </svg>
                                     <span>{{ $product->is_on_sale ? 'Add to Cart (SALE!)' : 'Add to Cart' }}</span>
                                 </button>
-                                <button class="px-6 py-4 bg-gray-800/50 border-2 border-gray-700/50 hover:border-blue-500/50 text-white rounded-xl transition-all duration-300 hover:bg-blue-500/10" 
+                                <button class="px-4 sm:px-6 py-3 sm:py-4 bg-gray-800/50 border-2 border-gray-700/50 hover:border-blue-500/50 text-white rounded-xl transition-all duration-300 hover:bg-blue-500/10" 
                                         onclick="addToWishlist({{ $product->id }})">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                                     </svg>
                                 </button>
@@ -226,15 +226,15 @@
                     </div>
                 @else
                     @if($product->status && in_array($product->status->status_name, ['Coming Soon', 'Pre Order']))
-                        <div class="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border-2 border-blue-500/30 rounded-2xl p-8 text-center">
-                            <div class="text-blue-400 text-2xl font-bold mb-3">{{ $product->status->status_name }}</div>
-                            <p class="text-gray-300 mb-4">{{ $product->cart_restriction_reason }}</p>
-                            <p class="text-gray-500 text-sm">This product is currently not available for purchase.</p>
+                        <div class="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border-2 border-blue-500/30 rounded-2xl p-6 text-center">
+                            <div class="text-blue-400 text-lg sm:text-xl font-bold mb-3">{{ $product->status->status_name }}</div>
+                            <p class="text-gray-300 mb-4 text-sm">{{ $product->cart_restriction_reason }}</p>
+                            <p class="text-gray-500 text-xs">This product is currently not available for purchase.</p>
                         </div>
                     @else
-                        <div class="bg-red-500/10 border-2 border-red-500/30 rounded-2xl p-8 text-center">
-                            <div class="text-red-400 text-2xl font-bold mb-3">{{ $product->cart_restriction_reason ?: 'Unavailable' }}</div>
-                            <p class="text-gray-300">This product is currently unavailable.</p>
+                        <div class="bg-red-500/10 border-2 border-red-500/30 rounded-2xl p-6 text-center">
+                            <div class="text-red-400 text-lg sm:text-xl font-bold mb-3">{{ $product->cart_restriction_reason ?: 'Unavailable' }}</div>
+                            <p class="text-gray-300 text-sm">This product is currently unavailable.</p>
                         </div>
                     @endif
                 @endif
@@ -277,25 +277,25 @@
             <div class="lg:col-span-2 space-y-8">
                 <!-- Product Description -->
                 @if($product->description)
-                    <div class="bg-gradient-to-br from-[#0a0a0a] to-black border-2 border-blue-500/20 rounded-2xl p-6 sm:p-8 shadow-xl">
-                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                            <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="bg-gradient-to-br from-[#0a0a0a] to-black border-2 border-blue-500/20 rounded-2xl p-4 sm:p-6 shadow-xl">
+                        <h2 class="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-3">
+                            <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                             </svg>
                             </div>
                             <span>Description</span>
                         </h2>
-                        <p class="text-gray-300 leading-relaxed text-lg">{{ $product->description }}</p>
+                        <p class="text-gray-300 leading-relaxed text-sm sm:text-base">{{ $product->description }}</p>
                     </div>
                 @endif
 
                 <!-- Product Attributes -->
                 @if($product->grouped_attributes && count($product->grouped_attributes) > 0)
-                    <div class="bg-gradient-to-br from-[#0a0a0a] to-black border-2 border-blue-500/20 rounded-2xl p-6 sm:p-8 shadow-xl">
-                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                            <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="bg-gradient-to-br from-[#0a0a0a] to-black border-2 border-blue-500/20 rounded-2xl p-4 sm:p-6 shadow-xl">
+                        <h2 class="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-3">
+                            <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
                             </svg>
                             </div>
@@ -338,10 +338,10 @@
                         $lines = array_filter(array_map('trim', $lines));
                     @endphp
                     
-                    <div class="bg-gradient-to-br from-[#0a0a0a] to-black border-2 border-blue-500/20 rounded-2xl p-6 sm:p-8 shadow-xl">
-                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                            <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="bg-gradient-to-br from-[#0a0a0a] to-black border-2 border-blue-500/20 rounded-2xl p-4 sm:p-6 shadow-xl">
+                        <h2 class="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-3">
+                            <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
                             </svg>
                             </div>
@@ -387,10 +387,10 @@
                 @else
                     <!-- Fallback when no product details are available -->
                     @if($product->warranty || $product->model)
-                        <div class="bg-gradient-to-br from-[#0a0a0a] to-black border-2 border-blue-500/20 rounded-2xl p-6 sm:p-8 shadow-xl">
-                            <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                                <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="bg-gradient-to-br from-[#0a0a0a] to-black border-2 border-blue-500/20 rounded-2xl p-4 sm:p-6 shadow-xl">
+                            <h2 class="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-3">
+                                <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
                                 </div>
@@ -418,28 +418,28 @@
             <!-- Sidebar - Additional Info -->
             <div class="space-y-6">
                 <!-- Contact Card -->
-                <div class="bg-gradient-to-br from-blue-500/10 to-blue-600/10 border-2 border-blue-500/30 rounded-2xl p-6 shadow-xl">
-                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-gradient-to-br from-blue-500/10 to-blue-600/10 border-2 border-blue-500/30 rounded-2xl p-4 sm:p-6 shadow-xl">
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
                         Need Help?
                     </h3>
-                    <p class="text-gray-300 mb-4">Have questions about this product? Our expert team is here to help!</p>
-                    <a href="/contact-us" class="block w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-4 rounded-xl text-center transition-all duration-300 transform hover:scale-105">
+                    <p class="text-gray-300 mb-4 text-sm">Have questions about this product? Our expert team is here to help!</p>
+                    <a href="/contact-us" class="block w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2.5 sm:py-3 px-4 rounded-xl text-center transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">
                         Contact Us
                     </a>
                 </div>
 
                 <!-- Shipping Info -->
-                <div class="bg-gradient-to-br from-[#0a0a0a] to-black border-2 border-blue-500/20 rounded-2xl p-6 shadow-xl">
-                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-gradient-to-br from-[#0a0a0a] to-black border-2 border-blue-500/20 rounded-2xl p-4 sm:p-6 shadow-xl">
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a2 2 0 012-2h14a2 2 0 012 2v16l-7-3.5L5 20V4z"/>
                         </svg>
                         Shipping & Returns
                     </h3>
-                    <ul class="space-y-3 text-gray-300">
+                    <ul class="space-y-3 text-gray-300 text-sm">
                         <li class="flex items-start gap-2">
                             <svg class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
@@ -469,9 +469,9 @@
 @if($relatedProducts->count() > 0)
     <section class="py-12 bg-gradient-to-b from-[#0a0a0a] to-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3">Related Products</h2>
-                <p class="text-gray-400 text-lg">You might also be interested in these products</p>
+            <div class="text-center mb-8">
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">Related Products</h2>
+                <p class="text-gray-400 text-sm sm:text-base">You might also be interested in these products</p>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -497,7 +497,7 @@
                         
                         <!-- Product Info -->
                         <div class="p-5">
-                            <h3 class="text-base font-semibold text-white mb-3 line-clamp-2 min-h-[3rem]">
+                            <h3 class="text-sm sm:text-base font-semibold text-white mb-3 line-clamp-2 min-h-[2.5rem]">
                                 <a href="{{ route('products.show', ['category' => $relatedProduct->category->slug ?: $relatedProduct->category->id, 'product' => $relatedProduct->slug]) }}" 
                                    class="hover:text-blue-400 transition-colors">
                                     {{ $relatedProduct->name }}
@@ -508,14 +508,14 @@
                             <div class="mb-3">
                                 @if($relatedProduct->is_on_sale)
                                     <div class="space-y-1">
-                                        <span class="text-sm text-gray-500 line-through block">LKR {{ number_format($relatedProduct->price, 0) }}</span>
-                                        <span class="text-lg font-bold text-blue-400">LKR {{ number_format($relatedProduct->promo_price, 0) }}</span>
+                                        <span class="text-xs text-gray-500 line-through block">LKR {{ number_format($relatedProduct->price, 0) }}</span>
+                                        <span class="text-base font-bold text-blue-400">LKR {{ number_format($relatedProduct->promo_price, 0) }}</span>
                                     </div>
                                 @else
                                     @if($relatedProduct->price > 0)
-                                        <span class="text-lg font-bold text-white">LKR {{ number_format($relatedProduct->price, 0) }}</span>
+                                        <span class="text-base font-bold text-white">LKR {{ number_format($relatedProduct->price, 0) }}</span>
                                     @else
-                                        <span class="text-base font-bold text-blue-400">Contact for Price</span>
+                                        <span class="text-sm font-bold text-blue-400">Contact for Price</span>
                                     @endif
                                 @endif
                             </div>
@@ -542,12 +542,12 @@
                             
                             <!-- Add to Cart Button -->
                             @if($relatedProduct->can_add_to_cart)
-                                <button class="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105" 
+                                <button class="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-2.5 sm:py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base" 
                                         onclick="addToCart({{ $relatedProduct->id }})">
                                     Add to Cart
                                 </button>
                             @else
-                                <button class="w-full bg-gray-700/50 text-gray-400 font-medium py-3 px-4 rounded-xl cursor-not-allowed" 
+                                <button class="w-full bg-gray-700/50 text-gray-400 font-medium py-2.5 sm:py-3 px-4 rounded-xl cursor-not-allowed text-sm sm:text-base" 
                                         disabled title="{{ $relatedProduct->cart_restriction_reason }}">
                                     {{ $relatedProduct->cart_restriction_reason ?: 'Unavailable' }}
                                 </button>

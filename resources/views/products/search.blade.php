@@ -217,8 +217,8 @@
                                             </div>
                                         @endif
                                         
-                                        <!-- Payment Method Badges -->
-                                        @include('components.payment-badges')
+                                        {{-- Payment Method Badges - HIDDEN: KOKO Pay & Installments --}}
+                                        {{-- @include('components.payment-badges') --}}
 
                                         <!-- Add to Cart Button -->
                                         <div class="mt-auto">
