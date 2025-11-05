@@ -351,7 +351,7 @@
                         <div class="space-y-3">
                             @foreach($lines as $line)
                                 @if(!empty($line))
-                                    @if(preg_match('/^\d+\.\s/', $line) || str_starts_with($line, '•'))
+                                    @if(preg_match('/^\d+\.\s/', $line) || Str::startsWith($line, '•'))
                                         <div class="flex items-start py-3 px-4 bg-black/30 rounded-xl border border-gray-700/50 hover:border-blue-500/50 transition-colors">
                                             <span class="text-gray-300 leading-relaxed">{{ $line }}</span>
                                         </div>
